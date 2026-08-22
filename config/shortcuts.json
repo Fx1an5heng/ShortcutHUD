@@ -167,6 +167,21 @@
       "PAGEDOWN": { "en": "Page Down", "zh": "下一页" }
     }
   },
+  "WPS_PDF": {
+    "Ctrl": {
+      "F": { "en": "Find", "zh": "查找" },
+      "F2": { "en": "Highlight", "zh": "高亮所选文本" },
+      "DOWN": { "en": "Next Page", "zh": "下一页" },
+      "-": { "en": "Zoom Out", "zh": "缩小" },
+      "0": { "en": "Fit Page", "zh": "适合页面" },
+      "1": { "en": "Actual Size", "zh": "实际大小" },
+      "2": { "en": "Fit Width", "zh": "适合宽度" }
+    },
+    "Alt+Shift": {
+      "1": { "en": "Bookmarks", "zh": "书签导航" }
+    }
+  },
+  "WPS_UNKNOWN": {},
   "ET.EXE": {
     "Ctrl": {
       "N": { "en": "New Workbook", "zh": "新建工作簿" },

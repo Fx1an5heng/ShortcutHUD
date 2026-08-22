@@ -18,6 +18,7 @@ class _ConfigProvider(Protocol):
 
 class _ForegroundState(Protocol):
     current_app_name: str | None
+    identity_pending: bool
 
 
 class _HudView(Protocol):
@@ -67,6 +68,7 @@ class ShortcutHudController(QObject):
         self._current_modifier: str | None = None
         self._show_delay_ms = show_delay_ms
         self._win_only_show_delay_ms = win_only_show_delay_ms
+        self._identity_delay_elapsed = False
 
         self._win_modifier_held = False
         self._win_activation_attempted = False
@@ -81,6 +83,7 @@ class ShortcutHudController(QObject):
     def on_modifiers_changed(self, modifiers: set[str]) -> None:
         """Schedule, update, or hide the HUD for the latest logical state."""
 
+        self._identity_delay_elapsed = False
         win_held = self._contains_win_modifier(modifiers)
         if win_held and not self._win_modifier_held:
             self._reset_win_discovery_state()
@@ -123,12 +126,25 @@ class ShortcutHudController(QObject):
 
         entries = self._resolve_current_entries()
         if not entries:
+            if self._is_identity_pending():
+                self._hud_window.hide()
+                if (
+                    not self._show_timer.isActive()
+                    and not self._identity_delay_elapsed
+                ):
+                    self._start_show_timer()
+                return
             self._cancel_and_hide()
             return
 
         if self._win_discovery_active and self._win_execution_seen:
             self._cancel_and_hide()
             return
+        if self._identity_delay_elapsed:
+            self._identity_delay_elapsed = False
+            self._show_pending_hud()
+            return
+
 
         if self._current_modifier == "Win" and not self._win_discovery_active:
             self._show_timer.stop()
@@ -159,6 +175,10 @@ class ShortcutHudController(QObject):
         entries = self._resolve_current_entries()
         if not entries:
             self._hud_window.hide()
+            if self._is_identity_pending():
+                self._identity_delay_elapsed = True
+            else:
+                self._identity_delay_elapsed = False
             return
 
         if self._current_modifier == "Win":
@@ -173,6 +193,7 @@ class ShortcutHudController(QObject):
                 return
             self._win_discovery_active = True
 
+        self._identity_delay_elapsed = False
         self._render(entries)
         self._hud_window.show_hud()
 
@@ -198,7 +219,11 @@ class ShortcutHudController(QObject):
         self._show_timer.stop()
         self._hud_window.hide()
 
+        self._identity_delay_elapsed = False
+
     def _start_show_timer(self) -> None:
+        if self._show_timer.isActive():
+            return
         delay = (
             self._win_only_show_delay_ms
             if self._current_modifier == "Win"
@@ -206,6 +231,9 @@ class ShortcutHudController(QObject):
         )
         self._show_timer.setInterval(delay)
         self._show_timer.start()
+
+    def _is_identity_pending(self) -> bool:
+        return bool(getattr(self._foreground_monitor, "identity_pending", False))
 
     def _current_physical_win_vk(self) -> int | None:
         try:

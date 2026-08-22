@@ -35,6 +35,9 @@ class ForegroundMonitor(QObject):
     # Signal emitted when the active foreground application changes.
     # Argument: str - The executable name (e.g., "NOTEPAD.EXE") or "DEFAULT".
     active_app_changed = Signal(str)
+    # Raw foreground snapshot for application-identity adapters.
+    # Arguments: HWND and executable name (or None when unavailable).
+    foreground_changed = Signal(object, object)
 
     # Default interval in milliseconds for polling the foreground application.
     DEFAULT_POLL_INTERVAL_MS: int = 1000
@@ -58,6 +61,7 @@ class ForegroundMonitor(QObject):
         self.current_app_name: Optional[str] = (
             None  # Stores the name of the currently focused app.
         )
+        self.current_hwnd: HWND = 0
         self._timer: QTimer = QTimer(self)  # Timer for periodic checks.
         self._timer.timeout.connect(self.check_foreground_app)
         self._timer.start(interval_ms)
@@ -139,7 +143,7 @@ class ForegroundMonitor(QObject):
             print(f"Unexpected error in get_exe_from_hwnd for HWND {hwnd}: {e}")
             return None
 
-    def check_foreground_app(self) -> None:
+    def check_foreground_app(self) -> bool:
         """
         Periodically called by the internal QTimer.
         Checks the current foreground window, determines its application name,
@@ -152,29 +156,46 @@ class ForegroundMonitor(QObject):
             new_app_name: Optional[str] = self.get_exe_from_hwnd(current_hwnd)
             # print(f"Debug: [FG_MONITOR] Detected app: {new_app_name}, Previously: {self.current_app_name}")
 
-            if new_app_name and new_app_name != self.current_app_name:
+            previous_hwnd = self.current_hwnd
+            previous_app_name = self.current_app_name
+            self.current_hwnd = int(current_hwnd or 0)
+            self.current_app_name = new_app_name
+            foreground_changed = (
+                self.current_hwnd != previous_hwnd
+                or self.current_app_name != previous_app_name
+            )
+            if foreground_changed:
+                self.foreground_changed.emit(
+                    self.current_hwnd,
+                    self.current_app_name,
+                )
+
+            if new_app_name and new_app_name != previous_app_name:
                 # A new, identifiable application has come to the foreground.
-                self.current_app_name = new_app_name
                 self.active_app_changed.emit(self.current_app_name)
-            elif not new_app_name and self.current_app_name is not None:
+            elif not new_app_name and previous_app_name is not None:
                 # Foreground is now an unidentifiable app/window or an error occurred.
                 # Reset to "DEFAULT" state to show default shortcuts.
-                self.current_app_name = (
-                    None  # Represent "DEFAULT" or unidentifiable state.
-                )
                 self.active_app_changed.emit("DEFAULT")
             # No signal is emitted if:
             # - app_name is None and current_app_name was already None (no change from "DEFAULT").
             # - app_name is the same as current_app_name (no change in focused app).
+            return foreground_changed
 
         except Exception as e:
             # Broad exception to catch errors from GetForegroundWindow or other logic within this method.
             print(f"Error during foreground app check: {e}")
             # If an error occurs and an app was previously identified,
             # it's safer to revert to "DEFAULT" to prevent a stale overlay state.
-            if self.current_app_name is not None:
-                self.current_app_name = None
+            previous_hwnd = self.current_hwnd
+            previous_app_name = self.current_app_name
+            self.current_hwnd = 0
+            self.current_app_name = None
+            if previous_hwnd or previous_app_name is not None:
+                self.foreground_changed.emit(0, None)
+            if previous_app_name is not None:
                 self.active_app_changed.emit("DEFAULT")
+            return previous_hwnd != 0 or previous_app_name is not None
 
     def stop_monitoring(self) -> None:
         """

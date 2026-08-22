@@ -31,6 +31,7 @@ except ImportError:
 
 # Import core application components.
 from scripts.overlay_keyboard import OverlayKeyboardWindow
+from scripts.application_identity import ApplicationIdentityRuntime
 from scripts.config_manager import ConfigManager
 from scripts.foreground_monitor import ForegroundMonitor
 from scripts.keyboard_handler import KeyboardHandler
@@ -100,6 +101,10 @@ class ShortcutOverlayApplication(QApplication):
         self.overlay_window: OverlayKeyboardWindow = OverlayKeyboardWindow(self.config_mgr)
         self.shortcut_hud_window: ShortcutHudWindow = ShortcutHudWindow()
         self.monitor: ForegroundMonitor = ForegroundMonitor()
+        self.application_identity = ApplicationIdentityRuntime(
+            self.monitor,
+            parent=self,
+        )
         self.kb_handler: KeyboardHandler = KeyboardHandler()
         self._win_release_bridge = _WinReleaseBridge(self)
         self.win_discovery_proxy: WinDiscoveryProxy = WinDiscoveryProxy(
@@ -107,7 +112,7 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.hud_controller: ShortcutHudController = ShortcutHudController(
             self.config_mgr,
-            self.monitor,
+            self.application_identity,
             self.shortcut_hud_window,
             self.win_discovery_proxy,
             parent=self,
@@ -129,6 +134,12 @@ class ShortcutOverlayApplication(QApplication):
             error = self.win_discovery_proxy.last_error
             print(
                 f"Warning: Win discovery proxy unavailable; using native Win behavior. {error!r}"
+            )
+        if not self.application_identity.start():
+            error = self.application_identity.event_hook_error
+            print(
+                "Warning: WPS focus event hook unavailable; "
+                f"foreground polling remains active. Win32 error: {error!r}"
             )
         self.monitor.check_foreground_app() # Perform an initial check of the active application.
         # Synchronize the overlay with the current keyboard modifier state.
@@ -167,8 +178,15 @@ class ShortcutOverlayApplication(QApplication):
         Connects signals from various components to their respective slots
         to enable inter-component communication.
         """
-        self.monitor.active_app_changed.connect(self.overlay_window.on_active_app_changed)
-        self.monitor.active_app_changed.connect(self.hud_controller.on_active_app_changed)
+        self.monitor.foreground_changed.connect(
+            self.application_identity.on_foreground_changed
+        )
+        self.application_identity.active_app_changed.connect(
+            self.overlay_window.on_active_app_changed
+        )
+        self.application_identity.active_app_changed.connect(
+            self.hud_controller.on_active_app_changed
+        )
         self.kb_handler.key_event_signal.connect(self.overlay_window.on_key_event)
         self.kb_handler.key_event_signal.connect(self.hud_controller.on_key_event)
         self.kb_handler.modifiers_changed.connect(self.overlay_window.on_modifiers_changed)
@@ -358,6 +376,10 @@ class ShortcutOverlayApplication(QApplication):
         """
         print("Quitting Shortcut Overlay application...")
         self.hud_controller.stop()
+        self.application_identity.stop_requests()
+        self.application_identity.stop_event_hook()
+        if not self.application_identity.stop_worker(timeout=1.0):
+            print("Warning: WPS identity worker did not stop within 1 second.")
         self.win_discovery_proxy.stop()
         self.kb_handler.stop_listening()
         self.monitor.stop_monitoring()
