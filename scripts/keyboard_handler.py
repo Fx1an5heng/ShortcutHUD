@@ -8,13 +8,15 @@ and emits signals for key events and modifier changes. It also includes a
 mechanism to detect "stuck" keys if the 'keyboard' library misses an 'up' event.
 """
 import keyboard  # type: ignore # 'keyboard' library might not have type stubs.
-from PySide6.QtCore import QObject, Signal, QTimer
+from PySide6.QtCore import QObject, Signal, Slot, QTimer
+import threading
 import time
 from typing import Set, Dict, Optional, Any
 
 # Type alias for the event object from the 'keyboard' library.
 # Using 'Any' as the 'keyboard' library lacks official type stubs.
 KeyboardEvent = Any
+_WINDOWS_KEY_VKS = frozenset((0x5B, 0x5C))
 
 
 class KeyboardHandler(QObject):
@@ -51,6 +53,7 @@ class KeyboardHandler(QObject):
             parent: The parent QObject, if any.
         """
         super().__init__(parent)
+        self._state_lock = threading.RLock()
         # Stores lowercase base names of active modifiers: "ctrl", "shift", "alt", "win".
         self._active_modifiers: Set[str] = set()
         self._hooked: bool = (
@@ -64,6 +67,27 @@ class KeyboardHandler(QObject):
         self._state_check_timer: QTimer = QTimer(self)
         self._state_check_timer.timeout.connect(self._check_key_states)
         self._state_check_timer.setInterval(self.STATE_CHECK_INTERVAL_MS)
+
+    @Slot(int)
+    def reconcile_win_release(self, vk: int) -> None:
+        """Reconcile a physical Win-up consumed by the Win input proxy.
+
+        The caller reaches this slot through a queued Qt signal, so the hook
+        thread never touches QObject consumers or HUD state directly. The
+        update is idempotent and does not synthesize any keyboard input.
+        """
+
+        if vk not in _WINDOWS_KEY_VKS:
+            return
+
+        with self._state_lock:
+            if "win" not in self._active_modifiers:
+                return
+            self._active_modifiers.discard("win")
+            self._pressed_keys.pop("Win", None)
+            active_modifiers = self._active_modifiers.copy()
+
+        self.modifiers_changed.emit(active_modifiers)
 
     def _normalize_key_name(self, name_from_lib: Optional[str]) -> Optional[str]:
         """
@@ -269,7 +293,9 @@ class KeyboardHandler(QObject):
         keys_to_release_simulated: Set[str] = set()
 
         # Iterate over a copy of _pressed_keys items as the dictionary might be modified.
-        for key_name, press_time_ms in list(self._pressed_keys.items()):
+        with self._state_lock:
+            pressed_keys = list(self._pressed_keys.items())
+        for key_name, press_time_ms in pressed_keys:
             try:
                 lib_key_name = self._map_normalized_to_keyboard_lib_name(key_name)
                 if not keyboard.is_pressed(lib_key_name):
@@ -292,16 +318,21 @@ class KeyboardHandler(QObject):
         Args:
             key_name: The normalized name of the key to simulate a release for.
         """
-        if key_name in self._pressed_keys:
-            del self._pressed_keys[key_name]  # Remove from tracked pressed keys.
-            self.key_event_signal.emit(key_name, "up")  # Emit the 'up' event.
+        active_modifiers = None
+        with self._state_lock:
+            if key_name not in self._pressed_keys:
+                return
+            del self._pressed_keys[key_name]
 
             modifier_base = self._get_modifier_base_name(key_name)
             if modifier_base and modifier_base in self._active_modifiers:
-                # If it was an active modifier, re-check if any other physical key for it is pressed.
-                # This simplified version just removes it; a more robust check would query keyboard.is_pressed().
+                # This fallback treats a timed-out modifier as released.
                 self._active_modifiers.discard(modifier_base)
-                self.modifiers_changed.emit(self._active_modifiers.copy())
+                active_modifiers = self._active_modifiers.copy()
+
+        self.key_event_signal.emit(key_name, "up")
+        if active_modifiers is not None:
+            self.modifiers_changed.emit(active_modifiers)
 
     def _key_event_callback(self, event: KeyboardEvent) -> None:
         """
@@ -322,29 +353,25 @@ class KeyboardHandler(QObject):
 
         event_type_str = "down" if event.event_type == keyboard.KEY_DOWN else "up"
 
-        # Update tracking of physically pressed keys.
-        if event_type_str == "down":
-            if normalized_key not in self._pressed_keys:
-                self._pressed_keys[normalized_key] = time.time() * 1000
-        elif event_type_str == "up":
-            if normalized_key in self._pressed_keys:  # Remove on 'up' event.
-                del self._pressed_keys[normalized_key]
-
-        # Emit the processed key event.
-        self.key_event_signal.emit(normalized_key, event_type_str)
-
-        # Update the set of active logical modifiers.
-        modifier_base = self._get_modifier_base_name(normalized_key)
-        if modifier_base:  # If the event key is a modifier.
-            modifiers_changed_flag = False
+        active_modifiers = None
+        with self._state_lock:
+            # Update tracking of physically pressed keys.
             if event_type_str == "down":
+                if normalized_key not in self._pressed_keys:
+                    self._pressed_keys[normalized_key] = time.time() * 1000
+            elif event_type_str == "up":
+                self._pressed_keys.pop(normalized_key, None)
+
+            # Update the set of active logical modifiers.
+            modifier_base = self._get_modifier_base_name(normalized_key)
+            modifiers_changed_flag = False
+            if modifier_base and event_type_str == "down":
                 if modifier_base not in self._active_modifiers:
                     self._active_modifiers.add(modifier_base)
                     modifiers_changed_flag = True
-            elif event_type_str == "up":
+            elif modifier_base and event_type_str == "up":
                 if modifier_base in self._active_modifiers:
-                    # Check if any physical key for this modifier is still pressed.
-                    # e.g., left shift up, but right shift still down.
+                    # Keep the logical modifier while either physical side is down.
                     is_still_pressed = False
                     if modifier_base == "ctrl" and (
                         keyboard.is_pressed("left ctrl")
@@ -368,14 +395,17 @@ class KeyboardHandler(QObject):
                     ):
                         is_still_pressed = True
 
-                    if (
-                        not is_still_pressed
-                    ):  # Only remove if no other physical key for this modifier is held.
+                    if not is_still_pressed:
                         self._active_modifiers.discard(modifier_base)
                         modifiers_changed_flag = True
 
             if modifiers_changed_flag:
-                self.modifiers_changed.emit(self._active_modifiers.copy())
+                active_modifiers = self._active_modifiers.copy()
+
+        # Preserve signal ordering for existing consumers.
+        self.key_event_signal.emit(normalized_key, event_type_str)
+        if active_modifiers is not None:
+            self.modifiers_changed.emit(active_modifiers)
 
     def start_listening(self) -> None:
         """
@@ -414,8 +444,10 @@ class KeyboardHandler(QObject):
             self._state_check_timer.stop()
 
         # Clear tracked keys and modifiers.
-        self._pressed_keys.clear()
-        self._active_modifiers.clear()
+        with self._state_lock:
+            self._pressed_keys.clear()
+            self._active_modifiers.clear()
+            active_modifiers = self._active_modifiers.copy()
         # Emit a final modifiers_changed to reset any UI elements.
-        self.modifiers_changed.emit(self._active_modifiers.copy())
+        self.modifiers_changed.emit(active_modifiers)
         print("Keyboard listener stopped.")  # Console message for status.

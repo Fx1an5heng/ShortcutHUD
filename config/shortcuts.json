@@ -767,29 +767,13 @@
       "TAB": { "en": "Switch Win", "zh": "切换窗口" },
       "ESC": { "en": "Cycle Win (Rev)", "zh": "反向切换" },
       "ENTER": { "en": "Properties", "zh": "属性" },
-      "SPACE": { "en": "System Menu", "zh": "系统菜单" },
-      "PRTSC": { "en": "Copy Active Win", "zh": "复制活动窗" }
+      "SPACE": { "en": "System Menu", "zh": "系统菜单" }
     },
     "Ctrl+Alt": {
       "DELETE": { "en": "Security Screen", "zh": "安全界面" },
       "T": { "en": "Task Manager", "zh": "任务管理器" }
     },
-    "Win": {
-      "D": { "en": "Desktop", "zh": "桌面" }, "L": { "en": "Lock", "zh": "锁屏" },
-      "R": { "en": "Run", "zh": "运行" }, "E": { "en": "Explorer", "zh": "文件资源管理器" },
-      "I": { "en": "Settings", "zh": "设置" }, "X": { "en": "Quick Link", "zh": "快捷菜单" },
-      "TAB": { "en": "Task View", "zh": "任务视图" },
-      "PRTSC": { "en": "Save Scrnsht", "zh": "存截图" }, 
-      "A": { "en": "Action Center", "zh": "操作中心" },
-      "V": { "en": "Clipboard", "zh": "剪贴板历史" },
-      "S": { "en": "Search", "zh": "搜索" }, "U": { "en": "Ease of Access", "zh": "轻松访问" },
-      "K": { "en": "Connect", "zh": "连接" }, "P": { "en": "Project", "zh": "投影" },
-      "G": { "en": "Game Bar", "zh": "游戏栏" }, "H": { "en": "Dictation", "zh": "听写" },
-      "PAUSE": { "en": "System Info", "zh": "系统信息" }, 
-      "HOME": { "en": "Start", "zh": "开始菜单" }
-    },
     "Win+Shift": {
-      "S": { "en": "Screen Snip", "zh": "屏幕截图" },
       "LEFT": { "en": "Move Left Monitor", "zh": "移至左显示器" },
       "RIGHT": { "en": "Move Right Monitor", "zh": "移至右显示器" }
     },
@@ -806,7 +790,6 @@
       "F5": {  "en": "Refresh", "zh": "刷新" },
       "F11": {  "en": "Full Screen", "zh": "全屏"  },
       "F12": {  "en": "Dev Tools", "zh": "开发者工具"  },
-      "PRTSC": {  "en": "Copy Scrnsht", "zh": "复制截图"  },
       "DELETE": {  "en": "Delete", "zh": "删除"  },
       "ENTER": {  "en": "Confirm", "zh": "确认"  },
       "ESC": {  "en": "Cancel/Close", "zh": "取消/关闭"  },
@@ -814,6 +797,18 @@
     },
     "Shift": { 
         "TAB": { "en": "Prev Field", "zh": "上个字段" }
+    }
+  },
+  "GLOBAL": {
+    "Win": {
+      "R": { "en": "Run", "zh": "运行" },
+      "E": { "en": "File Explorer", "zh": "文件资源管理器" },
+      "V": { "en": "Clipboard history", "zh": "剪贴板历史" },
+      "D": { "en": "Show/hide desktop", "zh": "显示/隐藏桌面" },
+      "I": { "en": "Settings", "zh": "设置" },
+      "S": { "en": "Search", "zh": "搜索" },
+      "Tab": { "en": "Task View", "zh": "任务视图" },
+      "X": { "en": "Quick Link menu", "zh": "快速链接菜单" }
     }
   },
   "ADOBE PREMIERE PRO.EXE": {

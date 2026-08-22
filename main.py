@@ -14,7 +14,7 @@ from typing import List, Dict, Any, Optional
 
 from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
 from PySide6.QtGui import QIcon, QAction
-from PySide6.QtCore import QTranslator, QLocale, QLibraryInfo, Slot, Qt
+from PySide6.QtCore import QObject, QTranslator, QLocale, QLibraryInfo, Signal, Slot, Qt
 
 # Define the application's root directory for resource access.
 APP_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -34,7 +34,16 @@ from scripts.overlay_keyboard import OverlayKeyboardWindow
 from scripts.config_manager import ConfigManager
 from scripts.foreground_monitor import ForegroundMonitor
 from scripts.keyboard_handler import KeyboardHandler
+from scripts.shortcut_hud import ShortcutHudWindow
+from scripts.shortcut_hud_controller import ShortcutHudController
+from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
+
+
+class _WinReleaseBridge(QObject):
+    """Queue physical Win releases from the native hook onto the Qt thread."""
+
+    physical_win_released = Signal(int)
 
 
 class ShortcutOverlayApplication(QApplication):
@@ -89,8 +98,20 @@ class ShortcutOverlayApplication(QApplication):
 
         # Initialize core application components.
         self.overlay_window: OverlayKeyboardWindow = OverlayKeyboardWindow(self.config_mgr)
+        self.shortcut_hud_window: ShortcutHudWindow = ShortcutHudWindow()
         self.monitor: ForegroundMonitor = ForegroundMonitor()
         self.kb_handler: KeyboardHandler = KeyboardHandler()
+        self._win_release_bridge = _WinReleaseBridge(self)
+        self.win_discovery_proxy: WinDiscoveryProxy = WinDiscoveryProxy(
+            self._win_release_bridge.physical_win_released.emit
+        )
+        self.hud_controller: ShortcutHudController = ShortcutHudController(
+            self.config_mgr,
+            self.monitor,
+            self.shortcut_hud_window,
+            self.win_discovery_proxy,
+            parent=self,
+        )
 
         # Initialize and configure the system tray icon.
         self.tray_icon: Optional[QSystemTrayIcon] = None
@@ -102,12 +123,17 @@ class ShortcutOverlayApplication(QApplication):
         # Connect signals and slots for inter-component communication.
         self.setup_connections()
 
-        # Start application services and show the main window.
+        # Start services. The legacy overlay stays hidden until opened from the tray.
         self.kb_handler.start_listening()
-        self.overlay_window.show()
+        if not self.win_discovery_proxy.start():
+            error = self.win_discovery_proxy.last_error
+            print(
+                f"Warning: Win discovery proxy unavailable; using native Win behavior. {error!r}"
+            )
         self.monitor.check_foreground_app() # Perform an initial check of the active application.
         # Synchronize the overlay with the current keyboard modifier state.
         self.overlay_window.on_modifiers_changed(self.kb_handler._active_modifiers.copy())
+        self.hud_controller.on_modifiers_changed(self.kb_handler._active_modifiers.copy())
 
     def load_translations(self) -> None:
         """
@@ -142,8 +168,15 @@ class ShortcutOverlayApplication(QApplication):
         to enable inter-component communication.
         """
         self.monitor.active_app_changed.connect(self.overlay_window.on_active_app_changed)
+        self.monitor.active_app_changed.connect(self.hud_controller.on_active_app_changed)
         self.kb_handler.key_event_signal.connect(self.overlay_window.on_key_event)
+        self.kb_handler.key_event_signal.connect(self.hud_controller.on_key_event)
         self.kb_handler.modifiers_changed.connect(self.overlay_window.on_modifiers_changed)
+        self.kb_handler.modifiers_changed.connect(self.hud_controller.on_modifiers_changed)
+        self._win_release_bridge.physical_win_released.connect(
+            self.kb_handler.reconcile_win_release,
+            type=Qt.ConnectionType.QueuedConnection,
+        )
         # self.kb_handler.exit_signal.connect(self.quit_application) # Exit hotkey removed.
 
     def _initialize_tray_icon_object(self) -> None:
@@ -279,6 +312,7 @@ class ShortcutOverlayApplication(QApplication):
         dialog = ShortcutManagerDialog(self.config_mgr, parent=self.overlay_window)
         dialog.exec() 
         self.overlay_window.update_shortcut_display() 
+        self.hud_controller.refresh_current_state()
 
     def handle_settings_changed(self, new_settings: Dict[str, Any]) -> None:
         """
@@ -292,6 +326,7 @@ class ShortcutOverlayApplication(QApplication):
         old_lang: Optional[str] = self.config_mgr.get_setting("language")
         self.config_mgr.update_settings(new_settings) # Save to file.
         self.overlay_window.apply_current_settings() # Apply to overlay (theme, opacity).
+        self.hud_controller.refresh_current_state()
 
         if old_lang != new_settings.get("language"):
             # Re-initialize translators and load new translation files.
@@ -322,7 +357,10 @@ class ShortcutOverlayApplication(QApplication):
         quits the Qt application.
         """
         print("Quitting Shortcut Overlay application...")
+        self.hud_controller.stop()
+        self.win_discovery_proxy.stop()
         self.kb_handler.stop_listening()
+        self.monitor.stop_monitoring()
         if self.tray_icon:
             self.tray_icon.hide()
             # self.tray_icon.deleteLater() # Optional: schedule for deletion.
