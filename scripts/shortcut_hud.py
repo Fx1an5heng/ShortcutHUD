@@ -17,10 +17,10 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from .hud_entry_limits import get_hud_entry_limit
 from .shortcut_resolver import ShortcutEntry
 
 
-MAX_VISIBLE_ENTRIES = 8
 
 
 def select_description_text(description: object, language: str | None) -> str:
@@ -155,7 +155,8 @@ class ShortcutHudWindow(QWidget):
         )
         self._clear_entry_rows()
 
-        for entry in entries[:MAX_VISIBLE_ENTRIES]:
+        entry_limit = get_hud_entry_limit(application_name, modifier_combination)
+        for entry in entries[:entry_limit]:
             row = QWidget(self._entries_container)
             row_layout = QHBoxLayout(row)
             row_layout.setContentsMargins(0, 0, 0, 0)
