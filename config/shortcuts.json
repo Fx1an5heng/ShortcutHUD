@@ -167,11 +167,30 @@
       "PAGEDOWN": { "en": "Page Down", "zh": "下一页" }
     }
   },
+  "WPS_WRITER": {
+    "Ctrl": {
+      "B": { "en": "Bold", "zh": "加粗" },
+      "I": { "en": "Italic", "zh": "斜体" },
+      "U": { "en": "Underline", "zh": "下划线" },
+      "H": { "en": "Replace", "zh": "替换" },
+      "K": { "en": "Hyperlink", "zh": "插入超链接" },
+      "Enter": { "en": "Page Break", "zh": "插入分页符" },
+      "G": { "en": "Go To", "zh": "定位" },
+      "D": { "en": "Font", "zh": "字体设置" }
+    },
+    "Ctrl+Shift": {
+      "E": { "en": "Track Changes", "zh": "修订" },
+      "G": { "en": "Word Count", "zh": "字数统计" },
+      ",": { "en": "Decrease Font Size", "zh": "减小字号" },
+      ".": { "en": "Increase Font Size", "zh": "增大字号" },
+      "=": { "en": "Superscript", "zh": "上标" },
+      "Tab": { "en": "Previous Document Window", "zh": "上一个文档窗口" }
+    }
+  },
   "WPS_PDF": {
     "Ctrl": {
       "F": { "en": "Find", "zh": "查找" },
       "F2": { "en": "Highlight", "zh": "高亮所选文本" },
-      "DOWN": { "en": "Next Page", "zh": "下一页" },
       "-": { "en": "Zoom Out", "zh": "缩小" },
       "0": { "en": "Fit Page", "zh": "适合页面" },
       "1": { "en": "Actual Size", "zh": "实际大小" },
@@ -179,6 +198,28 @@
     },
     "Alt+Shift": {
       "1": { "en": "Bookmarks", "zh": "书签导航" }
+    }
+  },
+  "WPS_PRESENTATION": {
+    "Ctrl": {
+      "G": { "en": "Group", "zh": "组合" },
+      "K": { "en": "Hyperlink", "zh": "插入超链接" },
+      "Tab": { "en": "Next Document Window", "zh": "下一个文档窗口" },
+      "+": { "en": "Zoom In", "zh": "放大" },
+      "-": { "en": "Zoom Out", "zh": "缩小" },
+      "0": { "en": "Reset Zoom", "zh": "恢复缩放" },
+      "H": { "en": "Replace", "zh": "替换" },
+      "F": { "en": "Find", "zh": "查找" }
+    },
+    "Ctrl+Shift": {
+      "G": { "en": "Ungroup", "zh": "取消组合" },
+      "Tab": { "en": "Previous Document Window", "zh": "上一个文档窗口" },
+      ",": { "en": "Decrease Font Size", "zh": "减小字号" },
+      ".": { "en": "Increase Font Size", "zh": "增大字号" },
+      "=": { "en": "Superscript", "zh": "上标" }
+    },
+    "Shift": {
+      "F5": { "en": "Start from Current Slide", "zh": "从当前幻灯片放映" }
     }
   },
   "WPS_UNKNOWN": {},

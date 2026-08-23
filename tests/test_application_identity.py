@@ -16,6 +16,7 @@ from scripts.wps_identity import (
     HIGH_CONFIDENCE,
     UNKNOWN_CONFIDENCE,
     WPS_PDF,
+    WPS_PRESENTATION,
     WPS_UNKNOWN,
     WPS_WRITER,
     WpsIdentityResult,
@@ -135,7 +136,19 @@ class ApplicationIdentityRuntimeTests(unittest.TestCase):
         self.runtime._on_worker_result(_result(123, generation, WPS_WRITER))
         self.assertFalse(self.runtime.identity_pending)
         self.assertEqual(self.runtime.current_logical_app_id, WPS_WRITER)
-        self.assertEqual(self.runtime.current_app_name, "WPSOFFICE.EXE")
+        self.assertEqual(self.runtime.current_app_name, WPS_WRITER)
+
+    def test_presentation_result_publishes_logical_shortcut_profile(self) -> None:
+        self.runtime.on_foreground_changed(123, "WPS.EXE")
+        generation = self.worker.requests[-1].generation
+        self.runtime._on_worker_result(
+            _result(123, generation, WPS_PRESENTATION)
+        )
+        self.assertEqual(
+            self.runtime.current_logical_app_id,
+            WPS_PRESENTATION,
+        )
+        self.assertEqual(self.runtime.current_app_name, WPS_PRESENTATION)
 
     def test_stale_result_cannot_override_newer_same_hwnd_request(self) -> None:
         self.runtime.on_foreground_changed(123, "WPS.EXE")
@@ -146,7 +159,7 @@ class ApplicationIdentityRuntimeTests(unittest.TestCase):
         self.runtime._on_worker_result(_result(123, old_generation, WPS_PDF))
         self.assertEqual(self.runtime.current_app_name, WPS_UNKNOWN)
         self.runtime._on_worker_result(_result(123, new_generation, WPS_WRITER))
-        self.assertEqual(self.runtime.current_app_name, "WPSOFFICE.EXE")
+        self.assertEqual(self.runtime.current_app_name, WPS_WRITER)
 
     def test_same_hwnd_can_publish_writer_then_pdf(self) -> None:
         self.runtime.on_foreground_changed(123, "WPS.EXE")

@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from .application_display_names import get_application_display_name
 from .hud_entry_limits import get_hud_entry_limit
 from .shortcut_resolver import ShortcutEntry
 
@@ -150,9 +151,13 @@ class ShortcutHudWindow(QWidget):
     ) -> None:
         """Replace the current rows while preserving resolver insertion order."""
 
-        self._header_label.setText(
-            f"{application_name or 'DEFAULT'} · {modifier_combination}"
+        display_name = get_application_display_name(application_name)
+        header_text = (
+            f"{display_name} · {modifier_combination}"
+            if display_name
+            else modifier_combination
         )
+        self._header_label.setText(header_text)
         self._clear_entry_rows()
 
         entry_limit = get_hud_entry_limit(application_name, modifier_combination)
