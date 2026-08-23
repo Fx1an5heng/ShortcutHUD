@@ -1,3 +1,4 @@
+import time
 import unittest
 
 from PySide6.QtCore import QCoreApplication
@@ -71,6 +72,23 @@ class _FakeWinDiscoveryProxy:
         return self.activation_result
 
 
+def wait_until(predicate, timeout_ms: int = 500) -> bool:
+    """Poll a predicate while servicing the Qt event loop, with a bound.
+
+    Returns True as soon as the predicate holds and False on timeout.
+    Waiting happens in short event-processing slices so Qt timers and
+    queued signals can fire, without one long blocking sleep.
+    """
+
+    deadline = time.monotonic() + timeout_ms / 1000.0
+    while True:
+        if predicate():
+            return True
+        if time.monotonic() >= deadline:
+            return False
+        QTest.qWait(5)
+
+
 class ShortcutHudControllerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -108,21 +126,24 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self._enable_win_shortcuts()
         self.proxy.current_win_vk = VK_LWIN
         self.controller.on_modifiers_changed({"win"})
-        QTest.qWait(80)
+        self.assertTrue(
+            wait_until(lambda: self.hud.visible),
+            "Win discovery HUD did not appear in time",
+        )
 
     def test_quick_release_cancels_pending_show(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
         self.controller.on_modifiers_changed(set())
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertFalse(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 0)
 
     def test_pending_transition_uses_latest_modifier_state(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(5)
+        time.sleep(0.005)
         self.controller.on_modifiers_changed({"ctrl", "shift"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
 
         self.assertTrue(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 1)
@@ -130,7 +151,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
     def test_visible_transition_updates_same_hud_without_second_show(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
         self.controller.on_modifiers_changed({"ctrl", "shift"})
 
         self.assertTrue(self.hud.visible)
@@ -139,7 +160,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
     def test_empty_resolution_hides_visible_hud(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
         self.controller.on_modifiers_changed({"alt"})
 
         self.assertFalse(self.hud.visible)
@@ -147,7 +168,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
     def test_foreground_change_uses_monitored_state(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
         self.monitor.current_app_name = None
         self.controller.on_active_app_changed("DEFAULT")
 
@@ -157,10 +178,10 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
     def test_result_empty_result_can_show_again(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
         self.controller.on_modifiers_changed({"alt"})
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
 
         self.assertTrue(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 2)
@@ -168,7 +189,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
     def test_timer_re_resolves_and_does_not_show_stale_results(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
         self.config.shortcuts["CODE.EXE"]["Ctrl"] = {}
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertFalse(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 0)
@@ -176,7 +197,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
     def test_stop_cancels_timer_hides_hud_and_clears_state(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})
         self.controller.stop()
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertFalse(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 0)
@@ -187,9 +208,9 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self._enable_win_shortcuts()
         self.proxy.current_win_vk = VK_LWIN
         self.controller.on_modifiers_changed({"win"})
-        QTest.qWait(10)
+        time.sleep(0.01)
         self.controller.on_modifiers_changed(set())
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertEqual(self.proxy.activation_calls, [])
         self.assertEqual(self.hud.show_calls, 0)
@@ -197,7 +218,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
     def test_win_threshold_with_no_entries_does_not_activate_proxy(self) -> None:
         self.proxy.current_win_vk = VK_LWIN
         self.controller.on_modifiers_changed({"win"})
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertEqual(self.proxy.activation_calls, [])
         self.assertEqual(self.hud.show_calls, 0)
@@ -206,7 +227,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self._enable_win_shortcuts()
         self.proxy.current_win_vk = None
         self.controller.on_modifiers_changed({"win"})
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertEqual(self.proxy.activation_calls, [])
         self.assertEqual(self.hud.show_calls, 0)
@@ -224,9 +245,9 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self.proxy.current_win_vk = VK_LWIN
         self.proxy.activation_result = False
         self.controller.on_modifiers_changed({"win"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: bool(self.proxy.activation_calls)))
         self.controller.refresh_current_state()
-        QTest.qWait(80)
+        self.assertFalse(wait_until(lambda: self.hud.visible))
 
         self.assertEqual(self.proxy.activation_calls, [VK_LWIN])
         self.assertFalse(self.hud.visible)
@@ -280,10 +301,76 @@ class ShortcutHudControllerTests(unittest.TestCase):
     def test_ctrl_hold_never_activates_win_proxy(self) -> None:
         self.proxy.current_win_vk = VK_LWIN
         self.controller.on_modifiers_changed({"ctrl"})
-        QTest.qWait(80)
+        self.assertTrue(wait_until(lambda: self.hud.visible))
 
         self.assertEqual(self.proxy.activation_calls, [])
         self.assertTrue(self.hud.visible)
+
+
+    def test_empty_windows_shell_ctrl_does_not_fall_back_or_show_hud(self) -> None:
+        self.monitor.current_app_name = "WINDOWS_SHELL"
+        self.config.shortcuts = {
+            "WINDOWS_SHELL": {},
+            "DEFAULT": {"Ctrl": {"C": "Copy"}},
+            "GLOBAL": {"Win": {"R": "Run"}},
+        }
+
+        self.controller.on_modifiers_changed({"ctrl"})
+        self.assertFalse(wait_until(lambda: self.hud.visible))
+
+        self.assertFalse(self.hud.visible)
+        self.assertEqual(self.hud.show_calls, 0)
+        self.assertEqual(self.hud.rendered, [])
+
+
+    def test_unknown_app_alt_passes_default_and_global_entries_to_hud(self) -> None:
+        self.monitor.current_app_name = "UNKNOWN_THIRD_PARTY.EXE"
+        self.config.shortcuts = {
+            "DEFAULT": {"Alt": {"ESC": "Local fallback"}},
+            "GLOBAL": {
+                "Alt": {
+                    "Tab": "Switch windows",
+                    "F4": "Close current window",
+                }
+            },
+        }
+
+        self.controller.on_modifiers_changed({"alt"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+
+        self.assertTrue(self.hud.visible)
+        entries = self.hud.rendered[-1][2]
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries],
+            [
+                ("ESC", "DEFAULT"),
+                ("Tab", "GLOBAL"),
+                ("F4", "GLOBAL"),
+            ],
+        )
+
+    def test_known_app_without_alt_passes_global_only_to_hud(self) -> None:
+        self.monitor.current_app_name = "KNOWN_APP_WITHOUT_ALT"
+        self.config.shortcuts = {
+            "KNOWN_APP_WITHOUT_ALT": {"Ctrl": {"K": "Known local"}},
+            "DEFAULT": {"Alt": {"ESC": "Fallback must not apply"}},
+            "GLOBAL": {
+                "Alt": {
+                    "Tab": "Switch windows",
+                    "F4": "Close current window",
+                }
+            },
+        }
+
+        self.controller.on_modifiers_changed({"alt"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+
+        self.assertTrue(self.hud.visible)
+        entries = self.hud.rendered[-1][2]
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries],
+            [("Tab", "GLOBAL"), ("F4", "GLOBAL")],
+        )
 
 
 if __name__ == "__main__":

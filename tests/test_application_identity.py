@@ -11,6 +11,7 @@ from scripts.application_identity import (
     ApplicationIdentityRuntime,
 )
 from scripts.foreground_monitor import ForegroundMonitor
+from scripts.shell_identity import EXPLORER_EXECUTABLE, WINDOWS_SHELL
 from scripts.shortcut_resolver import resolve_shortcuts
 from scripts.wps_identity import (
     HIGH_CONFIDENCE,
@@ -115,6 +116,45 @@ class ApplicationIdentityRuntimeTests(unittest.TestCase):
         )
         self.assertEqual(self.runtime.current_app_name, "CODE.EXE")
         self.assertEqual(self.runtime.current_logical_app_id, "CODE.EXE")
+        self.assertEqual(self.worker.requests, [])
+
+    def test_explorer_identity_is_reclassified_for_every_hwnd(self) -> None:
+        window_classes = {
+            101: "CabinetWClass",
+            202: "Progman",
+            303: "Shell_TrayWnd",
+            404: "ExploreWClass",
+        }
+        class_reads: list[int] = []
+
+        def read_window_class(hwnd: int) -> str:
+            class_reads.append(hwnd)
+            return window_classes[hwnd]
+
+        runtime = ApplicationIdentityRuntime(
+            self.monitor,
+            worker=self.worker,
+            event_hook_factory=lambda callback: _FakeHook(
+                callback,
+                self.calls,
+            ),
+            window_class_provider=read_window_class,
+        )
+        observed: list[str | None] = []
+        for hwnd in (101, 202, 303, 404):
+            runtime.on_foreground_changed(hwnd, "explorer.exe")
+            observed.append(runtime.current_logical_app_id)
+
+        self.assertEqual(
+            observed,
+            [
+                EXPLORER_EXECUTABLE,
+                WINDOWS_SHELL,
+                WINDOWS_SHELL,
+                EXPLORER_EXECUTABLE,
+            ],
+        )
+        self.assertEqual(class_reads, [101, 202, 303, 404])
         self.assertEqual(self.worker.requests, [])
 
     def test_wps_pending_fails_closed_to_global_only_profile(self) -> None:

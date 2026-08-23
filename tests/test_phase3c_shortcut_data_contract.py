@@ -22,6 +22,7 @@ class Phase3CShortcutDataContractTests(unittest.TestCase):
                 application,
                 modifier,
             )
+            if entry.source == "APP"
         ]
 
     def _assert_app_entries(self, application: str, modifier: str) -> None:
@@ -30,11 +31,8 @@ class Phase3CShortcutDataContractTests(unittest.TestCase):
             application,
             modifier,
         )
-        self.assertTrue(entries, f"{application}.{modifier}")
-        self.assertTrue(
-            all(entry.source == "APP" for entry in entries),
-            f"{application}.{modifier}",
-        )
+        app_entries = [entry for entry in entries if entry.source == "APP"]
+        self.assertTrue(app_entries, f"{application}.{modifier}")
 
     def test_vscode_ctrl_matches_user_selected_first_screen(self) -> None:
         self.assertEqual(

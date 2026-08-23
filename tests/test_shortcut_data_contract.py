@@ -9,6 +9,16 @@ _CONFIG_PATH = (
     Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"
 )
 _EXPECTED_GLOBAL_WIN_KEYS = ["R", "E", "V", "D", "I", "S", "Tab", "X"]
+_EXPECTED_GLOBAL_WIN = {
+    "R": {"en": "Run", "zh": "运行"},
+    "E": {"en": "File Explorer", "zh": "文件资源管理器"},
+    "V": {"en": "Clipboard history", "zh": "剪贴板历史"},
+    "D": {"en": "Show/hide desktop", "zh": "显示/隐藏桌面"},
+    "I": {"en": "Settings", "zh": "设置"},
+    "S": {"en": "Search", "zh": "搜索"},
+    "Tab": {"en": "Task View", "zh": "任务视图"},
+    "X": {"en": "Quick Link menu", "zh": "快速链接菜单"},
+}
 
 
 class ShortcutDataContractTests(unittest.TestCase):
@@ -134,7 +144,17 @@ class ShortcutDataContractTests(unittest.TestCase):
         keys = {entry.key for entry in entries}
 
         self.assertTrue({"T", "N", "O", "I"}.issubset(keys))
-        self.assertTrue(all(entry.source == "APP" for entry in entries))
+        self.assertTrue(
+            all(
+                entry.source == "APP"
+                for entry in entries
+                if entry.key != "Esc"
+            )
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries if entry.source == "GLOBAL"],
+            [("Esc", "GLOBAL")],
+        )
 
     def test_config_contains_no_windows_screenshot_shortcuts(self) -> None:
         forbidden_keys = {"prtsc", "printscreen", "print screen"}
@@ -171,6 +191,148 @@ class ShortcutDataContractTests(unittest.TestCase):
                             description_text,
                             location,
                         )
+
+
+    def test_phase4d_global_data_contract(self) -> None:
+        global_shortcuts = self.shortcut_data["GLOBAL"]
+
+        self.assertEqual(set(global_shortcuts), {"Win", "Alt", "Ctrl+Shift"})
+        self.assertEqual(global_shortcuts["Win"], _EXPECTED_GLOBAL_WIN)
+        self.assertEqual(
+            global_shortcuts["Alt"],
+            {
+                "Tab": {"en": "Switch windows", "zh": "切换窗口"},
+                "F4": {
+                    "en": "Close current window",
+                    "zh": "关闭当前窗口",
+                },
+            },
+        )
+        self.assertEqual(
+            global_shortcuts["Ctrl+Shift"],
+            {"Esc": {"en": "Task Manager", "zh": "任务管理器"}},
+        )
+        self.assertEqual(self.shortcut_data["WINDOWS_SHELL"], {})
+
+        default_alt_keys = {
+            key.casefold() for key in self.shortcut_data["DEFAULT"]["Alt"]
+        }
+        default_ctrl_shift_keys = {
+            key.casefold()
+            for key in self.shortcut_data["DEFAULT"]["Ctrl+Shift"]
+        }
+        self.assertTrue({"tab", "f4"}.isdisjoint(default_alt_keys))
+        self.assertNotIn("esc", default_ctrl_shift_keys)
+
+    def test_windows_shell_resolves_global_only_and_never_default(self) -> None:
+        win_entries = resolve_shortcuts(
+            self.shortcut_data,
+            "WINDOWS_SHELL",
+            "Win",
+        )
+        alt_entries = resolve_shortcuts(
+            self.shortcut_data,
+            "WINDOWS_SHELL",
+            "Alt",
+        )
+        task_manager_entries = resolve_shortcuts(
+            self.shortcut_data,
+            "WINDOWS_SHELL",
+            "Ctrl+Shift",
+        )
+        ctrl_entries = resolve_shortcuts(
+            self.shortcut_data,
+            "WINDOWS_SHELL",
+            "Ctrl",
+        )
+
+        self.assertEqual(
+            [entry.key for entry in win_entries],
+            _EXPECTED_GLOBAL_WIN_KEYS,
+        )
+        self.assertTrue(all(entry.source == "GLOBAL" for entry in win_entries))
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in alt_entries],
+            [("Tab", "GLOBAL"), ("F4", "GLOBAL")],
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in task_manager_entries],
+            [("Esc", "GLOBAL")],
+        )
+        self.assertEqual(ctrl_entries, [])
+
+
+    def test_wps_unknown_resolves_each_configured_global_group_only(self) -> None:
+        expected_keys = {
+            "Win": _EXPECTED_GLOBAL_WIN_KEYS,
+            "Alt": ["Tab", "F4"],
+            "Ctrl+Shift": ["Esc"],
+        }
+
+        for modifier, keys in expected_keys.items():
+            with self.subTest(modifier=modifier):
+                entries = resolve_shortcuts(
+                    self.shortcut_data,
+                    "WPS_UNKNOWN",
+                    modifier,
+                )
+                self.assertEqual([entry.key for entry in entries], keys)
+                self.assertTrue(
+                    all(entry.source == "GLOBAL" for entry in entries)
+                )
+
+
+    def test_unknown_third_party_receives_every_global_group(self) -> None:
+        expected_global_keys = {
+            "Alt": ["Tab", "F4"],
+            "Ctrl+Shift": ["Esc"],
+            "Win": _EXPECTED_GLOBAL_WIN_KEYS,
+        }
+
+        for modifier, expected_keys in expected_global_keys.items():
+            with self.subTest(modifier=modifier):
+                entries = resolve_shortcuts(
+                    self.shortcut_data,
+                    "UNKNOWN_THIRD_PARTY.EXE",
+                    modifier,
+                )
+                global_entries = [
+                    entry for entry in entries if entry.source == "GLOBAL"
+                ]
+                self.assertEqual(
+                    [entry.key for entry in global_entries],
+                    expected_keys,
+                )
+
+    def test_known_app_without_alt_receives_global_alt_only(self) -> None:
+        self.assertNotIn("Alt", self.shortcut_data["WINWORD.EXE"])
+
+        entries = resolve_shortcuts(
+            self.shortcut_data,
+            "WINWORD.EXE",
+            "Alt",
+        )
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries],
+            [("Tab", "GLOBAL"), ("F4", "GLOBAL")],
+        )
+
+    def test_known_app_with_alt_keeps_local_then_global(self) -> None:
+        entries = resolve_shortcuts(
+            self.shortcut_data,
+            "CODE.EXE",
+            "Alt",
+        )
+        sources = [entry.source for entry in entries]
+
+        self.assertTrue(sources)
+        first_global = sources.index("GLOBAL")
+        self.assertTrue(all(source == "APP" for source in sources[:first_global]))
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries[first_global:]],
+            [("Tab", "GLOBAL"), ("F4", "GLOBAL")],
+        )
 
 
 if __name__ == "__main__":

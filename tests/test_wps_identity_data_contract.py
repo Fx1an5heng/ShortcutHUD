@@ -45,12 +45,9 @@ class WpsIdentityDataContractTests(unittest.TestCase):
         expected_keys: list[str],
     ) -> None:
         entries = resolve_shortcuts(self.data, application, modifier)
-        self.assertEqual([entry.key for entry in entries], expected_keys)
-        self.assertTrue(entries, f"{application}.{modifier}")
-        self.assertTrue(
-            all(entry.source == "APP" for entry in entries),
-            f"{application}.{modifier}",
-        )
+        app_entries = [entry for entry in entries if entry.source == "APP"]
+        self.assertEqual([entry.key for entry in app_entries], expected_keys)
+        self.assertTrue(app_entries, f"{application}.{modifier}")
 
     def test_writer_profile_resolves_selected_packs_in_order(self) -> None:
         self.assertIn(WPS_WRITER, self.data)

@@ -1,6 +1,6 @@
 import unittest
 
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QLabel
 
 from scripts.hud_entry_limits import (
     DEFAULT_HUD_ENTRY_LIMIT,
@@ -61,6 +61,37 @@ class HudEntryLimitPresentationTests(unittest.TestCase):
                     "en_US",
                 )
                 self.assertEqual(hud._entries_layout.count(), expected_rows)
+                hud.deleteLater()
+
+
+    def test_global_rows_are_pinned_beyond_local_app_limit(self) -> None:
+        entries = [
+            ShortcutEntry(str(index), f"Local {index}", "APP")
+            for index in range(10)
+        ] + [
+            ShortcutEntry("Tab", "Switch windows", "GLOBAL"),
+            ShortcutEntry("F4", "Close current window", "GLOBAL"),
+        ]
+
+        for application_name, expected_local_count in (
+            ("MSEDGE.EXE", 9),
+            ("CHROME.EXE", 9),
+            ("PHOTOSHOP.EXE", 8),
+        ):
+            with self.subTest(application_name=application_name):
+                hud = ShortcutHudWindow()
+                hud.set_entries(application_name, "Ctrl", entries, "en_US")
+                key_texts = [
+                    label.text()
+                    for label in hud.findChildren(QLabel)
+                    if label.objectName() == "shortcutHudKey"
+                ]
+
+                self.assertEqual(
+                    key_texts,
+                    [str(index) for index in range(expected_local_count)]
+                    + ["Tab", "F4"],
+                )
                 hud.deleteLater()
 
 

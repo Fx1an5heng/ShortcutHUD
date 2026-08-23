@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .shell_identity import WINDOWS_SHELL
 from .wps_identity import (
     WPS_PDF,
     WPS_PRESENTATION,
@@ -15,6 +16,7 @@ _APPLICATION_DISPLAY_NAMES = {
     WPS_PDF: "WPS PDF",
     WPS_PRESENTATION: "WPS Presentation",
     WPS_UNKNOWN: None,
+    WINDOWS_SHELL: None,
 }
 
 

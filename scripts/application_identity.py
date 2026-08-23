@@ -10,6 +10,10 @@ from typing import Callable, Protocol
 
 from PySide6.QtCore import QObject, Qt, Signal, Slot
 
+from .shell_identity import (
+    classify_shell_application,
+    get_window_class_name,
+)
 from .wps_identity import (
     HIGH_CONFIDENCE,
     WPS_PDF,
@@ -163,6 +167,9 @@ class ApplicationIdentityRuntime(QObject):
         event_hook_factory: Callable[
             [Callable[[int, int, int, int], None]], WinEventHook
         ] = WinEventHook,
+        window_class_provider: Callable[
+            [int], str | None
+        ] = get_window_class_name,
     ) -> None:
         super().__init__(parent)
         self._foreground_monitor = foreground_monitor
@@ -175,6 +182,7 @@ class ApplicationIdentityRuntime(QObject):
         self.last_identity_result: WpsIdentityResult | None = None
         self._stopped = False
 
+        self._window_class_provider = window_class_provider
         self._worker = worker or WpsIdentityWorker(
             self._worker_result_received.emit
         )
@@ -221,8 +229,13 @@ class ApplicationIdentityRuntime(QObject):
         self._worker.invalidate(self._generation)
         self.identity_pending = False
         self.last_identity_result = None
-        self.current_logical_app_id = normalized_executable
-        self._publish_application(normalized_executable)
+        logical_app_id = classify_shell_application(
+            normalized_executable,
+            normalized_hwnd,
+            self._window_class_provider,
+        )
+        self.current_logical_app_id = logical_app_id
+        self._publish_application(logical_app_id)
 
     @Slot(int, object, int, int)
     def _on_windows_event(

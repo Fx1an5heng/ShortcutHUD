@@ -53,6 +53,25 @@ def select_description_text(description: object, language: str | None) -> str:
             return value
     return "N/A"
 
+def select_visible_entry_groups(
+    entries: Sequence[ShortcutEntry],
+    local_limit: int,
+) -> tuple[list[ShortcutEntry], list[ShortcutEntry]]:
+    """Return limited local rows plus all surviving GLOBAL rows.
+
+    Resolver order and conflict ownership are already settled before this
+    presentation boundary. APP/DEFAULT rows share the local display budget;
+    GLOBAL rows are pinned after them and never consume that budget.
+    """
+
+    local_entries = [
+        entry for entry in entries if entry.source != "GLOBAL"
+    ][:max(0, local_limit)]
+    global_entries = [
+        entry for entry in entries if entry.source == "GLOBAL"
+    ]
+    return local_entries, global_entries
+
 
 class ShortcutHudWindow(QWidget):
     """Single-column HUD that never owns shortcut resolution logic."""
@@ -128,6 +147,19 @@ class ShortcutHudWindow(QWidget):
                 background-color: rgba(130, 140, 165, 110);
                 border: none;
             }
+            QWidget#shortcutHudGlobalSection {
+                background: transparent;
+            }
+            QLabel#shortcutHudGlobalSectionLabel {
+                color: rgba(190, 198, 215, 190);
+                font-size: 8pt;
+                font-weight: 500;
+                background: transparent;
+            }
+            QFrame#shortcutHudGlobalSectionLine {
+                background-color: rgba(130, 140, 165, 80);
+                border: none;
+            }
             QLabel#shortcutHudKey {
                 color: #9CC9FF;
                 font-size: 10pt;
@@ -151,7 +183,16 @@ class ShortcutHudWindow(QWidget):
     ) -> None:
         """Replace the current rows while preserving resolver insertion order."""
 
-        display_name = get_application_display_name(application_name)
+        entry_limit = get_hud_entry_limit(application_name, modifier_combination)
+        local_entries, global_entries = select_visible_entry_groups(
+            entries,
+            entry_limit,
+        )
+        display_name = (
+            get_application_display_name(application_name)
+            if local_entries
+            else None
+        )
         header_text = (
             f"{display_name} · {modifier_combination}"
             if display_name
@@ -160,36 +201,66 @@ class ShortcutHudWindow(QWidget):
         self._header_label.setText(header_text)
         self._clear_entry_rows()
 
-        entry_limit = get_hud_entry_limit(application_name, modifier_combination)
-        for entry in entries[:entry_limit]:
-            row = QWidget(self._entries_container)
-            row_layout = QHBoxLayout(row)
-            row_layout.setContentsMargins(0, 0, 0, 0)
-            row_layout.setSpacing(10)
-
-            key_label = QLabel(entry.key, row)
-            key_label.setObjectName("shortcutHudKey")
-            key_label.setFixedWidth(76)
-            key_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-            key_label.setFocusPolicy(Qt.NoFocus)
-
-            description_text = select_description_text(entry.description, language)
-            description_label = QLabel(description_text, row)
-            description_label.setObjectName("shortcutHudDescription")
-            description_label.setSizePolicy(
-                QSizePolicy.Expanding,
-                QSizePolicy.Preferred,
-            )
-            description_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
-            description_label.setToolTip(description_text)
-            description_label.setFocusPolicy(Qt.NoFocus)
-
-            row_layout.addWidget(key_label)
-            row_layout.addWidget(description_label, 1)
-            self._entries_layout.addWidget(row)
+        for entry in local_entries:
+            self._add_entry_row(entry, language)
+        if local_entries and global_entries:
+            self._add_global_section()
+        for entry in global_entries:
+            self._add_entry_row(entry, language)
 
         self._finalize_size_and_position()
         self._layout_update_timer.start()
+
+    def _add_entry_row(
+        self,
+        entry: ShortcutEntry,
+        language: str | None,
+    ) -> None:
+        row = QWidget(self._entries_container)
+        row_layout = QHBoxLayout(row)
+        row_layout.setContentsMargins(0, 0, 0, 0)
+        row_layout.setSpacing(10)
+
+        key_label = QLabel(entry.key, row)
+        key_label.setObjectName("shortcutHudKey")
+        key_label.setFixedWidth(76)
+        key_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        key_label.setFocusPolicy(Qt.NoFocus)
+
+        description_text = select_description_text(entry.description, language)
+        description_label = QLabel(description_text, row)
+        description_label.setObjectName("shortcutHudDescription")
+        description_label.setSizePolicy(
+            QSizePolicy.Expanding,
+            QSizePolicy.Preferred,
+        )
+        description_label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+        description_label.setToolTip(description_text)
+        description_label.setFocusPolicy(Qt.NoFocus)
+
+        row_layout.addWidget(key_label)
+        row_layout.addWidget(description_label, 1)
+        self._entries_layout.addWidget(row)
+
+    def _add_global_section(self) -> None:
+        section = QWidget(self._entries_container)
+        section.setObjectName("shortcutHudGlobalSection")
+        section_layout = QHBoxLayout(section)
+        section_layout.setContentsMargins(0, 3, 0, 1)
+        section_layout.setSpacing(8)
+
+        label = QLabel("全局", section)
+        label.setObjectName("shortcutHudGlobalSectionLabel")
+        label.setFocusPolicy(Qt.NoFocus)
+
+        line = QFrame(section)
+        line.setObjectName("shortcutHudGlobalSectionLine")
+        line.setFrameShape(QFrame.HLine)
+        line.setFixedHeight(1)
+
+        section_layout.addWidget(label)
+        section_layout.addWidget(line, 1)
+        self._entries_layout.addWidget(section)
 
     def show_hud(self) -> None:
         """Show without requesting activation or keyboard focus."""

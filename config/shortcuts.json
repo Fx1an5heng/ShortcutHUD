@@ -694,6 +694,7 @@
       "F10": { "en": "Context Menu", "zh": "上下文菜单" }
     }
   },
+  "WINDOWS_SHELL": {},
   "WINDOWSTERMINAL.EXE": {
     "Ctrl": {
       "Tab": { "en": "Next Tab", "zh": "下一个标签页" },
@@ -741,12 +742,9 @@
     "Ctrl+Shift": {
       "Z": { "en": "Redo", "zh": "重做" },
       "T": { "en": "Reopen Tab", "zh": "重新打开标签页" },
-      "N": { "en": "New Private", "zh": "新建隐私窗口" },
-      "ESC": { "en": "Task Manager", "zh": "任务管理器" }
+      "N": { "en": "New Private", "zh": "新建隐私窗口" }
     },
     "Alt": {
-      "F4": { "en": "Close Win", "zh": "关程序" },
-      "TAB": { "en": "Switch Win", "zh": "切换窗口" },
       "ESC": { "en": "Cycle Win (Rev)", "zh": "反向切换" },
       "ENTER": { "en": "Properties", "zh": "属性" },
       "SPACE": { "en": "System Menu", "zh": "系统菜单" }
@@ -791,6 +789,13 @@
       "S": { "en": "Search", "zh": "搜索" },
       "Tab": { "en": "Task View", "zh": "任务视图" },
       "X": { "en": "Quick Link menu", "zh": "快速链接菜单" }
+    },
+    "Alt": {
+      "Tab": { "en": "Switch windows", "zh": "切换窗口" },
+      "F4": { "en": "Close current window", "zh": "关闭当前窗口" }
+    },
+    "Ctrl+Shift": {
+      "Esc": { "en": "Task Manager", "zh": "任务管理器" }
     }
   },
   "ADOBE PREMIERE PRO.EXE": {
