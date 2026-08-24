@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
+
 from .shell_identity import WINDOWS_SHELL
 from .wps_identity import (
     WPS_PDF,
@@ -20,14 +22,22 @@ _APPLICATION_DISPLAY_NAMES = {
 }
 
 
-def get_application_display_name(application_name: str | None) -> str | None:
-    """Return a UI label without changing the resolver-owned identity."""
+def get_application_display_name(
+    application_name: str | None,
+    user_display_names: Mapping[str, str] | None = None,
+) -> str | None:
+    """Return a user override, built-in label, or raw resolver identity."""
 
     if not isinstance(application_name, str) or not application_name.strip():
         return "DEFAULT"
 
     internal_name = application_name.strip()
-    return _APPLICATION_DISPLAY_NAMES.get(
-        internal_name.upper(),
-        internal_name,
-    )
+    normalized_name = internal_name.upper()
+    built_in_name = _APPLICATION_DISPLAY_NAMES.get(normalized_name, internal_name)
+    if built_in_name is None:
+        return None
+    if isinstance(user_display_names, Mapping):
+        user_name = user_display_names.get(normalized_name)
+        if isinstance(user_name, str) and user_name.strip():
+            return user_name.strip()
+    return built_in_name

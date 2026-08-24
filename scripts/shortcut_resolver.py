@@ -18,11 +18,20 @@ from .modifier_state import (
 )
 
 
-ShortcutSource: TypeAlias = Literal["APP", "DEFAULT", "GLOBAL"]
+ShortcutSource: TypeAlias = Literal["USER_APP", "APP", "DEFAULT", "GLOBAL"]
 
 _DEFAULT_LAYER = "DEFAULT"
 _GLOBAL_LAYER = "GLOBAL"
 _RESERVED_LAYERS = frozenset({_DEFAULT_LAYER, _GLOBAL_LAYER})
+RESERVED_USER_IDENTITIES = frozenset(
+    {
+        _DEFAULT_LAYER,
+        _GLOBAL_LAYER,
+        "WINDOWS_SHELL",
+        "WPS_UNKNOWN",
+    }
+)
+_GLOBAL_ONLY_IDENTITIES = frozenset({"WINDOWS_SHELL", "WPS_UNKNOWN"})
 
 
 @dataclass(frozen=True, slots=True)
@@ -34,11 +43,13 @@ class ShortcutEntry:
     source: ShortcutSource
 
 
-def _normalize_executable_name(executable: str | None) -> str | None:
-    if not isinstance(executable, str):
+def normalize_application_identity(application: object) -> str | None:
+    """Normalize one resolver-facing executable or logical application ID."""
+
+    if not isinstance(application, str):
         return None
 
-    value = executable.strip().strip('"')
+    value = application.strip().strip('"')
     if not value:
         return None
     return PureWindowsPath(value).name.upper()
@@ -48,7 +59,7 @@ def _find_application_layer(
     shortcut_data: Mapping[str, object],
     foreground_executable: str | None,
 ) -> Mapping[str, object] | None:
-    executable_name = _normalize_executable_name(foreground_executable)
+    executable_name = normalize_application_identity(foreground_executable)
     if executable_name is None or executable_name in _RESERVED_LAYERS:
         return None
 
@@ -59,6 +70,25 @@ def _find_application_layer(
             continue
         if configured_name.upper() == executable_name and isinstance(layer, Mapping):
             return layer
+    return None
+
+
+def _find_user_profile(
+    user_profiles: Mapping[str, object] | None,
+    foreground_executable: str | None,
+) -> Mapping[str, object] | None:
+    if not isinstance(user_profiles, Mapping):
+        return None
+
+    application_id = normalize_application_identity(foreground_executable)
+    if application_id is None or application_id in RESERVED_USER_IDENTITIES:
+        return None
+
+    for configured_name, profile in user_profiles.items():
+        if not isinstance(configured_name, str) or not isinstance(profile, Mapping):
+            continue
+        if normalize_application_identity(configured_name) == application_id:
+            return profile
     return None
 
 
@@ -137,14 +167,15 @@ def resolve_shortcuts(
     shortcut_data: Mapping[str, object],
     foreground_executable: str | None,
     modifier_combination: str | None,
+    user_profiles: Mapping[str, object] | None = None,
 ) -> list[ShortcutEntry]:
-    """Resolve shortcuts using APP/DEFAULT/GLOBAL layer semantics.
+    """Resolve USER_APP/APP/DEFAULT/GLOBAL overlay semantics.
 
-    Known applications resolve as ``APP + GLOBAL``. Unknown applications
-    resolve as ``DEFAULT + GLOBAL``. The base layer wins case-insensitive key
-    conflicts over GLOBAL, and configuration insertion order is preserved
-    within each layer. Shortcut keys are treated as opaque strings; this module
-    does not know whether a UI has a corresponding virtual keycap.
+    A user profile overlays, rather than replaces, a matching built-in APP.
+    A user-only profile is itself a known application and therefore never falls
+    back to DEFAULT. WINDOWS_SHELL and WPS_UNKNOWN remain GLOBAL-only. Earlier
+    layers win case-insensitive key conflicts and insertion order is preserved
+    within each layer. Shortcut keys remain opaque display strings.
     ``NoModifier`` is outside this Phase 1 modifier-triggered resolver contract.
     """
 
@@ -155,24 +186,37 @@ def resolve_shortcuts(
     if canonical_modifier is None:
         return []
 
+    application_id = normalize_application_identity(foreground_executable)
     application_layer = _find_application_layer(
         shortcut_data,
         foreground_executable,
     )
-    if application_layer is not None:
-        base_layer = application_layer
-        base_source: ShortcutSource = "APP"
-    else:
-        base_layer = _find_reserved_layer(shortcut_data, _DEFAULT_LAYER)
-        base_source = "DEFAULT"
-
     global_layer = _find_reserved_layer(shortcut_data, _GLOBAL_LAYER)
-    layers: tuple[
-        tuple[Mapping[str, object] | None, ShortcutSource], ...
-    ] = (
-        (base_layer, base_source),
-        (global_layer, "GLOBAL"),
-    )
+    layers: list[tuple[Mapping[str, object] | None, ShortcutSource]] = []
+
+    if application_id not in _GLOBAL_ONLY_IDENTITIES:
+        user_profile = _find_user_profile(user_profiles, foreground_executable)
+        if user_profile is not None:
+            user_shortcuts = user_profile.get("shortcuts")
+            layers.append(
+                (
+                    user_shortcuts if isinstance(user_shortcuts, Mapping) else None,
+                    "USER_APP",
+                )
+            )
+            if application_layer is not None:
+                layers.append((application_layer, "APP"))
+        elif application_layer is not None:
+            layers.append((application_layer, "APP"))
+        else:
+            layers.append(
+                (
+                    _find_reserved_layer(shortcut_data, _DEFAULT_LAYER),
+                    "DEFAULT",
+                )
+            )
+
+    layers.append((global_layer, "GLOBAL"))
 
     resolved: list[ShortcutEntry] = []
     seen_keys: set[str] = set()

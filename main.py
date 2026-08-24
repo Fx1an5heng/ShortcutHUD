@@ -37,6 +37,7 @@ from scripts.foreground_monitor import ForegroundMonitor
 from scripts.keyboard_handler import KeyboardHandler
 from scripts.shortcut_hud import ShortcutHudWindow
 from scripts.shortcut_hud_controller import ShortcutHudController
+from scripts.user_shortcut_store import UserShortcutStore
 from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
 
@@ -45,6 +46,16 @@ class _WinReleaseBridge(QObject):
     """Queue physical Win releases from the native hook onto the Qt thread."""
 
     physical_win_released = Signal(int)
+
+
+def load_user_shortcut_store(
+    path: str | os.PathLike[str] | None = None,
+) -> UserShortcutStore:
+    """Load the production or injected user profile file once at startup."""
+
+    store = UserShortcutStore(path)
+    store.load()
+    return store
 
 
 class ShortcutOverlayApplication(QApplication):
@@ -91,6 +102,8 @@ class ShortcutOverlayApplication(QApplication):
         settings_path = os.path.join(config_dir, "settings.json")
         self.config_mgr: ConfigManager = ConfigManager(shortcuts_path, settings_path)
         self.config_mgr.initialize_configs()
+        self.user_shortcut_store = load_user_shortcut_store()
+        user_profiles = self.user_shortcut_store.snapshot()
 
         # Setup translation services.
         self.translator: QTranslator = QTranslator()
@@ -99,7 +112,11 @@ class ShortcutOverlayApplication(QApplication):
 
         # Initialize core application components.
         self.overlay_window: OverlayKeyboardWindow = OverlayKeyboardWindow(self.config_mgr)
-        self.shortcut_hud_window: ShortcutHudWindow = ShortcutHudWindow()
+        self.shortcut_hud_window: ShortcutHudWindow = ShortcutHudWindow(
+            application_display_names=(
+                self.user_shortcut_store.display_names_snapshot()
+            )
+        )
         self.monitor: ForegroundMonitor = ForegroundMonitor()
         self.application_identity = ApplicationIdentityRuntime(
             self.monitor,
@@ -116,6 +133,7 @@ class ShortcutOverlayApplication(QApplication):
             self.shortcut_hud_window,
             self.win_discovery_proxy,
             parent=self,
+            user_profiles=user_profiles,
         )
 
         # Initialize and configure the system tray icon.

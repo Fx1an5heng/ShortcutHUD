@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
+from copy import deepcopy
 from typing import Protocol
 
 from PySide6.QtCore import QObject, QTimer, Slot
@@ -59,12 +61,18 @@ class ShortcutHudController(QObject):
         parent: QObject | None = None,
         show_delay_ms: int = DEFAULT_SHOW_DELAY_MS,
         win_only_show_delay_ms: int = WIN_ONLY_SHOW_DELAY_MS,
+        user_profiles: Mapping[str, object] | None = None,
     ) -> None:
         super().__init__(parent)
         self._config_manager = config_manager
         self._foreground_monitor = foreground_monitor
         self._hud_window = hud_window
         self._win_discovery_proxy = win_discovery_proxy
+        self._user_profiles: dict[str, object] = (
+            deepcopy(dict(user_profiles))
+            if isinstance(user_profiles, Mapping)
+            else {}
+        )
         self._current_modifier: str | None = None
         self._show_delay_ms = show_delay_ms
         self._win_only_show_delay_ms = win_only_show_delay_ms
@@ -168,6 +176,14 @@ class ShortcutHudController(QObject):
         self._reset_win_discovery_state()
         self._cancel_and_hide()
 
+    def update_user_profiles(self, profiles: Mapping[str, object] | None) -> None:
+        """Replace the in-memory USER_APP snapshot for a future editor reload."""
+
+        self._user_profiles = (
+            deepcopy(dict(profiles)) if isinstance(profiles, Mapping) else {}
+        )
+        self.refresh_current_state()
+
     def _show_pending_hud(self) -> None:
         if self._current_modifier is None:
             return
@@ -202,6 +218,7 @@ class ShortcutHudController(QObject):
             self._config_manager.get_all_shortcuts(),
             self._foreground_monitor.current_app_name,
             self._current_modifier,
+            self._user_profiles,
         )
 
     def _render(self, entries: list[ShortcutEntry]) -> None:

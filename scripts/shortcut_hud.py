@@ -60,8 +60,8 @@ def select_visible_entry_groups(
     """Return limited local rows plus all surviving GLOBAL rows.
 
     Resolver order and conflict ownership are already settled before this
-    presentation boundary. APP/DEFAULT rows share the local display budget;
-    GLOBAL rows are pinned after them and never consume that budget.
+    presentation boundary. USER_APP/APP/DEFAULT rows share the local display
+    budget; GLOBAL rows are pinned after them and never consume that budget.
     """
 
     local_entries = [
@@ -79,8 +79,15 @@ class ShortcutHudWindow(QWidget):
     WINDOW_WIDTH = 360
     SCREEN_MARGIN = 20
 
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(
+        self,
+        parent: QWidget | None = None,
+        application_display_names: Mapping[str, str] | None = None,
+    ) -> None:
         super().__init__(parent)
+        self._user_display_names = self._normalize_display_names(
+            application_display_names
+        )
         self.setObjectName("shortcutHudWindow")
         self.setWindowTitle("ShortcutHUD")
         self.setWindowFlags(
@@ -189,7 +196,10 @@ class ShortcutHudWindow(QWidget):
             entry_limit,
         )
         display_name = (
-            get_application_display_name(application_name)
+            get_application_display_name(
+                application_name,
+                self._user_display_names,
+            )
             if local_entries
             else None
         )
@@ -269,6 +279,14 @@ class ShortcutHudWindow(QWidget):
         self.show()
         self._layout_update_timer.start()
 
+    def update_application_display_names(
+        self,
+        display_names: Mapping[str, str] | None,
+    ) -> None:
+        """Replace presentation-only user labels for a future editor reload."""
+
+        self._user_display_names = self._normalize_display_names(display_names)
+
     def _clear_entry_rows(self) -> None:
         while self._entries_layout.count():
             item = self._entries_layout.takeAt(0)
@@ -329,3 +347,18 @@ class ShortcutHudWindow(QWidget):
             )
         except Exception as error:
             print(f"Error setting ShortcutHUD Win32 window styles: {error}")
+
+    @staticmethod
+    def _normalize_display_names(
+        display_names: Mapping[str, str] | None,
+    ) -> dict[str, str]:
+        if not isinstance(display_names, Mapping):
+            return {}
+        return {
+            app_id.strip().upper(): display_name.strip()
+            for app_id, display_name in display_names.items()
+            if isinstance(app_id, str)
+            and app_id.strip()
+            and isinstance(display_name, str)
+            and display_name.strip()
+        }
