@@ -57,20 +57,22 @@ def select_visible_entry_groups(
     entries: Sequence[ShortcutEntry],
     local_limit: int,
 ) -> tuple[list[ShortcutEntry], list[ShortcutEntry]]:
-    """Return limited local rows plus all surviving GLOBAL rows.
+    """Return USER rows plus limited built-ins and all surviving GLOBAL rows.
 
     Resolver order and conflict ownership are already settled before this
-    presentation boundary. USER_APP/APP/DEFAULT rows share the local display
-    budget; GLOBAL rows are pinned after them and never consume that budget.
+    presentation boundary. Every surviving USER_APP row remains visible.
+    APP/DEFAULT rows use the app-specific local budget independently, while
+    GLOBAL rows remain pinned after local content and never consume that budget.
     """
 
-    local_entries = [
-        entry for entry in entries if entry.source != "GLOBAL"
+    user_entries = [entry for entry in entries if entry.source == "USER_APP"]
+    built_in_entries = [
+        entry for entry in entries if entry.source in {"APP", "DEFAULT"}
     ][:max(0, local_limit)]
     global_entries = [
         entry for entry in entries if entry.source == "GLOBAL"
     ]
-    return local_entries, global_entries
+    return user_entries + built_in_entries, global_entries
 
 
 class ShortcutHudWindow(QWidget):

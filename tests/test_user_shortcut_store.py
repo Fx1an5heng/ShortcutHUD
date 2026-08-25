@@ -4,7 +4,15 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
+from scripts.shortcut_key import (
+    InvalidShortcutKeyError,
+    ModifierTerminalKeyError,
+    UnsupportedShortcutSequenceError,
+)
 from scripts.user_shortcut_store import (
+    LOAD_STATUS_ERROR,
+    LOAD_STATUS_LOADED,
+    LOAD_STATUS_MISSING,
     SCHEMA_VERSION,
     UserShortcutStore,
     resolve_user_config_path,
@@ -28,6 +36,8 @@ class UserShortcutStoreTests(unittest.TestCase):
 
     def test_missing_file_loads_empty_without_creating_anything(self) -> None:
         self.assertEqual(self.store.load(), {})
+        self.assertEqual(self.store.load_status, LOAD_STATUS_MISSING)
+        self.assertIsNone(self.store.last_load_error)
         self.assertFalse(self.path.exists())
         self.assertFalse(self.path.parent.exists())
 
@@ -69,6 +79,7 @@ class UserShortcutStoreTests(unittest.TestCase):
 
         profiles = self.store.load()
 
+        self.assertEqual(self.store.load_status, LOAD_STATUS_LOADED)
         self.assertEqual(list(profiles), ["CODE.EXE"])
         profile = profiles["CODE.EXE"]
         self.assertEqual(profile["display_name"], "我的 VS Code")
@@ -135,6 +146,8 @@ class UserShortcutStoreTests(unittest.TestCase):
         with self.assertLogs("scripts.user_shortcut_store", level="WARNING"):
             self.assertEqual(self.store.load(), {})
 
+        self.assertEqual(self.store.load_status, LOAD_STATUS_ERROR)
+        self.assertIsInstance(self.store.last_load_error, str)
         self.assertEqual(self.path.read_text(encoding="utf-8"), "{broken")
 
     def test_invalid_utf8_fails_closed_without_changing_the_file(self) -> None:
@@ -146,6 +159,7 @@ class UserShortcutStoreTests(unittest.TestCase):
             snapshot = self.store.load()
 
         self.assertEqual(snapshot, {})
+        self.assertEqual(self.store.load_status, LOAD_STATUS_ERROR)
         self.assertTrue(self.path.is_file())
         self.assertEqual(self.path.read_bytes(), invalid_bytes)
         self.assertEqual(
@@ -306,6 +320,142 @@ class UserShortcutStoreTests(unittest.TestCase):
         self.assertEqual(
             reloaded.display_names_snapshot(),
             {"BILIBILI.EXE": "哔哩哔哩"},
+        )
+
+    def test_replace_snapshot_normalizes_without_writing_to_disk(self) -> None:
+        self.store.replace_snapshot(
+            {
+                "code.exe": {
+                    "display_name": "My Code",
+                    "shortcuts": {
+                        "Shift+Ctrl": {
+                            "P": {"en": "Open", "zh": "打开"},
+                        }
+                    },
+                }
+            }
+        )
+
+        self.assertEqual(
+            self.store.snapshot(),
+            {
+                "CODE.EXE": {
+                    "display_name": "My Code",
+                    "shortcuts": {
+                        "Ctrl+Shift": {
+                            "P": {"en": "Open", "zh": "打开"},
+                        }
+                    },
+                }
+            },
+        )
+        self.assertFalse(self.path.exists())
+
+    def test_set_shortcut_normalizes_key_and_preserves_position_on_update(self) -> None:
+        self.store.set_shortcut("CODE.EXE", "Ctrl", "f4", "First", "第一")
+        self.store.set_shortcut("CODE.EXE", "Ctrl", "K", "Second", "第二")
+        self.store.set_shortcut("CODE.EXE", "Ctrl", "F4", "Updated", "更新")
+
+        group = self.store.get_profile("CODE.EXE")["shortcuts"]["Ctrl"]
+        self.assertEqual(list(group), ["F4", "K"])
+        self.assertEqual(group["F4"], {"en": "Updated", "zh": "更新"})
+
+    def test_set_shortcut_rejects_invalid_modifier_and_multistep_terminal_keys(self) -> None:
+        invalid_keys = (
+            "",
+            "   ",
+            "F0",
+            "F25",
+            "F99",
+            "HELLO",
+            "ABC",
+            "CtrlP",
+            "Ctrl+P",
+            "NotAKey",
+        )
+        for key in invalid_keys:
+            with self.subTest(key=key):
+                with self.assertRaises(InvalidShortcutKeyError):
+                    self.store.set_shortcut("CODE.EXE", "Ctrl", key, "Bad", "错误")
+
+        modifier_terminal_cases = (
+            ("Ctrl", "Ctrl"),
+            ("Ctrl", "Control"),
+            ("Ctrl", "Alt"),
+            ("Ctrl", "Shift"),
+            ("Ctrl+Shift", "Shift"),
+            ("Alt", "Ctrl"),
+            ("Ctrl", "Win"),
+            ("Ctrl", "Windows"),
+        )
+        for modifier, key in modifier_terminal_cases:
+            with self.subTest(modifier=modifier, key=key):
+                with self.assertRaises(ModifierTerminalKeyError):
+                    self.store.set_shortcut(
+                        "CODE.EXE", modifier, key, "Bad", "错误"
+                    )
+
+        for key in (
+            "Ctrl+W, W",
+            "Ctrl+K Ctrl+S",
+            "Ctrl+K, Ctrl+S",
+            "g g",
+            "d d",
+            "dd",
+        ):
+            with self.subTest(key=key):
+                with self.assertRaises(UnsupportedShortcutSequenceError):
+                    self.store.set_shortcut("CODE.EXE", "Ctrl", key, "Chord", "多段")
+
+        self.assertEqual(self.store.snapshot(), {})
+
+    def test_set_shortcut_accepts_combined_modifier_with_terminal_key(self) -> None:
+        self.store.set_shortcut(
+            "CODE.EXE", "Ctrl+Shift", "P", "Open", "打开"
+        )
+        self.store.set_shortcut(
+            "CODE.EXE", "Ctrl+Alt", "F5", "Refresh", "刷新"
+        )
+
+        groups = self.store.get_profile("CODE.EXE")["shortcuts"]
+        self.assertEqual(list(groups["Ctrl+Shift"]), ["P"])
+        self.assertEqual(list(groups["Ctrl+Alt"]), ["F5"])
+
+    def test_mixed_valid_and_invalid_external_keys_load_independently(self) -> None:
+        self._write_document(
+            {
+                "version": 1,
+                "apps": {
+                    "CODE.EXE": {
+                        "shortcuts": {
+                            "Ctrl": {
+                                "f13": {"en": "Macro", "zh": "宏键"},
+                                "F99": {"en": "Bad", "zh": "错误"},
+                                "enter": {"en": "Line", "zh": "换行"},
+                            }
+                        }
+                    },
+                    "OTHER.EXE": {
+                        "shortcuts": {
+                            "Alt": {
+                                "z": {"en": "Other", "zh": "其它"},
+                            }
+                        }
+                    },
+                },
+            }
+        )
+
+        with self.assertLogs("scripts.user_shortcut_store", level="WARNING"):
+            profiles = self.store.load()
+
+        self.assertEqual(
+            list(profiles["CODE.EXE"]["shortcuts"]["Ctrl"]),
+            ["F13", "Enter"],
+        )
+        self.assertEqual(
+            list(profiles["OTHER.EXE"]["shortcuts"]["Alt"]),
+            ["Z"],
         )
 
 

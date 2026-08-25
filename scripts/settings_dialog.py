@@ -48,6 +48,8 @@ class SettingsDialog(QDialog):
 
     # Signal emitted when any setting is changed by the user in the dialog.
     settings_changed = Signal(dict)
+    # Request the independent USER profile editor without coupling Settings to storage.
+    custom_apps_requested = Signal()
 
     # Default theme ID for the main overlay, used if no theme is configured.
     DEFAULT_THEME_ID: str = "Default Dark"
@@ -106,6 +108,7 @@ class SettingsDialog(QDialog):
         self._theme_group_box: Optional[QGroupBox] = None
         self._opacity_group_box: Optional[QGroupBox] = None
         self._language_group_box: Optional[QGroupBox] = None
+        self._custom_apps_group_box: Optional[QGroupBox] = None
         self.theme_combo: Optional[QComboBox] = None
         self.lang_combo: Optional[QComboBox] = None
         self.opacity_slider: Optional[QSlider] = None
@@ -114,6 +117,8 @@ class SettingsDialog(QDialog):
         self.custom_key_color_button: Optional[QPushButton] = None
         self.custom_text_color_button: Optional[QPushButton] = None
         self.button_box: Optional[QDialogButtonBox] = None
+        self.custom_apps_button: Optional[QPushButton] = None
+        self._custom_apps_description: Optional[QLabel] = None
         self._theme_form_label: Optional[QLabel] = None
         self._opacity_form_label: Optional[QLabel] = None
         self._language_form_label: Optional[QLabel] = None
@@ -126,6 +131,7 @@ class SettingsDialog(QDialog):
         self._setup_theme_group()
         self._setup_opacity_group()
         self._setup_language_group()
+        self._setup_custom_apps_group()
         self._setup_buttons()  # Configures OK and Cancel buttons.
 
         self.apply_fixed_dialog_styles()  # Apply this dialog's own fixed styling.
@@ -287,6 +293,25 @@ class SettingsDialog(QDialog):
         lang_layout.addRow(self._language_form_label, self.lang_combo)
         self._main_layout.addWidget(self._language_group_box)
 
+    def _setup_custom_apps_group(self) -> None:
+        """Adds a small entry point to the independent USER profile editor."""
+
+        self._custom_apps_group_box = QGroupBox(self.tr("Custom Apps"))
+        layout = QVBoxLayout(self._custom_apps_group_box)
+        self._custom_apps_description = QLabel(
+            self.tr("Add shortcuts for the applications you use."),
+            self._custom_apps_group_box,
+        )
+        self._custom_apps_description.setWordWrap(True)
+        self.custom_apps_button = QPushButton(
+            self.tr("Manage Custom Apps..."),
+            self._custom_apps_group_box,
+        )
+        self.custom_apps_button.clicked.connect(self.custom_apps_requested.emit)
+        layout.addWidget(self._custom_apps_description)
+        layout.addWidget(self.custom_apps_button)
+        self._main_layout.addWidget(self._custom_apps_group_box)
+
     def _setup_buttons(self) -> None:
         """Creates and configures the dialog's OK and Cancel buttons."""
         self.button_box = QDialogButtonBox(
@@ -425,12 +450,20 @@ class SettingsDialog(QDialog):
             self._opacity_group_box.setTitle(self.tr("Opacity"))
         if self._language_group_box:
             self._language_group_box.setTitle(self.tr("Language"))
+        if self._custom_apps_group_box:
+            self._custom_apps_group_box.setTitle(self.tr("Custom Apps"))
         if self._theme_form_label:
             self._theme_form_label.setText(self.tr("Theme:"))
         if self._opacity_form_label:
             self._opacity_form_label.setText(self.tr("Window Opacity:"))
         if self._language_form_label:
             self._language_form_label.setText(self.tr("Interface Language:"))
+        if self._custom_apps_description:
+            self._custom_apps_description.setText(
+                self.tr("Add shortcuts for the applications you use.")
+            )
+        if self.custom_apps_button:
+            self.custom_apps_button.setText(self.tr("Manage Custom Apps..."))
 
         if hasattr(self, "_custom_bg_row_label") and self._custom_bg_row_label:
             self._custom_bg_row_label.setText(self.tr("Custom BG:"))

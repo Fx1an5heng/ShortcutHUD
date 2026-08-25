@@ -10,6 +10,7 @@ and global application settings.
 
 import sys
 import os
+from collections.abc import Mapping
 from typing import List, Dict, Any, Optional
 
 from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
@@ -32,12 +33,13 @@ except ImportError:
 # Import core application components.
 from scripts.overlay_keyboard import OverlayKeyboardWindow
 from scripts.application_identity import ApplicationIdentityRuntime
+from scripts.current_application_candidate import CurrentApplicationCandidateTracker
 from scripts.config_manager import ConfigManager
 from scripts.foreground_monitor import ForegroundMonitor
 from scripts.keyboard_handler import KeyboardHandler
 from scripts.shortcut_hud import ShortcutHudWindow
 from scripts.shortcut_hud_controller import ShortcutHudController
-from scripts.user_shortcut_store import UserShortcutStore
+from scripts.user_shortcut_store import UserShortcutStore, get_profile_display_names
 from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
 
@@ -122,6 +124,10 @@ class ShortcutOverlayApplication(QApplication):
             self.monitor,
             parent=self,
         )
+        self.current_application_candidate = CurrentApplicationCandidateTracker(
+            lambda: self.monitor.current_hwnd,
+            parent=self,
+        )
         self.kb_handler: KeyboardHandler = KeyboardHandler()
         self._win_release_bridge = _WinReleaseBridge(self)
         self.win_discovery_proxy: WinDiscoveryProxy = WinDiscoveryProxy(
@@ -204,6 +210,9 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.application_identity.active_app_changed.connect(
             self.hud_controller.on_active_app_changed
+        )
+        self.application_identity.active_app_changed.connect(
+            self.current_application_candidate.on_active_app_changed
         )
         self.kb_handler.key_event_signal.connect(self.overlay_window.on_key_event)
         self.kb_handler.key_event_signal.connect(self.hud_controller.on_key_event)
@@ -336,8 +345,33 @@ class ShortcutOverlayApplication(QApplication):
         # SettingsDialog constructor no longer needs dialog_text_color passed.
         dialog = SettingsDialog(current_settings, parent=self.overlay_window)
         dialog.settings_changed.connect(self.handle_settings_changed)
+        dialog.custom_apps_requested.connect(
+            lambda: self.open_user_shortcut_manager_dialog(dialog)
+        )
         dialog.setWindowModality(Qt.ApplicationModal) # Block interaction with parent.
         dialog.exec() # Show modally.
+
+    def open_user_shortcut_manager_dialog(self, parent=None) -> None:
+        """Open the detached USER profile editor from application settings."""
+
+        from scripts.user_shortcut_manager_dialog import UserShortcutManagerDialog
+
+        dialog = UserShortcutManagerDialog(
+            self.user_shortcut_store,
+            self.current_application_candidate,
+            self.apply_user_profiles,
+            parent=parent or self.overlay_window,
+        )
+        dialog.setWindowModality(Qt.ApplicationModal)
+        dialog.exec()
+
+    def apply_user_profiles(self, snapshot: Mapping[str, object]) -> None:
+        """Apply one USER snapshot to presentation, resolution, then refresh."""
+
+        self.shortcut_hud_window.update_application_display_names(
+            get_profile_display_names(snapshot)
+        )
+        self.hud_controller.update_user_profiles(snapshot)
 
     def open_shortcut_manager_dialog(self) -> None:
         """

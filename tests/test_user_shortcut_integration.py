@@ -140,7 +140,7 @@ class UserShortcutIntegrationTests(unittest.TestCase):
         self.assertEqual(controller._resolve_current_entries()[0].description, "Second")
         controller.stop()
 
-    def test_normal_local_limit_is_shared_by_user_and_app_global_is_pinned(self) -> None:
+    def test_user_rows_are_extra_to_builtin_limit_and_global_is_pinned(self) -> None:
         entries = [
             ShortcutEntry(f"U{index}", f"User {index}", "USER_APP")
             for index in range(2)
@@ -156,27 +156,38 @@ class UserShortcutIntegrationTests(unittest.TestCase):
 
         self.assertEqual(
             [entry.key for entry in local],
-            ["U0", "U1", "A0", "A1", "A2", "A3", "A4", "A5"],
+            [
+                "U0",
+                "U1",
+                "A0",
+                "A1",
+                "A2",
+                "A3",
+                "A4",
+                "A5",
+                "A6",
+                "A7",
+            ],
         )
         self.assertEqual([entry.key for entry in global_entries], ["Tab", "F4"])
 
-    def test_browser_ctrl_keeps_nine_shared_local_rows_plus_global(self) -> None:
+    def test_browser_ctrl_keeps_two_user_plus_nine_builtin_and_global(self) -> None:
         entries = [
             ShortcutEntry(f"U{index}", f"User {index}", "USER_APP")
             for index in range(2)
         ] + [
             ShortcutEntry(f"A{index}", f"App {index}", "APP")
-            for index in range(8)
+            for index in range(9)
         ] + [ShortcutEntry("G", "Global", "GLOBAL")]
         hud = ShortcutHudWindow()
 
         hud.set_entries("MSEDGE.EXE", "Ctrl", entries, "en_US")
 
         local, global_entries = select_visible_entry_groups(entries, 9)
-        self.assertEqual(len(local), 9)
+        self.assertEqual(len(local), 11)
         self.assertEqual([entry.key for entry in local[:2]], ["U0", "U1"])
         self.assertEqual([entry.key for entry in global_entries], ["G"])
-        self.assertEqual(hud._entries_layout.count(), 11)
+        self.assertEqual(hud._entries_layout.count(), 13)
         hud.deleteLater()
 
     def test_user_display_name_priority_and_builtin_fallback(self) -> None:

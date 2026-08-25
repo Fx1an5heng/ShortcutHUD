@@ -4,6 +4,7 @@ from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication, QLabel
 
 from scripts.application_display_names import get_application_display_name
+from scripts.hud_entry_limits import get_hud_entry_limit
 from scripts.shortcut_hud import (
     ShortcutHudWindow,
     select_description_text,
@@ -108,6 +109,97 @@ class ShortcutHudPresentationTests(unittest.TestCase):
         local_entries, global_entries = select_visible_entry_groups(entries, 8)
 
         self.assertEqual([entry.key for entry in local_entries], list("01234567"))
+        self.assertEqual([entry.key for entry in global_entries], ["Tab", "F4"])
+
+    def test_user_entries_do_not_consume_builtin_local_quota(self) -> None:
+        for user_count in (1, 2):
+            with self.subTest(user_count=user_count):
+                entries = [
+                    ShortcutEntry(f"F{13 + index}", "User", "USER_APP")
+                    for index in range(user_count)
+                ] + [
+                    ShortcutEntry(str(index), "Built-in", "APP")
+                    for index in range(8)
+                ]
+
+                local_entries, global_entries = select_visible_entry_groups(entries, 8)
+
+                self.assertEqual(
+                    [entry.source for entry in local_entries],
+                    ["USER_APP"] * user_count + ["APP"] * 8,
+                )
+                self.assertEqual(len(local_entries), user_count + 8)
+                self.assertEqual(global_entries, [])
+
+    def test_chrome_and_edge_keep_two_user_plus_nine_builtin_entries(self) -> None:
+        entries = [
+            ShortcutEntry("F13", "User 1", "USER_APP"),
+            ShortcutEntry("F14", "User 2", "USER_APP"),
+            *[
+                ShortcutEntry(str(index), "Built-in", "APP")
+                for index in range(9)
+            ],
+        ]
+
+        for application_name in ("CHROME.EXE", "MSEDGE.EXE"):
+            with self.subTest(application_name=application_name):
+                local_entries, global_entries = select_visible_entry_groups(
+                    entries,
+                    get_hud_entry_limit(application_name, "Ctrl"),
+                )
+
+                self.assertEqual(
+                    [entry.source for entry in local_entries],
+                    ["USER_APP"] * 2 + ["APP"] * 9,
+                )
+                self.assertEqual(global_entries, [])
+
+    def test_user_override_conflict_is_deduplicated_before_builtin_quota(self) -> None:
+        built_in_keys = ["P", "`", "/", "B", "G", "H", "Enter", "L"]
+        entries = resolve_shortcuts(
+            {
+                "CODE.EXE": {
+                    "Ctrl": {key: f"Built-in {key}" for key in built_in_keys}
+                },
+                "GLOBAL": {},
+            },
+            "CODE.EXE",
+            "Ctrl",
+            {
+                "CODE.EXE": {
+                    "shortcuts": {
+                        "Ctrl": {"p": {"en": "User P", "zh": "用户 P"}}
+                    }
+                }
+            },
+        )
+
+        local_entries, global_entries = select_visible_entry_groups(entries, 8)
+
+        self.assertEqual([entry.key.casefold() for entry in local_entries].count("p"), 1)
+        self.assertEqual(local_entries[0].source, "USER_APP")
+        self.assertEqual(
+            [entry.source for entry in local_entries],
+            ["USER_APP"] + ["APP"] * 7,
+        )
+        self.assertEqual(global_entries, [])
+
+    def test_user_entries_are_extra_while_global_entries_remain_pinned(self) -> None:
+        entries = [
+            ShortcutEntry("F13", "User", "USER_APP"),
+            *[
+                ShortcutEntry(str(index), "Built-in", "DEFAULT")
+                for index in range(10)
+            ],
+            ShortcutEntry("Tab", "Switch windows", "GLOBAL"),
+            ShortcutEntry("F4", "Close", "GLOBAL"),
+        ]
+
+        local_entries, global_entries = select_visible_entry_groups(entries, 8)
+
+        self.assertEqual(len(local_entries), 9)
+        self.assertEqual(local_entries[0].source, "USER_APP")
+        self.assertTrue(all(entry.source == "DEFAULT" for entry in local_entries[1:]))
         self.assertEqual([entry.key for entry in global_entries], ["Tab", "F4"])
 
     def test_mixed_entries_render_global_section_after_pinned_local_rows(self) -> None:

@@ -311,6 +311,185 @@
         <source>Select Key Text Color</source>
         <translation>选择按键文本颜色</translation>
     </message>
+    <message>
+        <source>Custom Apps</source>
+        <translation>自定义软件</translation>
+    </message>
+    <message>
+        <source>Add shortcuts for the applications you use.</source>
+        <translation>为常用软件添加自己的快捷键。</translation>
+    </message>
+    <message>
+        <source>Manage Custom Apps...</source>
+        <translation>管理自定义软件...</translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutEditDialog</name>
+    <message>
+        <source>Shortcut</source>
+        <translation>快捷键</translation>
+    </message>
+    <message>
+        <source>Modifier:</source>
+        <translation>修饰键：</translation>
+    </message>
+    <message>
+        <source>Key:</source>
+        <translation>按键：</translation>
+    </message>
+    <message>
+        <source>Chinese:</source>
+        <translation>中文说明：</translation>
+    </message>
+    <message>
+        <source>English:</source>
+        <translation>英文说明：</translation>
+    </message>
+    <message>
+        <source>Only single-step shortcuts are supported in this version.
+Multi-step/chord shortcuts will be supported in a future version.</source>
+        <translation>当前版本仅支持单步快捷键（修饰键 + 一个按键）。多段快捷键将在后续版本支持。</translation>
+    </message>
+    <message>
+        <source>{key} is a modifier key. Select {modifier} in Modifier and enter the action key in Key.</source>
+        <translation>{key} 是修饰键。请在‘修饰键’中选择 {modifier}，并在‘按键’中填写实际按键。</translation>
+    </message>
+    <message>
+        <source>Enter a valid keyboard key, such as P, F5, Enter, or Left.</source>
+        <translation>请输入有效的键盘按键，例如 P、F5、Enter 或 Left。</translation>
+    </message>
+</context>
+<context>
+    <name>UserShortcutManagerDialog</name>
+    <message>
+        <source>Custom Apps</source>
+        <translation>自定义软件</translation>
+    </message>
+    <message>
+        <source>The user configuration file cannot be read. Editing and saving are disabled to protect the original file.</source>
+        <translation>用户配置文件无法读取。为保护原文件，当前已禁止编辑和保存。</translation>
+    </message>
+    <message>
+        <source>User Profiles</source>
+        <translation>用户软件</translation>
+    </message>
+    <message>
+        <source>Add Current App</source>
+        <translation>添加当前软件</translation>
+    </message>
+    <message>
+        <source>Delete App</source>
+        <translation>删除软件</translation>
+    </message>
+    <message>
+        <source>Application ID:</source>
+        <translation>应用 ID：</translation>
+    </message>
+    <message>
+        <source>Display Name:</source>
+        <translation>显示名称：</translation>
+    </message>
+    <message>
+        <source>Modifier</source>
+        <translation>修饰键</translation>
+    </message>
+    <message>
+        <source>Key</source>
+        <translation>按键</translation>
+    </message>
+    <message>
+        <source>Chinese</source>
+        <translation>中文说明</translation>
+    </message>
+    <message>
+        <source>English</source>
+        <translation>英文说明</translation>
+    </message>
+    <message>
+        <source>Add</source>
+        <translation>添加</translation>
+    </message>
+    <message>
+        <source>Edit</source>
+        <translation>编辑</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Move Up</source>
+        <translation>上移</translation>
+    </message>
+    <message>
+        <source>Move Down</source>
+        <translation>下移</translation>
+    </message>
+    <message>
+        <source>Built-in shortcuts not shown here remain available.</source>
+        <translation>这里未显示的内置快捷键仍会保留。</translation>
+    </message>
+    <message>
+        <source>The current window is not a customizable application.</source>
+        <translation>当前窗口不是可自定义的普通应用。</translation>
+    </message>
+    <message>
+        <source>This key already exists for the selected modifier combination.</source>
+        <translation>该修饰键组合下已经存在此按键。</translation>
+    </message>
+    <message>
+        <source>The shortcut being edited is no longer available.</source>
+        <translation>正在编辑的快捷键已不可用。</translation>
+    </message>
+    <message>
+        <source>Select a supported modifier combination.</source>
+        <translation>请选择受支持的修饰键组合。</translation>
+    </message>
+    <message>
+        <source>Key must not be empty.</source>
+        <translation>按键不能为空。</translation>
+    </message>
+    <message>
+        <source>Chinese description must not be empty.</source>
+        <translation>中文说明不能为空。</translation>
+    </message>
+    <message>
+        <source>English description must not be empty.</source>
+        <translation>英文说明不能为空。</translation>
+    </message>
+    <message>
+        <source>Delete this user profile? Built-in shortcuts will not be deleted.</source>
+        <translation>删除这个用户配置吗？内置快捷键不会被删除。</translation>
+    </message>
+    <message>
+        <source>Saving is disabled because the user configuration is invalid.</source>
+        <translation>用户配置文件无效，当前禁止保存。</translation>
+    </message>
+    <message>
+        <source>There are unsaved changes. Discard them?</source>
+        <translation>存在未保存的修改，确定要放弃吗？</translation>
+    </message>
+    <message>
+        <source>Current app: not available</source>
+        <translation>当前可添加：不可用</translation>
+    </message>
+    <message>
+        <source>Current app: {name} ({identity})</source>
+        <translation>当前可添加：{name}（{identity}）</translation>
+    </message>
+    <message>
+        <source>Save failed. The original configuration was not changed.</source>
+        <translation>保存失败，原配置未修改。</translation>
+    </message>
+    <message>
+        <source>Application ID must not be empty.</source>
+        <translation>应用 ID 不能为空。</translation>
+    </message>
+    <message>
+        <source>The user profile data is invalid. Please review it and try again.</source>
+        <translation>用户配置数据无效。请检查后重试。</translation>
+    </message>
 </context>
 <context>
     <name>ShortcutManagerDialog</name>

@@ -11,6 +11,7 @@ from pathlib import Path
 import tempfile
 
 from .modifier_state import normalize_modifier_combination
+from .shortcut_key import normalize_shortcut_key
 from .shortcut_resolver import (
     RESERVED_USER_IDENTITIES,
     normalize_application_identity,
@@ -19,6 +20,10 @@ from .shortcut_resolver import (
 
 SCHEMA_VERSION = 1
 USER_CONFIG_ENV_VAR = "SHORTCUTHUD_USER_CONFIG_PATH"
+LOAD_STATUS_NOT_LOADED = "not_loaded"
+LOAD_STATUS_MISSING = "missing"
+LOAD_STATUS_LOADED = "loaded"
+LOAD_STATUS_ERROR = "error"
 logger = logging.getLogger(__name__)
 
 
@@ -70,12 +75,16 @@ class UserShortcutStore:
     ) -> None:
         self.path = resolve_user_config_path(path, environ)
         self._profiles: dict[str, dict[str, object]] = {}
+        self.load_status = LOAD_STATUS_NOT_LOADED
+        self.last_load_error: str | None = None
 
     def load(self) -> dict[str, dict[str, object]]:
         """Load a version-1 file; invalid whole files fail closed to empty."""
 
         if not self.path.exists():
             self._profiles = {}
+            self.load_status = LOAD_STATUS_MISSING
+            self.last_load_error = None
             return self.snapshot()
 
         try:
@@ -83,13 +92,11 @@ class UserShortcutStore:
                 document = json.load(config_file)
         except (OSError, UnicodeError, json.JSONDecodeError) as error:
             logger.warning("Ignoring invalid user shortcut file %s: %s", self.path, error)
-            self._profiles = {}
-            return self.snapshot()
+            return self._fail_load(str(error))
 
         if not isinstance(document, Mapping):
             logger.warning("Ignoring user shortcut file with a non-object root: %s", self.path)
-            self._profiles = {}
-            return self.snapshot()
+            return self._fail_load("user shortcut document root is not an object")
         version = document.get("version")
         if (
             not isinstance(version, int)
@@ -101,16 +108,16 @@ class UserShortcutStore:
                 self.path,
                 version,
             )
-            self._profiles = {}
-            return self.snapshot()
+            return self._fail_load(f"unsupported schema version: {version!r}")
 
         apps = document.get("apps")
         if not isinstance(apps, Mapping):
             logger.warning("Ignoring user shortcut file with non-object apps: %s", self.path)
-            self._profiles = {}
-            return self.snapshot()
+            return self._fail_load("user shortcut apps value is not an object")
 
         self._profiles = self._normalize_profiles(apps)
+        self.load_status = LOAD_STATUS_LOADED
+        self.last_load_error = None
         return self.snapshot()
 
     def reload(self) -> dict[str, dict[str, object]]:
@@ -222,8 +229,21 @@ class UserShortcutStore:
     def snapshot(self) -> dict[str, dict[str, object]]:
         return deepcopy(self._profiles)
 
+    def replace_snapshot(self, profiles: Mapping[str, object]) -> None:
+        """Replace only the in-memory profiles with one normalized snapshot."""
+
+        if not isinstance(profiles, Mapping):
+            raise TypeError("profiles must be a mapping")
+        self._profiles = self._normalize_profiles(profiles)
+
     def display_names_snapshot(self) -> dict[str, str]:
         return get_profile_display_names(self._profiles)
+
+    def _fail_load(self, error: str) -> dict[str, dict[str, object]]:
+        self._profiles = {}
+        self.load_status = LOAD_STATUS_ERROR
+        self.last_load_error = error
+        return self.snapshot()
 
     @classmethod
     def _normalize_profiles(
@@ -329,9 +349,7 @@ class UserShortcutStore:
 
     @staticmethod
     def _validate_key(key: object) -> str:
-        if not isinstance(key, str) or not key.strip():
-            raise ValueError("key must be a non-empty string")
-        return key.strip()
+        return normalize_shortcut_key(key)
 
     @staticmethod
     def _validate_description(description: object) -> dict[str, str] | None:
