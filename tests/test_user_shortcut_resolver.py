@@ -230,6 +230,153 @@ class UserShortcutResolverTests(unittest.TestCase):
             "Second",
         )
 
+    def test_hidden_builtin_is_filtered_before_merge(self) -> None:
+        users = {
+            "CODE.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["B"]},
+            }
+        }
+
+        entries = resolve_shortcuts(self.data, "CODE.EXE", "Ctrl", users)
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries],
+            [("P", "APP"), ("K", "APP"), ("G", "GLOBAL")],
+        )
+
+    def test_hidden_builtin_and_user_override_are_independent(self) -> None:
+        with_user = {
+            "CODE.EXE": {
+                "shortcuts": {"Ctrl": {"P": "User Open"}},
+                "hidden_builtin": {"Ctrl": ["P"]},
+            }
+        }
+        without_user = {
+            "CODE.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["P"]},
+            }
+        }
+        restored_with_user = {
+            "CODE.EXE": {"shortcuts": {"Ctrl": {"P": "User Open"}}}
+        }
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in resolve_shortcuts(
+                self.data, "CODE.EXE", "Ctrl", with_user
+            )],
+            [("P", "USER_APP"), ("B", "APP"), ("K", "APP"), ("G", "GLOBAL")],
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in resolve_shortcuts(
+                self.data, "CODE.EXE", "Ctrl", without_user
+            )],
+            [("B", "APP"), ("K", "APP"), ("G", "GLOBAL")],
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in resolve_shortcuts(
+                self.data, "CODE.EXE", "Ctrl", restored_with_user
+            )],
+            [("P", "USER_APP"), ("B", "APP"), ("K", "APP"), ("G", "GLOBAL")],
+        )
+
+    def test_hiding_app_conflict_allows_global_to_become_winner(self) -> None:
+        data = {
+            "CODE.EXE": {"Alt": {"F4": "App Close"}},
+            "GLOBAL": {"Alt": {"f4": "Global Close"}},
+        }
+        users = {
+            "CODE.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Alt": ["F4"]},
+            }
+        }
+
+        self.assertEqual(
+            resolve_shortcuts(data, "CODE.EXE", "Alt", users),
+            [ShortcutEntry("f4", "Global Close", "GLOBAL")],
+        )
+
+    def test_hidden_only_profile_without_app_does_not_block_default(self) -> None:
+        users = {
+            "REMOVED.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["H"]},
+            }
+        }
+
+        self.assertEqual(
+            resolve_shortcuts(self.data, "REMOVED.EXE", "Ctrl", users),
+            [
+                ShortcutEntry("C", "Default Copy", "DEFAULT"),
+                ShortcutEntry("G", "Global Ctrl", "GLOBAL"),
+            ],
+        )
+
+    def test_hidden_state_does_not_remove_default_or_global_entries(self) -> None:
+        users = {
+            "REMOVED.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["C", "G"]},
+            }
+        }
+
+        entries = resolve_shortcuts(self.data, "REMOVED.EXE", "Ctrl", users)
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in entries],
+            [("C", "DEFAULT"), ("G", "GLOBAL")],
+        )
+
+    def test_hidden_with_display_or_user_state_keeps_known_app_semantics(self) -> None:
+        display_profile = {
+            "REMOVED.EXE": {
+                "display_name": "Removed App",
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["H"]},
+            }
+        }
+        user_profile = {
+            "REMOVED.EXE": {
+                "shortcuts": {"Ctrl": {"X": "User"}},
+                "hidden_builtin": {"Ctrl": ["H"]},
+            }
+        }
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in resolve_shortcuts(
+                self.data, "REMOVED.EXE", "Ctrl", display_profile
+            )],
+            [("G", "GLOBAL")],
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in resolve_shortcuts(
+                self.data, "REMOVED.EXE", "Ctrl", user_profile
+            )],
+            [("X", "USER_APP"), ("G", "GLOBAL")],
+        )
+
+    def test_all_logical_wps_app_layers_support_suppression(self) -> None:
+        data = {
+            "WPS_WRITER": {"Ctrl": {"H": "Writer"}},
+            "WPS_PDF": {"Ctrl": {"H": "PDF"}},
+            "WPS_PRESENTATION": {"Ctrl": {"H": "Presentation"}},
+            "GLOBAL": {"Ctrl": {"G": "Global"}},
+        }
+        for app_id in ("WPS_WRITER", "WPS_PDF", "WPS_PRESENTATION"):
+            with self.subTest(app_id=app_id):
+                users = {
+                    app_id: {
+                        "shortcuts": {},
+                        "hidden_builtin": {"Ctrl": ["H"]},
+                    }
+                }
+                self.assertEqual(
+                    resolve_shortcuts(data, app_id, "Ctrl", users),
+                    [ShortcutEntry("G", "Global", "GLOBAL")],
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -16,6 +16,7 @@ from .modifier_state import (
     normalize_modifier_combination,
     normalize_modifier_token,
 )
+from .shortcut_key import normalize_builtin_shortcut_identity
 
 
 ShortcutSource: TypeAlias = Literal["USER_APP", "APP", "DEFAULT", "GLOBAL"]
@@ -163,6 +164,53 @@ def _get_chord_base_modifier(configured_name: str) -> str | None:
     return canonicalize_modifier_state(modifier_tokens)
 
 
+def _profile_is_hidden_only(profile: Mapping[str, object]) -> bool:
+    """Return whether stale suppression is the profile's only user-owned state."""
+
+    display_name = profile.get("display_name")
+    if isinstance(display_name, str) and display_name.strip():
+        return False
+    shortcuts = profile.get("shortcuts")
+    if isinstance(shortcuts, Mapping) and any(
+        isinstance(group, Mapping) and bool(group) for group in shortcuts.values()
+    ):
+        return False
+    hidden = profile.get("hidden_builtin")
+    return isinstance(hidden, Mapping) and any(
+        isinstance(group, list) and bool(group) for group in hidden.values()
+    )
+
+
+def _hidden_builtin_keys(
+    profile: Mapping[str, object] | None,
+    canonical_modifier: str,
+) -> set[str]:
+    """Return canonical APP terminal-key identities hidden for one modifier."""
+
+    if profile is None:
+        return set()
+    hidden = profile.get("hidden_builtin")
+    if not isinstance(hidden, Mapping):
+        return set()
+
+    identities: set[str] = set()
+    for modifier, group in hidden.items():
+        if not isinstance(group, list):
+            continue
+        if normalize_modifier_combination(modifier) != canonical_modifier:
+            continue
+        for key in group:
+            try:
+                _modifier, normalized_key = normalize_builtin_shortcut_identity(
+                    canonical_modifier,
+                    key,
+                )
+            except ValueError:
+                continue
+            identities.add(normalized_key.casefold())
+    return identities
+
+
 def resolve_shortcuts(
     shortcut_data: Mapping[str, object],
     foreground_executable: str | None,
@@ -173,9 +221,10 @@ def resolve_shortcuts(
 
     A user profile overlays, rather than replaces, a matching built-in APP.
     A user-only profile is itself a known application and therefore never falls
-    back to DEFAULT. WINDOWS_SHELL and WPS_UNKNOWN remain GLOBAL-only. Earlier
-    layers win case-insensitive key conflicts and insertion order is preserved
-    within each layer. Shortcut keys remain opaque display strings.
+    back to DEFAULT, except when its only state is stale APP suppression.
+    WINDOWS_SHELL and WPS_UNKNOWN remain GLOBAL-only. Earlier layers win
+    case-insensitive key conflicts and insertion order is preserved within each
+    layer. Shortcut keys remain opaque display strings.
     ``NoModifier`` is outside this Phase 1 modifier-triggered resolver contract.
     """
 
@@ -193,9 +242,16 @@ def resolve_shortcuts(
     )
     global_layer = _find_reserved_layer(shortcut_data, _GLOBAL_LAYER)
     layers: list[tuple[Mapping[str, object] | None, ShortcutSource]] = []
+    user_profile: Mapping[str, object] | None = None
 
     if application_id not in _GLOBAL_ONLY_IDENTITIES:
         user_profile = _find_user_profile(user_profiles, foreground_executable)
+        if (
+            user_profile is not None
+            and application_layer is None
+            and _profile_is_hidden_only(user_profile)
+        ):
+            user_profile = None
         if user_profile is not None:
             user_shortcuts = user_profile.get("shortcuts")
             layers.append(
@@ -220,11 +276,23 @@ def resolve_shortcuts(
 
     resolved: list[ShortcutEntry] = []
     seen_keys: set[str] = set()
+    hidden_app_keys = _hidden_builtin_keys(user_profile, canonical_modifier)
 
     for layer, source in layers:
         if layer is None:
             continue
         for key, description in _iter_layer_shortcuts(layer, canonical_modifier):
+            if source == "APP":
+                try:
+                    _modifier, canonical_key = normalize_builtin_shortcut_identity(
+                        canonical_modifier,
+                        key,
+                    )
+                except ValueError:
+                    pass
+                else:
+                    if canonical_key.casefold() in hidden_app_keys:
+                        continue
             key_identity = key.casefold()
             if key_identity in seen_keys:
                 continue

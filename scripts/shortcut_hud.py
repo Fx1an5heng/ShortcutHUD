@@ -19,39 +19,8 @@ from PySide6.QtWidgets import (
 
 from .application_display_names import get_application_display_name
 from .hud_entry_limits import get_hud_entry_limit
+from .shortcut_description import select_description_text
 from .shortcut_resolver import ShortcutEntry
-
-
-
-
-def select_description_text(description: object, language: str | None) -> str:
-    """Return display text without changing resolver-owned description data."""
-
-    if isinstance(description, str):
-        return description
-    if not isinstance(description, Mapping):
-        return "N/A"
-
-    language_code = (
-        language.split("_", 1)[0].casefold()
-        if isinstance(language, str) and language
-        else "en"
-    )
-    fallback_codes = [language_code]
-    if language_code != "en":
-        fallback_codes.append("en")
-    if language_code != "zh":
-        fallback_codes.append("zh")
-
-    for code in fallback_codes:
-        text = description.get(code)
-        if isinstance(text, str):
-            return text
-
-    for value in description.values():
-        if isinstance(value, str):
-            return value
-    return "N/A"
 
 def select_visible_entry_groups(
     entries: Sequence[ShortcutEntry],

@@ -77,6 +77,34 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
         self.addCleanup(self.qt_application.removeTranslator, translator)
         self._test_translator = translator
 
+    def _make_builtin_manager(self) -> UserShortcutManagerDialog:
+        manager = UserShortcutManagerDialog(
+            self.live_store,
+            self.tracker,
+            lambda snapshot: self.applied.append(dict(snapshot)),
+            builtin_shortcuts={
+                "CODE.EXE": {
+                    "Ctrl": {
+                        "P": {"en": "Quick Open", "zh": "快速打开"},
+                        "H": {"en": "Replace", "zh": "替换"},
+                    },
+                    "Ctrl+K Ctrl+S": {
+                        "": {"en": "Chord", "zh": "多段"}
+                    },
+                },
+                "GLOBAL": {
+                    "Ctrl": {"G": {"en": "Global", "zh": "全局"}}
+                },
+            },
+            language="en_US",
+        )
+        manager._show_warning = lambda _message: None
+        manager._show_save_error = lambda _error: None
+        manager._confirm = lambda _message: True
+        self.addCleanup(manager.close)
+        manager.add_current_application()
+        return manager
+
     def _capture_shortcut_validation_message(
         self,
         *,
@@ -322,7 +350,16 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
                 self.live_store,
                 self.tracker,
                 lambda _snapshot: None,
+                builtin_shortcuts={
+                    "CODE.EXE": {
+                        "Ctrl": {
+                            "P": {"en": "Quick Open", "zh": "快速打开"}
+                        }
+                    }
+                },
+                language="zh_CN",
             )
+            translated_dialog._confirm = lambda _message: True
             self.addCleanup(settings.close)
             self.addCleanup(translated_dialog.close)
 
@@ -331,8 +368,175 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             self.assertEqual(
                 translated_dialog.add_current_button.text(), "添加当前软件"
             )
+            self.assertEqual(translated_dialog.tabs.tabText(0), "自定义快捷键")
+            self.assertEqual(translated_dialog.tabs.tabText(1), "应用内置快捷键")
+            self.assertEqual(
+                translated_dialog.hide_restore_builtin_button.text(),
+                "隐藏应用内置快捷键",
+            )
+            translated_dialog.add_current_application()
+            self.assertEqual(
+                translated_dialog.builtin_table.item(0, 2).text(),
+                "快速打开",
+            )
+            self.assertEqual(
+                translated_dialog.builtin_table.item(0, 3).text(),
+                "显示中",
+            )
+            self.assertEqual(
+                translated_dialog.builtin_scope_note.text(),
+                "仅隐藏当前软件提供的内置提示，全局快捷键不受影响。",
+            )
         finally:
             self.qt_application.removeTranslator(translator)
+
+    def test_builtin_tab_uses_raw_app_rows_and_marks_unsupported_chord(self) -> None:
+        manager = self._make_builtin_manager()
+
+        self.assertEqual(manager.tabs.tabText(0), "Custom Shortcuts")
+        self.assertEqual(manager.tabs.tabText(1), "Built-in Shortcuts")
+        self.assertEqual(manager.builtin_table.rowCount(), 3)
+        self.assertEqual(manager.builtin_table.item(0, 3).text(), "Visible")
+        self.assertEqual(
+            manager.builtin_table.item(2, 3).text(),
+            "Unsupported shortcut type",
+        )
+        manager.builtin_table.selectRow(2)
+        manager._update_builtin_action_state()
+        self.assertFalse(manager.hide_restore_builtin_button.isEnabled())
+
+    def test_visible_hidden_restore_flow_changes_only_draft_and_keeps_row(self) -> None:
+        manager = self._make_builtin_manager()
+        manager.builtin_table.selectRow(0)
+        manager._update_builtin_action_state()
+
+        self.assertEqual(
+            manager.hide_restore_builtin_button.text(),
+            "Hide Built-in Shortcut",
+        )
+        self.assertTrue(manager.toggle_selected_builtin())
+
+        self.assertTrue(manager.draft.is_builtin_hidden("CODE.EXE", "Ctrl", "P"))
+        self.assertEqual(manager.builtin_table.rowCount(), 3)
+        self.assertEqual(manager.builtin_table.item(0, 3).text(), "Hidden")
+        self.assertEqual(
+            manager.hide_restore_builtin_button.text(),
+            "Restore Built-in Shortcut",
+        )
+        self.assertFalse(self.path.exists())
+        self.assertEqual(self.live_store.snapshot(), {})
+        self.assertEqual(self.applied, [])
+
+        self.assertTrue(manager.toggle_selected_builtin())
+        self.assertFalse(manager.draft.is_builtin_hidden("CODE.EXE", "Ctrl", "P"))
+        self.assertEqual(manager.builtin_table.item(0, 3).text(), "Visible")
+
+    def test_overridden_builtin_row_remains_visible_with_combined_status(self) -> None:
+        manager = self._make_builtin_manager()
+        manager.draft.add_shortcut(
+            "CODE.EXE", "Ctrl", "P", "用户打开", "User Open"
+        )
+        manager._render_shortcuts()
+
+        self.assertEqual(manager.builtin_table.rowCount(), 3)
+        self.assertEqual(
+            manager.builtin_table.item(0, 3).text(),
+            "Overridden by Custom Shortcut",
+        )
+        manager.builtin_table.selectRow(0)
+        self.assertTrue(manager.toggle_selected_builtin())
+        self.assertEqual(
+            manager.builtin_table.item(0, 3).text(),
+            "Hidden and Overridden",
+        )
+
+    def test_restore_all_preserves_user_and_display_and_clears_stale_state(self) -> None:
+        manager = self._make_builtin_manager()
+        manager.draft.set_display_name("CODE.EXE", "My Code")
+        manager.draft.add_shortcut(
+            "CODE.EXE", "Ctrl", "F13", "测试", "Test"
+        )
+        manager.draft.hide_builtin_shortcut("CODE.EXE", "Ctrl", "P")
+        manager.draft.hide_builtin_shortcut("CODE.EXE", "Alt", "F4")
+        manager._render_builtin_shortcuts()
+
+        self.assertTrue(manager.restore_all_builtins_button.isEnabled())
+        self.assertTrue(manager.restore_all_hidden_builtins())
+
+        profile = manager.draft.get_profile("CODE.EXE")
+        self.assertEqual(profile["display_name"], "My Code")
+        self.assertIn("F13", profile["shortcuts"]["Ctrl"])
+        self.assertNotIn("hidden_builtin", profile)
+        self.assertFalse(manager.restore_all_builtins_button.isEnabled())
+
+    def test_cancel_discards_builtin_suppression_without_touching_live_state(self) -> None:
+        manager = self._make_builtin_manager()
+        manager.builtin_table.selectRow(0)
+        self.assertTrue(manager.toggle_selected_builtin())
+
+        manager.reject()
+
+        self.assertFalse(self.path.exists())
+        self.assertEqual(self.live_store.snapshot(), {})
+        self.assertEqual(self.applied, [])
+
+    def test_save_and_reload_keeps_builtin_hidden(self) -> None:
+        manager = self._make_builtin_manager()
+        manager.builtin_table.selectRow(1)
+        self.assertTrue(manager.toggle_selected_builtin())
+
+        self.assertTrue(manager.save_changes())
+
+        reloaded = UserShortcutStore(self.path)
+        snapshot = reloaded.load()
+        self.assertEqual(
+            snapshot["CODE.EXE"]["hidden_builtin"],
+            {"Ctrl": ["H"]},
+        )
+        entries = resolve_shortcuts(
+            {
+                "CODE.EXE": {"Ctrl": {"P": "Open", "H": "Replace"}},
+                "GLOBAL": {},
+            },
+            "CODE.EXE",
+            "Ctrl",
+            snapshot,
+        )
+        self.assertEqual([entry.key for entry in entries], ["P"])
+
+    def test_failed_suppression_save_keeps_disk_live_runtime_and_draft(self) -> None:
+        self.live_store.upsert_profile("CODE.EXE", "Old Code")
+        self.live_store.save()
+        old_bytes = self.path.read_bytes()
+        old_live = self.live_store.snapshot()
+        manager = self._make_builtin_manager()
+        manager.builtin_table.selectRow(0)
+        self.assertTrue(manager.toggle_selected_builtin())
+        errors: list[BaseException] = []
+        manager._show_save_error = errors.append
+
+        with patch.object(UserShortcutStore, "save", side_effect=OSError("denied")):
+            self.assertFalse(manager.save_changes())
+
+        self.assertEqual(self.path.read_bytes(), old_bytes)
+        self.assertEqual(self.live_store.snapshot(), old_live)
+        self.assertEqual(self.applied, [])
+        self.assertTrue(manager.draft.dirty)
+        self.assertTrue(manager.draft.is_builtin_hidden("CODE.EXE", "Ctrl", "P"))
+        self.assertEqual(len(errors), 1)
+
+    def test_delete_profile_confirmation_describes_all_removed_user_state(self) -> None:
+        manager = self._make_builtin_manager()
+        messages: list[str] = []
+        manager._confirm = lambda message: messages.append(message) or False
+
+        self.assertFalse(manager.delete_selected_profile())
+
+        self.assertEqual(len(messages), 1)
+        self.assertIn("custom shortcuts", messages[0])
+        self.assertIn("custom display name", messages[0])
+        self.assertIn("hidden built-in shortcut records", messages[0])
+        self.assertIn("may appear again", messages[0])
 
     def test_add_current_app_selects_new_profile_and_does_not_duplicate(self) -> None:
         self.assertTrue(self.dialog.add_current_application())
@@ -497,7 +701,13 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
 
     def test_corrupt_json_and_utf8_block_save_without_changing_original(self) -> None:
-        for payload in (b"{broken", b'{"version":1,"apps":{"X":"\xff"}}'):
+        for payload in (
+            b"{broken",
+            b'{"version":1,"apps":{"X":"\xff"}}',
+            b'{"version":2,"apps":{"CODE.EXE":[]}}',
+            b'{"version":2,"apps":{"CODE.EXE":{"hidden_builtin":"bad"}}}',
+            b'{"version":2,"apps":{"CODE.EXE":{"hidden_builtin":{"Ctrl":{}}}}}',
+        ):
             with self.subTest(payload=payload):
                 self.dialog.close()
                 self.path.write_bytes(payload)

@@ -153,6 +153,72 @@ class UserProfileDraftTests(unittest.TestCase):
         self.draft.mark_saved()
         self.assertFalse(self.draft.dirty)
 
+    def test_hidden_builtin_operations_are_detached_dirty_and_restore_is_scoped(self) -> None:
+        self.assertTrue(
+            self.draft.hide_builtin_shortcut("CODE.EXE", "ctrl", "f4")
+        )
+        self.assertTrue(
+            self.draft.hide_builtin_shortcut("CODE.EXE", "Ctrl", "h")
+        )
+        self.assertFalse(
+            self.draft.hide_builtin_shortcut("CODE.EXE", "Ctrl", "F4")
+        )
+
+        self.assertTrue(self.draft.dirty)
+        self.assertNotIn("hidden_builtin", self.initial["CODE.EXE"])
+        self.assertEqual(
+            self.draft.list_hidden_builtin_shortcuts("CODE.EXE"),
+            [("Ctrl", "F4"), ("Ctrl", "H")],
+        )
+        self.assertTrue(
+            self.draft.restore_builtin_shortcut("CODE.EXE", "Ctrl", "F4")
+        )
+        self.assertEqual(
+            self.draft.list_hidden_builtin_shortcuts("CODE.EXE"),
+            [("Ctrl", "H")],
+        )
+
+    def test_restore_all_keeps_profile_user_shortcuts_and_display_name(self) -> None:
+        self.draft.hide_builtin_shortcut("CODE.EXE", "Ctrl", "H")
+
+        self.assertTrue(self.draft.restore_all_hidden_builtins("CODE.EXE"))
+
+        profile = self.draft.get_profile("CODE.EXE")
+        self.assertIn("CODE.EXE", self.draft.list_profiles())
+        self.assertEqual(profile["display_name"], "My Code")
+        self.assertIn("P", profile["shortcuts"]["Ctrl"])
+        self.assertNotIn("hidden_builtin", profile)
+
+    def test_restore_all_does_not_prune_an_existing_empty_profile(self) -> None:
+        self.draft.add_profile("EMPTY.EXE")
+        self.draft.hide_builtin_shortcut("EMPTY.EXE", "Ctrl", "H")
+
+        self.assertTrue(self.draft.restore_all_hidden_builtins("EMPTY.EXE"))
+
+        self.assertEqual(
+            self.draft.get_profile("EMPTY.EXE"),
+            {"shortcuts": {}},
+        )
+
+    def test_reserved_hidden_builtin_api_is_rejected(self) -> None:
+        for identity in ("DEFAULT", "GLOBAL", "WINDOWS_SHELL", "WPS_UNKNOWN"):
+            with self.subTest(identity=identity):
+                with self.assertRaises(ProfileValidationError):
+                    self.draft.hide_builtin_shortcut(identity, "Ctrl", "H")
+
+    def test_validate_all_rejects_noncanonical_hidden_state(self) -> None:
+        invalid = UserProfileDraft(
+            {
+                "CODE.EXE": {
+                    "shortcuts": {},
+                    "hidden_builtin": {"ctrl": ["h"]},
+                }
+            }
+        )
+
+        with self.assertRaises(ProfileValidationError):
+            invalid.validate_all()
+
 
 if __name__ == "__main__":
     unittest.main()

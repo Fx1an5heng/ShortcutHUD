@@ -5,6 +5,8 @@ from __future__ import annotations
 import re
 from typing import Final
 
+from .modifier_state import normalize_modifier_combination
+
 
 class ShortcutKeyError(ValueError):
     """Base error for values that cannot enter the single-step USER schema."""
@@ -119,6 +121,18 @@ def normalize_shortcut_key(key: object) -> str:
             return f"F{number}"
 
     raise InvalidShortcutKeyError(f"unrecognized single keyboard key: {value!r}")
+
+
+def normalize_builtin_shortcut_identity(
+    modifier: object,
+    key: object,
+) -> tuple[str, str]:
+    """Compose the existing modifier and terminal-key canonicalizers."""
+
+    canonical_modifier = normalize_modifier_combination(modifier)
+    if canonical_modifier is None:
+        raise ValueError("modifier must be a supported modifier combination")
+    return canonical_modifier, normalize_shortcut_key(key)
 
 
 def _looks_like_multi_step_shortcut(value: str) -> bool:

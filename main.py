@@ -360,6 +360,8 @@ class ShortcutOverlayApplication(QApplication):
             self.user_shortcut_store,
             self.current_application_candidate,
             self.apply_user_profiles,
+            self.config_mgr.get_all_shortcuts(),
+            self.config_mgr.get_setting("language", "en_US"),
             parent=parent or self.overlay_window,
         )
         dialog.setWindowModality(Qt.ApplicationModal)

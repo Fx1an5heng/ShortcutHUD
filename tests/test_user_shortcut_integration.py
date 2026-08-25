@@ -245,6 +245,84 @@ class UserShortcutIntegrationTests(unittest.TestCase):
             [("Tab", "GLOBAL")],
         )
 
+    def test_saved_suppression_precedes_quota_and_ninth_builtin_backfills(self) -> None:
+        data = {
+            "LARGE.EXE": {
+                "Ctrl": {
+                    f"F{number}": self._description(f"Built-in {number}")
+                    for number in range(1, 11)
+                }
+            },
+            "GLOBAL": {"Ctrl": {"G": self._description("Global")}},
+        }
+        with TemporaryDirectory() as temporary_directory:
+            path = Path(temporary_directory) / "user_shortcuts.json"
+            path.write_text(
+                json.dumps(
+                    {
+                        "version": 2,
+                        "apps": {
+                            "LARGE.EXE": {
+                                "shortcuts": {
+                                    "Ctrl": {
+                                        "U": self._description("User")
+                                    }
+                                },
+                                "hidden_builtin": {"Ctrl": ["F3"]},
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            profiles = load_user_shortcut_store(path).snapshot()
+            entries = resolve_shortcuts(data, "LARGE.EXE", "Ctrl", profiles)
+            local, global_entries = select_visible_entry_groups(entries, 8)
+
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in local],
+            [("U", "USER_APP")]
+            + [(key, "APP") for key in (
+                "F1", "F2", "F4", "F5", "F6", "F7", "F8", "F9"
+            )],
+        )
+        self.assertEqual(
+            [(entry.key, entry.source) for entry in global_entries],
+            [("G", "GLOBAL")],
+        )
+
+    def test_restore_returns_builtin_to_original_insertion_position(self) -> None:
+        data = {
+            "CODE.EXE": {
+                "Ctrl": {
+                    "P": self._description("P"),
+                    "B": self._description("B"),
+                    "K": self._description("K"),
+                }
+            }
+        }
+        hidden = {
+            "CODE.EXE": {
+                "shortcuts": {},
+                "hidden_builtin": {"Ctrl": ["B"]},
+            }
+        }
+        restored = {"CODE.EXE": {"shortcuts": {}}}
+
+        self.assertEqual(
+            [entry.key for entry in resolve_shortcuts(
+                data, "CODE.EXE", "Ctrl", hidden
+            )],
+            ["P", "K"],
+        )
+        self.assertEqual(
+            [entry.key for entry in resolve_shortcuts(
+                data, "CODE.EXE", "Ctrl", restored
+            )],
+            ["P", "B", "K"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

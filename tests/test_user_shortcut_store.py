@@ -182,13 +182,13 @@ class UserShortcutStoreTests(unittest.TestCase):
     def test_reserved_identities_are_ignored_on_load_and_rejected_by_api(self) -> None:
         self._write_document(
             {
-                "version": 1,
+                "version": 2,
                 "apps": {
-                    "DEFAULT": {"shortcuts": {}},
-                    "GLOBAL": {"shortcuts": {}},
-                    "WINDOWS_SHELL": {"shortcuts": {}},
-                    "WPS_UNKNOWN": {"shortcuts": {}},
-                    "WPS_WRITER": {"shortcuts": {}},
+                    "DEFAULT": {"shortcuts": {}, "hidden_builtin": {"Ctrl": ["H"]}},
+                    "GLOBAL": {"shortcuts": {}, "hidden_builtin": {"Ctrl": ["H"]}},
+                    "WINDOWS_SHELL": {"shortcuts": {}, "hidden_builtin": {"Ctrl": ["H"]}},
+                    "WPS_UNKNOWN": {"shortcuts": {}, "hidden_builtin": {"Ctrl": ["H"]}},
+                    "WPS_WRITER": {"shortcuts": {}, "hidden_builtin": {"Ctrl": ["H"]}},
                 },
             }
         )
@@ -197,6 +197,10 @@ class UserShortcutStoreTests(unittest.TestCase):
             profiles = self.store.load()
 
         self.assertEqual(list(profiles), ["WPS_WRITER"])
+        self.assertEqual(
+            profiles["WPS_WRITER"]["hidden_builtin"],
+            {"Ctrl": ["H"]},
+        )
         for identity in ("DEFAULT", "GLOBAL", "WINDOWS_SHELL", "WPS_UNKNOWN"):
             with self.subTest(identity=identity):
                 with self.assertRaises(ValueError):
@@ -234,7 +238,6 @@ class UserShortcutStoreTests(unittest.TestCase):
             {
                 "version": 1,
                 "apps": {
-                    "BROKEN.EXE": [],
                     "CODE.EXE": {
                         "display_name": 123,
                         "shortcuts": {
@@ -263,6 +266,166 @@ class UserShortcutStoreTests(unittest.TestCase):
                 }
             },
         )
+
+    def test_v1_load_is_read_only_and_explicit_save_upgrades_to_v2(self) -> None:
+        self._write_document(
+            {
+                "version": 1,
+                "apps": {
+                    "CODE.EXE": {
+                        "display_name": "My Code",
+                        "shortcuts": {
+                            "Ctrl": {
+                                "P": {"en": "Open", "zh": "打开"},
+                                "K": {"en": "Action", "zh": "操作"},
+                            }
+                        },
+                    }
+                },
+            }
+        )
+        old_bytes = self.path.read_bytes()
+        old_mtime = self.path.stat().st_mtime_ns
+
+        snapshot = self.store.load()
+
+        self.assertEqual(self.path.read_bytes(), old_bytes)
+        self.assertEqual(self.path.stat().st_mtime_ns, old_mtime)
+        self.assertEqual(list(snapshot["CODE.EXE"]["shortcuts"]["Ctrl"]), ["P", "K"])
+        self.assertNotIn("hidden_builtin", snapshot["CODE.EXE"])
+
+        self.store.save()
+        document = json.loads(self.path.read_text(encoding="utf-8"))
+        self.assertEqual(document["version"], 2)
+
+    def test_failed_explicit_save_after_v1_load_preserves_original_v1_bytes(self) -> None:
+        self._write_document(
+            {
+                "version": 1,
+                "apps": {"CODE.EXE": {"shortcuts": {}}},
+            }
+        )
+        old_bytes = self.path.read_bytes()
+        self.store.load()
+        self.store.hide_builtin_shortcut("CODE.EXE", "Ctrl", "H")
+
+        with patch("scripts.user_shortcut_store.os.replace", side_effect=OSError("fail")):
+            with self.assertRaises(OSError):
+                self.store.save()
+
+        self.assertEqual(self.path.read_bytes(), old_bytes)
+
+    def test_v2_round_trip_preserves_user_hidden_and_insertion_order(self) -> None:
+        self._write_document(
+            {
+                "version": 2,
+                "apps": {
+                    "code.exe": {
+                        "display_name": "My Code",
+                        "shortcuts": {
+                            "Ctrl": {
+                                "P": {"en": "Open", "zh": "打开"},
+                                "K": {"en": "Action", "zh": "操作"},
+                            }
+                        },
+                        "hidden_builtin": {
+                            "shift+ctrl": ["p", "f4"],
+                            "Alt": ["Enter"],
+                        },
+                    }
+                },
+            }
+        )
+
+        loaded = self.store.load()
+        self.store.save()
+        reloaded = UserShortcutStore(self.path)
+
+        self.assertEqual(reloaded.load(), loaded)
+        profile = loaded["CODE.EXE"]
+        self.assertEqual(list(profile["shortcuts"]["Ctrl"]), ["P", "K"])
+        self.assertEqual(
+            profile["hidden_builtin"],
+            {"Ctrl+Shift": ["P", "F4"], "Alt": ["Enter"]},
+        )
+
+    def test_v2_structural_corruption_fails_closed_and_preserves_bytes(self) -> None:
+        documents = (
+            {"version": 2, "apps": {"CODE.EXE": []}},
+            {
+                "version": 2,
+                "apps": {"CODE.EXE": {"hidden_builtin": "bad"}},
+            },
+            {
+                "version": 2,
+                "apps": {
+                    "CODE.EXE": {"hidden_builtin": {"Ctrl": {"bad": True}}}
+                },
+            },
+        )
+        for document in documents:
+            with self.subTest(document=document):
+                self._write_document(document)
+                old_bytes = self.path.read_bytes()
+                with self.assertLogs("scripts.user_shortcut_store", level="WARNING"):
+                    self.assertEqual(self.store.load(), {})
+                self.assertEqual(self.store.load_status, LOAD_STATUS_ERROR)
+                self.assertEqual(self.path.read_bytes(), old_bytes)
+
+    def test_v2_invalid_hidden_leaves_are_skipped_and_duplicates_deduplicate(self) -> None:
+        self._write_document(
+            {
+                "version": 2,
+                "apps": {
+                    "CODE.EXE": {
+                        "shortcuts": {
+                            "Alt": {"Z": {"en": "User", "zh": "用户"}}
+                        },
+                        "hidden_builtin": {
+                            "Ctrl": ["H", "F99", 5, "L", "f4", "F4"]
+                        },
+                    }
+                },
+            }
+        )
+
+        with self.assertLogs("scripts.user_shortcut_store", level="WARNING"):
+            profiles = self.store.load()
+
+        self.assertEqual(
+            profiles["CODE.EXE"]["hidden_builtin"],
+            {"Ctrl": ["H", "L", "F4"]},
+        )
+        self.assertIn("Z", profiles["CODE.EXE"]["shortcuts"]["Alt"])
+
+    def test_suppression_api_is_canonical_idempotent_and_does_not_prune_profile(self) -> None:
+        self.store.upsert_profile("CODE.EXE")
+
+        self.assertTrue(self.store.hide_builtin_shortcut("code.exe", "ctrl", "f4"))
+        self.assertFalse(self.store.hide_builtin_shortcut("CODE.EXE", "Ctrl", "F4"))
+        self.assertTrue(self.store.hide_builtin_shortcut("CODE.EXE", "Ctrl", "h"))
+        self.assertEqual(
+            self.store.list_hidden_builtin_shortcuts("CODE.EXE"),
+            [("Ctrl", "F4"), ("Ctrl", "H")],
+        )
+        self.assertTrue(self.store.is_builtin_hidden("CODE.EXE", "ctrl", "f4"))
+        self.assertTrue(self.store.restore_builtin_shortcut("CODE.EXE", "Ctrl", "F4"))
+        self.assertFalse(self.store.restore_builtin_shortcut("CODE.EXE", "Ctrl", "F4"))
+        self.assertTrue(self.store.restore_all_hidden_builtins("CODE.EXE"))
+        self.assertFalse(self.store.restore_all_hidden_builtins("CODE.EXE"))
+        self.assertEqual(self.store.get_profile("CODE.EXE"), {"shortcuts": {}})
+
+    def test_reserved_suppression_is_rejected_while_logical_wps_is_allowed(self) -> None:
+        for identity in ("DEFAULT", "GLOBAL", "WINDOWS_SHELL", "WPS_UNKNOWN"):
+            with self.subTest(identity=identity):
+                with self.assertRaises(ValueError):
+                    self.store.hide_builtin_shortcut(identity, "Ctrl", "H")
+
+        for identity in ("WPS_WRITER", "WPS_PDF", "WPS_PRESENTATION"):
+            with self.subTest(identity=identity):
+                self.assertTrue(
+                    self.store.hide_builtin_shortcut(identity, "Ctrl", "H")
+                )
 
     def test_equivalent_modifier_groups_merge_in_first_position(self) -> None:
         self._write_document(

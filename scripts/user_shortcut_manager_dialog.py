@@ -25,6 +25,7 @@ from PySide6.QtWidgets import (
     QSplitter,
     QTableWidget,
     QTableWidgetItem,
+    QTabWidget,
     QVBoxLayout,
     QWidget,
 )
@@ -35,12 +36,14 @@ from .shortcut_key import (
     ModifierTerminalKeyError,
     ShortcutKeyError,
     UnsupportedShortcutSequenceError,
+    normalize_builtin_shortcut_identity,
     normalize_shortcut_key,
 )
 from .shortcut_resolver import (
     RESERVED_USER_IDENTITIES,
     normalize_application_identity,
 )
+from .shortcut_description import select_description_text
 from .user_shortcut_store import LOAD_STATUS_ERROR, UserShortcutStore
 
 
@@ -238,6 +241,78 @@ class UserProfileDraft:
         shortcuts[canonical] = dict(items)
         return True
 
+    def hide_builtin_shortcut(
+        self,
+        app_id: str,
+        modifier: str,
+        key: str,
+    ) -> bool:
+        canonical, normalized_key = self._validate_builtin_identity(modifier, key)
+        hidden = self._hidden_builtins_for(app_id)
+        group = hidden.setdefault(canonical, [])
+        assert isinstance(group, list)
+        if self._find_list_key(group, normalized_key) is not None:
+            return False
+        group.append(normalized_key)
+        return True
+
+    def restore_builtin_shortcut(
+        self,
+        app_id: str,
+        modifier: str,
+        key: str,
+    ) -> bool:
+        canonical, normalized_key = self._validate_builtin_identity(modifier, key)
+        profile = self._require_profile(app_id)
+        hidden = profile.get("hidden_builtin")
+        if not isinstance(hidden, dict):
+            return False
+        group = hidden.get(canonical)
+        if not isinstance(group, list):
+            return False
+        stored_key = self._find_list_key(group, normalized_key)
+        if stored_key is None:
+            return False
+        group.remove(stored_key)
+        if not group:
+            del hidden[canonical]
+        if not hidden:
+            profile.pop("hidden_builtin", None)
+        return True
+
+    def restore_all_hidden_builtins(self, app_id: str) -> bool:
+        profile = self._require_profile(app_id)
+        hidden = profile.get("hidden_builtin")
+        if not isinstance(hidden, Mapping) or not hidden:
+            return False
+        profile.pop("hidden_builtin", None)
+        return True
+
+    def is_builtin_hidden(self, app_id: str, modifier: str, key: str) -> bool:
+        canonical, normalized_key = self._validate_builtin_identity(modifier, key)
+        profile = self._require_profile(app_id)
+        hidden = profile.get("hidden_builtin")
+        group = hidden.get(canonical) if isinstance(hidden, Mapping) else None
+        return isinstance(group, list) and (
+            self._find_list_key(group, normalized_key) is not None
+        )
+
+    def list_hidden_builtin_shortcuts(
+        self,
+        app_id: str,
+    ) -> list[tuple[str, str]]:
+        profile = self._require_profile(app_id)
+        hidden = profile.get("hidden_builtin")
+        if not isinstance(hidden, Mapping):
+            return []
+        return [
+            (modifier, key)
+            for modifier, group in hidden.items()
+            if isinstance(modifier, str) and isinstance(group, list)
+            for key in group
+            if isinstance(key, str)
+        ]
+
     def validate_all(self) -> None:
         for app_id, profile in self._profiles.items():
             if self._normalize_app_id(app_id) != app_id:
@@ -278,6 +353,32 @@ class UserProfileDraft:
                         raise ProfileValidationError(
                             f"Invalid description: {app_id} {modifier} {key}"
                         )
+            hidden = profile.get("hidden_builtin")
+            if hidden is None:
+                continue
+            if not isinstance(hidden, Mapping):
+                raise ProfileValidationError(f"Invalid hidden shortcuts: {app_id}")
+            for modifier, group in hidden.items():
+                canonical = self._normalize_modifier(modifier)
+                if canonical != modifier or not isinstance(group, list):
+                    raise ProfileValidationError(
+                        f"Invalid hidden modifier group: {app_id} {modifier}"
+                    )
+                seen_hidden: set[str] = set()
+                for key in group:
+                    normalized_modifier, normalized_key = (
+                        self._validate_builtin_identity(modifier, key)
+                    )
+                    if normalized_modifier != modifier or normalized_key != key:
+                        raise ProfileValidationError(
+                            f"Invalid hidden shortcut: {app_id} {modifier} {key}"
+                        )
+                    identity = normalized_key.casefold()
+                    if identity in seen_hidden:
+                        raise ProfileValidationError(
+                            f"Duplicate hidden shortcut: {app_id} {modifier} {key}"
+                        )
+                    seen_hidden.add(identity)
 
     @staticmethod
     def _normalize_app_id(app_id: str) -> str:
@@ -330,6 +431,23 @@ class UserProfileDraft:
             raise ProfileValidationError("Profile shortcuts are invalid.")
         return shortcuts
 
+    def _hidden_builtins_for(self, app_id: str) -> dict[str, object]:
+        profile = self._require_profile(app_id)
+        hidden = profile.setdefault("hidden_builtin", {})
+        if not isinstance(hidden, dict):
+            raise ProfileValidationError("Profile hidden shortcuts are invalid.")
+        return hidden
+
+    @staticmethod
+    def _validate_builtin_identity(
+        modifier: object,
+        key: object,
+    ) -> tuple[str, str]:
+        try:
+            return normalize_builtin_shortcut_identity(modifier, key)
+        except ValueError as error:
+            raise ProfileValidationError(str(error)) from error
+
     @staticmethod
     def _find_key(group: Mapping[str, object], key: str) -> str | None:
         identity = key.casefold()
@@ -337,6 +455,11 @@ class UserProfileDraft:
             (stored_key for stored_key in group if stored_key.casefold() == identity),
             None,
         )
+
+    @staticmethod
+    def _find_list_key(group: list[str], key: str) -> str | None:
+        identity = key.casefold()
+        return next((stored_key for stored_key in group if stored_key.casefold() == identity), None)
 
 
 class ShortcutEditDialog(QDialog):
@@ -425,6 +548,8 @@ class UserShortcutManagerDialog(QDialog):
         live_store: UserShortcutStore,
         candidate_tracker: _CandidateTracker,
         apply_user_profiles: Callable[[Mapping[str, object]], None],
+        builtin_shortcuts: Mapping[str, object] | None = None,
+        language: str | None = "en",
         parent: QWidget | None = None,
     ) -> None:
         super().__init__(parent)
@@ -433,6 +558,10 @@ class UserShortcutManagerDialog(QDialog):
         self._live_store = live_store
         self._candidate_tracker = candidate_tracker
         self._apply_user_profiles = apply_user_profiles
+        self._builtin_shortcuts = deepcopy(
+            dict(builtin_shortcuts) if isinstance(builtin_shortcuts, Mapping) else {}
+        )
+        self._language = language
         self._draft = UserProfileDraft(live_store.snapshot())
         self._current_app_id: str | None = None
         self._editing_blocked = live_store.load_status == LOAD_STATUS_ERROR
@@ -481,7 +610,14 @@ class UserShortcutManagerDialog(QDialog):
         profile_form.addRow(self.tr("Display Name:"), self.display_name_edit)
         right_layout.addLayout(profile_form)
 
-        self.shortcut_table = QTableWidget(0, 4, right)
+        self.tabs = QTabWidget(right)
+        right_layout.addWidget(self.tabs, 1)
+
+        custom_tab = QWidget(self.tabs)
+        custom_layout = QVBoxLayout(custom_tab)
+        self.tabs.addTab(custom_tab, self.tr("Custom Shortcuts"))
+
+        self.shortcut_table = QTableWidget(0, 4, custom_tab)
         self.shortcut_table.setHorizontalHeaderLabels(
             [
                 self.tr("Modifier"),
@@ -500,14 +636,14 @@ class UserShortcutManagerDialog(QDialog):
             QAbstractItemView.EditTrigger.NoEditTriggers
         )
         self.shortcut_table.horizontalHeader().setStretchLastSection(True)
-        right_layout.addWidget(self.shortcut_table, 1)
+        custom_layout.addWidget(self.shortcut_table, 1)
 
         actions = QHBoxLayout()
-        self.add_shortcut_button = QPushButton(self.tr("Add"), right)
-        self.edit_shortcut_button = QPushButton(self.tr("Edit"), right)
-        self.delete_shortcut_button = QPushButton(self.tr("Delete"), right)
-        self.move_up_button = QPushButton(self.tr("Move Up"), right)
-        self.move_down_button = QPushButton(self.tr("Move Down"), right)
+        self.add_shortcut_button = QPushButton(self.tr("Add"), custom_tab)
+        self.edit_shortcut_button = QPushButton(self.tr("Edit"), custom_tab)
+        self.delete_shortcut_button = QPushButton(self.tr("Delete"), custom_tab)
+        self.move_up_button = QPushButton(self.tr("Move Up"), custom_tab)
+        self.move_down_button = QPushButton(self.tr("Move Down"), custom_tab)
         for button in (
             self.add_shortcut_button,
             self.edit_shortcut_button,
@@ -516,12 +652,57 @@ class UserShortcutManagerDialog(QDialog):
             self.move_down_button,
         ):
             actions.addWidget(button)
-        right_layout.addLayout(actions)
+        custom_layout.addLayout(actions)
         self.builtin_note = QLabel(
-            self.tr("Built-in shortcuts not shown here remain available."), right
+            self.tr("Built-in shortcuts not shown here remain available."), custom_tab
         )
         self.builtin_note.setWordWrap(True)
-        right_layout.addWidget(self.builtin_note)
+        custom_layout.addWidget(self.builtin_note)
+
+        builtin_tab = QWidget(self.tabs)
+        builtin_layout = QVBoxLayout(builtin_tab)
+        self.tabs.addTab(builtin_tab, self.tr("Built-in Shortcuts"))
+        self.builtin_table = QTableWidget(0, 4, builtin_tab)
+        self.builtin_table.setHorizontalHeaderLabels(
+            [
+                self.tr("Modifier"),
+                self.tr("Key"),
+                self.tr("Description"),
+                self.tr("Status"),
+            ]
+        )
+        self.builtin_table.setSelectionBehavior(
+            QAbstractItemView.SelectionBehavior.SelectRows
+        )
+        self.builtin_table.setSelectionMode(
+            QAbstractItemView.SelectionMode.SingleSelection
+        )
+        self.builtin_table.setEditTriggers(
+            QAbstractItemView.EditTrigger.NoEditTriggers
+        )
+        self.builtin_table.horizontalHeader().setStretchLastSection(True)
+        builtin_layout.addWidget(self.builtin_table, 1)
+        builtin_actions = QHBoxLayout()
+        self.hide_restore_builtin_button = QPushButton(
+            self.tr("Hide Built-in Shortcut"),
+            builtin_tab,
+        )
+        self.restore_all_builtins_button = QPushButton(
+            self.tr("Restore All Hidden Built-in Shortcuts"),
+            builtin_tab,
+        )
+        builtin_actions.addWidget(self.hide_restore_builtin_button)
+        builtin_actions.addWidget(self.restore_all_builtins_button)
+        builtin_layout.addLayout(builtin_actions)
+        self.builtin_scope_note = QLabel(
+            self.tr(
+                "Only the app-specific built-in hint is hidden. "
+                "Global shortcuts are unaffected."
+            ),
+            builtin_tab,
+        )
+        self.builtin_scope_note.setWordWrap(True)
+        builtin_layout.addWidget(self.builtin_scope_note)
 
         splitter.addWidget(left)
         splitter.addWidget(right)
@@ -543,6 +724,15 @@ class UserShortcutManagerDialog(QDialog):
         self.delete_shortcut_button.clicked.connect(self.delete_selected_shortcut)
         self.move_up_button.clicked.connect(lambda: self.move_selected_shortcut(-1))
         self.move_down_button.clicked.connect(lambda: self.move_selected_shortcut(1))
+        self.builtin_table.itemSelectionChanged.connect(
+            self._update_builtin_action_state
+        )
+        self.hide_restore_builtin_button.clicked.connect(
+            self.toggle_selected_builtin
+        )
+        self.restore_all_builtins_button.clicked.connect(
+            self.restore_all_hidden_builtins
+        )
         self.button_box.accepted.connect(self.save_changes)
         self.button_box.rejected.connect(self.reject)
         candidate_signal = getattr(candidate_tracker, "candidate_changed", None)
@@ -578,7 +768,11 @@ class UserShortcutManagerDialog(QDialog):
         if self._current_app_id is None:
             return False
         if not self._confirm(
-            self.tr("Delete this user profile? Built-in shortcuts will not be deleted.")
+            self.tr(
+                "Deleting this custom app profile also removes its custom shortcuts, "
+                "custom display name, and hidden built-in shortcut records.\n\n"
+                "Hidden built-in shortcuts may appear again. Delete this profile?"
+            )
         ):
             return False
         deleted = self._draft.delete_profile(self._current_app_id)
@@ -649,6 +843,51 @@ class UserShortcutManagerDialog(QDialog):
         )
         self._render_shortcuts(select_identity=(selected[0], selected[1]))
         return moved
+
+    @Slot()
+    def toggle_selected_builtin(self) -> bool:
+        if self._current_app_id is None:
+            return False
+        identity = self._selected_builtin_identity()
+        if identity is None:
+            self._show_warning(
+                self.tr(
+                    "This shortcut type cannot be hidden in this version."
+                )
+            )
+            return False
+        modifier, key = identity
+        if self._draft.is_builtin_hidden(self._current_app_id, modifier, key):
+            changed = self._draft.restore_builtin_shortcut(
+                self._current_app_id,
+                modifier,
+                key,
+            )
+        else:
+            changed = self._draft.hide_builtin_shortcut(
+                self._current_app_id,
+                modifier,
+                key,
+            )
+        self._render_builtin_shortcuts(select_identity=identity)
+        return changed
+
+    @Slot()
+    def restore_all_hidden_builtins(self) -> bool:
+        if self._current_app_id is None:
+            return False
+        if not self._draft.list_hidden_builtin_shortcuts(self._current_app_id):
+            return False
+        if not self._confirm(
+            self.tr(
+                "Restore all hidden built-in shortcuts for this app?\n\n"
+                "Custom shortcuts and the display name will not be changed."
+            )
+        ):
+            return False
+        changed = self._draft.restore_all_hidden_builtins(self._current_app_id)
+        self._render_builtin_shortcuts()
+        return changed
 
     @Slot()
     def save_changes(self) -> bool:
@@ -774,6 +1013,124 @@ class UserShortcutManagerDialog(QDialog):
                 selected_row = row
         if selected_row >= 0:
             self.shortcut_table.selectRow(selected_row)
+        self._render_builtin_shortcuts()
+
+    def _render_builtin_shortcuts(
+        self,
+        select_identity: tuple[str, str] | None = None,
+    ) -> None:
+        self.builtin_table.setRowCount(0)
+        selected_row = -1
+        for row, (
+            modifier,
+            key,
+            description,
+            identity,
+        ) in enumerate(self._list_builtin_rows()):
+            hidden = False
+            overridden = False
+            if self._current_app_id is not None and identity is not None:
+                hidden = self._draft.is_builtin_hidden(
+                    self._current_app_id,
+                    identity[0],
+                    identity[1],
+                )
+                overridden = self._has_user_shortcut(identity)
+
+            if identity is None:
+                status = self.tr("Unsupported shortcut type")
+            elif hidden and overridden:
+                status = self.tr("Hidden and Overridden")
+            elif hidden:
+                status = self.tr("Hidden")
+            elif overridden:
+                status = self.tr("Overridden by Custom Shortcut")
+            else:
+                status = self.tr("Visible")
+
+            self.builtin_table.insertRow(row)
+            values = (modifier, key, description, status)
+            for column, value in enumerate(values):
+                item = QTableWidgetItem(value)
+                if column == 0:
+                    item.setData(Qt.ItemDataRole.UserRole, identity)
+                if identity is None:
+                    item.setToolTip(
+                        self.tr(
+                            "This shortcut type cannot be hidden in this version."
+                        )
+                    )
+                self.builtin_table.setItem(row, column, item)
+            if identity is not None and select_identity == identity:
+                selected_row = row
+        if selected_row >= 0:
+            self.builtin_table.selectRow(selected_row)
+        self._update_builtin_action_state()
+
+    def _list_builtin_rows(
+        self,
+    ) -> list[tuple[str, str, str, tuple[str, str] | None]]:
+        layer = self._find_builtin_layer(self._current_app_id)
+        if layer is None:
+            return []
+        rows: list[tuple[str, str, str, tuple[str, str] | None]] = []
+        for raw_modifier, group in layer.items():
+            if not isinstance(raw_modifier, str) or not isinstance(group, Mapping):
+                continue
+            for raw_key, raw_description in group.items():
+                if not isinstance(raw_key, str):
+                    continue
+                identity: tuple[str, str] | None
+                try:
+                    identity = normalize_builtin_shortcut_identity(
+                        raw_modifier,
+                        raw_key,
+                    )
+                except ValueError:
+                    identity = None
+                description = select_description_text(
+                    raw_description,
+                    self._language,
+                )
+                rows.append((raw_modifier, raw_key, description, identity))
+        return rows
+
+    def _find_builtin_layer(
+        self,
+        app_id: str | None,
+    ) -> Mapping[str, object] | None:
+        normalized_id = normalize_application_identity(app_id)
+        if normalized_id is None:
+            return None
+        for configured_id, layer in self._builtin_shortcuts.items():
+            if (
+                normalize_application_identity(configured_id) == normalized_id
+                and isinstance(layer, Mapping)
+            ):
+                return layer
+        return None
+
+    def _has_user_shortcut(self, identity: tuple[str, str]) -> bool:
+        if self._current_app_id is None:
+            return False
+        return any(
+            modifier == identity[0] and key.casefold() == identity[1].casefold()
+            for modifier, key, _description in self._draft.list_shortcuts(
+                self._current_app_id
+            )
+        )
+
+    def _selected_builtin_identity(self) -> tuple[str, str] | None:
+        row = self.builtin_table.currentRow()
+        item = self.builtin_table.item(row, 0) if row >= 0 else None
+        identity = item.data(Qt.ItemDataRole.UserRole) if item is not None else None
+        if (
+            isinstance(identity, (list, tuple))
+            and len(identity) == 2
+            and all(isinstance(value, str) for value in identity)
+        ):
+            return identity[0], identity[1]
+        return None
 
     def _selected_shortcut(self) -> tuple[str, str, str, str] | None:
         row = self.shortcut_table.currentRow()
@@ -805,7 +1162,9 @@ class UserShortcutManagerDialog(QDialog):
         self.add_current_button.setEnabled(enabled)
         self.delete_profile_button.setEnabled(enabled and has_profile)
         self.display_name_edit.setEnabled(enabled and has_profile)
+        self.tabs.setEnabled(enabled and has_profile)
         self.shortcut_table.setEnabled(enabled and has_profile)
+        self.builtin_table.setEnabled(enabled and has_profile)
         for button in (
             self.add_shortcut_button,
             self.edit_shortcut_button,
@@ -817,6 +1176,31 @@ class UserShortcutManagerDialog(QDialog):
         save_button = self.button_box.button(QDialogButtonBox.StandardButton.Save)
         if save_button is not None:
             save_button.setEnabled(enabled)
+        self._update_builtin_action_state()
+
+    @Slot()
+    def _update_builtin_action_state(self) -> None:
+        enabled = not self._editing_blocked and self._current_app_id is not None
+        identity = self._selected_builtin_identity()
+        hidden = False
+        if enabled and identity is not None and self._current_app_id is not None:
+            hidden = self._draft.is_builtin_hidden(
+                self._current_app_id,
+                identity[0],
+                identity[1],
+            )
+        self.hide_restore_builtin_button.setText(
+            self.tr("Restore Built-in Shortcut")
+            if hidden
+            else self.tr("Hide Built-in Shortcut")
+        )
+        self.hide_restore_builtin_button.setEnabled(enabled and identity is not None)
+        has_hidden = bool(
+            self._draft.list_hidden_builtin_shortcuts(self._current_app_id)
+            if enabled and self._current_app_id is not None
+            else []
+        )
+        self.restore_all_builtins_button.setEnabled(enabled and has_hidden)
 
     def _show_warning(self, message: str) -> None:
         QMessageBox.warning(self, self.tr("Custom Apps"), message)

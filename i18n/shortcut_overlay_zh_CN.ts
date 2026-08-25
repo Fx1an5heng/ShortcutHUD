@@ -459,8 +459,12 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
         <translation>英文说明不能为空。</translation>
     </message>
     <message>
-        <source>Delete this user profile? Built-in shortcuts will not be deleted.</source>
-        <translation>删除这个用户配置吗？内置快捷键不会被删除。</translation>
+        <source>Deleting this custom app profile also removes its custom shortcuts, custom display name, and hidden built-in shortcut records.
+
+Hidden built-in shortcuts may appear again. Delete this profile?</source>
+        <translation>删除此自定义软件配置将同时删除其自定义快捷键、自定义显示名称和已隐藏的应用内置快捷键记录。
+
+已隐藏的应用内置快捷键可能重新显示。确定删除吗？</translation>
     </message>
     <message>
         <source>Saving is disabled because the user configuration is invalid.</source>
@@ -489,6 +493,70 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
     <message>
         <source>The user profile data is invalid. Please review it and try again.</source>
         <translation>用户配置数据无效。请检查后重试。</translation>
+    </message>
+    <message>
+        <source>Custom Shortcuts</source>
+        <translation>自定义快捷键</translation>
+    </message>
+    <message>
+        <source>Built-in Shortcuts</source>
+        <translation>应用内置快捷键</translation>
+    </message>
+    <message>
+        <source>Description</source>
+        <translation>说明</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>状态</translation>
+    </message>
+    <message>
+        <source>Hide Built-in Shortcut</source>
+        <translation>隐藏应用内置快捷键</translation>
+    </message>
+    <message>
+        <source>Restore Built-in Shortcut</source>
+        <translation>恢复应用内置快捷键</translation>
+    </message>
+    <message>
+        <source>Restore All Hidden Built-in Shortcuts</source>
+        <translation>恢复所有已隐藏的应用内置快捷键</translation>
+    </message>
+    <message>
+        <source>Only the app-specific built-in hint is hidden. Global shortcuts are unaffected.</source>
+        <translation>仅隐藏当前软件提供的内置提示，全局快捷键不受影响。</translation>
+    </message>
+    <message>
+        <source>Visible</source>
+        <translation>显示中</translation>
+    </message>
+    <message>
+        <source>Hidden</source>
+        <translation>已隐藏</translation>
+    </message>
+    <message>
+        <source>Overridden by Custom Shortcut</source>
+        <translation>当前被自定义快捷键覆盖</translation>
+    </message>
+    <message>
+        <source>Hidden and Overridden</source>
+        <translation>已隐藏，且当前有自定义快捷键覆盖</translation>
+    </message>
+    <message>
+        <source>Unsupported shortcut type</source>
+        <translation>当前版本不支持隐藏此类快捷键</translation>
+    </message>
+    <message>
+        <source>This shortcut type cannot be hidden in this version.</source>
+        <translation>当前版本暂不支持隐藏此类多段快捷键。</translation>
+    </message>
+    <message>
+        <source>Restore all hidden built-in shortcuts for this app?
+
+Custom shortcuts and the display name will not be changed.</source>
+        <translation>确定恢复该软件所有已隐藏的应用内置快捷键吗？
+
+自定义快捷键和显示名称不会被修改。</translation>
     </message>
 </context>
 <context>
