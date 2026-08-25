@@ -553,7 +553,7 @@ class UserShortcutManagerDialog(QDialog):
         parent: QWidget | None = None,
     ) -> None:
         super().__init__(parent)
-        self.setWindowTitle(self.tr("Custom Apps"))
+        self.setWindowTitle(self.tr("Shortcut Manager"))
         self.resize(900, 560)
         self._live_store = live_store
         self._candidate_tracker = candidate_tracker
@@ -1203,7 +1203,7 @@ class UserShortcutManagerDialog(QDialog):
         self.restore_all_builtins_button.setEnabled(enabled and has_hidden)
 
     def _show_warning(self, message: str) -> None:
-        QMessageBox.warning(self, self.tr("Custom Apps"), message)
+        QMessageBox.warning(self, self.tr("Shortcut Manager"), message)
 
     def _show_profile_validation_error(
         self,
@@ -1237,7 +1237,7 @@ class UserShortcutManagerDialog(QDialog):
     def _show_save_error(self, _error: BaseException) -> None:
         QMessageBox.critical(
             self,
-            self.tr("Custom Apps"),
+            self.tr("Shortcut Manager"),
             self.tr("Save failed. The original configuration was not changed."),
         )
 
@@ -1245,7 +1245,7 @@ class UserShortcutManagerDialog(QDialog):
         return (
             QMessageBox.question(
                 self,
-                self.tr("Custom Apps"),
+                self.tr("Shortcut Manager"),
                 message,
                 QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No,
                 QMessageBox.StandardButton.No,

@@ -312,16 +312,16 @@
         <translation>选择按键文本颜色</translation>
     </message>
     <message>
-        <source>Custom Apps</source>
-        <translation>自定义软件</translation>
+        <source>Shortcuts</source>
+        <translation>快捷键</translation>
     </message>
     <message>
-        <source>Add shortcuts for the applications you use.</source>
-        <translation>为常用软件添加自己的快捷键。</translation>
+        <source>Add custom shortcuts and hide or restore built-in app shortcuts.</source>
+        <translation>添加自定义快捷键，并隐藏或恢复应用内置快捷键。</translation>
     </message>
     <message>
-        <source>Manage Custom Apps...</source>
-        <translation>管理自定义软件...</translation>
+        <source>Manage Shortcuts...</source>
+        <translation>管理快捷键...</translation>
     </message>
 </context>
 <context>
@@ -363,8 +363,8 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
 <context>
     <name>UserShortcutManagerDialog</name>
     <message>
-        <source>Custom Apps</source>
-        <translation>自定义软件</translation>
+        <source>Shortcut Manager</source>
+        <translation>快捷键管理</translation>
     </message>
     <message>
         <source>The user configuration file cannot be read. Editing and saving are disabled to protect the original file.</source>
@@ -859,11 +859,6 @@ Custom shortcuts and the display name will not be changed.</source>
         <location filename="../main.py" line="195"/>
         <source>Show/Hide Overlay</source>
         <translation>显示/隐藏 键盘</translation>
-    </message>
-    <message>
-        <location filename="../main.py" line="199"/>
-        <source>Manage Shortcuts...</source>
-        <translation>快捷键管理</translation>
     </message>
     <message>
         <location filename="../main.py" line="203"/>

@@ -9,6 +9,7 @@ from PySide6.QtWidgets import (
     QDialog,
     QDialogButtonBox,
     QMessageBox,
+    QPushButton,
 )
 
 from scripts.settings_dialog import SettingsDialog
@@ -262,11 +263,25 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             "用户配置文件无法读取。为保护原文件，当前已禁止编辑和保存。",
         )
 
-    def test_settings_has_custom_apps_entry_signal(self) -> None:
+    def test_settings_has_one_shortcut_manager_entry_signal(self) -> None:
         settings = SettingsDialog({})
         self.addCleanup(settings.close)
         requests: list[bool] = []
         settings.custom_apps_requested.connect(lambda: requests.append(True))
+
+        manager_buttons = [
+            button
+            for button in settings.findChildren(QPushButton)
+            if button.text() == "Manage Shortcuts..."
+        ]
+
+        self.assertEqual(manager_buttons, [settings.custom_apps_button])
+        self.assertEqual(settings._custom_apps_group_box.title(), "Shortcuts")
+        self.assertEqual(
+            settings._custom_apps_description.text(),
+            "Add custom shortcuts and hide or restore built-in app shortcuts.",
+        )
+        self.assertEqual(self.dialog.windowTitle(), "Shortcut Manager")
 
         settings.custom_apps_button.click()
 
@@ -363,8 +378,13 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             self.addCleanup(settings.close)
             self.addCleanup(translated_dialog.close)
 
-            self.assertEqual(settings.custom_apps_button.text(), "管理自定义软件...")
-            self.assertEqual(translated_dialog.windowTitle(), "自定义软件")
+            self.assertEqual(settings._custom_apps_group_box.title(), "快捷键")
+            self.assertEqual(
+                settings._custom_apps_description.text(),
+                "添加自定义快捷键，并隐藏或恢复应用内置快捷键。",
+            )
+            self.assertEqual(settings.custom_apps_button.text(), "管理快捷键...")
+            self.assertEqual(translated_dialog.windowTitle(), "快捷键管理")
             self.assertEqual(
                 translated_dialog.add_current_button.text(), "添加当前软件"
             )

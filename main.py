@@ -291,10 +291,6 @@ class ShortcutOverlayApplication(QApplication):
         show_hide_action.triggered.connect(self.toggle_overlay_window)
         new_menu.addAction(show_hide_action)
 
-        manage_shortcuts_action: QAction = QAction(self.tr("Manage Shortcuts..."), new_menu)
-        manage_shortcuts_action.triggered.connect(self.open_shortcut_manager_dialog)
-        new_menu.addAction(manage_shortcuts_action)
-
         settings_action: QAction = QAction(self.tr("Settings..."), new_menu)
         settings_action.triggered.connect(self.open_settings_dialog)
         new_menu.addAction(settings_action)
@@ -374,17 +370,6 @@ class ShortcutOverlayApplication(QApplication):
             get_profile_display_names(snapshot)
         )
         self.hud_controller.update_user_profiles(snapshot)
-
-    def open_shortcut_manager_dialog(self) -> None:
-        """
-        Opens the dialog for managing and editing shortcuts.
-        """
-        from scripts.shortcut_manager_dialog import ShortcutManagerDialog
-
-        dialog = ShortcutManagerDialog(self.config_mgr, parent=self.overlay_window)
-        dialog.exec() 
-        self.overlay_window.update_shortcut_display() 
-        self.hud_controller.refresh_current_state()
 
     def handle_settings_changed(self, new_settings: Dict[str, Any]) -> None:
         """

@@ -296,15 +296,17 @@ class SettingsDialog(QDialog):
     def _setup_custom_apps_group(self) -> None:
         """Adds a small entry point to the independent USER profile editor."""
 
-        self._custom_apps_group_box = QGroupBox(self.tr("Custom Apps"))
+        self._custom_apps_group_box = QGroupBox(self.tr("Shortcuts"))
         layout = QVBoxLayout(self._custom_apps_group_box)
         self._custom_apps_description = QLabel(
-            self.tr("Add shortcuts for the applications you use."),
+            self.tr(
+                "Add custom shortcuts and hide or restore built-in app shortcuts."
+            ),
             self._custom_apps_group_box,
         )
         self._custom_apps_description.setWordWrap(True)
         self.custom_apps_button = QPushButton(
-            self.tr("Manage Custom Apps..."),
+            self.tr("Manage Shortcuts..."),
             self._custom_apps_group_box,
         )
         self.custom_apps_button.clicked.connect(self.custom_apps_requested.emit)
@@ -451,7 +453,7 @@ class SettingsDialog(QDialog):
         if self._language_group_box:
             self._language_group_box.setTitle(self.tr("Language"))
         if self._custom_apps_group_box:
-            self._custom_apps_group_box.setTitle(self.tr("Custom Apps"))
+            self._custom_apps_group_box.setTitle(self.tr("Shortcuts"))
         if self._theme_form_label:
             self._theme_form_label.setText(self.tr("Theme:"))
         if self._opacity_form_label:
@@ -460,10 +462,12 @@ class SettingsDialog(QDialog):
             self._language_form_label.setText(self.tr("Interface Language:"))
         if self._custom_apps_description:
             self._custom_apps_description.setText(
-                self.tr("Add shortcuts for the applications you use.")
+                self.tr(
+                    "Add custom shortcuts and hide or restore built-in app shortcuts."
+                )
             )
         if self.custom_apps_button:
-            self.custom_apps_button.setText(self.tr("Manage Custom Apps..."))
+            self.custom_apps_button.setText(self.tr("Manage Shortcuts..."))
 
         if hasattr(self, "_custom_bg_row_label") and self._custom_bg_row_label:
             self._custom_bg_row_label.setText(self.tr("Custom BG:"))
