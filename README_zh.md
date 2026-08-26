@@ -1,45 +1,39 @@
-# 显键 (Shortcut Overlay)
+# ShortcutHUD
 
-**显键** 是一款桌面应用程序，旨在通过一个屏幕上的虚拟键盘实时高亮显示特定于当前活动应用程序的键盘快捷键。这可以帮助用户学习和记住他们最常用程序的快捷键，从而提高工作效率。
+**ShortcutHUD** 是一款轻量的 Windows 快捷键发现 HUD。按住修饰键（Ctrl、Shift、Alt、Win 或其组合），屏幕角落会出现一个小巧、不打扰的悬浮面板，显示当前前台应用的高价值快捷键以及相关的全局快捷键。松开所有修饰键后 HUD 立即消失。
 
-该悬浮窗能够智能检测 Windows 系统上当前处于前台的活动应用程序，并相应地更新显示的快捷键。
+ShortcutHUD 基于 ByronLeeeee 的 [shortcut_overlay](https://github.com/ByronLeeeee/shortcut_overlay)（MIT 协议）继续开发，并将其从完整虚拟键盘改造为紧凑的快捷键 HUD。
 
 [English Version (英文说明)](README.md)
 
 ## 功能特性
 
-*   **实时快捷键显示**: 根据活动应用程序，在虚拟键盘上显示相关的快捷键。
-*   **应用程序感知**: 自动检测前台应用程序 (特定于 Windows 系统)。
-*   **可自定义主题**: 通过内置的多种主题或创建自定义配色方案来个性化悬浮窗的外观。
-*   **可调节不透明度**: 控制悬浮窗口的透明度以适应个人偏好。
-*   **多语言支持**: 用户界面已翻译成英文和简体中文。默认快捷键也包含基础翻译。
-*   **可配置快捷键**: 快捷键定义通过一个可编辑的 `shortcuts.json` 文件管理，允许用户为任何应用程序添加或修改快捷键。
-*   **用户设置**: 主题、不透明度、语言和自定义颜色等偏好设置保存在 `settings.json` 文件中。
-*   **系统托盘集成**: 方便地在系统托盘中运行，并提供显示/隐藏悬浮窗、访问设置和退出应用程序的选项。
-*   **跨平台潜力 (核心逻辑)**: 虽然前台应用程序监控目前特定于 Windows，但核心的用户界面和键盘处理逻辑可以适配其他平台。
+*   **按住修饰键显示 HUD**: 按住 Ctrl / Shift / Alt / Win 即可发现快捷键；组合变化时同一窗口原位更新。
+*   **应用感知**: 自动识别前台应用（Windows），包括文件资源管理器、WPS 文字/PDF/演示以及桌面/任务栏等系统界面。
+*   **内置快捷键包**: 为 VS Code、Edge、Chrome、Office、Windows Terminal、资源管理器、WPS 等应用精选的快捷键配置。
+*   **全局快捷键**: Win、Alt+Tab、Ctrl+Shift+Esc 等系统级快捷键作为固定全局区显示，适用于任何应用。
+*   **自定义快捷键管理器**: 设置 → 快捷键 → 管理快捷键... 可为任意应用添加自定义快捷键（支持录制）、隐藏或恢复应用内置快捷键、设置显示名称。数据保存在 `%APPDATA%\ShortcutHUD\user_shortcuts.json`。
+*   **纯被动设计**: HUD 不抢焦点、不吞按键、不改变任何正常快捷键。
+*   **系统托盘**: 常驻托盘，提供设置、主题、透明度与语言（英文 / 简体中文）选项。
 
 ## 系统需求
 
-*   Python 3.10+
-*   PySide6 (用于 Qt GUI)
-*   `keyboard` 库 (用于全局键盘事件监听)
-*   `pywin32` (用于 Windows 特定的前台应用程序监控)
+*   Windows 10/11
+*   Python 3.10+（已测试 3.13）
+*   PySide6
+*   `keyboard`
+*   `pywin32`
+*   `comtypes`
 
 ## 安装与设置
 
-1.  **克隆仓库:**
-    ```bash
-    git clone https://github.com/byronleeeee/shortcut-overlay.git
-    cd shortcut-overlay
-    ```
+1.  **克隆本仓库**并进入目录。
 
-2.  **创建并激活虚拟环境 (推荐):**
+2.  **创建并激活虚拟环境（推荐）:**
     ```bash
     python -m venv .venv
     # Windows 系统
     .venv\Scripts\activate
-    # macOS/Linux 系统
-    source .venv/bin/activate
     ```
 
 3.  **安装依赖:**
@@ -52,57 +46,12 @@
     python main.py
     ```
 
-## 使用指南
+## 使用说明
 
-关于如何使用本应用程序的详细说明，包括如何配置设置以及自定义快捷键，请参阅我们的 **[使用指南](./docs/USAGE_GUIDE_zh.md)**。
-
-## 配置概览
-
-*   **快捷键 (`config/shortcuts.json`)**:
-    此 JSON 文件定义了快捷键。其结构如下：
-    ```json
-    {
-      "可执行文件名.EXE": {
-        "修饰键组合_或_NoModifier": { 
-          "按键": "描述 (或本地化对象: {\"en\": \"描述\", \"zh\": \"Description\"})" 
-        }
-      },
-      "DEFAULT": { /* 适用于所有程序的全局快捷键 */ }
-    }
-    ```
-    示例:
-    ```json
-    {
-      "NOTEPAD.EXE": {
-        "Ctrl": {
-          "S": {"en": "Save File", "zh": "保存文件"}
-        },
-        "NoModifier": {
-          "F1": {"en": "Help", "zh": "帮助"}
-        }
-      }
-    }
-    ```
-    可执行文件名应为 **大写** (例如 `NOTEPAD.EXE`)。修饰键可以是 "Ctrl", "Shift", "Alt", "Win", 组合如 "Ctrl+Shift", 或 "NoModifier" 用于无修饰键的直接按键。
-
-*   **设置 (`config/settings.json`)**:
-    存储用户偏好，如主题、不透明度、语言和自定义颜色。此文件主要通过应用程序的设置对话框进行管理。
-
-## 工作原理
-
-1.  **前台监控器 (Foreground Monitor)**: 定时器周期性检查活动窗口，并使用 `pywin32` 获取进程的可执行文件名。
-2.  **配置管理器 (Config Manager)**: 从 JSON 文件加载快捷键定义和用户设置。
-3.  **键盘处理器 (Keyboard Handler)**: 使用 `keyboard` 库监听全局按键按下和修饰键更改。
-4.  **悬浮窗口 (Overlay Window)**: 基于 Qt 的 GUI，显示一个虚拟键盘。
-    *   接收关于活动应用和按键事件的信号。
-    *   根据当前应用和活动的修饰键更新按键上显示的快捷键。
-    *   应用配置的视觉主题和不透明度。
-5.  **系统托盘图标 (System Tray Icon)**: 提供对应用程序功能的访问，如显示/隐藏悬浮窗、访问设置和退出。
-
-## 贡献
-
-欢迎贡献！请随意 fork 本仓库，进行更改，并提交拉取请求。你也可以为 bug 或功能请求创建 issue。
+*   在任意应用上按住修饰键即可查看其快捷键。
+*   通过托盘管理自己的快捷键：**设置... → 快捷键 → 管理快捷键...**。
+*   内置快捷键数据位于 `config/shortcuts.json`；个人配置位于 `%APPDATA%\ShortcutHUD\user_shortcuts.json`，应用本身绝不会覆盖它。
 
 ## 许可证
 
-本项目采用 MIT 许可证授权 - 详情请参阅 [LICENSE](LICENSE) 文件。
+MIT 协议 - 详见 [LICENSE](LICENSE)。基于 ByronLeeeee 的 [shortcut_overlay](https://github.com/ByronLeeeee/shortcut_overlay) 开发。图标来自 [Icons8](https://icons8.com)。

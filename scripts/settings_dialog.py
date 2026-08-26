@@ -572,11 +572,11 @@ class AboutDialog(QDialog):
         self.setObjectName("AboutDialog")
         # self.setAttribute(Qt.WA_TranslucentBackground) # Enable if DIALOG_BACKGROUND_COLOR uses alpha.
 
-        self.setWindowTitle(self.tr("About Shortcut Overlay"))
+        self.setWindowTitle(self.tr("About ShortcutHUD"))
         self._main_layout: QVBoxLayout = QVBoxLayout(self)
 
         # --- Title ---
-        self._title_label: QLabel = QLabel(self.tr("Shortcut Overlay"))
+        self._title_label: QLabel = QLabel(self.tr("ShortcutHUD"))
         title_font = self._title_label.font(); title_font.setPointSize(16); title_font.setBold(True)
         self._title_label.setFont(title_font); self._title_label.setAlignment(Qt.AlignCenter)
         self._main_layout.addWidget(self._title_label)
@@ -589,19 +589,35 @@ class AboutDialog(QDialog):
         self._main_layout.addSpacing(10)
 
         # --- Description ---
-        self._description_label: QLabel = QLabel(self.tr("An on-screen keyboard overlay to display application-specific shortcuts."))
+        self._description_label: QLabel = QLabel(
+            self.tr(
+                "Hold a modifier key to discover high-value shortcuts "
+                "for the current app."
+            )
+        )
         self._description_label.setWordWrap(True); self._description_label.setAlignment(Qt.AlignCenter)
         self._main_layout.addWidget(self._description_label)
 
         self._main_layout.addSpacing(10)
 
-        # --- Author ---
-        author_name = "ByronLeeeee"
-        github_link = f"https://github.com/{author_name}"
-        author_display_text = f"{self.tr('Author:')} {author_name}"
-        self._author_label: QLabel = QLabel(f'<a href="{github_link}">{author_display_text}</a>')
-        self._author_label.setOpenExternalLinks(True); self._author_label.setAlignment(Qt.AlignCenter)
-        self._main_layout.addWidget(self._author_label)
+        # --- Developer ---
+        developer_name = "Fx1an5heng"
+        developer_link = f"https://github.com/{developer_name}"
+        developer_display_text = f"{self.tr('Developed by:')} {developer_name}"
+        self._developer_label: QLabel = QLabel(
+            f'<a href="{developer_link}">{developer_display_text}</a>'
+        )
+        self._developer_label.setOpenExternalLinks(True); self._developer_label.setAlignment(Qt.AlignCenter)
+        self._main_layout.addWidget(self._developer_label)
+
+        # --- Upstream attribution ---
+        upstream_link = "https://github.com/ByronLeeeee/shortcut_overlay"
+        upstream_text = self.tr("Based on shortcut_overlay by ByronLeeeee")
+        self._upstream_label: QLabel = QLabel(
+            f'<a href="{upstream_link}">{upstream_text}</a>'
+        )
+        self._upstream_label.setOpenExternalLinks(True); self._upstream_label.setAlignment(Qt.AlignCenter)
+        self._main_layout.addWidget(self._upstream_label)
 
         # --- Icon Credit ---
         icons8_link = "https://icons8.com"
@@ -652,15 +668,20 @@ class AboutDialog(QDialog):
 
     def retranslate_ui(self) -> None:
         """Retranslates the UI text elements of this dialog when the application language changes."""
-        self.setWindowTitle(self.tr("About Shortcut Overlay"))
-        if hasattr(self, '_title_label') and self._title_label: self._title_label.setText(self.tr("Shortcut Overlay"))
+        self.setWindowTitle(self.tr("About ShortcutHUD"))
+        if hasattr(self, '_title_label') and self._title_label: self._title_label.setText(self.tr("ShortcutHUD"))
         if hasattr(self, '_version_label') and self._version_label: self._version_label.setText(f"{self.tr('Version:')} {__version__}")
-        if hasattr(self, '_description_label') and self._description_label: self._description_label.setText(self.tr("An on-screen keyboard overlay to display application-specific shortcuts."))
-        
-        if hasattr(self, '_author_label') and self._author_label:
-            author_name = "ByronLeeeee"; github_link = f"https://github.com/{author_name}"
-            author_display_text = f"{self.tr('Author:')} {author_name}"
-            self._author_label.setText(f'<a href="{github_link}">{author_display_text}</a>')
+        if hasattr(self, '_description_label') and self._description_label: self._description_label.setText(self.tr("Hold a modifier key to discover high-value shortcuts for the current app."))
+
+        if hasattr(self, '_developer_label') and self._developer_label:
+            developer_name = "Fx1an5heng"; developer_link = f"https://github.com/{developer_name}"
+            developer_display_text = f"{self.tr('Developed by:')} {developer_name}"
+            self._developer_label.setText(f'<a href="{developer_link}">{developer_display_text}</a>')
+
+        if hasattr(self, '_upstream_label') and self._upstream_label:
+            upstream_link = "https://github.com/ByronLeeeee/shortcut_overlay"
+            upstream_text = self.tr("Based on shortcut_overlay by ByronLeeeee")
+            self._upstream_label.setText(f'<a href="{upstream_link}">{upstream_text}</a>')
         
         # Retranslate icon credit label
         if hasattr(self, '_icon_credit_label') and self._icon_credit_label:

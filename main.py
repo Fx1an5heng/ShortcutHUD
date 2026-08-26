@@ -95,7 +95,7 @@ class ShortcutOverlayApplication(QApplication):
             self.setWindowIcon(app_icon)
         self.setQuitOnLastWindowClosed(False)
 
-        print(f"Starting Shortcut Overlay version {__version__}")
+        print(f"Starting ShortcutHUD version {__version__}")
 
         # Initialize configuration paths and manager.
         config_dir = os.path.join(APP_ROOT_DIR, "config")

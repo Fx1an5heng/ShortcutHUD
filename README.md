@@ -1,45 +1,39 @@
-# Shortcut Overlay
+# ShortcutHUD
 
-**Shortcut Overlay** is a desktop application designed to display an on-screen keyboard that highlights application-specific keyboard shortcuts in real-time. This helps users learn and remember shortcuts for their most-used programs, boosting productivity.
+**ShortcutHUD** is a lightweight Windows shortcut-discovery HUD. Hold a modifier key (Ctrl, Shift, Alt, Win, or a combination) and a small, non-intrusive panel shows the high-value shortcuts for the current foreground application, together with relevant global shortcuts. Release all modifiers and the HUD disappears.
 
-The overlay intelligently detects the currently active foreground application on Windows and updates the displayed shortcuts accordingly.
+ShortcutHUD is based on [shortcut_overlay](https://github.com/ByronLeeeee/shortcut_overlay) by ByronLeeeee (MIT License) and continues it as a compact HUD instead of a full virtual keyboard.
 
 [中文说明 (Chinese Version)](README_zh.md)
 
 ## Features
 
-*   **Real-time Shortcut Display**: Shows relevant shortcuts on a virtual keyboard based on the active application.
-*   **Application-Aware**: Automatically detects the foreground application (Windows-specific).
-*   **Customizable Themes**: Personalize the look of the overlay with various built-in themes or create your own custom color scheme.
-*   **Adjustable Opacity**: Control the transparency of the overlay window to suit your preference.
-*   **Multi-language Support**: UI translated into English and Simplified Chinese. Default shortcuts also include basic translations.
-*   **Configurable Shortcuts**: Shortcut definitions are managed via an editable `shortcuts.json` file, allowing users to add or modify shortcuts for any application.
-*   **User Settings**: Preferences for theme, opacity, language, and custom colors are saved in `settings.json`.
-*   **System Tray Integration**: Runs conveniently in the system tray with options to show/hide the overlay, access settings, and exit.
-*   **Cross-Platform Potential (Core Logic)**: While foreground app monitoring is currently Windows-specific, the core UI and keyboard handling can be adapted for other platforms.
+*   **Modifier-hold HUD**: hold Ctrl / Shift / Alt / Win to discover shortcuts; the same window updates in place as the combination changes.
+*   **Application-aware**: detects the foreground application (Windows), including File Explorer, WPS Writer/PDF/Presentation, and shell surfaces.
+*   **Built-in shortcut packs**: curated profiles for VS Code, Edge, Chrome, Office, Windows Terminal, Explorer, WPS, and more.
+*   **Global shortcuts**: system-level shortcuts (Win, Alt+Tab, Ctrl+Shift+Esc) shown as a pinned global section for any app.
+*   **Custom shortcut manager**: Settings → Shortcuts → Manage Shortcuts... lets you add per-app custom shortcuts with a recorder, hide or restore built-in app shortcuts, and set per-app display names. Data is stored in `%APPDATA%\ShortcutHUD\user_shortcuts.json`.
+*   **Passive by design**: the HUD never takes focus, never swallows input, and never changes normal shortcuts.
+*   **System tray**: runs quietly in the tray with settings, theme, opacity, and language options (English / 简体中文).
 
 ## Prerequisites
 
-*   Python 3.10+
-*   PySide6 (for the Qt GUI)
-*   `keyboard` library (for global keyboard event listening)
-*   `pywin32` (for Windows-specific foreground application monitoring)
+*   Windows 10/11
+*   Python 3.10+ (3.13 tested)
+*   PySide6
+*   `keyboard`
+*   `pywin32`
+*   `comtypes`
 
 ## Installation & Setup
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/byronleeeee/shortcut-overlay.git
-    cd shortcut-overlay
-    ```
+1.  **Clone this repository** and enter its directory.
 
 2.  **Create and activate a virtual environment (recommended):**
     ```bash
     python -m venv .venv
     # On Windows
     .venv\Scripts\activate
-    # On macOS/Linux
-    source .venv/bin/activate
     ```
 
 3.  **Install dependencies:**
@@ -49,60 +43,15 @@ The overlay intelligently detects the currently active foreground application on
 
 4.  **Run the application:**
     ```bash
-    python main.py 
+    python main.py
     ```
 
-## Usage Guide
+## Usage
 
-For detailed instructions on how to use the application, including how to configure settings and customize shortcuts, please refer to our **[Usage Guide](./docs/USAGE_GUIDE.md)**.
-
-## Configuration Overview
-
-*   **Shortcuts (`config/shortcuts.json`)**:
-    This JSON file defines the shortcuts. The structure is:
-    ```json
-    {
-      "EXECUTABLE_NAME.EXE": {
-        "ModifierKeys_OR_NoModifier": { 
-          "Key": "Description (or localized object: {\"en\": \"Desc\", \"zh\": \"描述\"})" 
-        }
-      },
-      "DEFAULT": { /* Global shortcuts applicable to all apps */ }
-    }
-    ```
-    Example:
-    ```json
-    {
-      "NOTEPAD.EXE": {
-        "Ctrl": {
-          "S": {"en": "Save File", "zh": "保存文件"}
-        },
-        "NoModifier": {
-          "F1": {"en": "Help", "zh": "帮助"}
-        }
-      }
-    }
-    ```
-    Executable names should be in **UPPERCASE** (e.g., `NOTEPAD.EXE`). Modifiers can be "Ctrl", "Shift", "Alt", "Win", combinations like "Ctrl+Shift", or "NoModifier" for direct keys.
-
-*   **Settings (`config/settings.json`)**:
-    Stores user preferences like theme, opacity, language, and custom colors. This file is primarily managed by the application's settings dialog.
-
-## How it Works
-
-1.  **Foreground Monitor**: A timer periodically checks the active window and uses `pywin32` to get the process executable name.
-2.  **Config Manager**: Loads shortcut definitions and user settings from JSON files.
-3.  **Keyboard Handler**: Uses the `keyboard` library to listen for global key presses and modifier changes.
-4.  **Overlay Window**: A Qt-based GUI that displays a virtual keyboard.
-    *   It receives signals about the active app and key events.
-    *   It updates the displayed shortcuts on the keys based on the current app and active modifiers.
-    *   It applies visual themes and opacity as configured.
-5.  **System Tray Icon**: Provides access to application functions like showing/hiding the overlay, accessing settings, and exiting.
-
-## Contributing
-
-Contributions are welcome! Please feel free to fork the repository, make changes, and submit a pull request. You can also open issues for bugs or feature requests.
+*   Hold a modifier key over any application to see its shortcuts.
+*   Manage your own shortcuts via the tray: **Settings... → Shortcuts → Manage Shortcuts...**.
+*   Built-in shortcut data lives in `config/shortcuts.json`; your personal profiles live in `%APPDATA%\ShortcutHUD\user_shortcuts.json` and are never overwritten by the application itself.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE). Based on [shortcut_overlay](https://github.com/ByronLeeeee/shortcut_overlay) by ByronLeeeee. Icons by [Icons8](https://icons8.com).
