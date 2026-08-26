@@ -3,7 +3,8 @@ from tempfile import TemporaryDirectory
 import unittest
 from unittest.mock import patch
 
-from PySide6.QtCore import QObject, QTranslator, Signal
+from PySide6.QtCore import QEvent, QObject, QTranslator, Qt, Signal
+from PySide6.QtGui import QKeyEvent
 from PySide6.QtWidgets import (
     QApplication,
     QDialog,
@@ -19,6 +20,7 @@ from scripts.user_shortcut_manager_dialog import (
     ShortcutEditDialog,
     UserShortcutManagerDialog,
 )
+from scripts.shortcut_recorder import RecordingState
 from scripts.user_shortcut_store import LOAD_STATUS_ERROR, UserShortcutStore
 
 
@@ -176,6 +178,16 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
         manager.close()
         return message
 
+    @staticmethod
+    def _key_event(
+        key: Qt.Key,
+        modifiers: Qt.KeyboardModifier = Qt.KeyboardModifier.NoModifier,
+        *,
+        event_type: QEvent.Type = QEvent.Type.KeyPress,
+        auto_repeat: bool = False,
+    ) -> QKeyEvent:
+        return QKeyEvent(event_type, key, modifiers, "", auto_repeat, 1)
+
     def _corrupt_configuration_label_text(self) -> str:
         corrupt_path = Path(self.temporary_directory.name) / "corrupt-i18n.json"
         corrupt_path.write_bytes(b"{broken")
@@ -194,7 +206,8 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
     def test_phase5b_messages_are_english_without_app_translator(self) -> None:
         self.assertEqual(
             self._capture_shortcut_validation_message(key="F99"),
-            "Enter a valid keyboard key, such as P, F5, Enter, or Left.",
+            "Enter a valid keyboard key. For Chinese full-width punctuation, "
+            "use the corresponding half-width keyboard symbol.",
         )
         self.assertEqual(
             self._capture_shortcut_validation_message(
@@ -232,7 +245,7 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
 
         self.assertEqual(
             self._capture_shortcut_validation_message(key="F99"),
-            "请输入有效的键盘按键，例如 P、F5、Enter 或 Left。",
+            "请输入有效的键盘按键。中文全角符号请使用对应的半角键盘符号。",
         )
         self.assertEqual(
             self._capture_shortcut_validation_message(
@@ -350,6 +363,103 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             ("Ctrl+Shift", "F13", "宏键", "Macro key"),
         )
 
+    def test_shortcut_editor_records_into_fields_only_after_a_complete_candidate(self) -> None:
+        editor = ShortcutEditDialog(
+            modifier="Alt",
+            key="F13",
+            zh="说明",
+            en="Description",
+        )
+        self.addCleanup(editor.close)
+        before = editor.values()
+
+        self.assertTrue(editor.start_recording())
+        self.assertEqual(editor.recording_state, RecordingState.RECORDING)
+        editor.eventFilter(
+            editor,
+            self._key_event(
+                Qt.Key.Key_P,
+                Qt.KeyboardModifier.ControlModifier,
+            ),
+        )
+        self.assertEqual(editor.values(), ("Ctrl", "P", "说明", "Description"))
+        self.assertEqual(editor.recording_state, RecordingState.IDLE)
+        self.assertEqual(editor._recording_targets, [])
+        self.assertNotEqual(before, editor.values())
+
+    def test_shortcut_editor_cancel_and_focus_loss_preserve_existing_fields(self) -> None:
+        editor = ShortcutEditDialog(
+            modifier="Ctrl",
+            key="P",
+            zh="说明",
+            en="Description",
+        )
+        self.addCleanup(editor.close)
+        before = editor.values()
+
+        editor.start_recording()
+        editor.eventFilter(
+            editor,
+            self._key_event(
+                Qt.Key.Key_F5,
+                Qt.KeyboardModifier.NoModifier,
+            ),
+        )
+        self.assertEqual(editor.values(), before)
+        self.assertEqual(editor.recording_state, RecordingState.RECORDING)
+
+        self.assertTrue(editor.cancel_recording())
+        self.assertEqual(editor.values(), before)
+        self.assertEqual(editor.recording_state, RecordingState.IDLE)
+        self.assertEqual(editor._recording_targets, [])
+
+        editor.start_recording()
+        with patch(
+            "scripts.user_shortcut_manager_dialog.QApplication.focusWidget",
+            return_value=None,
+        ):
+            editor._cancel_if_focus_lost()
+        self.assertEqual(editor.values(), before)
+        self.assertEqual(editor.recording_state, RecordingState.IDLE)
+        self.assertEqual(editor._recording_targets, [])
+
+    def test_shortcut_editor_unsupported_candidate_does_not_overwrite_fields(self) -> None:
+        editor = ShortcutEditDialog(
+            modifier="Alt",
+            key="Enter",
+            zh="说明",
+            en="Description",
+        )
+        self.addCleanup(editor.close)
+        before = editor.values()
+        editor.start_recording()
+        editor.eventFilter(
+            editor,
+            self._key_event(
+                Qt.Key.Key_P,
+                Qt.KeyboardModifier.ControlModifier
+                | Qt.KeyboardModifier.AltModifier,
+            ),
+        )
+        self.assertEqual(editor.values(), before)
+        self.assertEqual(editor.recording_state, RecordingState.RECORDING)
+        editor.cancel_recording()
+
+    def test_shortcut_editor_dialog_reject_cleans_recording_filters(self) -> None:
+        editor = ShortcutEditDialog(key="P", zh="说明", en="Description")
+        self.addCleanup(editor.close)
+        editor.start_recording()
+        editor.reject()
+        self.assertEqual(editor.recording_state, RecordingState.IDLE)
+        self.assertEqual(editor._recording_targets, [])
+
+        editor = ShortcutEditDialog(key="P", zh="说明", en="Description")
+        self.addCleanup(editor.close)
+        editor.start_recording()
+        editor.accept()
+        self.assertEqual(editor.recording_state, RecordingState.IDLE)
+        self.assertEqual(editor._recording_targets, [])
+
     def test_compiled_chinese_translation_covers_settings_and_manager(self) -> None:
         translator = QTranslator()
         translation_path = (
@@ -407,6 +517,12 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
                 translated_dialog.builtin_scope_note.text(),
                 "仅隐藏当前软件提供的内置提示，全局快捷键不受影响。",
             )
+            editor = ShortcutEditDialog()
+            self.addCleanup(editor.close)
+            self.assertEqual(editor.record_button.text(), "录制快捷键")
+            editor.start_recording()
+            self.assertEqual(editor.record_button.text(), "取消录制")
+            editor.cancel_recording()
         finally:
             self.qt_application.removeTranslator(translator)
 

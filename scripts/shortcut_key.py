@@ -79,6 +79,20 @@ _SYMBOL_KEYS: Final[frozenset[str]] = frozenset(
     "`-=[]\\;',./~_+{}|:\"<>?!@#$%^&*()"
 )
 
+# Unicode full-width ASCII punctuation has an exact code-point correspondence
+# with the existing keyboard-symbol inventory.  Keep this deliberately scoped
+# to punctuation already accepted by ShortcutHUD; full-width letters, digits,
+# spaces, currency signs, and ambiguous CJK punctuation remain invalid.
+_FULLWIDTH_SYMBOL_ALIASES: Final[dict[str, str]] = {
+    **{
+        chr(ord(symbol) + 0xFEE0): symbol
+        for symbol in _SYMBOL_KEYS
+        if 0x21 <= ord(symbol) <= 0x7E
+    },
+    # Chinese IMEs commonly emit the ideographic full stop for the period key.
+    "。": ".",
+}
+
 
 def normalize_shortcut_key(key: object) -> str:
     """Return one canonical terminal key for the Phase 5B USER schema.
@@ -92,6 +106,7 @@ def normalize_shortcut_key(key: object) -> str:
         raise InvalidShortcutKeyError("shortcut key must not be empty")
 
     value = key.strip()
+    value = _FULLWIDTH_SYMBOL_ALIASES.get(value, value)
     if _looks_like_multi_step_shortcut(value):
         raise UnsupportedShortcutSequenceError(
             "multi-step/chord shortcuts are not supported by this schema"

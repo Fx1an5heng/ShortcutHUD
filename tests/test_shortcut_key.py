@@ -42,6 +42,52 @@ class ShortcutKeyNormalizationTests(unittest.TestCase):
             with self.subTest(raw_key=raw_key):
                 self.assertEqual(normalize_shortcut_key(raw_key), canonical_key)
 
+    def test_full_width_punctuation_aliases_normalize_to_ascii_symbols(self) -> None:
+        expected = {
+            "？": "?",
+            "！": "!",
+            "，": ",",
+            "．": ".",
+            "。": ".",
+            "；": ";",
+            "：": ":",
+            "（": "(",
+            "）": ")",
+            "＂": '"',
+            "＃": "#",
+            "＄": "$",
+            "％": "%",
+            "＆": "&",
+            "＇": "'",
+            "＊": "*",
+            "＋": "+",
+            "－": "-",
+            "／": "/",
+            "＜": "<",
+            "＝": "=",
+            "＞": ">",
+            "＠": "@",
+            "［": "[",
+            "＼": "\\",
+            "］": "]",
+            "＾": "^",
+            "＿": "_",
+            "｀": "`",
+            "｛": "{",
+            "｜": "|",
+            "｝": "}",
+            "～": "~",
+        }
+        for raw_key, canonical_key in expected.items():
+            with self.subTest(raw_key=raw_key):
+                self.assertEqual(normalize_shortcut_key(raw_key), canonical_key)
+
+    def test_full_width_non_punctuation_is_not_implicitly_normalized(self) -> None:
+        for key in ("Ａ", "１", "￥", "、", "《", "》", "「", "」"):
+            with self.subTest(key=key):
+                with self.assertRaises(InvalidShortcutKeyError):
+                    normalize_shortcut_key(key)
+
     def test_existing_builtin_single_key_inventory_remains_supported(self) -> None:
         shortcut_path = (
             Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"

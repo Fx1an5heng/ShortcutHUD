@@ -7,10 +7,11 @@ from copy import deepcopy
 from itertools import combinations
 from typing import Protocol
 
-from PySide6.QtCore import Qt, Slot
+from PySide6.QtCore import QEvent, QTimer, Qt, Slot
 from PySide6.QtGui import QCloseEvent
 from PySide6.QtWidgets import (
     QAbstractItemView,
+    QApplication,
     QComboBox,
     QDialog,
     QDialogButtonBox,
@@ -44,6 +45,11 @@ from .shortcut_resolver import (
     normalize_application_identity,
 )
 from .shortcut_description import select_description_text
+from .shortcut_recorder import (
+    RecordingRejection,
+    RecordingState,
+    ShortcutRecorder,
+)
 from .user_shortcut_store import LOAD_STATUS_ERROR, UserShortcutStore
 
 
@@ -475,7 +481,10 @@ class ShortcutEditDialog(QDialog):
         en: str = "",
     ) -> None:
         super().__init__(parent)
+        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self.setWindowTitle(self.tr("Shortcut"))
+        self._recorder = ShortcutRecorder()
+        self._recording_targets: list[QWidget] = []
         layout = QVBoxLayout(self)
         form = QFormLayout()
         self.modifier_combo = QComboBox(self)
@@ -490,6 +499,15 @@ class ShortcutEditDialog(QDialog):
         form.addRow(self.tr("Chinese:"), self.zh_edit)
         form.addRow(self.tr("English:"), self.en_edit)
         layout.addLayout(form)
+
+        self.record_button = QPushButton(self.tr("Record Shortcut"), self)
+        self.record_button.clicked.connect(self._toggle_recording)
+        layout.addWidget(self.record_button)
+        self.recording_hint_label = QLabel(self)
+        self.recording_hint_label.setWordWrap(True)
+        layout.addWidget(self.recording_hint_label)
+        self._set_recording_hint()
+
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok
             | QDialogButtonBox.StandardButton.Cancel,
@@ -498,6 +516,153 @@ class ShortcutEditDialog(QDialog):
         buttons.accepted.connect(self._validate_and_accept)
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
+
+    @property
+    def recording_state(self) -> RecordingState:
+        """Expose the local recorder state for UI tests and diagnostics."""
+
+        return self._recorder.state
+
+    def _set_recording_hint(self, message: str | None = None) -> None:
+        self.recording_hint_label.setText(
+            message
+            if message is not None
+            else self.tr(
+                "Press a shortcut.\n"
+                "This version automatically records single-step shortcuts "
+                "with Ctrl, Alt, or Shift.\n"
+                "Win, system-reserved, and multi-step shortcuts must be "
+                "entered manually."
+            )
+        )
+
+    @Slot()
+    def _toggle_recording(self) -> None:
+        if self._recorder.state is RecordingState.RECORDING:
+            self.cancel_recording()
+        else:
+            self.start_recording()
+
+    @Slot()
+    def start_recording(self) -> bool:
+        if not self._recorder.start():
+            return False
+        self._install_recording_filters()
+        self.record_button.setText(self.tr("Cancel Recording"))
+        self._set_recording_hint(self.tr("Recording...\nPress a shortcut."))
+        self.setFocus(Qt.FocusReason.OtherFocusReason)
+        return True
+
+    @Slot()
+    def cancel_recording(self) -> bool:
+        if self._recorder.state is not RecordingState.RECORDING:
+            return False
+        self._stop_recording()
+        return True
+
+    def _install_recording_filters(self) -> None:
+        self._remove_recording_filters()
+        targets = [self, *self.findChildren(QWidget)]
+        for widget in targets:
+            widget.installEventFilter(self)
+        self._recording_targets = targets
+
+    def _remove_recording_filters(self) -> None:
+        for widget in self._recording_targets:
+            widget.removeEventFilter(self)
+        self._recording_targets.clear()
+
+    def _stop_recording(self, hint: str | None = None) -> None:
+        self._remove_recording_filters()
+        self._recorder.cancel()
+        self.record_button.setText(self.tr("Record Shortcut"))
+        self._set_recording_hint(hint)
+
+    def _cancel_if_focus_lost(self) -> None:
+        if self._recorder.state is not RecordingState.RECORDING:
+            return
+        focus_widget = QApplication.focusWidget()
+        if focus_widget is None:
+            self._stop_recording(
+                self.tr("Recording cancelled because the dialog lost focus.")
+            )
+            return
+        inside_dialog = focus_widget is self or self.isAncestorOf(focus_widget)
+        if not inside_dialog or (self.isVisible() and not self.isActiveWindow()):
+            self._stop_recording(
+                self.tr("Recording cancelled because the dialog lost focus.")
+            )
+
+    def _show_recording_rejection(self, rejection: RecordingRejection) -> None:
+        messages = {
+            RecordingRejection.NO_MODIFIER: self.tr(
+                "A modifier key is required in this version."
+            ),
+            RecordingRejection.WIN: self.tr(
+                "Win shortcuts are not recorded automatically yet. "
+                "Please enter them manually."
+            ),
+            RecordingRejection.ALTGR: self.tr(
+                "This shortcut cannot be recorded safely. Please enter it "
+                "manually."
+            ),
+            RecordingRejection.CTRL_ALT_PRINTABLE: self.tr(
+                "This Ctrl+Alt printable shortcut may be AltGr. Please enter "
+                "it manually."
+            ),
+            RecordingRejection.UNSUPPORTED_KEY: self.tr(
+                "This shortcut cannot be recorded safely. Please enter it "
+                "manually."
+            ),
+        }
+        self._set_recording_hint(messages[rejection])
+
+    def _apply_recorded_shortcut(self, modifier: str, key: str) -> None:
+        self._stop_recording()
+        self.modifier_combo.blockSignals(True)
+        self.key_edit.blockSignals(True)
+        try:
+            index = self.modifier_combo.findText(modifier)
+            if index >= 0:
+                self.modifier_combo.setCurrentIndex(index)
+            self.key_edit.setText(key)
+        finally:
+            self.key_edit.blockSignals(False)
+            self.modifier_combo.blockSignals(False)
+
+    def eventFilter(self, watched: object, event: QEvent) -> bool:
+        if watched not in self._recording_targets:
+            return super().eventFilter(watched, event)
+        if event.type() in (QEvent.Type.FocusOut, QEvent.Type.WindowDeactivate):
+            QTimer.singleShot(0, self._cancel_if_focus_lost)
+            return False
+        if self._recorder.state is not RecordingState.RECORDING:
+            return False
+        if event.type() == QEvent.Type.ShortcutOverride:
+            event.accept()
+            return True
+        if event.type() not in (QEvent.Type.KeyPress, QEvent.Type.KeyRelease):
+            return False
+
+        result = self._recorder.handle_event(event)
+        if result is not None:
+            if result.shortcut is not None:
+                self._apply_recorded_shortcut(*result.shortcut)
+            elif result.rejection is not None:
+                self._show_recording_rejection(result.rejection)
+        return True
+
+    def reject(self) -> None:
+        self._stop_recording()
+        super().reject()
+
+    def accept(self) -> None:
+        self._stop_recording()
+        super().accept()
+
+    def closeEvent(self, event: QCloseEvent) -> None:
+        self._stop_recording()
+        super().closeEvent(event)
 
     def values(self) -> tuple[str, str, str, str]:
         return (
@@ -535,7 +700,8 @@ class ShortcutEditDialog(QDialog):
             )
         else:
             message = self.tr(
-                "Enter a valid keyboard key, such as P, F5, Enter, or Left."
+                "Enter a valid keyboard key. For Chinese full-width punctuation, "
+                "use the corresponding half-width keyboard symbol."
             )
         QMessageBox.warning(self, self.tr("Shortcut"), message)
 

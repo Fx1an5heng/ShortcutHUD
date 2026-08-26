@@ -52,6 +52,20 @@ class UserProfileDraftTests(unittest.TestCase):
 
         self.assertNotIn("display_name", self.draft.get_profile("CODE.EXE"))
 
+    def test_fullwidth_and_halfwidth_symbols_are_the_same_shortcut(self) -> None:
+        self.draft.add_shortcut("CODE.EXE", "Ctrl", "?", "问号", "Question")
+
+        with self.assertRaises(ProfileValidationError):
+            self.draft.add_shortcut("CODE.EXE", "Ctrl", "？", "全角问号", "Fullwidth")
+
+        shortcuts = self.draft.list_shortcuts("CODE.EXE")
+        question_entries = [
+            (modifier, key)
+            for modifier, key, _description in shortcuts
+            if modifier == "Ctrl" and key.casefold() == "?"
+        ]
+        self.assertEqual(question_entries, [("Ctrl", "?")])
+
     def test_add_edit_and_delete_shortcut(self) -> None:
         self.draft.add_shortcut("CODE.EXE", "Shift+Ctrl", "J", "新建", "New")
         self.draft.edit_shortcut(
@@ -71,6 +85,19 @@ class UserProfileDraftTests(unittest.TestCase):
         with self.assertRaises(ProfileValidationError):
             self.draft.add_shortcut(
                 "CODE.EXE", "ctrl", "p", "重复", "Duplicate"
+            )
+
+    def test_full_width_symbol_alias_shares_duplicate_identity_with_ascii(self) -> None:
+        self.draft.add_shortcut(
+            "CODE.EXE", "Ctrl", "？", "问号", "Question mark"
+        )
+        self.assertIn(
+            ("Ctrl", "?", {"en": "Question mark", "zh": "问号"}),
+            self.draft.list_shortcuts("CODE.EXE"),
+        )
+        with self.assertRaises(ProfileValidationError):
+            self.draft.add_shortcut(
+                "CODE.EXE", "Ctrl", "?", "重复", "Duplicate"
             )
 
     def test_edit_to_existing_key_is_rejected_without_mutating_draft(self) -> None:

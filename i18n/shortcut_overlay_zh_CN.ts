@@ -4,36 +4,44 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="537"/>
-        <location filename="../scripts/settings_dialog.py" line="612"/>
-        <source>About Shortcut Overlay</source>
-        <translation>关于 显键</translation>
+        <location filename="../scripts/settings_dialog.py" line="575"/>
+        <location filename="../scripts/settings_dialog.py" line="655"/>
+        <source>About ShortcutHUD</source>
+        <translation>关于 ShortcutHUD</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="541"/>
-        <location filename="../scripts/settings_dialog.py" line="614"/>
-        <source>Shortcut Overlay</source>
-        <translation>显键</translation>
+        <location filename="../scripts/settings_dialog.py" line="579"/>
+        <location filename="../scripts/settings_dialog.py" line="656"/>
+        <source>ShortcutHUD</source>
+        <translation>ShortcutHUD</translation>
     </message>
     <message>
-        <source>Author:</source>
-        <translation type="vanished">作者:</translation>
+        <source>Developed by:</source>
+        <translation>开发者：</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="555"/>
-        <location filename="../scripts/settings_dialog.py" line="622"/>
-        <source>An on-screen keyboard overlay to display application-specific shortcuts.</source>
-        <translation>快捷显示应用快捷键</translation>
+        <location filename="../scripts/settings_dialog.py" line="585"/>
+        <location filename="../scripts/settings_dialog.py" line="657"/>
+        <source>Hold a modifier key to discover high-value shortcuts for the current app.</source>
+        <translation>按住修饰键，快速发现当前应用的高价值快捷键。</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="570"/>
-        <location filename="../scripts/settings_dialog.py" line="631"/>
+        <source>Based on shortcut_overlay by ByronLeeeee</source>
+        <translation>基于 ByronLeeeee 的 shortcut_overlay 开发</translation>
+    </message>
+    <message>
+        <location filename="../scripts/settings_dialog.py" line="604"/>
+        <location filename="../scripts/settings_dialog.py" line="664"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
     <message>
         <source>Version:</source>
-        <translation type="vanished">版本：</translation>
+        <translation>版本：</translation>
+    </message>
+    <message>
+        <source>Icons by:</source>
+        <translation>图标：</translation>
     </message>
 </context>
 <context>
@@ -347,6 +355,48 @@
         <translation>英文说明：</translation>
     </message>
     <message>
+        <source>Record Shortcut</source>
+        <translation>录制快捷键</translation>
+    </message>
+    <message>
+        <source>Cancel Recording</source>
+        <translation>取消录制</translation>
+    </message>
+    <message>
+        <source>Press a shortcut.
+This version automatically records single-step shortcuts with Ctrl, Alt, or Shift.
+Win, system-reserved, and multi-step shortcuts must be entered manually.</source>
+        <translation>请按下快捷键。
+当前版本自动录制包含 Ctrl、Alt 或 Shift 的单步快捷键。
+Win、系统保留组合和多段快捷键请手动输入。</translation>
+    </message>
+    <message>
+        <source>Recording...
+Press a shortcut.</source>
+        <translation>录制中...
+请按下快捷键。</translation>
+    </message>
+    <message>
+        <source>A modifier key is required in this version.</source>
+        <translation>当前版本至少需要一个修饰键。</translation>
+    </message>
+    <message>
+        <source>Win shortcuts are not recorded automatically yet. Please enter them manually.</source>
+        <translation>Win 组合暂不支持自动录制，请手动输入。</translation>
+    </message>
+    <message>
+        <source>This shortcut cannot be recorded safely. Please enter it manually.</source>
+        <translation>此快捷键无法安全录制，请手动输入。</translation>
+    </message>
+    <message>
+        <source>This Ctrl+Alt printable shortcut may be AltGr. Please enter it manually.</source>
+        <translation>此 Ctrl+Alt 可打印快捷键可能是 AltGr，请手动输入。</translation>
+    </message>
+    <message>
+        <source>Recording cancelled because the dialog lost focus.</source>
+        <translation>录制已取消，因为对话框失去焦点。</translation>
+    </message>
+    <message>
         <source>Only single-step shortcuts are supported in this version.
 Multi-step/chord shortcuts will be supported in a future version.</source>
         <translation>当前版本仅支持单步快捷键（修饰键 + 一个按键）。多段快捷键将在后续版本支持。</translation>
@@ -356,8 +406,8 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
         <translation>{key} 是修饰键。请在‘修饰键’中选择 {modifier}，并在‘按键’中填写实际按键。</translation>
     </message>
     <message>
-        <source>Enter a valid keyboard key, such as P, F5, Enter, or Left.</source>
-        <translation>请输入有效的键盘按键，例如 P、F5、Enter 或 Left。</translation>
+        <source>Enter a valid keyboard key. For Chinese full-width punctuation, use the corresponding half-width keyboard symbol.</source>
+        <translation>请输入有效的键盘按键。中文全角符号请使用对应的半角键盘符号。</translation>
     </message>
 </context>
 <context>
