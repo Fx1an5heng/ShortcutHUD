@@ -8,3 +8,24 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Secrets & credentials
+.env
+.env.*
+!.env.example
+credentials.json
+credentials.*
+secrets.json
+secrets.*
+
+# Private keys / certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local agent instructions (never committed)
+AGENTS.local.md
+
+# Local machine overrides
+*.local
