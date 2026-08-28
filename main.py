@@ -18,7 +18,12 @@ from PySide6.QtGui import QIcon, QAction
 from PySide6.QtCore import QObject, QTranslator, QLocale, QLibraryInfo, Signal, Slot, Qt
 
 # Define the application's root directory for resource access.
-APP_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Frozen (PyInstaller onedir) builds read bundled resources next to the
+# executable so portable copies keep working; source runs read from the repo.
+if getattr(sys, "frozen", False):
+    APP_ROOT_DIR = os.path.dirname(os.path.abspath(sys.executable))
+else:
+    APP_ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Ensure the 'scripts' directory is in the Python path for module imports.
 SCRIPTS_DIR = os.path.join(APP_ROOT_DIR, "scripts")
