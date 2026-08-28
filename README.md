@@ -8,10 +8,16 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Windows-10%2F11-blue" alt="Windows 10/11" />
-  <img src="https://img.shields.io/badge/Release-v0.5.0--beta.1-9cf" alt="Release v0.5.0-beta.1" />
+  <img src="https://img.shields.io/badge/Release-v0.5.0--beta.2-9cf" alt="Release v0.5.0-beta.2" />
   <img src="https://img.shields.io/badge/Status-Beta-orange" alt="Beta" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip">⬇️ <b>Download for Windows</b></a>
+  ·
+  <a href="https://github.com/Fx1an5heng/ShortcutHUD/releases">Releases</a>
 </p>
 
 <p align="center">
@@ -38,22 +44,36 @@ ShortcutHUD is a **shortcut discovery tool for Windows**: while you hold Ctrl, S
 - ✅ Only shows hints; it never replaces existing shortcuts
 - ✅ Not a virtual keyboard — just a lightweight HUD
 
-> The current Beta runs on Python; there is no exe installer yet (see [Roadmap](#roadmap)).
-> Get the release or source: [GitHub Releases](https://github.com/Fx1an5heng/ShortcutHUD/releases)
+> ⬇️ Regular users can simply download the portable build — **no Python required**: [Download for Windows](https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip)
+>
+> The portable build needs no internet connection at runtime. The exe is not commercially code-signed yet, so Windows may show a SmartScreen “Unknown publisher” warning; if the download source is this repository's GitHub Releases, you can verify the SHA256 checksum on the release page. Do not disable Defender or SmartScreen.
 
 ---
 
 ## 🚀 Quick Start
 
-> You only need to install Python once (see below). No Git, terminal, or venv knowledge required.
+### Method A: Download the Windows portable build (recommended)
 
-### Method A: Regular users (recommended for the current Beta)
+No Python, Git, pip, virtual environment, or command line needed.
+
+1. **Click [Download for Windows](https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip)**
+2. Download `ShortcutHUD-v0.5.0-beta.2-win64.zip`
+3. Extract the ZIP
+4. Double-click **`ShortcutHUD.exe`**
+5. A ShortcutHUD tray icon appears
+6. Open VS Code / Chrome or any app
+7. Hold **Ctrl**
+8. The HUD appears
+
+### Method B: Run from source
+
+For developers, people who want the latest source, or anyone who wants to modify ShortcutHUD.
 
 1. **Install Python 3.10 or newer**
    Download it from <https://www.python.org/downloads/>.
    ⚠️ During installation, make sure to check **“Add Python to PATH”**.
 
-2. **Download ShortcutHUD**
+2. **Download the source**
    On this repository page, click the green **Code** button → **Download ZIP**, then extract it anywhere.
 
 3. **Double-click `start_shortcuthud.bat`**
@@ -61,17 +81,6 @@ ShortcutHUD is a **shortcut discovery tool for Windows**: while you hold Ctrl, S
 
 4. **A tray icon means it is running**
    Open VS Code, a browser, or any app, hold **Ctrl**, and the HUD appears.
-
-### Method B: Developers
-
-```bash
-git clone https://github.com/Fx1an5heng/ShortcutHUD.git
-cd ShortcutHUD
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-pip install -r requirements.txt
-python main.py
-```
 
 ---
 
@@ -128,6 +137,8 @@ Power users: personal configuration lives in `%APPDATA%\ShortcutHUD\user_shortcu
 - All shortcut configuration stays **on your machine** (`%APPDATA%\ShortcutHUD\user_shortcuts.json`)
 - The code contains **no network calls and no telemetry** (nothing is uploaded)
 - Recording only captures local key events while you explicitly press “Record Shortcut”; **no input history is stored**
+- **The portable build needs no internet connection at runtime**; only the source method downloads Python components during first setup
+- The exe is not commercially code-signed yet, so Windows may show a SmartScreen warning; download only from this repository's GitHub Releases and verify the SHA256 checksum (do not disable Defender / SmartScreen)
 
 ---
 
@@ -136,8 +147,8 @@ Power users: personal configuration lives in `%APPDATA%\ShortcutHUD\user_shortcu
 **Q: I held Ctrl but no HUD appeared.**
 A: ① Check that the current combination has entries; ② desktop/taskbar surfaces only show global shortcuts by default; ③ make sure ShortcutHUD is running in the tray.
 
-**Q: Why is the first launch slow?**
-A: The first run downloads the Python components; later runs are fast.
+**Q: Why is the first launch slow when running from source?**
+A: The first run downloads the Python components; later runs are fast. (The portable build has no such step.)
 
 **Q: Why does an app show no shortcuts?**
 A: It has no built-in pack yet. Add your own via “Manage Shortcuts...”; global shortcuts always apply.
@@ -162,12 +173,13 @@ A: `%APPDATA%\ShortcutHUD\user_shortcuts.json`.
 - Win / system-reserved combinations are manual-entry only in the Recorder
 - Automatic Vim / Neovim context detection inside terminals is still experimental
 - Custom language packs are not implemented yet
+- No installer / onefile build yet (the current release is a portable ZIP)
 
 ---
 
 ## 🗺 Roadmap
 
-- **Portable EXE / Installer** (next — remove the Python requirement for regular users)
+- **Installer** (next — make installation even simpler)
 - Chord / sequence shortcuts
 - Richer application & context detection
 - Custom language packs

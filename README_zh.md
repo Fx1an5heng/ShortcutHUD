@@ -8,10 +8,16 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Windows-10%2F11-blue" alt="Windows 10/11" />
-  <img src="https://img.shields.io/badge/Release-v0.5.0--beta.1-9cf" alt="Release v0.5.0-beta.1" />
+  <img src="https://img.shields.io/badge/Release-v0.5.0--beta.2-9cf" alt="Release v0.5.0-beta.2" />
   <img src="https://img.shields.io/badge/Status-Beta-orange" alt="Beta" />
   <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB" alt="Python 3.10+" />
   <img src="https://img.shields.io/badge/License-MIT-green" alt="MIT License" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip">⬇️ <b>Download for Windows</b></a>
+  ·
+  <a href="https://github.com/Fx1an5heng/ShortcutHUD/releases">Releases</a>
 </p>
 
 <p align="center">
@@ -38,22 +44,36 @@ ShortcutHUD 是一个 **Windows 快捷键提示工具**：在你按住 Ctrl、Sh
 - ✅ 只做提示，不代替任何原有快捷键
 - ✅ 不是虚拟键盘，只是一个轻量 HUD
 
-> 当前 Beta 版本基于 Python 运行，尚无 exe 安装包（见 [Roadmap](#roadmap)）。
-> 下载 Release 或源码：[GitHub Releases](https://github.com/Fx1an5heng/ShortcutHUD/releases)
+> ⬇️ 普通用户直接下载便携版即可，**不需要安装 Python**：[Download for Windows](https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip)
+>
+> 便携版运行不需要联网。当前 exe 尚未做商业代码签名，Windows 可能显示 SmartScreen “Unknown publisher” 类提示；如果下载来源确认是本仓库的 GitHub Releases，可核对页面上的 SHA256 校验值。不要关闭 Defender 或 SmartScreen。
 
 ---
 
 ## 🚀 1 分钟上手
 
-> 只需要先安装 Python（见下），不需要懂 Git、命令行或虚拟环境。
+### 方法 A：下载 Windows 便携版（推荐）
 
-### 方法 A：普通用户（推荐，当前 Beta）
+不需要 Python、Git、pip、虚拟环境或命令行。
+
+1. **点击 [Download for Windows](https://github.com/Fx1an5heng/ShortcutHUD/releases/download/v0.5.0-beta.2/ShortcutHUD-v0.5.0-beta.2-win64.zip)**
+2. 下载 `ShortcutHUD-v0.5.0-beta.2-win64.zip`
+3. 解压 ZIP
+4. 双击 **`ShortcutHUD.exe`**
+5. 系统托盘出现 ShortcutHUD 图标
+6. 打开 VS Code / Chrome 等程序
+7. 按住 **Ctrl**
+8. HUD 出现
+
+### 方法 B：从源码运行
+
+适合开发者、想运行最新源码或自行修改 ShortcutHUD 的人。
 
 1. **安装 Python 3.10 或更高版本**
    从 <https://www.python.org/downloads/> 下载安装。
    ⚠️ 安装时务必勾选 **“Add Python to PATH”**。
 
-2. **下载 ShortcutHUD**
+2. **下载源码**
    打开本仓库页面，点击绿色 **Code** 按钮 → **Download ZIP**，然后解压到任意位置。
 
 3. **双击 `start_shortcuthud.bat`**
@@ -61,17 +81,6 @@ ShortcutHUD 是一个 **Windows 快捷键提示工具**：在你按住 Ctrl、Sh
 
 4. **看到托盘图标即成功**
    打开 VS Code、浏览器等应用，按住 **Ctrl**，HUD 就会出现。
-
-### 方法 B：开发者
-
-```bash
-git clone https://github.com/Fx1an5heng/ShortcutHUD.git
-cd ShortcutHUD
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-pip install -r requirements.txt
-python main.py
-```
 
 ---
 
@@ -128,6 +137,8 @@ B   Sidebar
 - 快捷键配置全部保存在**本机**（`%APPDATA%\ShortcutHUD\user_shortcuts.json`）
 - 代码中**没有任何网络通信或遥测**（无上传逻辑）
 - 快捷键录制仅在点击“录制快捷键”后、在设置窗口内短暂生效；**不保存任何输入历史**
+- **便携版运行本身不需要联网**；只有“从源码运行”首次安装依赖时才需要 pip 联网
+- 当前 exe 未做商业代码签名，Windows 可能显示 SmartScreen 提示；请仅从本仓库的 GitHub Releases 下载，并可核对 SHA256 校验值（不要关闭 Defender / SmartScreen）
 
 ---
 
@@ -136,8 +147,8 @@ B   Sidebar
 **Q：按住 Ctrl 为什么没有 HUD？**
 A：① 确认当前组合下确实有快捷键条目；② 桌面/任务栏等系统界面默认只显示全局快捷键；③ 确认 ShortcutHUD 已在托盘运行。
 
-**Q：第一次运行为什么很慢？**
-A：首次启动需要联网下载 Python 组件；之后就快了。
+**Q：源码方式第一次运行为什么很慢？**
+A：首次启动需要联网下载 Python 组件；之后就快了。（便携版没有这一步。）
 
 **Q：为什么某个软件没有快捷键？**
 A：该软件暂未内置快捷键包。你可以用“管理快捷键”为它添加自定义快捷键；全局快捷键始终可用。
@@ -162,12 +173,13 @@ A：`%APPDATA%\ShortcutHUD\user_shortcuts.json`。
 - Recorder 对 Win / 系统保留组合需手工输入
 - 终端内 Vim / Neovim 的上下文自动识别仍不成熟
 - 自定义语言包尚未实现
+- 尚无 Installer / onefile 单文件版（当前为便携 ZIP）
 
 ---
 
 ## 🗺 Roadmap
 
-- **Portable EXE / Installer**（下一步，让普通用户免装 Python）
+- **Installer**（下一步，进一步简化安装）
 - chord / 多段快捷键
 - 更丰富的应用与上下文识别
 - 自定义语言包
