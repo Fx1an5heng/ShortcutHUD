@@ -901,6 +901,11 @@ Custom shortcuts and the display name will not be changed.</source>
 <context>
     <name>ShortcutOverlayApplication</name>
     <message>
+        <location filename="../main.py" line="299"/>
+        <source>Game Mode</source>
+        <translation>游戏模式</translation>
+    </message>
+    <message>
         <location filename="../main.py" line="161"/>
         <source>Shortcut Overlay</source>
         <translation>显键</translation>

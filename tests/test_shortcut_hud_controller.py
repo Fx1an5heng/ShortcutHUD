@@ -6,6 +6,7 @@ from PySide6.QtTest import QTest
 
 from scripts.shortcut_hud_controller import ShortcutHudController
 from scripts.keyboard_handler import KeyboardHandler
+from scripts.suppression_policy import SuppressionPolicy
 from scripts.win_discovery_proxy import VK_LWIN
 
 
@@ -107,6 +108,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self.monitor = _FakeForegroundMonitor()
         self.hud = _FakeHudWindow()
         self.proxy = _FakeWinDiscoveryProxy()
+        self.suppression_policy = SuppressionPolicy()
         self.controller = ShortcutHudController(
             self.config,
             self.monitor,
@@ -114,6 +116,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
             self.proxy,
             show_delay_ms=20,
             win_only_show_delay_ms=40,
+            suppression_policy=self.suppression_policy,
         )
 
     def tearDown(self) -> None:
@@ -138,6 +141,61 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
         self.assertFalse(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 0)
+
+    def test_game_mode_cancels_pending_show(self) -> None:
+        self.controller.on_modifiers_changed({"ctrl"})
+
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+
+        self.assertFalse(wait_until(lambda: self.hud.visible))
+        self.assertFalse(self.controller._show_timer.isActive())
+        self.assertEqual(self.hud.show_calls, 0)
+
+    def test_game_mode_hides_visible_hud_immediately(self) -> None:
+        self.controller.on_modifiers_changed({"ctrl"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+
+        self.assertFalse(self.hud.visible)
+        self.assertEqual(self.hud.show_calls, 1)
+
+    def test_game_mode_cancels_pending_win_without_proxy_activation(self) -> None:
+        self._enable_win_shortcuts()
+        self.proxy.current_win_vk = VK_LWIN
+        self.controller.on_modifiers_changed({"win"})
+
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+
+        self.assertFalse(wait_until(lambda: self.hud.visible, timeout_ms=100))
+        self.assertEqual(self.proxy.activation_calls, [])
+        self.assertFalse(self.controller._show_timer.isActive())
+
+    def test_modifier_state_can_clear_while_game_mode_is_active(self) -> None:
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+
+        self.controller.on_modifiers_changed({"ctrl", "shift"})
+        self.assertEqual(self.controller._current_modifier, "Ctrl+Shift")
+        self.controller.on_modifiers_changed(set())
+
+        self.assertIsNone(self.controller._current_modifier)
+        self.assertFalse(self.hud.visible)
+
+    def test_disabling_game_mode_allows_hud_without_restart(self) -> None:
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+        self.controller.on_modifiers_changed({"ctrl"})
+        self.assertFalse(wait_until(lambda: self.hud.visible, timeout_ms=50))
+
+        self.suppression_policy.set_manual_game_mode(False)
+        self.controller.on_suppression_changed()
+
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+        self.assertEqual(self.hud.show_calls, 1)
 
     def test_pending_transition_uses_latest_modifier_state(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})

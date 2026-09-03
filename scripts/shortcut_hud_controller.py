@@ -10,6 +10,7 @@ from PySide6.QtCore import QObject, QTimer, Slot
 
 from .modifier_state import canonicalize_modifier_state
 from .shortcut_resolver import ShortcutEntry, resolve_shortcuts
+from .suppression_policy import PresentationIntent, SuppressionPolicy
 
 
 class _ConfigProvider(Protocol):
@@ -62,6 +63,7 @@ class ShortcutHudController(QObject):
         show_delay_ms: int = DEFAULT_SHOW_DELAY_MS,
         win_only_show_delay_ms: int = WIN_ONLY_SHOW_DELAY_MS,
         user_profiles: Mapping[str, object] | None = None,
+        suppression_policy: SuppressionPolicy | None = None,
     ) -> None:
         super().__init__(parent)
         self._config_manager = config_manager
@@ -73,6 +75,7 @@ class ShortcutHudController(QObject):
             if isinstance(user_profiles, Mapping)
             else {}
         )
+        self._suppression_policy = suppression_policy or SuppressionPolicy()
         self._current_modifier: str | None = None
         self._show_delay_ms = show_delay_ms
         self._win_only_show_delay_ms = win_only_show_delay_ms
@@ -127,6 +130,10 @@ class ShortcutHudController(QObject):
 
     def refresh_current_state(self) -> None:
         """Re-resolve the latest state without querying foreground Windows."""
+
+        if not self._quick_hud_is_allowed():
+            self._cancel_and_hide()
+            return
 
         if self._current_modifier is None:
             self._cancel_and_hide()
@@ -184,7 +191,15 @@ class ShortcutHudController(QObject):
         )
         self.refresh_current_state()
 
+    def on_suppression_changed(self) -> None:
+        """Apply a policy change immediately to pending or visible HUD work."""
+
+        self.refresh_current_state()
+
     def _show_pending_hud(self) -> None:
+        if not self._quick_hud_is_allowed():
+            self._cancel_and_hide()
+            return
         if self._current_modifier is None:
             return
 
@@ -239,7 +254,7 @@ class ShortcutHudController(QObject):
         self._identity_delay_elapsed = False
 
     def _start_show_timer(self) -> None:
-        if self._show_timer.isActive():
+        if not self._quick_hud_is_allowed() or self._show_timer.isActive():
             return
         delay = (
             self._win_only_show_delay_ms
@@ -248,6 +263,9 @@ class ShortcutHudController(QObject):
         )
         self._show_timer.setInterval(delay)
         self._show_timer.start()
+
+    def _quick_hud_is_allowed(self) -> bool:
+        return self._suppression_policy.allows(PresentationIntent.PASSIVE)
 
     def _is_identity_pending(self) -> bool:
         return bool(getattr(self._foreground_monitor, "identity_pending", False))

@@ -2,10 +2,11 @@ from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QTranslator, Qt
 from PySide6.QtWidgets import QApplication, QWidget
 
 from main import ShortcutOverlayApplication
+from scripts.suppression_policy import SuppressionDecision, SuppressionPolicy
 
 
 class _FakeSignal:
@@ -128,7 +129,10 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
         application = SimpleNamespace(
             tray_icon=tray_icon,
             overlay_window=overlay_window,
+            suppression_policy=SuppressionPolicy(),
+            game_mode_action=None,
             tr=lambda text: text,
+            set_game_mode_enabled=lambda _enabled: None,
             toggle_overlay_window=no_op,
             open_settings_dialog=no_op,
             open_about_dialog=no_op,
@@ -139,10 +143,81 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
 
         action_texts = [action.text() for action in tray_icon.contextMenu().actions()]
         self.assertNotIn("Manage Shortcuts...", action_texts)
+        self.assertIn("Game Mode", action_texts)
         self.assertIn("Settings...", action_texts)
+        self.assertIn("About...", action_texts)
+        self.assertTrue(application.game_mode_action.isCheckable())
+        self.assertFalse(application.game_mode_action.isChecked())
         self.assertFalse(
             hasattr(ShortcutOverlayApplication, "open_shortcut_manager_dialog")
         )
+
+    def test_game_mode_action_reflects_session_state_after_menu_rebuild(self) -> None:
+        overlay_window = QWidget()
+        self.addCleanup(overlay_window.close)
+        policy = SuppressionPolicy()
+        policy.set_manual_game_mode(True)
+        application = SimpleNamespace(
+            tray_icon=_FakeTrayIcon(),
+            overlay_window=overlay_window,
+            suppression_policy=policy,
+            game_mode_action=None,
+            tr=lambda text: text,
+            set_game_mode_enabled=lambda _enabled: None,
+            toggle_overlay_window=lambda: None,
+            open_settings_dialog=lambda: None,
+            open_about_dialog=lambda: None,
+            quit_application=lambda: None,
+        )
+
+        ShortcutOverlayApplication._update_tray_icon_ui(application)
+
+        self.assertTrue(application.game_mode_action.isChecked())
+
+    def test_game_mode_toggle_updates_policy_hides_surfaces_and_notifies_hud(self) -> None:
+        overlay_window = QWidget()
+        overlay_window.show()
+        self.addCleanup(overlay_window.close)
+        hud_controller = Mock()
+        application = SimpleNamespace(
+            suppression_policy=SuppressionPolicy(),
+            overlay_window=overlay_window,
+            hud_controller=hud_controller,
+        )
+
+        ShortcutOverlayApplication.set_game_mode_enabled(application, True)
+
+        self.assertIs(
+            application.suppression_policy.decision,
+            SuppressionDecision.HARD_BLOCK,
+        )
+        self.assertFalse(overlay_window.isVisible())
+        hud_controller.on_suppression_changed.assert_called_once_with()
+
+        ShortcutOverlayApplication.set_game_mode_enabled(application, False)
+
+        self.assertIs(
+            application.suppression_policy.decision,
+            SuppressionDecision.ALLOW,
+        )
+        self.assertEqual(hud_controller.on_suppression_changed.call_count, 2)
+
+    def test_game_mode_has_compiled_chinese_translation(self) -> None:
+        translator = QTranslator()
+        self.assertTrue(
+            translator.load("i18n/shortcut_overlay_zh_CN.qm")
+        )
+
+        self.qt_application.installTranslator(translator)
+        try:
+            translated = self.qt_application.translate(
+                "ShortcutOverlayApplication",
+                "Game Mode",
+            )
+        finally:
+            self.qt_application.removeTranslator(translator)
+
+        self.assertEqual(translated, "游戏模式")
 
 
 if __name__ == "__main__":

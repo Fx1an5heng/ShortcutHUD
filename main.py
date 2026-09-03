@@ -44,6 +44,7 @@ from scripts.foreground_monitor import ForegroundMonitor
 from scripts.keyboard_handler import KeyboardHandler
 from scripts.shortcut_hud import ShortcutHudWindow
 from scripts.shortcut_hud_controller import ShortcutHudController
+from scripts.suppression_policy import PresentationIntent, SuppressionPolicy
 from scripts.user_shortcut_store import UserShortcutStore, get_profile_display_names
 from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
@@ -134,6 +135,7 @@ class ShortcutOverlayApplication(QApplication):
             parent=self,
         )
         self.kb_handler: KeyboardHandler = KeyboardHandler()
+        self.suppression_policy = SuppressionPolicy()
         self._win_release_bridge = _WinReleaseBridge(self)
         self.win_discovery_proxy: WinDiscoveryProxy = WinDiscoveryProxy(
             self._win_release_bridge.physical_win_released.emit
@@ -145,10 +147,12 @@ class ShortcutOverlayApplication(QApplication):
             self.win_discovery_proxy,
             parent=self,
             user_profiles=user_profiles,
+            suppression_policy=self.suppression_policy,
         )
 
         # Initialize and configure the system tray icon.
         self.tray_icon: Optional[QSystemTrayIcon] = None
+        self.game_mode_action: Optional[QAction] = None
         self._initialize_tray_icon_object() # Create the QSystemTrayIcon object
         self._update_tray_icon_ui()         # Populate its UI elements.
 
@@ -292,6 +296,17 @@ class ShortcutOverlayApplication(QApplication):
         """)
 
         # Create and add actions to the menu (texts are translatable).
+        game_mode_action = QAction(self.tr("Game Mode"), new_menu)
+        game_mode_action.setCheckable(True)
+        game_mode_action.setChecked(
+            self.suppression_policy.manual_game_mode_enabled
+        )
+        game_mode_action.toggled.connect(self.set_game_mode_enabled)
+        new_menu.addAction(game_mode_action)
+        self.game_mode_action = game_mode_action
+
+        new_menu.addSeparator()
+
         show_hide_action: QAction = QAction(self.tr("Show/Hide Overlay"), new_menu)
         show_hide_action.triggered.connect(self.toggle_overlay_window)
         new_menu.addAction(show_hide_action)
@@ -333,9 +348,18 @@ class ShortcutOverlayApplication(QApplication):
         """
         if self.overlay_window.isVisible():
             self.overlay_window.hide()
-        else:
+        elif self.suppression_policy.allows(PresentationIntent.USER_INITIATED):
             self.overlay_window.show()
             self.overlay_window.activateWindow() # Bring to front.
+
+    @Slot(bool)
+    def set_game_mode_enabled(self, enabled: bool) -> None:
+        """Apply session-only Manual Game Mode without touching input hooks."""
+
+        self.suppression_policy.set_manual_game_mode(enabled)
+        if enabled:
+            self.overlay_window.hide()
+        self.hud_controller.on_suppression_changed()
 
     def open_settings_dialog(self) -> None:
         """
