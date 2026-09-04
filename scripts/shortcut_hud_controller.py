@@ -80,6 +80,7 @@ class ShortcutHudController(QObject):
         self._show_delay_ms = show_delay_ms
         self._win_only_show_delay_ms = win_only_show_delay_ms
         self._identity_delay_elapsed = False
+        self._suppression_rearm_required = False
 
         self._win_modifier_held = False
         self._win_activation_attempted = False
@@ -103,6 +104,10 @@ class ShortcutHudController(QObject):
         self._win_modifier_held = win_held
 
         self._current_modifier = canonicalize_modifier_state(modifiers)
+        if self._current_modifier is None:
+            self._suppression_rearm_required = False
+        elif not self._policy_allows_quick_hud():
+            self._suppression_rearm_required = True
         self.refresh_current_state()
 
     @Slot(str, str)
@@ -179,6 +184,7 @@ class ShortcutHudController(QObject):
         """Clear controller work; the application owns the proxy lifecycle."""
 
         self._current_modifier = None
+        self._suppression_rearm_required = False
         self._win_modifier_held = False
         self._reset_win_discovery_state()
         self._cancel_and_hide()
@@ -194,6 +200,11 @@ class ShortcutHudController(QObject):
     def on_suppression_changed(self) -> None:
         """Apply a policy change immediately to pending or visible HUD work."""
 
+        if not self._policy_allows_quick_hud():
+            if self._current_modifier is not None:
+                self._suppression_rearm_required = True
+            self._cancel_and_hide()
+            return
         self.refresh_current_state()
 
     def _show_pending_hud(self) -> None:
@@ -265,6 +276,12 @@ class ShortcutHudController(QObject):
         self._show_timer.start()
 
     def _quick_hud_is_allowed(self) -> bool:
+        return (
+            not self._suppression_rearm_required
+            and self._policy_allows_quick_hud()
+        )
+
+    def _policy_allows_quick_hud(self) -> bool:
         return self._suppression_policy.allows(PresentationIntent.PASSIVE)
 
     def _is_identity_pending(self) -> bool:

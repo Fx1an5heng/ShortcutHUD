@@ -331,6 +331,26 @@
         <source>Manage Shortcuts...</source>
         <translation>管理快捷键...</translation>
     </message>
+    <message>
+        <source>Game Guard</source>
+        <translation>游戏保护</translation>
+    </message>
+    <message>
+        <source>Automatically hide Quick HUD in fullscreen applications</source>
+        <translation>在全屏应用中自动隐藏快捷提示</translation>
+    </message>
+    <message>
+        <source>Excluded Applications</source>
+        <translation>排除的应用</translation>
+    </message>
+    <message>
+        <source>Add current app</source>
+        <translation>添加当前应用</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>移除</translation>
+    </message>
 </context>
 <context>
     <name>ShortcutEditDialog</name>

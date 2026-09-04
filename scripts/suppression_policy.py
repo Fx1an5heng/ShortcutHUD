@@ -13,6 +13,14 @@ class SuppressionDecision(Enum):
     HARD_BLOCK = auto()
 
 
+class SuppressionSource(Enum):
+    """Independent reasons that can restrict ShortcutHUD presentation."""
+
+    MANUAL_GAME_MODE = auto()
+    FULLSCREEN = auto()
+    EXCLUDED_APP = auto()
+
+
 class PresentationIntent(Enum):
     """Whether a presentation was passive or explicitly requested by the user."""
 
@@ -40,25 +48,70 @@ def presentation_is_allowed(
 
 
 class SuppressionPolicy:
-    """Session-owned suppression state shared by presentation controllers."""
+    """Aggregate independent suppression sources into one effective decision."""
 
     def __init__(self) -> None:
-        self._manual_game_mode_enabled = False
+        self._source_decisions = {
+            source: SuppressionDecision.ALLOW for source in SuppressionSource
+        }
 
     @property
     def manual_game_mode_enabled(self) -> bool:
-        return self._manual_game_mode_enabled
+        return (
+            self._source_decisions[SuppressionSource.MANUAL_GAME_MODE]
+            is SuppressionDecision.HARD_BLOCK
+        )
+
+    @property
+    def fullscreen_active(self) -> bool:
+        return (
+            self._source_decisions[SuppressionSource.FULLSCREEN]
+            is SuppressionDecision.SOFT_BLOCK
+        )
+
+    @property
+    def excluded_app_active(self) -> bool:
+        return (
+            self._source_decisions[SuppressionSource.EXCLUDED_APP]
+            is SuppressionDecision.SOFT_BLOCK
+        )
 
     @property
     def decision(self) -> SuppressionDecision:
-        if self._manual_game_mode_enabled:
+        if SuppressionDecision.HARD_BLOCK in self._source_decisions.values():
             return SuppressionDecision.HARD_BLOCK
+        if SuppressionDecision.SOFT_BLOCK in self._source_decisions.values():
+            return SuppressionDecision.SOFT_BLOCK
         return SuppressionDecision.ALLOW
 
     def set_manual_game_mode(self, enabled: bool) -> SuppressionDecision:
         """Set session-only Manual Game Mode and return the new decision."""
 
-        self._manual_game_mode_enabled = bool(enabled)
+        self._source_decisions[SuppressionSource.MANUAL_GAME_MODE] = (
+            SuppressionDecision.HARD_BLOCK
+            if enabled
+            else SuppressionDecision.ALLOW
+        )
+        return self.decision
+
+    def set_runtime_sources(
+        self,
+        *,
+        fullscreen_active: bool,
+        excluded_app_active: bool,
+    ) -> SuppressionDecision:
+        """Replace contextual sources together and return the effective decision."""
+
+        self._source_decisions[SuppressionSource.FULLSCREEN] = (
+            SuppressionDecision.SOFT_BLOCK
+            if fullscreen_active
+            else SuppressionDecision.ALLOW
+        )
+        self._source_decisions[SuppressionSource.EXCLUDED_APP] = (
+            SuppressionDecision.SOFT_BLOCK
+            if excluded_app_active
+            else SuppressionDecision.ALLOW
+        )
         return self.decision
 
     def allows(self, intent: PresentationIntent) -> bool:

@@ -300,6 +300,40 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
 
         self.assertEqual(requests, [True])
 
+    def test_settings_game_guard_adds_and_removes_current_application(self) -> None:
+        emitted: list[dict[str, object]] = []
+        settings = SettingsDialog(
+            {
+                "fullscreen_suppression_enabled": True,
+                "excluded_applications": ["NOTEPAD.EXE"],
+            },
+            current_app_provider=lambda: "C:/Apps/code.exe",
+        )
+        self.addCleanup(settings.close)
+        settings.settings_changed.connect(emitted.append)
+
+        settings.add_current_app_button.click()
+
+        self.assertEqual(
+            emitted[-1]["excluded_applications"],
+            ["NOTEPAD.EXE", "CODE.EXE"],
+        )
+        settings.remove_excluded_app_button.click()
+        self.assertEqual(
+            emitted[-1]["excluded_applications"],
+            ["NOTEPAD.EXE"],
+        )
+
+    def test_settings_game_guard_fullscreen_toggle_is_emitted(self) -> None:
+        emitted: list[dict[str, object]] = []
+        settings = SettingsDialog({"fullscreen_suppression_enabled": True})
+        self.addCleanup(settings.close)
+        settings.settings_changed.connect(emitted.append)
+
+        settings.fullscreen_suppression_checkbox.setChecked(False)
+
+        self.assertFalse(emitted[-1]["fullscreen_suppression_enabled"])
+
     def test_shortcut_editor_rejects_invalid_key_with_product_message(self) -> None:
         editor = ShortcutEditDialog(key="F99", zh="错误", en="Bad")
         self.addCleanup(editor.close)
@@ -494,6 +528,17 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
                 "添加自定义快捷键，并隐藏或恢复应用内置快捷键。",
             )
             self.assertEqual(settings.custom_apps_button.text(), "管理快捷键...")
+            self.assertEqual(settings._game_guard_group_box.title(), "游戏保护")
+            self.assertEqual(
+                settings.fullscreen_suppression_checkbox.text(),
+                "在全屏应用中自动隐藏快捷提示",
+            )
+            self.assertEqual(
+                settings._excluded_applications_label.text(),
+                "排除的应用",
+            )
+            self.assertEqual(settings.add_current_app_button.text(), "添加当前应用")
+            self.assertEqual(settings.remove_excluded_app_button.text(), "移除")
             self.assertEqual(translated_dialog.windowTitle(), "快捷键管理")
             self.assertEqual(
                 translated_dialog.add_current_button.text(), "添加当前软件"

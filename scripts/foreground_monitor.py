@@ -38,6 +38,9 @@ class ForegroundMonitor(QObject):
     # Raw foreground snapshot for application-identity adapters.
     # Arguments: HWND and executable name (or None when unavailable).
     foreground_changed = Signal(object, object)
+    # Every polling snapshot, including unchanged HWND/executable pairs.
+    # Runtime context such as fullscreen can change without an app transition.
+    foreground_polled = Signal(object, object)
 
     # Default interval in milliseconds for polling the foreground application.
     DEFAULT_POLL_INTERVAL_MS: int = 1000
@@ -177,6 +180,7 @@ class ForegroundMonitor(QObject):
                 # Foreground is now an unidentifiable app/window or an error occurred.
                 # Reset to "DEFAULT" state to show default shortcuts.
                 self.active_app_changed.emit("DEFAULT")
+            self.foreground_polled.emit(self.current_hwnd, self.current_app_name)
             # No signal is emitted if:
             # - app_name is None and current_app_name was already None (no change from "DEFAULT").
             # - app_name is the same as current_app_name (no change in focused app).
@@ -195,6 +199,7 @@ class ForegroundMonitor(QObject):
                 self.foreground_changed.emit(0, None)
             if previous_app_name is not None:
                 self.active_app_changed.emit("DEFAULT")
+            self.foreground_polled.emit(0, None)
             return previous_hwnd != 0 or previous_app_name is not None
 
     def stop_monitoring(self) -> None:

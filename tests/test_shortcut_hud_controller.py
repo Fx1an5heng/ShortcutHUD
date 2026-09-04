@@ -314,7 +314,7 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self.assertIsNone(self.controller._current_modifier)
         self.assertFalse(self.hud.visible)
 
-    def test_disabling_game_mode_allows_hud_without_restart(self) -> None:
+    def test_returning_allow_waits_for_fresh_modifier_hold(self) -> None:
         self.suppression_policy.set_manual_game_mode(True)
         self.controller.on_suppression_changed()
         self.controller.on_modifiers_changed({"ctrl"})
@@ -323,8 +323,52 @@ class ShortcutHudControllerTests(unittest.TestCase):
         self.suppression_policy.set_manual_game_mode(False)
         self.controller.on_suppression_changed()
 
+        self.assertFalse(wait_until(lambda: self.hud.visible, timeout_ms=50))
+        self.controller.on_modifiers_changed(set())
+        self.controller.on_modifiers_changed({"ctrl"})
+
         self.assertTrue(wait_until(lambda: self.hud.visible))
         self.assertEqual(self.hud.show_calls, 1)
+
+    def test_input_reconciler_remains_active_during_soft_block(self) -> None:
+        handler, _physical_state = self._make_recovery_handler()
+        self.suppression_policy.set_runtime_sources(
+            fullscreen_active=True,
+            excluded_app_active=False,
+        )
+        self.controller.on_suppression_changed()
+        handler._active_modifiers.add("ctrl")
+        handler.modifiers_changed.emit({"ctrl"})
+
+        handler._check_key_states()
+
+        self.assertEqual(handler._active_modifiers, set())
+        self.assertIsNone(self.controller._current_modifier)
+        self.assertFalse(self.hud.visible)
+
+    def test_soft_block_cancels_pending_show(self) -> None:
+        self.controller.on_modifiers_changed({"ctrl"})
+
+        self.suppression_policy.set_runtime_sources(
+            fullscreen_active=True,
+            excluded_app_active=False,
+        )
+        self.controller.on_suppression_changed()
+
+        self.assertFalse(wait_until(lambda: self.hud.visible))
+        self.assertFalse(self.controller._show_timer.isActive())
+
+    def test_soft_block_hides_visible_hud(self) -> None:
+        self.controller.on_modifiers_changed({"ctrl"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+
+        self.suppression_policy.set_runtime_sources(
+            fullscreen_active=False,
+            excluded_app_active=True,
+        )
+        self.controller.on_suppression_changed()
+
+        self.assertFalse(self.hud.visible)
 
     def test_pending_transition_uses_latest_modifier_state(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})

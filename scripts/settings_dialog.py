@@ -2,9 +2,11 @@
 """
 Defines dialogs for application settings and "About" information.
 SettingsDialog allows users to configure themes for the main overlay, opacity,
-language, and custom colors. It applies these settings immediately and uses a
-fixed dark theme for its own UI. AboutDialog also uses a fixed dark theme.
+language, custom colors, and Game Guard runtime preferences. It applies these
+settings immediately and uses a fixed dark theme for its own UI. AboutDialog
+also uses a fixed dark theme.
 """
+from collections.abc import Callable
 from typing import Dict, Any, Optional, Literal, List, Tuple
 
 from PySide6.QtWidgets import (
@@ -20,9 +22,19 @@ from PySide6.QtWidgets import (
     QColorDialog,
     QWidget,
     QHBoxLayout,
+    QCheckBox,
+    QListWidget,
 )
 from PySide6.QtCore import Qt, Signal, Slot, QEvent
 from PySide6.QtGui import QColor
+
+from .game_guard_settings import (
+    DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED,
+    EXCLUDED_APPLICATIONS_SETTING,
+    FULLSCREEN_SUPPRESSION_SETTING,
+    normalize_excluded_application,
+    normalize_excluded_applications,
+)
 
 try:
     from . import __version__
@@ -76,7 +88,10 @@ class SettingsDialog(QDialog):
     COMBOBOX_SELECTION_BG_COLOR: str = "#5A5E6A"
 
     def __init__(
-        self, current_settings: SettingsDict, parent: Optional[QWidget] = None
+        self,
+        current_settings: SettingsDict,
+        parent: Optional[QWidget] = None,
+        current_app_provider: Callable[[], str | None] | None = None,
     ):
         """
         Initializes the SettingsDialog.
@@ -92,6 +107,7 @@ class SettingsDialog(QDialog):
 
         self.setWindowTitle(self.tr("Settings"))  # Translatable window title.
         self._initial_settings: SettingsDict = current_settings.copy()
+        self._current_app_provider = current_app_provider or (lambda: None)
 
         # Initialize QColor objects for custom color pickers based on current settings.
         self._temp_custom_bg_color: QColor = QColor(
@@ -109,6 +125,7 @@ class SettingsDialog(QDialog):
         self._opacity_group_box: Optional[QGroupBox] = None
         self._language_group_box: Optional[QGroupBox] = None
         self._custom_apps_group_box: Optional[QGroupBox] = None
+        self._game_guard_group_box: Optional[QGroupBox] = None
         self.theme_combo: Optional[QComboBox] = None
         self.lang_combo: Optional[QComboBox] = None
         self.opacity_slider: Optional[QSlider] = None
@@ -119,6 +136,11 @@ class SettingsDialog(QDialog):
         self.button_box: Optional[QDialogButtonBox] = None
         self.custom_apps_button: Optional[QPushButton] = None
         self._custom_apps_description: Optional[QLabel] = None
+        self.fullscreen_suppression_checkbox: Optional[QCheckBox] = None
+        self.excluded_applications_list: Optional[QListWidget] = None
+        self.add_current_app_button: Optional[QPushButton] = None
+        self.remove_excluded_app_button: Optional[QPushButton] = None
+        self._excluded_applications_label: Optional[QLabel] = None
         self._theme_form_label: Optional[QLabel] = None
         self._opacity_form_label: Optional[QLabel] = None
         self._language_form_label: Optional[QLabel] = None
@@ -131,6 +153,7 @@ class SettingsDialog(QDialog):
         self._setup_theme_group()
         self._setup_opacity_group()
         self._setup_language_group()
+        self._setup_game_guard_group()
         self._setup_custom_apps_group()
         self._setup_buttons()  # Configures OK and Cancel buttons.
 
@@ -147,6 +170,10 @@ class SettingsDialog(QDialog):
             self.opacity_slider.sliderReleased.connect(self._on_setting_changed_by_user)
         if self.lang_combo:
             self.lang_combo.currentIndexChanged.connect(
+                self._on_setting_changed_by_user
+            )
+        if self.fullscreen_suppression_checkbox:
+            self.fullscreen_suppression_checkbox.toggled.connect(
                 self._on_setting_changed_by_user
             )
         # Custom color changes are handled within _select_color.
@@ -166,6 +193,7 @@ class SettingsDialog(QDialog):
             QComboBox::drop-down {{ border: none; width: 15px; background-color: {self.BUTTON_BACKGROUND_COLOR}; }}
             /* QComboBox::down-arrow {{ image: url(:/icons/light_arrow.svg); }} */ /* Example for custom arrow */
             QComboBox QAbstractItemView {{ color: {self.DIALOG_TEXT_COLOR}; background-color: {self.DIALOG_BACKGROUND_COLOR}; border: 1px solid {self.BUTTON_BORDER_COLOR}; selection-background-color: {self.COMBOBOX_SELECTION_BG_COLOR}; selection-color: {self.DIALOG_TEXT_COLOR}; outline: 0px; }}
+            QListWidget {{ color: {self.DIALOG_TEXT_COLOR}; background-color: {self.BUTTON_BACKGROUND_COLOR}; border: 1px solid {self.BUTTON_BORDER_COLOR}; selection-background-color: {self.COMBOBOX_SELECTION_BG_COLOR}; outline: 0px; }}
             QSlider {{ background-color: transparent; }}
             QSlider::groove:horizontal {{ background: {self.SLIDER_GROOVE_BG_COLOR}; height: 8px; border-radius: 4px; border: 1px solid {self.SLIDER_GROOVE_BORDER_COLOR}; }}
             QSlider::handle:horizontal {{ background: {self.SLIDER_HANDLE_BG_COLOR}; border: 1px solid {self.SLIDER_HANDLE_BORDER_COLOR}; width: 14px; margin: -4px 0; border-radius: 7px; }}
@@ -314,6 +342,90 @@ class SettingsDialog(QDialog):
         layout.addWidget(self.custom_apps_button)
         self._main_layout.addWidget(self._custom_apps_group_box)
 
+    def _setup_game_guard_group(self) -> None:
+        """Add persistent automatic fullscreen and application exclusions."""
+
+        self._game_guard_group_box = QGroupBox(self.tr("Game Guard"))
+        layout = QVBoxLayout(self._game_guard_group_box)
+        enabled = self._initial_settings.get(
+            FULLSCREEN_SUPPRESSION_SETTING,
+            DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED,
+        )
+        self.fullscreen_suppression_checkbox = QCheckBox(
+            self.tr("Automatically hide Quick HUD in fullscreen applications"),
+            self._game_guard_group_box,
+        )
+        self.fullscreen_suppression_checkbox.setChecked(
+            enabled
+            if isinstance(enabled, bool)
+            else DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED
+        )
+
+        self._excluded_applications_label = QLabel(
+            self.tr("Excluded Applications"),
+            self._game_guard_group_box,
+        )
+        self.excluded_applications_list = QListWidget(self._game_guard_group_box)
+        self.excluded_applications_list.addItems(
+            normalize_excluded_applications(
+                self._initial_settings.get(EXCLUDED_APPLICATIONS_SETTING, [])
+            )
+        )
+
+        button_row = QHBoxLayout()
+        self.add_current_app_button = QPushButton(
+            self.tr("Add current app"),
+            self._game_guard_group_box,
+        )
+        self.remove_excluded_app_button = QPushButton(
+            self.tr("Remove"),
+            self._game_guard_group_box,
+        )
+        self.add_current_app_button.clicked.connect(self._add_current_app)
+        self.remove_excluded_app_button.clicked.connect(
+            self._remove_selected_excluded_app
+        )
+        button_row.addWidget(self.add_current_app_button)
+        button_row.addWidget(self.remove_excluded_app_button)
+
+        layout.addWidget(self.fullscreen_suppression_checkbox)
+        layout.addWidget(self._excluded_applications_label)
+        layout.addWidget(self.excluded_applications_list)
+        layout.addLayout(button_row)
+        self._main_layout.addWidget(self._game_guard_group_box)
+
+    @Slot()
+    def _add_current_app(self) -> None:
+        try:
+            candidate = self._current_app_provider()
+        except BaseException:
+            return
+        application_id = normalize_excluded_application(candidate)
+        if application_id is None or self.excluded_applications_list is None:
+            return
+
+        existing = {
+            self.excluded_applications_list.item(index).text()
+            for index in range(self.excluded_applications_list.count())
+        }
+        if application_id in existing:
+            return
+        self.excluded_applications_list.addItem(application_id)
+        self.excluded_applications_list.setCurrentRow(
+            self.excluded_applications_list.count() - 1
+        )
+        self._on_setting_changed_by_user()
+
+    @Slot()
+    def _remove_selected_excluded_app(self) -> None:
+        if self.excluded_applications_list is None:
+            return
+        row = self.excluded_applications_list.currentRow()
+        if row < 0:
+            return
+        self.excluded_applications_list.takeItem(row)
+        self._on_setting_changed_by_user()
+
     def _setup_buttons(self) -> None:
         """Creates and configures the dialog's OK and Cancel buttons."""
         self.button_box = QDialogButtonBox(
@@ -433,6 +545,18 @@ class SettingsDialog(QDialog):
             "custom_key_color": self._temp_custom_key_color.name(QColor.HexArgb),
             "custom_text_color": self._temp_custom_text_color.name(QColor.HexArgb),
             "language": lang_id,
+            FULLSCREEN_SUPPRESSION_SETTING: bool(
+                self.fullscreen_suppression_checkbox
+                and self.fullscreen_suppression_checkbox.isChecked()
+            ),
+            EXCLUDED_APPLICATIONS_SETTING: (
+                [
+                    self.excluded_applications_list.item(index).text()
+                    for index in range(self.excluded_applications_list.count())
+                ]
+                if self.excluded_applications_list
+                else []
+            ),
         }
 
     def changeEvent(self, event: QEvent) -> None:
@@ -454,6 +578,8 @@ class SettingsDialog(QDialog):
             self._language_group_box.setTitle(self.tr("Language"))
         if self._custom_apps_group_box:
             self._custom_apps_group_box.setTitle(self.tr("Shortcuts"))
+        if self._game_guard_group_box:
+            self._game_guard_group_box.setTitle(self.tr("Game Guard"))
         if self._theme_form_label:
             self._theme_form_label.setText(self.tr("Theme:"))
         if self._opacity_form_label:
@@ -468,6 +594,18 @@ class SettingsDialog(QDialog):
             )
         if self.custom_apps_button:
             self.custom_apps_button.setText(self.tr("Manage Shortcuts..."))
+        if self.fullscreen_suppression_checkbox:
+            self.fullscreen_suppression_checkbox.setText(
+                self.tr("Automatically hide Quick HUD in fullscreen applications")
+            )
+        if self._excluded_applications_label:
+            self._excluded_applications_label.setText(
+                self.tr("Excluded Applications")
+            )
+        if self.add_current_app_button:
+            self.add_current_app_button.setText(self.tr("Add current app"))
+        if self.remove_excluded_app_button:
+            self.remove_excluded_app_button.setText(self.tr("Remove"))
 
         if hasattr(self, "_custom_bg_row_label") and self._custom_bg_row_label:
             self._custom_bg_row_label.setText(self.tr("Custom BG:"))

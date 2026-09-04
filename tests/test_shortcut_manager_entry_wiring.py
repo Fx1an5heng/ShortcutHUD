@@ -24,9 +24,10 @@ class _FakeSignal:
 class _FakeSettingsDialog:
     last_instance = None
 
-    def __init__(self, settings, parent=None) -> None:
+    def __init__(self, settings, parent=None, current_app_provider=None) -> None:
         self.settings = settings
         self.parent = parent
+        self.current_app_provider = current_app_provider
         self.settings_changed = _FakeSignal()
         self.custom_apps_requested = _FakeSignal()
         self.modality = None
@@ -72,6 +73,9 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
         application = SimpleNamespace(
             config_mgr=SimpleNamespace(get_all_settings=lambda: {"language": "en_US"}),
             overlay_window=object(),
+            current_application_candidate=SimpleNamespace(
+                editable_candidate=lambda: "CODE.EXE"
+            ),
             handle_settings_changed=lambda _settings: None,
             open_user_shortcut_manager_dialog=lambda parent=None: opened.append(parent),
         )
@@ -82,6 +86,7 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
         dialog = _FakeSettingsDialog.last_instance
         self.assertEqual(opened, [dialog])
         self.assertEqual(dialog.modality, Qt.ApplicationModal)
+        self.assertEqual(dialog.current_app_provider(), "CODE.EXE")
 
     def test_new_entry_constructs_user_shortcut_manager_dialog(self) -> None:
         store = object()
@@ -179,8 +184,17 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
         overlay_window.show()
         self.addCleanup(overlay_window.close)
         hud_controller = Mock()
+        policy = SuppressionPolicy()
+        game_guard_runtime = Mock()
+
+        def set_manual_game_mode(enabled: bool) -> None:
+            policy.set_manual_game_mode(enabled)
+            hud_controller.on_suppression_changed()
+
+        game_guard_runtime.set_manual_game_mode.side_effect = set_manual_game_mode
         application = SimpleNamespace(
-            suppression_policy=SuppressionPolicy(),
+            suppression_policy=policy,
+            game_guard_runtime=game_guard_runtime,
             overlay_window=overlay_window,
             hud_controller=hud_controller,
         )
@@ -192,6 +206,7 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
             SuppressionDecision.HARD_BLOCK,
         )
         self.assertFalse(overlay_window.isVisible())
+        game_guard_runtime.set_manual_game_mode.assert_called_once_with(True)
         hud_controller.on_suppression_changed.assert_called_once_with()
 
         ShortcutOverlayApplication.set_game_mode_enabled(application, False)

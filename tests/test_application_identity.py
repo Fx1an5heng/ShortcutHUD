@@ -278,6 +278,28 @@ class ForegroundMonitorSnapshotTests(unittest.TestCase):
         self.assertEqual(snapshots, [(101, "Code.exe"), (202, "Code.exe")])
         self.assertEqual(app_changes, ["Code.exe"])
 
+    def test_polled_signal_emits_when_hwnd_and_exe_are_unchanged(self) -> None:
+        monitor = ForegroundMonitor(interval_ms=60_000)
+        monitor.stop_monitoring()
+        transitions = []
+        polls = []
+        monitor.foreground_changed.connect(
+            lambda hwnd, exe: transitions.append((hwnd, exe))
+        )
+        monitor.foreground_polled.connect(
+            lambda hwnd, exe: polls.append((hwnd, exe))
+        )
+
+        with patch(
+            "scripts.foreground_monitor.win32gui.GetForegroundWindow",
+            return_value=101,
+        ), patch.object(monitor, "get_exe_from_hwnd", return_value="Code.exe"):
+            self.assertTrue(monitor.check_foreground_app())
+            self.assertFalse(monitor.check_foreground_app())
+
+        self.assertEqual(transitions, [(101, "Code.exe")])
+        self.assertEqual(polls, [(101, "Code.exe"), (101, "Code.exe")])
+
 
 if __name__ == "__main__":
     unittest.main()

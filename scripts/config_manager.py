@@ -11,6 +11,13 @@ import json
 import os
 from typing import Dict, Any, Optional
 
+from .game_guard_settings import (
+    DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED,
+    EXCLUDED_APPLICATIONS_SETTING,
+    FULLSCREEN_SUPPRESSION_SETTING,
+    normalize_excluded_applications,
+)
+
 # Type aliases for better readability and type hinting, representing
 # the expected structure of the JSON configuration data.
 # Example: {"NOTEPAD.EXE": {"Ctrl": {"S": {"en": "Save", "zh": "保存"}}}}
@@ -199,7 +206,9 @@ class ConfigManager:
             "window_x": None,  # No specific default position, let OS decide initially
             "window_y": None,
             "window_width": 850, # Default width
-            "window_height": 280 # Default height
+            "window_height": 280, # Default height
+            FULLSCREEN_SUPPRESSION_SETTING: DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED,
+            EXCLUDED_APPLICATIONS_SETTING: [],
             # Other settings like window position/size can be added here.
         }
 
@@ -230,6 +239,10 @@ class ConfigManager:
                 # loaded_settings remains {}
         # else: (File not found, handled by merging with defaults later)
 
+        made_changes_due_to_missing_keys = any(
+            key not in loaded_settings for key in default_settings
+        )
+
         # Merge loaded settings with defaults: defaults provide missing keys.
         # Start with a copy of default_settings, then update with loaded_settings.
         self.app_settings = default_settings.copy()
@@ -237,14 +250,22 @@ class ConfigManager:
             loaded_settings
         )  # Overwrites defaults with loaded values if keys match.
 
-        # Ensure all keys from default_settings are present in self.app_settings.
-        # This handles cases where new default settings are added to the application
-        # but are missing from an existing user's settings file.
-        made_changes_due_to_missing_keys = False
-        for key, default_value in default_settings.items():
-            if key not in self.app_settings:
-                self.app_settings[key] = default_value
-                made_changes_due_to_missing_keys = True
+        if not isinstance(
+            self.app_settings.get(FULLSCREEN_SUPPRESSION_SETTING), bool
+        ):
+            self.app_settings[FULLSCREEN_SUPPRESSION_SETTING] = (
+                DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED
+            )
+            made_changes_due_to_missing_keys = True
+
+        normalized_exclusions = normalize_excluded_applications(
+            self.app_settings.get(EXCLUDED_APPLICATIONS_SETTING)
+        )
+        if normalized_exclusions != self.app_settings.get(
+            EXCLUDED_APPLICATIONS_SETTING
+        ):
+            made_changes_due_to_missing_keys = True
+        self.app_settings[EXCLUDED_APPLICATIONS_SETTING] = normalized_exclusions
 
         # Save settings if:
         # 1. The file didn't exist.
@@ -289,7 +310,21 @@ class ConfigManager:
                                Existing settings with the same keys will be overwritten.
                                New key-value pairs will be added.
         """
-        self.app_settings.update(new_settings_dict)
+        normalized_updates = new_settings_dict.copy()
+        if FULLSCREEN_SUPPRESSION_SETTING in normalized_updates:
+            fullscreen_enabled = normalized_updates[FULLSCREEN_SUPPRESSION_SETTING]
+            normalized_updates[FULLSCREEN_SUPPRESSION_SETTING] = (
+                fullscreen_enabled
+                if isinstance(fullscreen_enabled, bool)
+                else DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED
+            )
+        if EXCLUDED_APPLICATIONS_SETTING in normalized_updates:
+            normalized_updates[EXCLUDED_APPLICATIONS_SETTING] = (
+                normalize_excluded_applications(
+                    normalized_updates[EXCLUDED_APPLICATIONS_SETTING]
+                )
+            )
+        self.app_settings.update(normalized_updates)
         self.save_settings()
 
     def get_all_settings(self) -> AppSettingsData:

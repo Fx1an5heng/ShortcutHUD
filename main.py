@@ -41,6 +41,8 @@ from scripts.application_identity import ApplicationIdentityRuntime
 from scripts.current_application_candidate import CurrentApplicationCandidateTracker
 from scripts.config_manager import ConfigManager
 from scripts.foreground_monitor import ForegroundMonitor
+from scripts.fullscreen_detection import WindowsFullscreenDetector
+from scripts.game_guard_runtime import GameGuardRuntime
 from scripts.keyboard_handler import KeyboardHandler
 from scripts.shortcut_hud import ShortcutHudWindow
 from scripts.shortcut_hud_controller import ShortcutHudController
@@ -136,6 +138,13 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.kb_handler: KeyboardHandler = KeyboardHandler()
         self.suppression_policy = SuppressionPolicy()
+        self.game_guard_runtime = GameGuardRuntime(
+            self.suppression_policy,
+            WindowsFullscreenDetector(),
+            lambda: self.application_identity.current_app_name,
+            self.config_mgr.get_all_settings(),
+            parent=self,
+        )
         self._win_release_bridge = _WinReleaseBridge(self)
         self.win_discovery_proxy: WinDiscoveryProxy = WinDiscoveryProxy(
             self._win_release_bridge.physical_win_released.emit
@@ -214,6 +223,9 @@ class ShortcutOverlayApplication(QApplication):
         self.monitor.foreground_changed.connect(
             self.application_identity.on_foreground_changed
         )
+        self.monitor.foreground_polled.connect(
+            self.game_guard_runtime.on_foreground_polled
+        )
         self.application_identity.active_app_changed.connect(
             self.overlay_window.on_active_app_changed
         )
@@ -222,6 +234,12 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.application_identity.active_app_changed.connect(
             self.current_application_candidate.on_active_app_changed
+        )
+        self.application_identity.active_app_changed.connect(
+            self.game_guard_runtime.on_active_app_changed
+        )
+        self.game_guard_runtime.suppression_changed.connect(
+            self.hud_controller.on_suppression_changed
         )
         self.kb_handler.key_event_signal.connect(self.overlay_window.on_key_event)
         self.kb_handler.key_event_signal.connect(self.hud_controller.on_key_event)
@@ -368,10 +386,9 @@ class ShortcutOverlayApplication(QApplication):
     def set_game_mode_enabled(self, enabled: bool) -> None:
         """Apply session-only Manual Game Mode without touching input hooks."""
 
-        self.suppression_policy.set_manual_game_mode(enabled)
+        self.game_guard_runtime.set_manual_game_mode(enabled)
         if enabled:
             self.overlay_window.hide()
-        self.hud_controller.on_suppression_changed()
 
     def open_settings_dialog(self) -> None:
         """
@@ -380,7 +397,13 @@ class ShortcutOverlayApplication(QApplication):
         """
         current_settings: Dict[str, Any] = self.config_mgr.get_all_settings()
         # SettingsDialog constructor no longer needs dialog_text_color passed.
-        dialog = SettingsDialog(current_settings, parent=self.overlay_window)
+        dialog = SettingsDialog(
+            current_settings,
+            parent=self.overlay_window,
+            current_app_provider=(
+                self.current_application_candidate.editable_candidate
+            ),
+        )
         dialog.settings_changed.connect(self.handle_settings_changed)
         dialog.custom_apps_requested.connect(
             lambda: self.open_user_shortcut_manager_dialog(dialog)
@@ -423,6 +446,7 @@ class ShortcutOverlayApplication(QApplication):
         """
         old_lang: Optional[str] = self.config_mgr.get_setting("language")
         self.config_mgr.update_settings(new_settings) # Save to file.
+        self.game_guard_runtime.update_settings(self.config_mgr.get_all_settings())
         self.overlay_window.apply_current_settings() # Apply to overlay (theme, opacity).
         self.hud_controller.refresh_current_state()
 
