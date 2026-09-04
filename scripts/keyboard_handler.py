@@ -8,15 +8,23 @@ and emits signals for key events and modifier changes. It also includes a
 mechanism to detect "stuck" keys if the 'keyboard' library misses an 'up' event.
 """
 import keyboard  # type: ignore # 'keyboard' library might not have type stubs.
-from PySide6.QtCore import QObject, Signal, Slot, QTimer
+from PySide6.QtCore import QObject, Qt, Signal, Slot, QTimer
 import threading
 import time
 from typing import Set, Dict, Optional, Any
+
+from .input_state_reconciler import PhysicalModifierReconciler
 
 # Type alias for the event object from the 'keyboard' library.
 # Using 'Any' as the 'keyboard' library lacks official type stubs.
 KeyboardEvent = Any
 _WINDOWS_KEY_VKS = frozenset((0x5B, 0x5C))
+_NORMALIZED_MODIFIER_NAMES = {
+    "ctrl": "Ctrl",
+    "alt": "Alt",
+    "shift": "Shift",
+    "win": "Win",
+}
 
 
 class KeyboardHandler(QObject):
@@ -34,15 +42,24 @@ class KeyboardHandler(QObject):
     # Args: (active_modifiers_set: set of lowercase modifier names, e.g., {"ctrl", "shift"}).
     modifiers_changed = Signal(set)
 
+    # Hook callbacks run outside the Qt thread. Timer lifecycle changes are
+    # therefore queued back to this QObject's thread.
+    _state_check_sync_requested = Signal()
+
     # Signal for exiting the application (currently not used as exit is via tray menu).
     # exit_signal = Signal() # Kept if future use is intended, otherwise can be removed.
 
     # Timeout in milliseconds to consider a key "stuck" if no 'up' event is received.
     DEFAULT_KEY_TIMEOUT_MS: int = 250
     # Interval in milliseconds for the timer that checks for stuck key states.
-    STATE_CHECK_INTERVAL_MS: int = 50
+    STATE_CHECK_INTERVAL_MS: int = 100
 
-    def __init__(self, parent: Optional[QObject] = None):
+    def __init__(
+        self,
+        parent: Optional[QObject] = None,
+        *,
+        modifier_reconciler: PhysicalModifierReconciler | None = None,
+    ):
         """
         Initializes the KeyboardHandler.
 
@@ -56,6 +73,10 @@ class KeyboardHandler(QObject):
         self._state_lock = threading.RLock()
         # Stores lowercase base names of active modifiers: "ctrl", "shift", "alt", "win".
         self._active_modifiers: Set[str] = set()
+        self._modifier_state_revision: int = 0
+        self._modifier_reconciler = (
+            modifier_reconciler or PhysicalModifierReconciler()
+        )
         self._hooked: bool = (
             False  # Flag indicating if the global keyboard hook is active.
         )
@@ -67,6 +88,10 @@ class KeyboardHandler(QObject):
         self._state_check_timer: QTimer = QTimer(self)
         self._state_check_timer.timeout.connect(self._check_key_states)
         self._state_check_timer.setInterval(self.STATE_CHECK_INTERVAL_MS)
+        self._state_check_sync_requested.connect(
+            self._sync_state_check_timer,
+            type=Qt.ConnectionType.QueuedConnection,
+        )
 
     @Slot(int)
     def reconcile_win_release(self, vk: int) -> None:
@@ -80,14 +105,7 @@ class KeyboardHandler(QObject):
         if vk not in _WINDOWS_KEY_VKS:
             return
 
-        with self._state_lock:
-            if "win" not in self._active_modifiers:
-                return
-            self._active_modifiers.discard("win")
-            self._pressed_keys.pop("Win", None)
-            active_modifiers = self._active_modifiers.copy()
-
-        self.modifiers_changed.emit(active_modifiers)
+        self._reconcile_modifier_state(only={"win"})
 
     def _normalize_key_name(self, name_from_lib: Optional[str]) -> Optional[str]:
         """
@@ -296,6 +314,10 @@ class KeyboardHandler(QObject):
         with self._state_lock:
             pressed_keys = list(self._pressed_keys.items())
         for key_name, press_time_ms in pressed_keys:
+            # Modifier recovery must use a physical source independent of the
+            # hook-backed state used by keyboard.is_pressed().
+            if self._get_modifier_base_name(key_name) is not None:
+                continue
             try:
                 lib_key_name = self._map_normalized_to_keyboard_lib_name(key_name)
                 if not keyboard.is_pressed(lib_key_name):
@@ -308,6 +330,65 @@ class KeyboardHandler(QObject):
 
         for key_name_to_release in keys_to_release_simulated:
             self._simulate_key_release(key_name_to_release)
+
+        self._reconcile_modifier_state()
+        self._sync_state_check_timer()
+
+    def _reconcile_modifier_state(
+        self,
+        *,
+        only: Set[str] | None = None,
+    ) -> None:
+        """Apply one physical reconciliation through the normal signal chain."""
+
+        with self._state_lock:
+            previous = self._active_modifiers.copy()
+            revision = self._modifier_state_revision
+
+        reconciled = self._modifier_reconciler.reconcile(previous, only=only)
+        if reconciled == previous:
+            self._sync_state_check_timer()
+            return
+
+        with self._state_lock:
+            # A hook event observed during the physical read owns the newer
+            # state. The next timer pass will reconcile that fresh snapshot.
+            if (
+                self._modifier_state_revision != revision
+                or self._active_modifiers != previous
+            ):
+                self._sync_state_check_timer()
+                return
+
+            removed = previous.difference(reconciled)
+            self._active_modifiers = reconciled
+            self._modifier_state_revision += 1
+            for modifier in removed:
+                normalized_name = _NORMALIZED_MODIFIER_NAMES.get(modifier)
+                if normalized_name is not None:
+                    self._pressed_keys.pop(normalized_name, None)
+            active_modifiers = self._active_modifiers.copy()
+
+        for modifier in _NORMALIZED_MODIFIER_NAMES:
+            if modifier in removed:
+                self.key_event_signal.emit(
+                    _NORMALIZED_MODIFIER_NAMES[modifier],
+                    "up",
+                )
+        self.modifiers_changed.emit(active_modifiers)
+        self._sync_state_check_timer()
+
+    @Slot()
+    def _sync_state_check_timer(self) -> None:
+        """Run the watchdog only while the handler owns non-idle state."""
+
+        with self._state_lock:
+            should_run = self._hooked and bool(self._active_modifiers)
+
+        if should_run and not self._state_check_timer.isActive():
+            self._state_check_timer.start()
+        elif not should_run and self._state_check_timer.isActive():
+            self._state_check_timer.stop()
 
     def _simulate_key_release(self, key_name: str) -> None:
         """
@@ -328,11 +409,13 @@ class KeyboardHandler(QObject):
             if modifier_base and modifier_base in self._active_modifiers:
                 # This fallback treats a timed-out modifier as released.
                 self._active_modifiers.discard(modifier_base)
+                self._modifier_state_revision += 1
                 active_modifiers = self._active_modifiers.copy()
 
         self.key_event_signal.emit(key_name, "up")
         if active_modifiers is not None:
             self.modifiers_changed.emit(active_modifiers)
+        self._sync_state_check_timer()
 
     def _key_event_callback(self, event: KeyboardEvent) -> None:
         """
@@ -365,6 +448,8 @@ class KeyboardHandler(QObject):
             # Update the set of active logical modifiers.
             modifier_base = self._get_modifier_base_name(normalized_key)
             modifiers_changed_flag = False
+            if modifier_base:
+                self._modifier_state_revision += 1
             if modifier_base and event_type_str == "down":
                 if modifier_base not in self._active_modifiers:
                     self._active_modifiers.add(modifier_base)
@@ -406,6 +491,7 @@ class KeyboardHandler(QObject):
         self.key_event_signal.emit(normalized_key, event_type_str)
         if active_modifiers is not None:
             self.modifiers_changed.emit(active_modifiers)
+        self._state_check_sync_requested.emit()
 
     def start_listening(self) -> None:
         """
@@ -418,7 +504,7 @@ class KeyboardHandler(QObject):
                 # `suppress=False` ensures events are passed to other applications as well.
                 keyboard.hook(self._key_event_callback, suppress=False)
                 self._hooked = True
-                self._state_check_timer.start()  # Start timer for stuck key detection.
+                self._sync_state_check_timer()
                 print("Keyboard listener started.")  # Console message for status.
             except Exception as e:
                 # Catch common errors like permission issues.
@@ -447,6 +533,7 @@ class KeyboardHandler(QObject):
         with self._state_lock:
             self._pressed_keys.clear()
             self._active_modifiers.clear()
+            self._modifier_state_revision += 1
             active_modifiers = self._active_modifiers.copy()
         # Emit a final modifiers_changed to reset any UI elements.
         self.modifiers_changed.emit(active_modifiers)

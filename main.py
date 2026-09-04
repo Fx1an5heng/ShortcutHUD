@@ -225,6 +225,7 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.kb_handler.key_event_signal.connect(self.overlay_window.on_key_event)
         self.kb_handler.key_event_signal.connect(self.hud_controller.on_key_event)
+        self.kb_handler.key_event_signal.connect(self._reconcile_win_proxy_state)
         self.kb_handler.modifiers_changed.connect(self.overlay_window.on_modifiers_changed)
         self.kb_handler.modifiers_changed.connect(self.hud_controller.on_modifiers_changed)
         self._win_release_bridge.physical_win_released.connect(
@@ -232,6 +233,17 @@ class ShortcutOverlayApplication(QApplication):
             type=Qt.ConnectionType.QueuedConnection,
         )
         # self.kb_handler.exit_signal.connect(self.quit_application) # Exit hotkey removed.
+
+    @Slot(str, str)
+    def _reconcile_win_proxy_state(
+        self,
+        key_name: str,
+        event_type: str,
+    ) -> None:
+        """Keep the proxy's native Win session aligned with recovered input."""
+
+        if key_name == "Win" and event_type == "up":
+            self.win_discovery_proxy.reconcile_physical_win_state()
 
     def _initialize_tray_icon_object(self) -> None:
         """

@@ -274,6 +274,39 @@ class WinDiscoveryProxy:
                     return win_vk
         return None
 
+    def reconcile_physical_win_state(self) -> bool:
+        """Drop proxy state for Win sides that are no longer physical down.
+
+        This is an idempotent cleanup path for an up event missed by the native
+        hook. It never injects input and never clears an active side that
+        ``GetAsyncKeyState`` still reports as held.
+        """
+
+        with self._state_lock:
+            physically_down = self._read_physical_win_vks()
+            if physically_down is None:
+                return False
+            previous_vks = self._physical_win_vks.copy()
+            previous_active = self._active_win_vk
+            self._physical_win_vks.intersection_update(physically_down)
+            if self._active_win_vk not in physically_down:
+                self._active_win_vk = None
+            return (
+                self._physical_win_vks != previous_vks
+                or self._active_win_vk != previous_active
+            )
+
+    @staticmethod
+    def _read_physical_win_vks() -> set[int] | None:
+        try:
+            return {
+                win_vk
+                for win_vk in (VK_LWIN, VK_RWIN)
+                if _user32.GetAsyncKeyState(win_vk) & 0x8000
+            }
+        except Exception:
+            return None
+
     def activate_for_current_hold(self, win_vk: int) -> bool:
         """Arm one already-observed physical Win hold.
 

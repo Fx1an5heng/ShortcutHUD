@@ -6,6 +6,11 @@ from PySide6.QtTest import QTest
 
 from scripts.shortcut_hud_controller import ShortcutHudController
 from scripts.keyboard_handler import KeyboardHandler
+from scripts.input_state_reconciler import (
+    PhysicalModifierReconciler,
+    VK_LCONTROL,
+    WindowsPhysicalModifierStateReader,
+)
 from scripts.suppression_policy import SuppressionPolicy
 from scripts.win_discovery_proxy import VK_LWIN
 
@@ -62,6 +67,7 @@ class _FakeWinDiscoveryProxy:
         self.activation_result = True
         self.activation_calls: list[int] = []
         self.session_active = False
+        self.reconciliation_calls = 0
 
     def current_physical_win_vk(self) -> int | None:
         return self.current_win_vk
@@ -71,6 +77,20 @@ class _FakeWinDiscoveryProxy:
         if self.activation_result:
             self.session_active = True
         return self.activation_result
+
+    def reconcile_physical_win_state(self) -> bool:
+        self.reconciliation_calls += 1
+        changed = self.session_active
+        self.session_active = False
+        return changed
+
+
+class _FakePhysicalModifierState:
+    def __init__(self, pressed_vks=()) -> None:
+        self.pressed_vks = set(pressed_vks)
+
+    def __call__(self, vk: int) -> int:
+        return 0x8000 if vk in self.pressed_vks else 0
 
 
 def wait_until(predicate, timeout_ms: int = 500) -> bool:
@@ -125,6 +145,25 @@ class ShortcutHudControllerTests(unittest.TestCase):
     def _enable_win_shortcuts(self) -> None:
         self.config.shortcuts["CODE.EXE"]["Win"] = {"R": "Run"}
 
+    def _make_recovery_handler(
+        self,
+        pressed_vks=(),
+    ) -> tuple[KeyboardHandler, _FakePhysicalModifierState]:
+        physical_state = _FakePhysicalModifierState(pressed_vks)
+        reconciler = PhysicalModifierReconciler(
+            WindowsPhysicalModifierStateReader(physical_state)
+        )
+        handler = KeyboardHandler(modifier_reconciler=reconciler)
+        handler.key_event_signal.connect(
+            lambda key_name, event_type: (
+                self.proxy.reconcile_physical_win_state()
+                if key_name == "Win" and event_type == "up"
+                else None
+            )
+        )
+        handler.modifiers_changed.connect(self.controller.on_modifiers_changed)
+        return handler, physical_state
+
     def _show_win_discovery(self) -> None:
         self._enable_win_shortcuts()
         self.proxy.current_win_vk = VK_LWIN
@@ -141,6 +180,96 @@ class ShortcutHudControllerTests(unittest.TestCase):
 
         self.assertFalse(self.hud.visible)
         self.assertEqual(self.hud.show_calls, 0)
+
+    def test_stale_recovery_cancels_pending_show(self) -> None:
+        handler, _physical_state = self._make_recovery_handler()
+        handler._active_modifiers.add("ctrl")
+        handler._pressed_keys["Ctrl"] = 1.0
+        handler.modifiers_changed.emit({"ctrl"})
+        self.assertTrue(self.controller._show_timer.isActive())
+
+        handler._check_key_states()
+
+        self.assertEqual(handler._active_modifiers, set())
+        self.assertIsNone(self.controller._current_modifier)
+        self.assertFalse(self.controller._show_timer.isActive())
+        self.assertFalse(wait_until(lambda: self.hud.visible))
+
+    def test_stale_recovery_hides_visible_hud(self) -> None:
+        handler, physical_state = self._make_recovery_handler({VK_LCONTROL})
+        handler._active_modifiers.add("ctrl")
+        handler.modifiers_changed.emit({"ctrl"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+
+        physical_state.pressed_vks.clear()
+        handler._check_key_states()
+
+        self.assertEqual(handler._active_modifiers, set())
+        self.assertIsNone(self.controller._current_modifier)
+        self.assertFalse(self.hud.visible)
+
+    def test_stale_win_recovery_clears_pending_discovery_state(self) -> None:
+        self._enable_win_shortcuts()
+        self.proxy.current_win_vk = VK_LWIN
+        handler, _physical_state = self._make_recovery_handler()
+        handler._active_modifiers.add("win")
+        handler.modifiers_changed.emit({"win"})
+        self.assertTrue(self.controller._show_timer.isActive())
+
+        handler._check_key_states()
+
+        self.assertFalse(self.controller._show_timer.isActive())
+        self.assertFalse(self.controller._win_modifier_held)
+        self.assertFalse(self.controller._win_activation_attempted)
+        self.assertFalse(self.controller._win_discovery_active)
+        self.assertFalse(self.controller._win_execution_seen)
+
+    def test_stale_win_recovery_hides_active_discovery(self) -> None:
+        self._enable_win_shortcuts()
+        self.proxy.current_win_vk = VK_LWIN
+        handler, physical_state = self._make_recovery_handler({VK_LWIN})
+        handler._active_modifiers.add("win")
+        handler.modifiers_changed.emit({"win"})
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+        self.assertTrue(self.controller._win_discovery_active)
+
+        physical_state.pressed_vks.clear()
+        self.proxy.current_win_vk = None
+        handler._check_key_states()
+
+        self.assertFalse(self.hud.visible)
+        self.assertFalse(self.controller._win_modifier_held)
+        self.assertFalse(self.controller._win_activation_attempted)
+        self.assertFalse(self.controller._win_discovery_active)
+        self.assertFalse(self.controller._win_execution_seen)
+        self.assertFalse(self.proxy.session_active)
+        self.assertEqual(self.proxy.reconciliation_calls, 1)
+
+    def test_game_mode_recovery_then_new_ctrl_schedules_normally(self) -> None:
+        handler, physical_state = self._make_recovery_handler()
+        self.suppression_policy.set_manual_game_mode(True)
+        self.controller.on_suppression_changed()
+        handler._active_modifiers.add("ctrl")
+        handler.modifiers_changed.emit({"ctrl"})
+
+        handler._check_key_states()
+
+        self.assertEqual(handler._active_modifiers, set())
+        self.assertIsNone(self.controller._current_modifier)
+        self.assertFalse(self.hud.visible)
+        self.assertEqual(self.hud.show_calls, 0)
+
+        self.suppression_policy.set_manual_game_mode(False)
+        self.controller.on_suppression_changed()
+        physical_state.pressed_vks.add(VK_LCONTROL)
+        handler._key_event_callback(type(
+            "Event",
+            (),
+            {"name": "left ctrl", "event_type": "down"},
+        )())
+
+        self.assertTrue(wait_until(lambda: self.hud.visible))
+        self.assertEqual(self.hud.show_calls, 1)
 
     def test_game_mode_cancels_pending_show(self) -> None:
         self.controller.on_modifiers_changed({"ctrl"})

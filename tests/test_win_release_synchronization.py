@@ -1,9 +1,10 @@
 import unittest
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 from PySide6.QtCore import QCoreApplication, Qt
 
-from main import _WinReleaseBridge
+from main import ShortcutOverlayApplication, _WinReleaseBridge
 from scripts.keyboard_handler import KeyboardHandler
 from scripts.win_discovery_proxy import VK_LWIN, WinDiscoveryProxy
 
@@ -71,6 +72,74 @@ class WinReleaseSynchronizationTests(unittest.TestCase):
         expected = {"ctrl", "alt", "shift"}
         self.assertEqual(self.handler._active_modifiers, expected)
         self.assertEqual(self.emitted_states, [expected])
+
+    def test_proxy_reconciliation_clears_only_stale_win_sides(self) -> None:
+        self.proxy._physical_win_vks.update({VK_LWIN, 0x5C})
+        self.proxy._active_win_vk = VK_LWIN
+
+        with patch.object(
+            self.proxy,
+            "_read_physical_win_vks",
+            return_value={0x5C},
+        ):
+            changed = self.proxy.reconcile_physical_win_state()
+
+        self.assertTrue(changed)
+        self.assertEqual(self.proxy._physical_win_vks, {0x5C})
+        self.assertIsNone(self.proxy._active_win_vk)
+
+    def test_proxy_reconciliation_preserves_active_physical_side(self) -> None:
+        self.proxy._physical_win_vks.add(VK_LWIN)
+        self.proxy._active_win_vk = VK_LWIN
+
+        with patch.object(
+            self.proxy,
+            "_read_physical_win_vks",
+            return_value={VK_LWIN},
+        ):
+            changed = self.proxy.reconcile_physical_win_state()
+
+        self.assertFalse(changed)
+        self.assertEqual(self.proxy._physical_win_vks, {VK_LWIN})
+        self.assertEqual(self.proxy._active_win_vk, VK_LWIN)
+
+    def test_proxy_reconciliation_fails_closed_when_state_is_unavailable(self) -> None:
+        self.proxy._physical_win_vks.add(VK_LWIN)
+        self.proxy._active_win_vk = VK_LWIN
+
+        with patch.object(
+            self.proxy,
+            "_read_physical_win_vks",
+            return_value=None,
+        ):
+            changed = self.proxy.reconcile_physical_win_state()
+
+        self.assertFalse(changed)
+        self.assertEqual(self.proxy._physical_win_vks, {VK_LWIN})
+        self.assertEqual(self.proxy._active_win_vk, VK_LWIN)
+
+    def test_application_requests_proxy_cleanup_only_for_win_up(self) -> None:
+        proxy = Mock()
+        application = SimpleNamespace(win_discovery_proxy=proxy)
+
+        ShortcutOverlayApplication._reconcile_win_proxy_state(
+            application,
+            "Ctrl",
+            "up",
+        )
+        ShortcutOverlayApplication._reconcile_win_proxy_state(
+            application,
+            "Win",
+            "down",
+        )
+        proxy.reconcile_physical_win_state.assert_not_called()
+
+        ShortcutOverlayApplication._reconcile_win_proxy_state(
+            application,
+            "Win",
+            "up",
+        )
+        proxy.reconcile_physical_win_state.assert_called_once_with()
 
 
 if __name__ == "__main__":
