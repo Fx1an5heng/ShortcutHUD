@@ -25,8 +25,13 @@ available because it is an explicitly entered, settings-local input mode.
 ## Sources
 
 - Manual Game Mode produces `HARD_BLOCK`.
-- A future user-excluded game or application will produce `HARD_BLOCK`.
-- Future automatic fullscreen detection should produce `SOFT_BLOCK`.
+- A user-excluded application produces `SOFT_BLOCK`.
+- Automatic fullscreen detection produces `SOFT_BLOCK`.
+
+Independent sources are aggregated rather than overwriting one shared state.
+`HARD_BLOCK` takes precedence over `SOFT_BLOCK`, which takes precedence over
+`ALLOW`. The runtime details are recorded in
+[Game Guard Runtime](game-guard-runtime.md).
 
 Fullscreen alone is not evidence of a game. It may be an IDE, browser, PDF,
 video, or presentation. Treating it as `HARD_BLOCK` would incorrectly override
@@ -36,8 +41,8 @@ an explicit user request to open Guide.
 
 The policy is pure logic and does not own hooks, timers, foreground polling, or
 widgets. Presentation controllers query it before scheduling or showing work.
-When the decision becomes `HARD_BLOCK`, the owning controller cancels pending
-show work and hides an already-visible surface immediately.
+When the effective decision blocks passive presentation, the owning controller
+cancels pending show work and hides an already-visible surface immediately.
 
 Manual Game Mode is session-only in Phase G0. It defaults to off at every
 process start and is intentionally absent from settings persistence.
