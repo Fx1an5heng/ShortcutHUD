@@ -17,6 +17,7 @@ from .game_guard_settings import (
     FULLSCREEN_SUPPRESSION_SETTING,
     normalize_excluded_applications,
 )
+from .shortcut_catalog import ShortcutCatalog
 
 # Type aliases for better readability and type hinting, representing
 # the expected structure of the JSON configuration data.
@@ -49,6 +50,7 @@ class ConfigManager:
         """
         self.shortcuts_data: ShortcutData = {}  # Holds loaded shortcut definitions.
         self.app_settings: AppSettingsData = {}  # Holds loaded application settings.
+        self.shortcut_catalog = ShortcutCatalog()
 
         self._shortcuts_file_path: str = shortcuts_file_path
         self._settings_file_path: str = settings_file_path
@@ -61,7 +63,18 @@ class ConfigManager:
         `shortcuts_data` and `app_settings`.
         """
         self._load_or_create_shortcuts()
+        self._reload_shortcut_catalog()
         self._load_or_create_settings()
+
+    def _reload_shortcut_catalog(self) -> None:
+        """Build one read-only Catalog view over legacy data and optional packs."""
+
+        packs_path = os.path.join(
+            os.path.dirname(self._shortcuts_file_path), "shortcut_packs"
+        )
+        self.shortcut_catalog = ShortcutCatalog.from_legacy_shortcuts(
+            self.shortcuts_data
+        ).with_packs_from(packs_path)
 
     def _get_default_shortcuts_config(self) -> ShortcutData:
         """
@@ -154,6 +167,7 @@ class ConfigManager:
             os.makedirs(os.path.dirname(self._shortcuts_file_path), exist_ok=True)
             with open(self._shortcuts_file_path, "w", encoding="utf-8") as f:
                 json.dump(self.shortcuts_data, f, indent=2, ensure_ascii=False)
+            self._reload_shortcut_catalog()
             # print(f"Info: Shortcuts explicitly saved to '{self._shortcuts_file_path}'.")
         except Exception as e:
             print(f"Error: Could not save shortcuts to '{self._shortcuts_file_path}': {e}")
@@ -348,3 +362,8 @@ class ConfigManager:
             A copy of the `shortcuts_data` dictionary.
         """
         return self.shortcuts_data.copy()
+
+    def get_shortcut_catalog(self) -> ShortcutCatalog:
+        """Return the initialized Catalog view used by the Quick HUD."""
+
+        return self.shortcut_catalog

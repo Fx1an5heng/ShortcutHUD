@@ -48,6 +48,7 @@ from scripts.shortcut_hud import ShortcutHudWindow
 from scripts.shortcut_hud_controller import ShortcutHudController
 from scripts.suppression_policy import PresentationIntent, SuppressionPolicy
 from scripts.user_shortcut_store import UserShortcutStore, get_profile_display_names
+from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
 
@@ -64,6 +65,16 @@ def load_user_shortcut_store(
     """Load the production or injected user profile file once at startup."""
 
     store = UserShortcutStore(path)
+    store.load()
+    return store
+
+
+def load_quick_hud_selection_store(
+    path: str | os.PathLike[str] | None = None,
+) -> QuickHudSelectionStore:
+    """Load independent Catalog selection state once at startup."""
+
+    store = QuickHudSelectionStore(path)
     store.load()
     return store
 
@@ -113,6 +124,7 @@ class ShortcutOverlayApplication(QApplication):
         self.config_mgr: ConfigManager = ConfigManager(shortcuts_path, settings_path)
         self.config_mgr.initialize_configs()
         self.user_shortcut_store = load_user_shortcut_store()
+        self.quick_hud_selection_store = load_quick_hud_selection_store()
         user_profiles = self.user_shortcut_store.snapshot()
 
         # Setup translation services.
@@ -157,6 +169,7 @@ class ShortcutOverlayApplication(QApplication):
             parent=self,
             user_profiles=user_profiles,
             suppression_policy=self.suppression_policy,
+            selection_store=self.quick_hud_selection_store,
         )
 
         # Initialize and configure the system tray icon.

@@ -9,7 +9,9 @@ from typing import Protocol
 from PySide6.QtCore import QObject, QTimer, Slot
 
 from .modifier_state import canonicalize_modifier_state
-from .shortcut_resolver import ShortcutEntry, resolve_shortcuts
+from .shortcut_catalog import ShortcutCatalog
+from .shortcut_catalog_resolver import CatalogShortcutResolver
+from .shortcut_resolver import ShortcutEntry
 from .suppression_policy import PresentationIntent, SuppressionPolicy
 
 
@@ -64,6 +66,7 @@ class ShortcutHudController(QObject):
         win_only_show_delay_ms: int = WIN_ONLY_SHOW_DELAY_MS,
         user_profiles: Mapping[str, object] | None = None,
         suppression_policy: SuppressionPolicy | None = None,
+        selection_store: object | None = None,
     ) -> None:
         super().__init__(parent)
         self._config_manager = config_manager
@@ -76,6 +79,7 @@ class ShortcutHudController(QObject):
             else {}
         )
         self._suppression_policy = suppression_policy or SuppressionPolicy()
+        self._selection_store = selection_store
         self._current_modifier: str | None = None
         self._show_delay_ms = show_delay_ms
         self._win_only_show_delay_ms = win_only_show_delay_ms
@@ -240,11 +244,19 @@ class ShortcutHudController(QObject):
         self._hud_window.show_hud()
 
     def _resolve_current_entries(self) -> list[ShortcutEntry]:
-        return resolve_shortcuts(
-            self._config_manager.get_all_shortcuts(),
+        catalog_getter = getattr(self._config_manager, "get_shortcut_catalog", None)
+        catalog = (
+            catalog_getter()
+            if callable(catalog_getter)
+            else ShortcutCatalog.from_legacy_shortcuts(
+                self._config_manager.get_all_shortcuts()
+            )
+        )
+        return CatalogShortcutResolver(catalog).resolve(
             self._foreground_monitor.current_app_name,
             self._current_modifier,
             self._user_profiles,
+            self._selection_store,
         )
 
     def _render(self, entries: list[ShortcutEntry]) -> None:
