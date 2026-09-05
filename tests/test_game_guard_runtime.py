@@ -50,7 +50,8 @@ class GameGuardRuntimeTests(unittest.TestCase):
 
     def test_fullscreen_tick_sets_soft_block(self) -> None:
         runtime, policy, _detector, _identity = self._make_runtime(
-            fullscreen=True
+            fullscreen=True,
+            settings={"fullscreen_suppression_enabled": True},
         )
 
         runtime.on_foreground_polled(101, "code.exe")
@@ -59,7 +60,9 @@ class GameGuardRuntimeTests(unittest.TestCase):
         self.assertIs(policy.decision, SuppressionDecision.SOFT_BLOCK)
 
     def test_same_hwnd_is_rechecked_when_fullscreen_changes(self) -> None:
-        runtime, policy, detector, _identity = self._make_runtime()
+        runtime, policy, detector, _identity = self._make_runtime(
+            settings={"fullscreen_suppression_enabled": True}
+        )
         runtime.on_foreground_polled(101, "code.exe")
         detector.result = True
 
@@ -78,6 +81,15 @@ class GameGuardRuntimeTests(unittest.TestCase):
 
         self.assertEqual(detector.calls, [])
         self.assertFalse(runtime.fullscreen_active)
+        self.assertIs(policy.decision, SuppressionDecision.ALLOW)
+
+    def test_default_fullscreen_setting_is_opt_in_and_skips_detection(self) -> None:
+        runtime, policy, detector, _identity = self._make_runtime(fullscreen=True)
+
+        runtime.on_foreground_polled(101, "code.exe")
+
+        self.assertFalse(runtime.fullscreen_suppression_enabled)
+        self.assertEqual(detector.calls, [])
         self.assertIs(policy.decision, SuppressionDecision.ALLOW)
 
     def test_current_excluded_app_sets_soft_block(self) -> None:
@@ -125,7 +137,8 @@ class GameGuardRuntimeTests(unittest.TestCase):
 
     def test_manual_off_falls_back_to_remaining_fullscreen_source(self) -> None:
         runtime, policy, _detector, _identity = self._make_runtime(
-            fullscreen=True
+            fullscreen=True,
+            settings={"fullscreen_suppression_enabled": True},
         )
         runtime.on_foreground_polled(101, "code.exe")
         runtime.set_manual_game_mode(True)
@@ -135,7 +148,9 @@ class GameGuardRuntimeTests(unittest.TestCase):
         self.assertIs(policy.decision, SuppressionDecision.SOFT_BLOCK)
 
     def test_effective_change_signal_ignores_lower_priority_source_churn(self) -> None:
-        runtime, _policy, detector, _identity = self._make_runtime()
+        runtime, _policy, detector, _identity = self._make_runtime(
+            settings={"fullscreen_suppression_enabled": True}
+        )
         changes = []
         runtime.suppression_changed.connect(lambda: changes.append(True))
         runtime.set_manual_game_mode(True)

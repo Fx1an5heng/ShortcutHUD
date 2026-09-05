@@ -352,7 +352,7 @@ class SettingsDialog(QDialog):
             DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED,
         )
         self.fullscreen_suppression_checkbox = QCheckBox(
-            self.tr("Automatically hide Quick HUD in fullscreen applications"),
+            self.tr("Enable automatic fullscreen Quick HUD suppression (optional)"),
             self._game_guard_group_box,
         )
         self.fullscreen_suppression_checkbox.setChecked(
@@ -596,7 +596,7 @@ class SettingsDialog(QDialog):
             self.custom_apps_button.setText(self.tr("Manage Shortcuts..."))
         if self.fullscreen_suppression_checkbox:
             self.fullscreen_suppression_checkbox.setText(
-                self.tr("Automatically hide Quick HUD in fullscreen applications")
+                self.tr("Enable automatic fullscreen Quick HUD suppression (optional)")
             )
         if self._excluded_applications_label:
             self._excluded_applications_label.setText(

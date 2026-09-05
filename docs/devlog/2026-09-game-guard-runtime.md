@@ -87,7 +87,7 @@ list order. This also keeps WPS logical application identity behavior aligned
 with shortcut resolution instead of falling back to raw window titles.
 
 Older settings files receive two defaults on load: automatic fullscreen
-suppression enabled, and an empty exclusion list. Invalid types are replaced
+suppression disabled, and an empty exclusion list. Invalid types are replaced
 with safe defaults and the normalized list is persisted. Manual Game Mode is
 still session-only.
 
@@ -115,15 +115,15 @@ behavior, normalization, and reload persistence; pending and visible HUD
 convergence; fresh-modifier rearm; and input reconciliation during
 `SOFT_BLOCK`.
 
-The complete suite passes 328 tests, including the existing AltGr recorder,
+The complete suite passes 331 tests, including the existing AltGr recorder,
 Ctrl+C/V/S, Alt+Tab, Win discovery/release, input state reconciliation,
 application identity, and Manual Game Mode coverage. `git diff --check` also
 passes.
 
 ## Trade-offs kept explicit
 
-- Detection latency is bounded by the existing one-second polling interval,
-  not a new high-frequency watcher.
+- Detection is optional and defaults off. When enabled, latency is bounded by
+  the existing one-second polling interval, not a new high-frequency watcher.
 - A monitor-covering borderless productivity window is intentionally treated
   the same as fullscreen; the user-facing concern is passive overlay conflict,
   not whether the process is a game.

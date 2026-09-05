@@ -9,6 +9,6 @@
   "window_y": 775,
   "window_width": 703,
   "window_height": 277,
-  "fullscreen_suppression_enabled": true,
+  "fullscreen_suppression_enabled": false,
   "excluded_applications": []
 }

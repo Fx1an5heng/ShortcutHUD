@@ -10,7 +10,7 @@ from .shortcut_resolver import (
 
 FULLSCREEN_SUPPRESSION_SETTING = "fullscreen_suppression_enabled"
 EXCLUDED_APPLICATIONS_SETTING = "excluded_applications"
-DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED = True
+DEFAULT_FULLSCREEN_SUPPRESSION_ENABLED = False
 
 
 def normalize_excluded_applications(value: object) -> list[str]:

@@ -336,8 +336,8 @@
         <translation>游戏保护</translation>
     </message>
     <message>
-        <source>Automatically hide Quick HUD in fullscreen applications</source>
-        <translation>在全屏应用中自动隐藏快捷提示</translation>
+        <source>Enable automatic fullscreen Quick HUD suppression (optional)</source>
+        <translation>启用自动全屏快捷提示压制（可选）</translation>
     </message>
     <message>
         <source>Excluded Applications</source>

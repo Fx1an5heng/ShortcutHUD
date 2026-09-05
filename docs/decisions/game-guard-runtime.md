@@ -92,7 +92,8 @@ existing `ForegroundMonitor` therefore publishes one raw snapshot after every
 existing 1000 ms polling pass, including unchanged contexts. No additional
 timer or high-frequency polling loop is added.
 
-At most once per second, while automatic fullscreen suppression is enabled,
+Automatic fullscreen suppression is optional and defaults to off. At most once
+per second, while the user has enabled it,
 the runtime performs visibility/minimized/process checks, two DWM attribute
 reads, one monitor lookup, and one monitor-info read for the foreground HWND.
 When the setting is disabled, it skips fullscreen native reads. Exclusion
@@ -115,8 +116,9 @@ accepted as exclusions.
 
 `ConfigManager` persists `excluded_applications` and
 `fullscreen_suppression_enabled` in `settings.json`, validates their types,
-normalizes duplicates, and supplies defaults to older settings files. Manual
-Game Mode remains absent from persistent configuration.
+normalizes duplicates, and supplies defaults to older settings files. The
+fullscreen default is off; Manual Game Mode remains absent from persistent
+configuration.
 
 Exclusions are contextual preference, not proof of a game, so they produce
 `SOFT_BLOCK`. This leaves the existing policy distinction available for a
@@ -156,5 +158,5 @@ application that intentionally creates a monitor-covering borderless window
 is correctly treated like fullscreen because its presentation impact is the
 same. Conversely, an application whose visible content is fullscreen but whose
 top-level DWM frame does not cover the monitor will fail open and continue to
-allow Quick HUD. Manual Game Mode and persistent exclusion remain explicit
-fallbacks for such cases.
+allow Quick HUD. The optional switch is therefore off by default; Manual Game
+Mode and persistent exclusion are the reliable explicit fallbacks.

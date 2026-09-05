@@ -334,6 +334,23 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
 
         self.assertFalse(emitted[-1]["fullscreen_suppression_enabled"])
 
+    def test_settings_game_guard_defaults_fullscreen_suppression_off(self) -> None:
+        settings = SettingsDialog({})
+        self.addCleanup(settings.close)
+
+        self.assertFalse(settings.fullscreen_suppression_checkbox.isChecked())
+
+    def test_settings_game_guard_does_not_add_unavailable_current_app(self) -> None:
+        emitted: list[dict[str, object]] = []
+        settings = SettingsDialog({}, current_app_provider=lambda: None)
+        self.addCleanup(settings.close)
+        settings.settings_changed.connect(emitted.append)
+
+        settings.add_current_app_button.click()
+
+        self.assertEqual(settings.excluded_applications_list.count(), 0)
+        self.assertEqual(emitted, [])
+
     def test_shortcut_editor_rejects_invalid_key_with_product_message(self) -> None:
         editor = ShortcutEditDialog(key="F99", zh="错误", en="Bad")
         self.addCleanup(editor.close)
@@ -531,7 +548,7 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             self.assertEqual(settings._game_guard_group_box.title(), "游戏保护")
             self.assertEqual(
                 settings.fullscreen_suppression_checkbox.text(),
-                "在全屏应用中自动隐藏快捷提示",
+                "启用自动全屏快捷提示压制（可选）",
             )
             self.assertEqual(
                 settings._excluded_applications_label.text(),
