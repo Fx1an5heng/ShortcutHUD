@@ -42,6 +42,7 @@ class CurrentApplicationCandidateTracker(QObject):
         self._process_id_provider = process_id_provider
         self._own_process_id = os.getpid() if own_process_id is None else own_process_id
         self._candidate: str | None = None
+        self._recent_candidates: list[str] = []
 
     @property
     def current_candidate(self) -> str | None:
@@ -55,6 +56,12 @@ class CurrentApplicationCandidateTracker(QObject):
         if self._candidate in RESERVED_USER_IDENTITIES:
             return None
         return self._candidate
+
+    @property
+    def recent_candidates(self) -> tuple[str, ...]:
+        """Most recently observed external identities, newest first."""
+
+        return tuple(self._recent_candidates)
 
     @Slot(str)
     def on_active_app_changed(self, application_identity: str) -> None:
@@ -75,4 +82,9 @@ class CurrentApplicationCandidateTracker(QObject):
         if normalized_identity == self._candidate:
             return
         self._candidate = normalized_identity
+        if normalized_identity is not None:
+            if normalized_identity in self._recent_candidates:
+                self._recent_candidates.remove(normalized_identity)
+            self._recent_candidates.insert(0, normalized_identity)
+            del self._recent_candidates[8:]
         self.candidate_changed.emit(self._candidate)

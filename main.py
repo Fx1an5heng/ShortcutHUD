@@ -458,6 +458,8 @@ class ShortcutOverlayApplication(QApplication):
             self.quick_hud_selection_store,
             self.user_shortcut_store.snapshot(),
             self.config_mgr.get_setting("language", "en_US"),
+            current_application=self.current_application_candidate.current_candidate,
+            recent_applications=self.current_application_candidate.recent_candidates,
         )
         dialog = ShortcutLibraryDialog(model, parent=parent or self.overlay_window)
         dialog.setWindowModality(Qt.ApplicationModal)

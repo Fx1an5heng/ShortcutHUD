@@ -20,10 +20,10 @@ from PySide6.QtWidgets import (
     QHeaderView,
 )
 
-from .application_display_names import get_application_display_name
+from .catalog_application_registry import CatalogApplication, CatalogApplicationRegistry
 from .quick_hud_selection_store import QuickHudSelectionStore
 from .shortcut_catalog import CatalogEntry, CatalogTrigger, ShortcutCatalog, select_catalog_text
-from .shortcut_resolver import RESERVED_USER_IDENTITIES, normalize_application_identity
+from .shortcut_resolver import normalize_application_identity
 
 
 @dataclass(frozen=True, slots=True)
@@ -44,28 +44,40 @@ class ShortcutLibraryModel:
         selection_store: QuickHudSelectionStore,
         user_profiles: Mapping[str, object] | None = None,
         language: str | None = None,
+        current_application: str | None = None,
+        recent_applications: tuple[str, ...] = (),
     ) -> None:
         self.catalog = catalog
         self.selection_store = selection_store
         self.user_profiles = dict(user_profiles) if isinstance(user_profiles, Mapping) else {}
         self.language = language
+        self.registry = CatalogApplicationRegistry(
+            catalog,
+            self.user_profiles,
+            language,
+            (current_application, *recent_applications),
+        )
+        self.current_application = current_application
+        self.recent_applications = recent_applications
 
     def applications(self) -> list[tuple[str, str]]:
-        identities = {
-            app_id
-            for entry in self.catalog.entries
-            if entry.scope == "APP"
-            for app_id in entry.application_ids
-        }
-        identities.update(
-            identity for raw_id in self.user_profiles
-            if (identity := normalize_application_identity(raw_id)) is not None
-            and identity not in RESERVED_USER_IDENTITIES
-        )
-        return sorted(
-            ((identity, self._app_label(identity)) for identity in identities),
-            key=lambda item: (item[1].casefold(), item[0]),
-        )
+        return [
+            (record.primary_identity, record.display_name)
+            for record in self.registry.applications()
+        ]
+
+    def current_record(self) -> CatalogApplication | None:
+        return self.registry.find_by_identity(self.current_application)
+
+    def recent_records(self) -> list[CatalogApplication]:
+        seen: set[str] = set()
+        records: list[CatalogApplication] = []
+        for identity in self.recent_applications:
+            record = self.registry.find_by_identity(identity)
+            if record is not None and record.product_id not in seen:
+                seen.add(record.product_id)
+                records.append(record)
+        return records
 
     def rows(self, app_id: str, query: str = "") -> list[LibraryRow]:
         identity = normalize_application_identity(app_id)
@@ -125,13 +137,6 @@ class ShortcutLibraryModel:
             key=lambda item: (item[0].category.casefold(), item[0].rank, item[0].order, item[0].id),
         )
 
-    def _app_label(self, app_id: str) -> str:
-        title = self.catalog.application_titles.get(app_id)
-        if title:
-            return select_catalog_text(title, self.language)
-        return get_application_display_name(app_id) or app_id
-
-
 class ShortcutLibraryDialog(QDialog):
     """Compact table-oriented Library UI; changes save immediately and atomically."""
 
@@ -174,14 +179,40 @@ class ShortcutLibraryDialog(QDialog):
         buttons.rejected.connect(self.reject)
         layout.addWidget(buttons)
         self.setStyleSheet("QDialog#ShortcutLibraryDialog { background: #2E2E3A; color: #D8DEE9; } QLabel { color: #D8DEE9; } QLineEdit, QComboBox, QTableWidget { color: #D8DEE9; background: #4A4E5A; border: 1px solid #5A5E6A; } QPushButton { color: #D8DEE9; background: #4A4E5A; border: 1px solid #5A5E6A; padding: 5px 10px; }")
-        for app_id, label in self.model.applications():
-            self.application_combo.addItem(label, app_id)
+        current = self.model.current_record()
+        recent = self.model.recent_records()
+        if current is not None:
+            self._add_group_header(self.tr("Current Application"))
+            self.application_combo.addItem(current.display_name, current.primary_identity)
+        if recent:
+            self._add_group_header(self.tr("Recent / Detected Applications"))
+            for record in recent:
+                if current is None or record.product_id != current.product_id:
+                    self.application_combo.addItem(record.display_name, record.primary_identity)
+        self._add_group_header(self.tr("All Supported Applications"))
+        seen_products: set[str] = set()
+        for record in self.model.registry.applications():
+            if record.product_id in seen_products:
+                continue
+            seen_products.add(record.product_id)
+            self.application_combo.addItem(record.display_name, record.primary_identity)
+        if current is not None:
+            self.application_combo.setCurrentIndex(1)
+        else:
+            self.application_combo.setCurrentIndex(1 if self.application_combo.count() > 1 else -1)
         self.application_combo.currentIndexChanged.connect(self._render)
         self.search_box.textChanged.connect(self._render)
         self.table.itemChanged.connect(self._on_item_changed)
         self.restore_button.clicked.connect(self._restore_recommended)
         self.clear_button.clicked.connect(self._clear_all)
         self._render()
+
+    def _add_group_header(self, label: str) -> None:
+        index = self.application_combo.count()
+        self.application_combo.addItem(label)
+        item = self.application_combo.model().item(index)
+        if item is not None:
+            item.setEnabled(False)
 
     def _current_app_id(self) -> str | None:
         value = self.application_combo.currentData()
@@ -206,7 +237,8 @@ class ShortcutLibraryDialog(QDialog):
             if row.entry.recommended:
                 description = f"{description} · {self.tr('Recommended')}"
             self.table.setItem(index, 2, QTableWidgetItem(description))
-            self.table.setItem(index, 3, QTableWidgetItem(row.entry.category))
+            category = self.tr("Other") if row.entry.category == "legacy" else row.entry.category
+            self.table.setItem(index, 3, QTableWidgetItem(category))
         self._rendering = False
 
     @Slot(QTableWidgetItem)

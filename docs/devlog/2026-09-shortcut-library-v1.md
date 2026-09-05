@@ -54,3 +54,27 @@ entry coexistence, and resolver precedence.
 Deferred work remains deliberately product-scoped: a Full Guide, bulk command
 import, online Pack updates, a marketplace, search result highlighting, and
 any large-corpus data work are not part of Shortcut Library v1.
+
+## UX correction: product names and current context
+
+The first Windows smoke test exposed an architectural gap: the dialog had
+reused Catalog entries but still made its own temporary application list. That
+left product labeling inconsistent, did not make the existing last-valid
+external application available to the dialog, and made formal Pack discovery
+too easy to regress.
+
+The correction added a Catalog-facing application registry rather than a new
+foreground detector. It merges formal Packs, legacy entries, and user profiles
+into products with a friendly display name and matching identities. Settings
+passes the same `CurrentApplicationCandidateTracker` fact already used by Game
+Guard, so opening Settings cannot replace a VS Code candidate with
+ShortcutHUD's own process. The selector presents Current Application, Recent /
+Detected Applications, and All Supported Applications; process names are not
+normal user-facing labels and the internal `legacy` category becomes Other.
+
+The UI labels were added to the existing Qt translation source and compiled
+into the shipped `zh_CN` resource. Automated translation assertions cover the
+major Library labels, alongside Pack/legacy registry merging and current-app
+selection. Search intentionally remains while changing applications: it makes
+cross-application comparison fast, and the table simply recalculates against
+the newly selected product rather than treating an empty result as an error.

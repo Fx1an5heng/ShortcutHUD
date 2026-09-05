@@ -100,6 +100,7 @@ class ShortcutCatalog:
         self.entries = tuple(entries)
         self.load_issues: list[CatalogLoadIssue] = []
         self.application_titles: dict[str, Mapping[str, str]] = {}
+        self.application_product_ids: dict[str, str] = {}
 
     @classmethod
     def from_legacy_shortcuts(cls, shortcut_data: Mapping[str, object]) -> "ShortcutCatalog":
@@ -180,6 +181,7 @@ class ShortcutCatalog:
                 entries.extend(pack.entries)
                 for app_id in (*pack.application_ids, *pack.aliases):
                     catalog.application_titles[app_id] = pack.product
+                    catalog.application_product_ids[app_id] = pack.id
             except (OSError, UnicodeError, json.JSONDecodeError, CatalogValidationError) as error:
                 catalog.load_issues.append(CatalogLoadIssue(pack_path, str(error)))
                 logger.warning("Ignoring invalid shortcut pack %s: %s", pack_path, error)
@@ -216,6 +218,8 @@ class ShortcutCatalog:
         result.load_issues = issues
         result.application_titles = dict(self.application_titles)
         result.application_titles.update(external.application_titles)
+        result.application_product_ids = dict(self.application_product_ids)
+        result.application_product_ids.update(external.application_product_ids)
         return result
 
 

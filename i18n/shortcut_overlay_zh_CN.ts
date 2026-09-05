@@ -951,4 +951,30 @@ Custom shortcuts and the display name will not be changed.</source>
         <translation>退出</translation>
     </message>
 </context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../scripts/settings_dialog.py" line="334"/>
+        <source>Shortcut Library...</source>
+        <translation>快捷键库...</translation>
+    </message>
+</context>
+<context>
+    <name>ShortcutLibraryDialog</name>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="150"/><source>Shortcut Library</source><translation>快捷键库</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="155"/><source>Search shortcuts</source><translation>搜索快捷键</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="156"/><source>Application:</source><translation>应用：</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="162"/><source>Show</source><translation>显示</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="162"/><source>Shortcut</source><translation>快捷键</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="162"/><source>Description</source><translation>用途</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="162"/><source>Category</source><translation>分类</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="174"/><source>Restore Recommended</source><translation>恢复推荐</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="175"/><source>Clear All</source><translation>全部取消</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="202"/><source>Current Application</source><translation>当前应用</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="205"/><source>Recent / Detected Applications</source><translation>最近/已识别应用</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="211"/><source>All Supported Applications</source><translation>所有支持的应用</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="245"/><source>Selected for Quick HUD: %1</source><translation>已加入 Quick HUD：%1</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="256"/><source>Recommended</source><translation>推荐</translation></message>
+    <message><location filename="../scripts/shortcut_library_dialog.py" line="258"/><source>Other</source><translation>其他</translation></message>
+</context>
 </TS>
