@@ -4,6 +4,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
+from scripts.config_manager import ConfigManager
 from scripts.shortcut_catalog import (
     CatalogValidationError,
     ShortcutCatalog,
@@ -109,6 +110,12 @@ class ShortcutCatalogTests(unittest.TestCase):
         with self.assertRaises(CatalogValidationError):
             parse_shortcut_pack(duplicate)
 
+    def test_unsupported_pack_schema_is_rejected(self) -> None:
+        invalid = _pack()
+        invalid["schema_version"] = 999
+        with self.assertRaises(CatalogValidationError):
+            parse_shortcut_pack(invalid)
+
     def test_directory_loader_is_deterministic_and_skips_invalid_files(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -155,6 +162,19 @@ class ShortcutCatalogTests(unittest.TestCase):
             store = QuickHudSelectionStore(Path(directory) / "selection.json")
             store.set_selected_ids("SAMPLE.EXE", [])
             self.assertEqual(CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl", selection_store=store), [])
+
+    def test_corrupt_legacy_config_falls_back_to_builtin_catalog(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            shortcuts_path = root / "shortcuts.json"
+            shortcuts_path.write_text("{", encoding="utf-8")
+            manager = ConfigManager(str(shortcuts_path), str(root / "settings.json"))
+            manager.initialize_configs()
+            self.assertTrue(manager.get_shortcut_catalog().entries)
+            self.assertEqual(
+                [entry.key for entry in CatalogShortcutResolver(manager.get_shortcut_catalog()).resolve("NOTEPAD.EXE", "Ctrl")],
+                ["S", "O", "N"],
+            )
 
 
 if __name__ == "__main__":
