@@ -62,6 +62,7 @@ class SettingsDialog(QDialog):
     settings_changed = Signal(dict)
     # Request the independent USER profile editor without coupling Settings to storage.
     custom_apps_requested = Signal()
+    shortcut_library_requested = Signal()
 
     # Default theme ID for the main overlay, used if no theme is configured.
     DEFAULT_THEME_ID: str = "Default Dark"
@@ -135,6 +136,7 @@ class SettingsDialog(QDialog):
         self.custom_text_color_button: Optional[QPushButton] = None
         self.button_box: Optional[QDialogButtonBox] = None
         self.custom_apps_button: Optional[QPushButton] = None
+        self.shortcut_library_button: Optional[QPushButton] = None
         self._custom_apps_description: Optional[QLabel] = None
         self.fullscreen_suppression_checkbox: Optional[QCheckBox] = None
         self.excluded_applications_list: Optional[QListWidget] = None
@@ -338,8 +340,16 @@ class SettingsDialog(QDialog):
             self._custom_apps_group_box,
         )
         self.custom_apps_button.clicked.connect(self.custom_apps_requested.emit)
+        self.shortcut_library_button = QPushButton(
+            self.tr("Shortcut Library..."),
+            self._custom_apps_group_box,
+        )
+        self.shortcut_library_button.clicked.connect(
+            self.shortcut_library_requested.emit
+        )
         layout.addWidget(self._custom_apps_description)
         layout.addWidget(self.custom_apps_button)
+        layout.addWidget(self.shortcut_library_button)
         self._main_layout.addWidget(self._custom_apps_group_box)
 
     def _setup_game_guard_group(self) -> None:

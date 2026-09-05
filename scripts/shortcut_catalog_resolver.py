@@ -57,11 +57,19 @@ class CatalogShortcutResolver:
                 if identity not in seen:
                     seen.add(identity)
                     effective.append((entry, source))
-        selected = _selected_ids(selection_store, app_id)
+        selected = _selected_ids(selection_store, app_id, [entry for entry, _source in effective])
         if selected is not None:
-            effective = [(entry, source) for entry, source in effective if entry.id in selected]
+            effective = [
+                (entry, source)
+                for entry, source in effective
+                if source == "GLOBAL" or entry.id in selected
+            ]
         else:
-            effective = [(entry, source) for entry, source in effective if entry.recommended]
+            effective = [
+                (entry, source)
+                for entry, source in effective
+                if source == "GLOBAL" or entry.recommended
+            ]
         return [ShortcutEntry(entry.hud_key(), entry.description, source) for entry, source in effective]
 
     def _entries_for_app(self, app_id: str | None, modifier: str) -> list[CatalogEntry]:
@@ -152,7 +160,15 @@ def _profile_is_hidden_only(profile: Mapping[str, object]) -> bool:
     return isinstance(hidden, Mapping) and any(isinstance(group, list) and bool(group) for group in hidden.values())
 
 
-def _selected_ids(store: object | None, app_id: str | None) -> frozenset[str] | None:
+def _selected_ids(
+    store: object | None,
+    app_id: str | None,
+    entries: list[CatalogEntry],
+) -> frozenset[str] | None:
+    migration_method = getattr(store, "effective_selected_ids_for", None)
+    if callable(migration_method):
+        result = migration_method(app_id, entries)
+        return frozenset(result) if result is not None else None
     method = getattr(store, "selected_ids_for", None)
     if not callable(method):
         return None

@@ -72,6 +72,7 @@ class CatalogEntry:
     order: int
     legacy_runtime_modifier: str | None = None
     legacy_display_key: str | None = None
+    id_aliases: tuple[str, ...] = ()
 
     def matches_runtime_modifier(self, modifier: str) -> bool:
         return (self.legacy_runtime_modifier or self.trigger.runtime_modifier()) == modifier
@@ -98,6 +99,7 @@ class ShortcutCatalog:
     def __init__(self, entries: Iterable[CatalogEntry] = ()) -> None:
         self.entries = tuple(entries)
         self.load_issues: list[CatalogLoadIssue] = []
+        self.application_titles: dict[str, Mapping[str, str]] = {}
 
     @classmethod
     def from_legacy_shortcuts(cls, shortcut_data: Mapping[str, object]) -> "ShortcutCatalog":
@@ -176,6 +178,8 @@ class ShortcutCatalog:
                 seen_pack_ids.add(pack.id)
                 seen_ids.update(entry.id for entry in pack.entries)
                 entries.extend(pack.entries)
+                for app_id in (*pack.application_ids, *pack.aliases):
+                    catalog.application_titles[app_id] = pack.product
             except (OSError, UnicodeError, json.JSONDecodeError, CatalogValidationError) as error:
                 catalog.load_issues.append(CatalogLoadIssue(pack_path, str(error)))
                 logger.warning("Ignoring invalid shortcut pack %s: %s", pack_path, error)
@@ -187,7 +191,19 @@ class ShortcutCatalog:
 
         external = self.load_packs(directory)
         known_ids = {entry.id for entry in self.entries}
-        appended: list[CatalogEntry] = list(self.entries)
+        formal_applications = {
+            app_id
+            for entry in external.entries
+            if entry.scope == "APP" and entry.builtin
+            for app_id in entry.application_ids
+        }
+        appended: list[CatalogEntry] = [
+            entry for entry in self.entries
+            if not (
+                entry.id.startswith("legacy:app:")
+                and any(app_id in formal_applications for app_id in entry.application_ids)
+            )
+        ]
         issues = list(external.load_issues)
         for entry in external.entries:
             if entry.id in known_ids:
@@ -198,6 +214,8 @@ class ShortcutCatalog:
             appended.append(entry)
         result = ShortcutCatalog(appended)
         result.load_issues = issues
+        result.application_titles = dict(self.application_titles)
+        result.application_titles.update(external.application_titles)
         return result
 
 
@@ -289,6 +307,7 @@ def _parse_entry(raw: object, pack_apps: tuple[str, ...], order: int) -> Catalog
         builtin=builtin,
         aliases=_string_list(raw.get("aliases", ()), "entry aliases"),
         order=order,
+        id_aliases=_id_list(raw.get("id_aliases", ()), "entry id_aliases"),
     )
 
 
@@ -337,6 +356,16 @@ def _required_id(value: object, name: str) -> str:
     if not _ENTRY_ID_PATTERN.fullmatch(result):
         raise CatalogValidationError(f"{name} is not a stable id")
     return result
+
+
+def _id_list(value: object, name: str) -> tuple[str, ...]:
+    values = _string_list(value, name)
+    if any(
+        not _ENTRY_ID_PATTERN.fullmatch(item) and not item.startswith("legacy:")
+        for item in values
+    ):
+        raise CatalogValidationError(f"{name} contains an invalid stable id")
+    return values
 
 
 def _required_text(value: object, name: str) -> str:

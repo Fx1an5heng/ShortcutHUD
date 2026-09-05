@@ -57,6 +57,28 @@ class QuickHudSelectionStore:
             return None
         return frozenset(self._apps[identity])
 
+    def effective_selected_ids_for(
+        self,
+        app_id: str | None,
+        entries: Iterable[object],
+    ) -> frozenset[str] | None:
+        """Resolve persisted IDs through declared stable aliases, never heuristics."""
+
+        selected = self.selected_ids_for(app_id)
+        if selected is None:
+            return None
+        resolved: set[str] = set()
+        for entry in entries:
+            entry_id = getattr(entry, "id", None)
+            aliases = getattr(entry, "id_aliases", ())
+            if not isinstance(entry_id, str):
+                continue
+            if entry_id in selected or (
+                isinstance(aliases, tuple) and any(alias in selected for alias in aliases)
+            ):
+                resolved.add(entry_id)
+        return frozenset(resolved)
+
     def set_selected_ids(self, app_id: str, entry_ids: Iterable[str]) -> None:
         identity = normalize_application_identity(app_id)
         if identity is None:

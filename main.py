@@ -421,6 +421,11 @@ class ShortcutOverlayApplication(QApplication):
         dialog.custom_apps_requested.connect(
             lambda: self.open_user_shortcut_manager_dialog(dialog)
         )
+        library_requested = getattr(dialog, "shortcut_library_requested", None)
+        if library_requested is not None:
+            library_requested.connect(
+                lambda: self.open_shortcut_library_dialog(dialog)
+            )
         dialog.setWindowModality(Qt.ApplicationModal) # Block interaction with parent.
         dialog.exec() # Show modally.
 
@@ -439,6 +444,25 @@ class ShortcutOverlayApplication(QApplication):
         )
         dialog.setWindowModality(Qt.ApplicationModal)
         dialog.exec()
+
+    def open_shortcut_library_dialog(self, parent=None) -> None:
+        """Open the Catalog-backed Quick HUD selection Library."""
+
+        from scripts.shortcut_library_dialog import (
+            ShortcutLibraryDialog,
+            ShortcutLibraryModel,
+        )
+
+        model = ShortcutLibraryModel(
+            self.config_mgr.get_shortcut_catalog(),
+            self.quick_hud_selection_store,
+            self.user_shortcut_store.snapshot(),
+            self.config_mgr.get_setting("language", "en_US"),
+        )
+        dialog = ShortcutLibraryDialog(model, parent=parent or self.overlay_window)
+        dialog.setWindowModality(Qt.ApplicationModal)
+        dialog.exec()
+        self.hud_controller.refresh_current_state()
 
     def apply_user_profiles(self, snapshot: Mapping[str, object]) -> None:
         """Apply one USER snapshot to presentation, resolution, then refresh."""
