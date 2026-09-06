@@ -147,6 +147,7 @@ class ShortcutOverlayApplication(QApplication):
         self.current_application_candidate = CurrentApplicationCandidateTracker(
             lambda: self.monitor.current_hwnd,
             parent=self,
+            executable_path_provider=lambda: self.monitor.current_executable_path,
         )
         self.kb_handler: KeyboardHandler = KeyboardHandler()
         self.suppression_policy = SuppressionPolicy()
@@ -419,13 +420,8 @@ class ShortcutOverlayApplication(QApplication):
         )
         dialog.settings_changed.connect(self.handle_settings_changed)
         dialog.custom_apps_requested.connect(
-            lambda: self.open_user_shortcut_manager_dialog(dialog)
+            lambda: self.open_shortcut_center_dialog(dialog)
         )
-        library_requested = getattr(dialog, "shortcut_library_requested", None)
-        if library_requested is not None:
-            library_requested.connect(
-                lambda: self.open_shortcut_library_dialog(dialog)
-            )
         dialog.setWindowModality(Qt.ApplicationModal) # Block interaction with parent.
         dialog.exec() # Show modally.
 
@@ -445,8 +441,8 @@ class ShortcutOverlayApplication(QApplication):
         dialog.setWindowModality(Qt.ApplicationModal)
         dialog.exec()
 
-    def open_shortcut_library_dialog(self, parent=None) -> None:
-        """Open the Catalog-backed Quick HUD selection Library."""
+    def open_shortcut_center_dialog(self, parent=None) -> None:
+        """Open the unified Catalog and USER shortcut center."""
 
         from scripts.shortcut_library_dialog import (
             ShortcutLibraryDialog,
@@ -458,13 +454,27 @@ class ShortcutOverlayApplication(QApplication):
             self.quick_hud_selection_store,
             self.user_shortcut_store.snapshot(),
             self.config_mgr.get_setting("language", "en_US"),
-            current_application=self.current_application_candidate.current_candidate,
-            recent_applications=self.current_application_candidate.recent_candidates,
+            current_descriptor=self.current_application_candidate.current_descriptor,
+            recent_descriptors=self.current_application_candidate.recent_descriptors,
+            user_store=self.user_shortcut_store,
+            apply_user_profiles=self.apply_user_profiles,
         )
-        dialog = ShortcutLibraryDialog(model, parent=parent or self.overlay_window)
+        dialog = ShortcutLibraryDialog(
+            model,
+            parent=parent or self.overlay_window,
+            candidate_tracker=self.current_application_candidate,
+            advanced_manager_opener=lambda: self.open_user_shortcut_manager_dialog(
+                parent or self.overlay_window
+            ),
+        )
         dialog.setWindowModality(Qt.ApplicationModal)
         dialog.exec()
         self.hud_controller.refresh_current_state()
+
+    def open_shortcut_library_dialog(self, parent=None) -> None:
+        """Compatibility alias for integrations created before Shortcut Center."""
+
+        self.open_shortcut_center_dialog(parent)
 
     def apply_user_profiles(self, snapshot: Mapping[str, object]) -> None:
         """Apply one USER snapshot to presentation, resolution, then refresh."""

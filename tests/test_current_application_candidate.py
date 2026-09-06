@@ -1,5 +1,6 @@
 import unittest
 
+from scripts.application_descriptor import ApplicationDescriptorFactory, ApplicationMetadata
 from scripts.current_application_candidate import CurrentApplicationCandidateTracker
 
 
@@ -53,6 +54,33 @@ class CurrentApplicationCandidateTrackerTests(unittest.TestCase):
         self.tracker.on_active_app_changed("OTHER.EXE")
 
         self.assertEqual(self.tracker.current_candidate, "CODE.EXE")
+
+    def test_unknown_external_application_is_retained_with_friendly_metadata(self) -> None:
+        tracker = CurrentApplicationCandidateTracker(
+            lambda: self.hwnd,
+            process_id_provider=lambda hwnd: self.process_ids.get(hwnd),
+            own_process_id=999,
+            executable_path_provider=lambda: r"C:\Apps\typora.exe",
+            descriptor_factory=ApplicationDescriptorFactory(
+                lambda _path: ApplicationMetadata(product_name="Typora")
+            ),
+        )
+        tracker.on_active_app_changed("typora.exe")
+
+        self.assertEqual(tracker.current_descriptor.display_name, "Typora")
+        self.assertFalse(tracker.current_descriptor.supported)
+
+    def test_recent_descriptors_deduplicate_identities(self) -> None:
+        self.tracker.on_active_app_changed("CODE.EXE")
+        self.hwnd = 102
+        self.tracker.on_active_app_changed("CHROME.EXE")
+        self.hwnd = 100
+        self.tracker.on_active_app_changed("CODE.EXE")
+
+        self.assertEqual(
+            [item.runtime_identity for item in self.tracker.recent_descriptors],
+            ["CODE.EXE", "CHROME.EXE"],
+        )
 
 
 if __name__ == "__main__":

@@ -64,6 +64,9 @@ class ForegroundMonitor(QObject):
         self.current_app_name: Optional[str] = (
             None  # Stores the name of the currently focused app.
         )
+        # The path belongs to the same foreground snapshot as current_app_name.
+        # It is optional because protected/system processes may not expose it.
+        self.current_executable_path: Optional[str] = None
         self.current_hwnd: HWND = 0
         self._timer: QTimer = QTimer(self)  # Timer for periodic checks.
         self._timer.timeout.connect(self.check_foreground_app)
@@ -138,6 +141,9 @@ class ForegroundMonitor(QObject):
                 # Always ensure the process handle is closed.
                 win32api.CloseHandle(process_handle)
 
+            # Keep the path for user-facing metadata lookup.  This is not an
+            # installed-app scan: it is only the process already in foreground.
+            self.current_executable_path = app_path
             # Return only the base name of the executable (e.g., "notepad.exe").
             return os.path.basename(app_path)
 
@@ -157,6 +163,8 @@ class ForegroundMonitor(QObject):
         try:
             current_hwnd: HWND = win32gui.GetForegroundWindow()
             new_app_name: Optional[str] = self.get_exe_from_hwnd(current_hwnd)
+            if new_app_name is None:
+                self.current_executable_path = None
             # print(f"Debug: [FG_MONITOR] Detected app: {new_app_name}, Previously: {self.current_app_name}")
 
             previous_hwnd = self.current_hwnd

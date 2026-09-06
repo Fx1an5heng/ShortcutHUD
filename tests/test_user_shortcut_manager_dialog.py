@@ -276,23 +276,23 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             "用户配置文件无法读取。为保护原文件，当前已禁止编辑和保存。",
         )
 
-    def test_settings_has_one_shortcut_manager_entry_signal(self) -> None:
+    def test_settings_has_one_shortcut_center_entry_signal(self) -> None:
         settings = SettingsDialog({})
         self.addCleanup(settings.close)
         requests: list[bool] = []
         settings.custom_apps_requested.connect(lambda: requests.append(True))
 
-        manager_buttons = [
+        center_buttons = [
             button
             for button in settings.findChildren(QPushButton)
-            if button.text() == "Manage Shortcuts..."
+            if button.text() == "Shortcut Center..."
         ]
 
-        self.assertEqual(manager_buttons, [settings.custom_apps_button])
+        self.assertEqual(center_buttons, [settings.custom_apps_button])
         self.assertEqual(settings._custom_apps_group_box.title(), "Shortcuts")
         self.assertEqual(
             settings._custom_apps_description.text(),
-            "Add custom shortcuts and hide or restore built-in app shortcuts.",
+            "Browse collected shortcuts, choose Quick HUD hints, and manage your own shortcuts.",
         )
         self.assertEqual(self.dialog.windowTitle(), "Shortcut Manager")
 
@@ -542,9 +542,9 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
             self.assertEqual(settings._custom_apps_group_box.title(), "快捷键")
             self.assertEqual(
                 settings._custom_apps_description.text(),
-                "添加自定义快捷键，并隐藏或恢复应用内置快捷键。",
+                "浏览已收录快捷键，选择 Quick HUD 提示，并管理自己的快捷键。",
             )
-            self.assertEqual(settings.custom_apps_button.text(), "管理快捷键...")
+            self.assertEqual(settings.custom_apps_button.text(), "快捷键中心...")
             self.assertEqual(settings._game_guard_group_box.title(), "游戏保护")
             self.assertEqual(
                 settings.fullscreen_suppression_checkbox.text(),

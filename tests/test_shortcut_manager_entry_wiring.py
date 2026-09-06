@@ -68,7 +68,7 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.qt_application = QApplication.instance() or QApplication([])
 
-    def test_settings_request_calls_new_manager_entry_point(self) -> None:
+    def test_settings_request_calls_shortcut_center_entry_point(self) -> None:
         opened = []
         application = SimpleNamespace(
             config_mgr=SimpleNamespace(get_all_settings=lambda: {"language": "en_US"}),
@@ -77,7 +77,7 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
                 editable_candidate=lambda: "CODE.EXE"
             ),
             handle_settings_changed=lambda _settings: None,
-            open_user_shortcut_manager_dialog=lambda parent=None: opened.append(parent),
+            open_shortcut_center_dialog=lambda parent=None: opened.append(parent),
         )
 
         with patch("main.SettingsDialog", _FakeSettingsDialog):

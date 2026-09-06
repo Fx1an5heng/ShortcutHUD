@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 
+from .application_descriptor import ApplicationDescriptor
 from .application_display_names import get_application_display_name
 from .shortcut_catalog import ShortcutCatalog, select_catalog_text
 from .shortcut_resolver import RESERVED_USER_IDENTITIES, normalize_application_identity
@@ -84,6 +85,37 @@ class CatalogApplicationRegistry:
         return next(
             (item for item in self.applications() if normalized in item.identities),
             None,
+        )
+
+    def supported_applications(self) -> list[CatalogApplication]:
+        """Catalog-backed applications only; USER-only profiles remain detected apps."""
+
+        return [
+            item for item in self.applications()
+            if self.has_builtin_support(item.primary_identity)
+        ]
+
+    def has_builtin_support(self, identity: str | None) -> bool:
+        normalized = normalize_application_identity(identity)
+        return normalized is not None and any(
+            entry.scope == "APP" and normalized in entry.application_ids
+            for entry in self.catalog.entries
+        )
+
+    def describe(self, descriptor: ApplicationDescriptor | None) -> ApplicationDescriptor | None:
+        """Decorate a detected app with optional Catalog support, never filter it."""
+
+        if descriptor is None:
+            return None
+        if not self.has_builtin_support(descriptor.runtime_identity):
+            return descriptor
+        record = self.find_by_identity(descriptor.runtime_identity)
+        if record is None:
+            return descriptor
+        return descriptor.with_catalog(
+            product_id=record.product_id,
+            display_name=record.display_name,
+            aliases=record.identities,
         )
 
     def _record(

@@ -60,9 +60,8 @@ class SettingsDialog(QDialog):
 
     # Signal emitted when any setting is changed by the user in the dialog.
     settings_changed = Signal(dict)
-    # Request the independent USER profile editor without coupling Settings to storage.
+    # Request the one Shortcut Center without coupling Settings to storage.
     custom_apps_requested = Signal()
-    shortcut_library_requested = Signal()
 
     # Default theme ID for the main overlay, used if no theme is configured.
     DEFAULT_THEME_ID: str = "Default Dark"
@@ -324,32 +323,24 @@ class SettingsDialog(QDialog):
         self._main_layout.addWidget(self._language_group_box)
 
     def _setup_custom_apps_group(self) -> None:
-        """Adds a small entry point to the independent USER profile editor."""
+        """Expose one Shortcut Center entry instead of competing shortcut dialogs."""
 
         self._custom_apps_group_box = QGroupBox(self.tr("Shortcuts"))
         layout = QVBoxLayout(self._custom_apps_group_box)
         self._custom_apps_description = QLabel(
             self.tr(
-                "Add custom shortcuts and hide or restore built-in app shortcuts."
+                "Browse collected shortcuts, choose Quick HUD hints, and manage your own shortcuts."
             ),
             self._custom_apps_group_box,
         )
         self._custom_apps_description.setWordWrap(True)
         self.custom_apps_button = QPushButton(
-            self.tr("Manage Shortcuts..."),
+            self.tr("Shortcut Center..."),
             self._custom_apps_group_box,
         )
         self.custom_apps_button.clicked.connect(self.custom_apps_requested.emit)
-        self.shortcut_library_button = QPushButton(
-            self.tr("Shortcut Library..."),
-            self._custom_apps_group_box,
-        )
-        self.shortcut_library_button.clicked.connect(
-            self.shortcut_library_requested.emit
-        )
         layout.addWidget(self._custom_apps_description)
         layout.addWidget(self.custom_apps_button)
-        layout.addWidget(self.shortcut_library_button)
         self._main_layout.addWidget(self._custom_apps_group_box)
 
     def _setup_game_guard_group(self) -> None:

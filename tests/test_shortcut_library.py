@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 import unittest
 import json
 
-from PySide6.QtCore import QCoreApplication, QTranslator
+from PySide6.QtCore import QCoreApplication, QObject, QTranslator, Signal
 from PySide6.QtWidgets import QApplication
 
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
@@ -11,9 +11,25 @@ from scripts.shortcut_catalog import ShortcutCatalog
 from scripts.shortcut_catalog_resolver import CatalogShortcutResolver
 from scripts.shortcut_library_dialog import ShortcutLibraryModel
 from scripts.shortcut_library_dialog import ShortcutLibraryDialog
+from scripts.application_descriptor import ApplicationDescriptorFactory
+from scripts.user_shortcut_store import UserShortcutStore
 
 
 _PACK_DIRECTORY = Path(__file__).resolve().parents[1] / "config" / "shortcut_packs"
+
+
+class _FakeTracker(QObject):
+    candidate_changed = Signal(object)
+
+    def __init__(self, current, recent=()):
+        super().__init__()
+        self.current_descriptor = current
+        self.recent_descriptors = recent
+
+    def set_current(self, current, recent=()):
+        self.current_descriptor = current
+        self.recent_descriptors = recent
+        self.candidate_changed.emit(current.runtime_identity if current else None)
 
 
 class ShortcutLibraryTests(unittest.TestCase):
@@ -69,7 +85,7 @@ class ShortcutLibraryTests(unittest.TestCase):
         self.assertIn("vscode.find-in-files", [row.entry.id for row in model.rows("CODE.EXE", "workspace files")])
         self.assertIn("vscode.toggle-terminal", [row.entry.id for row in model.rows("CODE.EXE", "集成终端")])
         self.assertIn("vscode.show-source-control", [row.entry.id for row in model.rows("CODE.EXE", "git")])
-        self.assertIn("vscode.save", [row.entry.id for row in model.rows("CODE.EXE", "File management")])
+        self.assertIn("vscode.save", [row.entry.id for row in model.rows("CODE.EXE", "File Management")])
 
     def test_no_preference_uses_recommended_and_explicit_empty_is_distinct(self) -> None:
         legacy = {"CODE.EXE": {"Ctrl": {"P": "Open"}}, "GLOBAL": {"Ctrl": {"G": "Global"}}}
@@ -107,9 +123,35 @@ class ShortcutLibraryTests(unittest.TestCase):
     def test_user_shortcut_is_part_of_same_library_and_keeps_hud_precedence(self) -> None:
         profiles = {"CODE.EXE": {"shortcuts": {"Ctrl": {"P": {"en": "User Open", "zh": "用户打开"}}}}}
         model = ShortcutLibraryModel(self.catalog, self.store, profiles, "zh_CN")
-        self.assertEqual(next(row for row in model.rows("CODE.EXE") if row.entry.id.startswith("user:")).source, "USER_APP")
+        self.assertEqual(next(row for row in model.rows("CODE.EXE") if row.entry.id.startswith("user:")).source, "user")
         resolved = CatalogShortcutResolver(self.catalog).resolve("CODE.EXE", "Ctrl", profiles, self.store)
         self.assertEqual(resolved[0].description["en"], "User Open")
+
+    def test_user_shortcuts_can_be_added_edited_and_deleted_for_unsupported_app(self) -> None:
+        store = UserShortcutStore(Path(self.temp.name) / "user_shortcuts.json")
+        store.load()
+        model = ShortcutLibraryModel(
+            self.catalog,
+            self.store,
+            language="zh_CN",
+            current_descriptor=ApplicationDescriptorFactory().describe("typora.exe"),
+            user_store=store,
+        )
+        model.add_user_shortcut("TYPORA.EXE", "Ctrl", "K", "快捷键", "Shortcut")
+        self.assertEqual(model.rows("TYPORA.EXE")[0].source, "user")
+        self.assertEqual(store.snapshot()["TYPORA.EXE"]["shortcuts"]["Ctrl"]["K"]["zh"], "快捷键")
+        model.edit_user_shortcut("TYPORA.EXE", "Ctrl", "K", "Ctrl", "L", "修改", "Edited")
+        self.assertEqual(model.user_shortcut_description("TYPORA.EXE", "Ctrl", "L"), ("修改", "Edited"))
+        self.assertTrue(model.delete_user_shortcut("TYPORA.EXE", "Ctrl", "L"))
+
+    def test_pack_categories_are_localized_and_recommendation_does_not_pollute_description(self) -> None:
+        zh = ShortcutLibraryModel(self.catalog, self.store, language="zh_CN")
+        en = ShortcutLibraryModel(self.catalog, self.store, language="en_US")
+        undo = next(row for row in zh.rows("CODE.EXE") if row.entry.id == "vscode.undo")
+        self.assertEqual(zh.category_label("basic_editing"), "基础编辑")
+        self.assertEqual(zh.category_label("display"), "显示")
+        self.assertEqual(en.category_label("basic_editing"), "Basic Editing")
+        self.assertEqual(undo.description, "撤销上一次编辑")
 
 
 class ShortcutLibraryLocalizationTests(unittest.TestCase):
@@ -134,7 +176,7 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
         self.application.installTranslator(translator)
         try:
             dialog = self._dialog()
-            self.assertEqual(dialog.windowTitle(), "快捷键库")
+            self.assertEqual(dialog.windowTitle(), "快捷键中心")
             self.assertEqual(dialog.search_box.placeholderText(), "搜索快捷键")
             self.assertEqual(dialog.table.horizontalHeaderItem(2).text(), "用途")
             self.assertEqual(dialog.restore_button.text(), "恢复推荐")
@@ -145,7 +187,7 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
 
     def test_en_major_library_labels_remain_english(self) -> None:
         dialog = self._dialog()
-        self.assertEqual(dialog.windowTitle(), "Shortcut Library")
+        self.assertEqual(dialog.windowTitle(), "Shortcut Center")
         self.assertEqual(dialog.search_box.placeholderText(), "Search shortcuts")
         self.assertEqual(dialog.table.horizontalHeaderItem(2).text(), "Description")
         dialog.deleteLater()
@@ -182,6 +224,48 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
                 ShortcutLibraryModel(catalog, QuickHudSelectionStore(Path(directory) / "selection.json"), language="en_US")
             )
             self.assertEqual(dialog.table.item(0, 3).text(), "Other")
+            dialog.deleteLater()
+
+    def test_follow_current_app_then_manual_pin_and_reenable(self) -> None:
+        legacy_path = Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"
+        catalog = ShortcutCatalog.from_legacy_shortcuts(
+            json.loads(legacy_path.read_text(encoding="utf-8"))
+        ).with_packs_from(_PACK_DIRECTORY)
+        factory = ApplicationDescriptorFactory()
+        vscode = factory.describe("CODE.EXE")
+        chrome = factory.describe("CHROME.EXE")
+        tracker = _FakeTracker(vscode, (vscode,))
+        with TemporaryDirectory() as directory:
+            dialog = ShortcutLibraryDialog(
+                ShortcutLibraryModel(catalog, QuickHudSelectionStore(Path(directory) / "selection.json"), current_descriptor=vscode),
+                candidate_tracker=tracker,
+            )
+            self.assertEqual(dialog.application_combo.currentData(), "CODE.EXE")
+            tracker.set_current(chrome, (chrome, vscode))
+            self.assertEqual(dialog.application_combo.currentData(), "CHROME.EXE")
+            word_index = dialog.application_combo.findData("WINWORD.EXE")
+            self.assertGreaterEqual(word_index, 0)
+            dialog.application_combo.setCurrentIndex(word_index)
+            self.assertFalse(dialog.follow_current_checkbox.isChecked())
+            tracker.set_current(vscode, (vscode, chrome))
+            self.assertEqual(dialog.application_combo.currentData(), "WINWORD.EXE")
+            dialog.follow_current_checkbox.setChecked(True)
+            self.assertEqual(dialog.application_combo.currentData(), "CODE.EXE")
+            dialog.deleteLater()
+
+    def test_unsupported_current_application_is_visible_with_empty_builtin_state(self) -> None:
+        descriptor = ApplicationDescriptorFactory().describe("typora.exe")
+        legacy_path = Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"
+        catalog = ShortcutCatalog.from_legacy_shortcuts(
+            json.loads(legacy_path.read_text(encoding="utf-8"))
+        ).with_packs_from(_PACK_DIRECTORY)
+        with TemporaryDirectory() as directory:
+            dialog = ShortcutLibraryDialog(
+                ShortcutLibraryModel(catalog, QuickHudSelectionStore(Path(directory) / "selection.json"), current_descriptor=descriptor)
+            )
+            self.assertEqual(dialog.application_combo.currentData(), "TYPORA.EXE")
+            self.assertFalse(dialog.empty_builtin_label.isHidden())
+            self.assertEqual(dialog.table.rowCount(), 0)
             dialog.deleteLater()
 
 

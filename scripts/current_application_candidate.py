@@ -8,6 +8,7 @@ from collections.abc import Callable
 import win32process
 from PySide6.QtCore import QObject, Signal, Slot
 
+from .application_descriptor import ApplicationDescriptor, ApplicationDescriptorFactory
 from .shortcut_resolver import (
     RESERVED_USER_IDENTITIES,
     normalize_application_identity,
@@ -36,6 +37,8 @@ class CurrentApplicationCandidateTracker(QObject):
         *,
         process_id_provider: Callable[[int], int | None] = _get_window_process_id,
         own_process_id: int | None = None,
+        executable_path_provider: Callable[[], str | None] | None = None,
+        descriptor_factory: ApplicationDescriptorFactory | None = None,
     ) -> None:
         super().__init__(parent)
         self._hwnd_provider = hwnd_provider
@@ -43,6 +46,11 @@ class CurrentApplicationCandidateTracker(QObject):
         self._own_process_id = os.getpid() if own_process_id is None else own_process_id
         self._candidate: str | None = None
         self._recent_candidates: list[str] = []
+        self._current_descriptor: ApplicationDescriptor | None = None
+        self._recent_descriptors: list[ApplicationDescriptor] = []
+        self._executable_path_provider = executable_path_provider or (lambda: None)
+        self._descriptor_factory = descriptor_factory or ApplicationDescriptorFactory()
+        self._detection_order = 0
 
     @property
     def current_candidate(self) -> str | None:
@@ -62,6 +70,18 @@ class CurrentApplicationCandidateTracker(QObject):
         """Most recently observed external identities, newest first."""
 
         return tuple(self._recent_candidates)
+
+    @property
+    def current_descriptor(self) -> ApplicationDescriptor | None:
+        """Latest valid external application, whether Catalog supports it or not."""
+
+        return self._current_descriptor
+
+    @property
+    def recent_descriptors(self) -> tuple[ApplicationDescriptor, ...]:
+        """Session-only external application history, newest first."""
+
+        return tuple(self._recent_descriptors)
 
     @Slot(str)
     def on_active_app_changed(self, application_identity: str) -> None:
@@ -83,8 +103,31 @@ class CurrentApplicationCandidateTracker(QObject):
             return
         self._candidate = normalized_identity
         if normalized_identity is not None:
+            if normalized_identity in RESERVED_USER_IDENTITIES:
+                self._current_descriptor = None
+                self.candidate_changed.emit(self._candidate)
+                return
             if normalized_identity in self._recent_candidates:
                 self._recent_candidates.remove(normalized_identity)
             self._recent_candidates.insert(0, normalized_identity)
             del self._recent_candidates[8:]
+            try:
+                executable_path = self._executable_path_provider()
+            except (OSError, TypeError, ValueError):
+                executable_path = None
+            self._detection_order += 1
+            descriptor = self._descriptor_factory.describe(
+                normalized_identity,
+                executable_path,
+                order=self._detection_order,
+            )
+            self._current_descriptor = descriptor
+            if descriptor is not None:
+                self._recent_descriptors = [
+                    item
+                    for item in self._recent_descriptors
+                    if item.runtime_identity != descriptor.runtime_identity
+                ]
+                self._recent_descriptors.insert(0, descriptor)
+                del self._recent_descriptors[8:]
         self.candidate_changed.emit(self._candidate)
