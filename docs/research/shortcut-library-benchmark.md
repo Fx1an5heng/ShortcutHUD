@@ -79,3 +79,13 @@ packs, legacy-adapted applications, and user-supported applications; returns a
 stable product ID, friendly display name, matching identities, source, and
 detected state; and consumes the existing last-valid external application
 tracker. Process identities remain matching details, not normal UI labels.
+
+## Shortcut Center follow-up
+
+This correction also adopts the foreground-first pattern more literally:
+detected foreground applications are not filtered by shortcut coverage, and the
+open Center follows the existing external-app signal until a user manually
+chooses another application. Built-in and user-owned entries now share a table,
+while the established recorder/editor remains the implementation behind USER
+mutations. This retains the mature product pattern without copying a Full Guide
+or creating a second application detector.
