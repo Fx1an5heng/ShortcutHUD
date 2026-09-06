@@ -90,6 +90,7 @@ class ShortcutPack:
     platforms: tuple[str, ...]
     locales: tuple[str, ...]
     source: Mapping[str, object]
+    categories: Mapping[str, Mapping[str, str]]
     entries: tuple[CatalogEntry, ...]
 
 
@@ -101,6 +102,7 @@ class ShortcutCatalog:
         self.load_issues: list[CatalogLoadIssue] = []
         self.application_titles: dict[str, Mapping[str, str]] = {}
         self.application_product_ids: dict[str, str] = {}
+        self.category_titles: dict[str, Mapping[str, str]] = {}
 
     @classmethod
     def from_legacy_shortcuts(cls, shortcut_data: Mapping[str, object]) -> "ShortcutCatalog":
@@ -182,6 +184,7 @@ class ShortcutCatalog:
                 for app_id in (*pack.application_ids, *pack.aliases):
                     catalog.application_titles[app_id] = pack.product
                     catalog.application_product_ids[app_id] = pack.id
+                catalog.category_titles.update(pack.categories)
             except (OSError, UnicodeError, json.JSONDecodeError, CatalogValidationError) as error:
                 catalog.load_issues.append(CatalogLoadIssue(pack_path, str(error)))
                 logger.warning("Ignoring invalid shortcut pack %s: %s", pack_path, error)
@@ -220,6 +223,8 @@ class ShortcutCatalog:
         result.application_titles.update(external.application_titles)
         result.application_product_ids = dict(self.application_product_ids)
         result.application_product_ids.update(external.application_product_ids)
+        result.category_titles = dict(self.category_titles)
+        result.category_titles.update(external.category_titles)
         return result
 
 
@@ -261,6 +266,7 @@ def parse_shortcut_pack(document: object, *, base_order: int = 0) -> ShortcutPac
     platforms = _string_list(document.get("platforms", ("windows",)), "platforms")
     locales = _string_list(document.get("locales", ()), "locales")
     source = _source_mapping(document.get("source"), "source")
+    categories = _category_mapping(document.get("categories", {}))
     raw_entries = document.get("entries")
     if not isinstance(raw_entries, list):
         raise CatalogValidationError("entries must be an array")
@@ -269,11 +275,13 @@ def parse_shortcut_pack(document: object, *, base_order: int = 0) -> ShortcutPac
     local_ids: set[str] = set()
     for index, raw_entry in enumerate(raw_entries):
         entry = _parse_entry(raw_entry, entry_application_ids, base_order + index)
+        if categories and entry.category not in categories:
+            raise CatalogValidationError(f"entry category is not declared: {entry.category}")
         if entry.id in local_ids:
             raise CatalogValidationError(f"duplicate entry id in pack: {entry.id}")
         local_ids.add(entry.id)
         entries.append(entry)
-    return ShortcutPack(pack_id, product, application_ids, aliases, platforms, locales, source, tuple(entries))
+    return ShortcutPack(pack_id, product, application_ids, aliases, platforms, locales, source, categories, tuple(entries))
 
 
 def _parse_entry(raw: object, pack_apps: tuple[str, ...], order: int) -> CatalogEntry:
@@ -403,6 +411,17 @@ def _localized_mapping(value: object, name: str) -> Mapping[str, str]:
         if not isinstance(language, str) or not language.strip() or not isinstance(text, str) or not text.strip():
             raise CatalogValidationError(f"{name} contains invalid localized text")
         result[language] = text
+    return result
+
+
+def _category_mapping(value: object) -> Mapping[str, Mapping[str, str]]:
+    if not isinstance(value, Mapping):
+        raise CatalogValidationError("categories must be an object")
+    result: dict[str, Mapping[str, str]] = {}
+    for category, labels in value.items():
+        if not isinstance(category, str) or not _ENTRY_ID_PATTERN.fullmatch(category):
+            raise CatalogValidationError("category key is not a stable id")
+        result[category] = _localized_mapping(labels, "category label")
     return result
 
 
