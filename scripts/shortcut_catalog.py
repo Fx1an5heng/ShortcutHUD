@@ -90,6 +90,7 @@ class ShortcutPack:
     platforms: tuple[str, ...]
     locales: tuple[str, ...]
     source: Mapping[str, object]
+    coverage: Mapping[str, object]
     categories: Mapping[str, Mapping[str, str]]
     entries: tuple[CatalogEntry, ...]
 
@@ -266,6 +267,7 @@ def parse_shortcut_pack(document: object, *, base_order: int = 0) -> ShortcutPac
     platforms = _string_list(document.get("platforms", ("windows",)), "platforms")
     locales = _string_list(document.get("locales", ()), "locales")
     source = _source_mapping(document.get("source"), "source")
+    coverage = _coverage_mapping(document.get("coverage"))
     categories = _category_mapping(document.get("categories", {}))
     raw_entries = document.get("entries")
     if not isinstance(raw_entries, list):
@@ -281,7 +283,7 @@ def parse_shortcut_pack(document: object, *, base_order: int = 0) -> ShortcutPac
             raise CatalogValidationError(f"duplicate entry id in pack: {entry.id}")
         local_ids.add(entry.id)
         entries.append(entry)
-    return ShortcutPack(pack_id, product, application_ids, aliases, platforms, locales, source, categories, tuple(entries))
+    return ShortcutPack(pack_id, product, application_ids, aliases, platforms, locales, source, coverage, categories, tuple(entries))
 
 
 def _parse_entry(raw: object, pack_apps: tuple[str, ...], order: int) -> CatalogEntry:
@@ -434,3 +436,17 @@ def _source_mapping(value: object, name: str) -> Mapping[str, object]:
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         raise CatalogValidationError(f"{name} url must be an http(s) URL")
     return {**value, "title": title, "url": url}
+
+
+def _coverage_mapping(value: object) -> Mapping[str, object]:
+    if not isinstance(value, Mapping):
+        raise CatalogValidationError("coverage must be an object")
+    status = value.get("status")
+    if status not in {"partial", "substantial", "verified_complete"}:
+        raise CatalogValidationError("coverage status is invalid")
+    title = _required_text(value.get("official_reference_title"), "coverage official_reference_title")
+    url = _source_mapping({"title": title, "url": value.get("official_reference_url")}, "coverage")["url"]
+    date = _required_text(value.get("verified_date"), "coverage verified_date")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date):
+        raise CatalogValidationError("coverage verified_date must use YYYY-MM-DD")
+    return {"status": status, "official_reference_title": title, "official_reference_url": url, "verified_date": date}

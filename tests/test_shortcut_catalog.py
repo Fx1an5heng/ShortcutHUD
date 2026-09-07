@@ -25,6 +25,7 @@ def _pack(*, entries=None, aliases=None):
         "platforms": ["windows"],
         "locales": ["en", "zh_CN"],
         "source": {"title": "Official docs", "url": "https://example.test/docs"},
+        "coverage": {"status": "partial", "official_reference_title": "Official docs", "official_reference_url": "https://example.test/docs", "verified_date": "2026-09-07"},
         "entries": entries if entries is not None else [
             {
                 "id": "sample.save",
@@ -113,6 +114,11 @@ class ShortcutCatalogTests(unittest.TestCase):
     def test_unsupported_pack_schema_is_rejected(self) -> None:
         invalid = _pack()
         invalid["schema_version"] = 999
+        with self.assertRaises(CatalogValidationError):
+            parse_shortcut_pack(invalid)
+
+    def test_pack_requires_structured_coverage_metadata(self) -> None:
+        invalid = _pack(); invalid.pop("coverage")
         with self.assertRaises(CatalogValidationError):
             parse_shortcut_pack(invalid)
 

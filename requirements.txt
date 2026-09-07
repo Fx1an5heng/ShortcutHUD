@@ -2,3 +2,5 @@ PySide6
 keyboard
 pywin32
 comtypes>=1.4.8
+# Development-time PowerToys Shortcut Guide manifest importer.
+PyYAML>=6.0
