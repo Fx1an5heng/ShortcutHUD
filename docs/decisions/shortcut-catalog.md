@@ -19,8 +19,8 @@ leaving today's user shortcuts, editor, and HUD output intact.
 ## Decision
 
 Introduce a pure Catalog domain layer between stored data and shortcut
-resolution. `CatalogEntry` has a stable ID; a structured trigger (`combo`,
-`sequence`, or `double_tap`); localized title and description; category;
+resolution. `CatalogEntry` has a stable ID; a structured trigger (`single`,
+`combo`, `sequence`, or `double_tap`); localized title and description; category;
 scope; application identities; recommendation and rank; provenance;
 visibility; builtin/user origin; and aliases. `ShortcutPack` adds schema
 version, pack/product identity, application aliases, platform/locales, source
@@ -58,6 +58,10 @@ back to `DEFAULT`; it may only contribute `GLOBAL`, exactly as before. Legacy
 hidden builtins and user overrides retain their current identity matching.
 Legacy multi-stroke rows remain displayable through their legacy adapter
 metadata, although the current HUD continues to be modifier-triggered only.
+`CatalogTrigger.is_quick_hud_eligible()` is the explicit capability boundary:
+only a `combo` with a normalized held modifier is eligible. A valid `single`,
+`sequence`, or `double_tap` is Catalog data and must not be discarded merely
+because the HUD cannot consume it.
 
 The old editor and `UserShortcutStore` remain unchanged. User-created rows are
 adapted into runtime `USER_APP` entries rather than migrated on disk. This
@@ -76,6 +80,12 @@ legacy rows: legacy and adapted user entries are recommended by default.
 Keeping selections out of packs and out of `user_shortcuts.json` prevents a
 pack update from overwriting preference and prevents a preference write from
 rewriting source data.
+
+Shortcut Center uses the complete application Catalog, including entries whose
+`full_guide` visibility is the only current target. Their Quick HUD checkbox
+is disabled and model-level selection ignores their IDs. This retains a single
+source of truth without making future-guide entries accidentally affect the
+current HUD.
 
 ## Scope and non-goals
 
