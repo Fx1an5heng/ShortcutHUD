@@ -97,9 +97,15 @@ class ShortcutLibraryModel:
     def set_checked(self, app_id: str, entry_id: str, checked: bool) -> None:
         identity = _require_identity(app_id); entries = [entry for entry, _ in self._entries_for_application(identity) if entry.trigger.is_quick_hud_eligible()]
         if entry_id not in {entry.id for entry in entries}: return
-        selected = self.selection_store.effective_selected_ids_for(identity, entries)
-        chosen = set(selected) if selected is not None else {entry.id for entry in entries if entry.recommended}
-        chosen.add(entry_id) if checked else chosen.discard(entry_id)
+        selected = self.selection_store.selected_ids_in_order_for_entries(identity, entries)
+        chosen = list(selected) if selected is not None else [entry.id for entry in entries if entry.recommended]
+        target = next(entry for entry in entries if entry.id == entry_id)
+        target_identities = {target.id, *target.id_aliases}
+        if checked:
+            if not any(selected_id in target_identities for selected_id in chosen):
+                chosen.append(entry_id)
+        else:
+            chosen = [selected_id for selected_id in chosen if selected_id not in target_identities]
         self.selection_store.set_selected_ids(identity, chosen); self.selection_store.save()
 
     def clear_all(self, app_id: str) -> None:

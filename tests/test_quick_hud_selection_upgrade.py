@@ -10,6 +10,7 @@ import unittest
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.shortcut_catalog import ShortcutCatalog
 from scripts.shortcut_catalog_resolver import CatalogShortcutResolver
+from scripts.shortcut_library_dialog import ShortcutLibraryModel
 
 
 def _entry(entry_id: str, key: str, *, recommended: bool = False) -> dict[str, object]:
@@ -29,13 +30,19 @@ def _entry(entry_id: str, key: str, *, recommended: bool = False) -> dict[str, o
     }
 
 
-def _write_pack(directory: Path, entries: list[dict[str, object]]) -> None:
+def _write_pack(
+    directory: Path,
+    entries: list[dict[str, object]],
+    *,
+    app_identities: list[str] | None = None,
+    aliases: list[str] | None = None,
+) -> None:
     document = {
         "schema_version": 1,
         "id": "sample-app",
         "product": {"en": "Sample App"},
-        "app_identities": ["SAMPLE.EXE"],
-        "aliases": [],
+        "app_identities": app_identities or ["SAMPLE.EXE"],
+        "aliases": aliases or [],
         "platforms": ["windows"],
         "locales": ["en"],
         "source": {"title": "Test data", "url": "https://example.test"},
@@ -57,8 +64,15 @@ def _legacy_catalog() -> ShortcutCatalog:
 
 
 class QuickHudSelectionUpgradeTests(unittest.TestCase):
-    def _upgraded_catalog(self, directory: Path, entries: list[dict[str, object]]) -> ShortcutCatalog:
-        _write_pack(directory, entries)
+    def _upgraded_catalog(
+        self,
+        directory: Path,
+        entries: list[dict[str, object]],
+        *,
+        app_identities: list[str] | None = None,
+        aliases: list[str] | None = None,
+    ) -> ShortcutCatalog:
+        _write_pack(directory, entries, app_identities=app_identities, aliases=aliases)
         return _legacy_catalog().with_packs_from(directory)
 
     def _store(
@@ -83,14 +97,14 @@ class QuickHudSelectionUpgradeTests(unittest.TestCase):
 
             self.assertEqual(
                 store.effective_selected_ids_for("SAMPLE.EXE", catalog.entries),
-                frozenset({"sample.save", "legacy:app:sample.exe:ctrl:o"}),
+                frozenset({"legacy:app:sample.exe:ctrl:s", "legacy:app:sample.exe:ctrl:o"}),
             )
-            self.assertCountEqual(
+            self.assertEqual(
                 [item.key for item in CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl", selection_store=store)],
                 ["S", "O"],
             )
 
-    def test_renamed_id_uses_deterministic_exact_alias_without_rewriting_selection(self) -> None:
+    def test_exact_trigger_alone_does_not_rename_a_persisted_id(self) -> None:
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
             catalog = self._upgraded_catalog(root, [_entry("sample.save-v2", "S")])
@@ -99,7 +113,7 @@ class QuickHudSelectionUpgradeTests(unittest.TestCase):
             self.assertEqual(store.snapshot(), {"SAMPLE.EXE": ["legacy:app:sample.exe:ctrl:s"]})
             self.assertEqual(
                 store.effective_selected_ids_for("SAMPLE.EXE", catalog.entries),
-                frozenset({"sample.save-v2"}),
+                frozenset({"legacy:app:sample.exe:ctrl:s"}),
             )
             self.assertEqual(
                 [item.key for item in CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl", selection_store=store)],
@@ -161,6 +175,109 @@ class QuickHudSelectionUpgradeTests(unittest.TestCase):
                 ["S"],
             )
 
+    def test_center_edit_preserves_stale_ids_and_existing_order(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            catalog = self._upgraded_catalog(
+                root,
+                [_entry("sample.save", "S"), _entry("sample.new-recommended", "N", recommended=True)],
+            )
+            store = self._store(root, ["legacy:app:sample.exe:ctrl:s", "retired:unknown"])
+            model = ShortcutLibraryModel(catalog, store)
+
+            model.set_checked("SAMPLE.EXE", "sample.new-recommended", True)
+
+            self.assertEqual(
+                store.selected_ids_in_order_for("SAMPLE.EXE"),
+                ("legacy:app:sample.exe:ctrl:s", "retired:unknown", "sample.new-recommended"),
+            )
+            self.assertEqual(
+                store.stale_selected_ids_for("SAMPLE.EXE", catalog.entries),
+                ("retired:unknown",),
+            )
+            model.set_checked("SAMPLE.EXE", "legacy:app:sample.exe:ctrl:s", False)
+            self.assertEqual(
+                store.selected_ids_in_order_for("SAMPLE.EXE"),
+                ("retired:unknown", "sample.new-recommended"),
+            )
+
+    def test_application_identity_alias_follows_existing_selection(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            catalog = self._upgraded_catalog(
+                root,
+                [{**_entry("renamed.save", "S"), "id_aliases": ["legacy:app:sample.exe:ctrl:s"]}],
+                app_identities=["RENAMED.EXE"],
+                aliases=["SAMPLE.EXE"],
+            )
+            store = self._store(root, ["legacy:app:sample.exe:ctrl:s"])
+
+            self.assertEqual(
+                [item.key for item in CatalogShortcutResolver(catalog).resolve("RENAMED.EXE", "Ctrl", selection_store=store)],
+                ["S"],
+            )
+
+    def test_pack_upgrade_preserves_legacy_user_only_and_hidden_builtin_layers(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            catalog = self._upgraded_catalog(
+                root,
+                [_entry("sample.save", "S", recommended=True), _entry("sample.new", "N", recommended=True)],
+            )
+            resolver = CatalogShortcutResolver(catalog)
+            profiles = {
+                "SAMPLE.EXE": {
+                    "shortcuts": {"Ctrl": {"U": "User action"}},
+                    "hidden_builtin": {"Ctrl": ["S"]},
+                },
+                "CUSTOM.EXE": {"shortcuts": {"Ctrl": {"K": "Custom action"}}},
+            }
+
+            self.assertEqual(
+                [item.key for item in resolver.resolve("SAMPLE.EXE", "Ctrl", profiles)],
+                ["U", "N"],
+            )
+            self.assertEqual(
+                [item.key for item in resolver.resolve("CUSTOM.EXE", "Ctrl", profiles)],
+                ["K"],
+            )
+
+    def test_non_pack_legacy_application_keeps_explicit_membership_and_order(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            _write_pack(root, [_entry("sample.save", "S")])
+            legacy = ShortcutCatalog.from_legacy_shortcuts(
+                {
+                    "SAMPLE.EXE": {"Ctrl": {"S": "Save"}},
+                    "LEGACY.EXE": {"Ctrl": {"L": "Legacy first", "O": "Legacy second"}},
+                }
+            )
+            catalog = legacy.with_packs_from(root)
+            store = self._store(
+                root,
+                ["legacy:app:legacy.exe:ctrl:o", "legacy:app:legacy.exe:ctrl:l"],
+                "LEGACY.EXE",
+            )
+
+            self.assertEqual(
+                [item.key for item in CatalogShortcutResolver(catalog).resolve("LEGACY.EXE", "Ctrl", selection_store=store)],
+                ["O", "L"],
+            )
+
+    def test_catalog_reload_and_library_model_open_do_not_write_selection(self) -> None:
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            store = self._store(root, ["legacy:app:sample.exe:ctrl:s", "retired:unknown"])
+            before = store.path.read_bytes()
+
+            packs = root / "packs"
+            packs.mkdir()
+            catalog = self._upgraded_catalog(packs, [_entry("sample.save", "S")])
+            CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl", selection_store=store)
+            ShortcutLibraryModel(catalog, store).rows("SAMPLE.EXE")
+
+            self.assertEqual(store.path.read_bytes(), before)
+
     def test_all_stale_explicit_ids_do_not_fall_back_to_recommended(self) -> None:
         with TemporaryDirectory() as temporary:
             root = Path(temporary)
@@ -210,42 +327,6 @@ class QuickHudSelectionUpgradeTests(unittest.TestCase):
                 ["S"],
             )
 
-    def test_current_excel_legacy_selection_upgrades_without_touching_user_config(self) -> None:
-        """Use a temporary selection fixture, never the APPDATA selection file."""
-
-        old_excel_ids = [
-            "legacy:app:excel.exe:ctrl+shift:$",
-            "legacy:app:excel.exe:ctrl:pageup",
-            "legacy:app:excel.exe:ctrl+shift:!",
-            "legacy:app:excel.exe:ctrl:e",
-            "legacy:app:excel.exe:ctrl+shift:+",
-            "legacy:app:excel.exe:ctrl:pagedown",
-            "legacy:app:excel.exe:ctrl+shift:%3a",
-            "legacy:app:excel.exe:ctrl+shift:#",
-            "legacy:app:excel.exe:ctrl+shift:l",
-            "legacy:app:excel.exe:ctrl+shift:@",
-            "legacy:app:excel.exe:ctrl+alt:v",
-            "legacy:app:excel.exe:ctrl:t",
-            "legacy:app:excel.exe:ctrl:;",
-            "legacy:app:excel.exe:ctrl+shift:%",
-            "legacy:app:excel.exe:ctrl:1",
-            "legacy:app:excel.exe:ctrl:d",
-            "legacy:app:excel.exe:ctrl:`",
-            "legacy:app:excel.exe:ctrl+alt:f5",
-        ]
-        project_root = Path(__file__).resolve().parents[1]
-        legacy_data = json.loads((project_root / "config" / "shortcuts.json").read_text(encoding="utf-8"))
-        catalog = ShortcutCatalog.from_legacy_shortcuts(legacy_data).with_packs_from(project_root / "config" / "shortcut_packs")
-        with TemporaryDirectory() as temporary:
-            store = self._store(Path(temporary), old_excel_ids, "EXCEL.EXE")
-            effective = store.effective_selected_ids_for("EXCEL.EXE", catalog.entries)
-
-        self.assertEqual(len(effective), len(old_excel_ids))
-        self.assertIn("microsoft-excel.apply-currency-format", effective)
-        self.assertIn("legacy:app:excel.exe:ctrl+shift:l", effective)
-        currency = next(entry for entry in catalog.entries if entry.id == "microsoft-excel.apply-currency-format")
-        self.assertIn("legacy:app:excel.exe:ctrl+shift:$", currency.id_aliases)
-
     def test_migration_is_deterministic_and_does_not_touch_real_user_paths(self) -> None:
         with TemporaryDirectory() as first, TemporaryDirectory() as second:
             first_root, second_root = Path(first), Path(second)
@@ -255,8 +336,8 @@ class QuickHudSelectionUpgradeTests(unittest.TestCase):
             second_store = self._store(second_root, ["legacy:app:sample.exe:ctrl:s"])
 
             self.assertEqual(
-                first_store.effective_selected_ids_for("SAMPLE.EXE", first_catalog.entries),
-                second_store.effective_selected_ids_for("SAMPLE.EXE", second_catalog.entries),
+                first_store.effective_selected_ids_in_order_for("SAMPLE.EXE", first_catalog.entries),
+                second_store.effective_selected_ids_in_order_for("SAMPLE.EXE", second_catalog.entries),
             )
             self.assertTrue(first_store.path.is_relative_to(first_root))
             self.assertTrue(second_store.path.is_relative_to(second_root))

@@ -57,13 +57,18 @@ class CatalogShortcutResolver:
             for entries, source in layers
             for entry in entries
         ]
-        selected = _selected_ids(selection_store, app_id, [entry for entry, _source in candidates])
-        if selected is not None:
+        selected_order = _selected_id_order(selection_store, app_id, [entry for entry, _source in candidates])
+        if selected_order is not None:
+            selected = frozenset(selected_order)
             candidates = [
                 (entry, source)
                 for entry, source in candidates
                 if source == "GLOBAL" or entry.id in selected
             ]
+            positions = {entry_id: index for index, entry_id in enumerate(selected_order)}
+            app_candidates = [item for item in candidates if item[1] != "GLOBAL"]
+            app_candidates.sort(key=lambda item: positions.get(item[0].id, len(positions)))
+            candidates = [*app_candidates, *(item for item in candidates if item[1] == "GLOBAL")]
         else:
             candidates = [
                 (entry, source)
@@ -174,20 +179,30 @@ def _profile_is_hidden_only(profile: Mapping[str, object]) -> bool:
     return isinstance(hidden, Mapping) and any(isinstance(group, list) and bool(group) for group in hidden.values())
 
 
-def _selected_ids(
+def _selected_id_order(
     store: object | None,
     app_id: str | None,
     entries: list[CatalogEntry],
-) -> frozenset[str] | None:
+) -> tuple[str, ...] | None:
+    ordered_migration_method = getattr(store, "effective_selected_ids_in_order_for", None)
+    if callable(ordered_migration_method):
+        result = ordered_migration_method(app_id, entries)
+        return tuple(result) if result is not None else None
     migration_method = getattr(store, "effective_selected_ids_for", None)
     if callable(migration_method):
         result = migration_method(app_id, entries)
-        return frozenset(result) if result is not None else None
+        if result is None:
+            return None
+        selected = frozenset(result)
+        return tuple(entry.id for entry in entries if entry.id in selected)
     method = getattr(store, "selected_ids_for", None)
     if not callable(method):
         return None
     result = method(app_id)
-    return frozenset(result) if result is not None else None
+    if result is None:
+        return None
+    selected = frozenset(result)
+    return tuple(entry.id for entry in entries if entry.id in selected)
 
 
 def _localized_description(value: object, language: str | None) -> object:

@@ -52,10 +52,73 @@ class QuickHudSelectionStore:
             logger.warning("Ignoring invalid Quick HUD selection file %s: %s", self.path, error)
 
     def selected_ids_for(self, app_id: str | None) -> frozenset[str] | None:
+        selected = self.selected_ids_in_order_for(app_id)
+        return frozenset(selected) if selected is not None else None
+
+    def selected_ids_in_order_for(self, app_id: str | None) -> tuple[str, ...] | None:
+        """Return the exact persisted order for one application identity."""
+
         identity = normalize_application_identity(app_id)
         if identity is None or identity not in self._apps:
             return None
-        return frozenset(self._apps[identity])
+        return tuple(self._apps[identity])
+
+    def selected_ids_in_order_for_entries(
+        self,
+        app_id: str | None,
+        entries: Iterable[object],
+    ) -> tuple[str, ...] | None:
+        """Find persisted state across an application's current identity aliases."""
+
+        identity = normalize_application_identity(app_id)
+        if identity is None:
+            return None
+        direct = self.selected_ids_in_order_for(identity)
+        if direct is not None:
+            return direct
+        identities: list[str] = []
+        for entry in entries:
+            application_ids = getattr(entry, "application_ids", ())
+            if not isinstance(application_ids, tuple):
+                continue
+            for candidate in application_ids:
+                normalized = normalize_application_identity(candidate)
+                if normalized is not None and normalized != identity and normalized not in identities:
+                    identities.append(normalized)
+        selections = [self._apps[candidate] for candidate in identities if candidate in self._apps]
+        if not selections:
+            return None
+        return tuple(dict.fromkeys(entry_id for selected in selections for entry_id in selected))
+
+    def effective_selected_ids_in_order_for(
+        self,
+        app_id: str | None,
+        entries: Iterable[object],
+    ) -> tuple[str, ...] | None:
+        """Resolve persisted IDs and aliases without discarding user order."""
+
+        entry_list = tuple(entries)
+        selected = self.selected_ids_in_order_for_entries(app_id, entry_list)
+        if selected is None:
+            return None
+        direct: dict[str, str] = {}
+        aliases: dict[str, list[str]] = {}
+        for entry in entry_list:
+            entry_id = getattr(entry, "id", None)
+            entry_aliases = getattr(entry, "id_aliases", ())
+            if not isinstance(entry_id, str):
+                continue
+            direct[entry_id] = entry_id
+            if isinstance(entry_aliases, tuple):
+                for alias in entry_aliases:
+                    aliases.setdefault(alias, []).append(entry_id)
+        resolved: list[str] = []
+        for persisted_id in selected:
+            targets = (direct[persisted_id],) if persisted_id in direct else tuple(aliases.get(persisted_id, ()))
+            for target in targets:
+                if target not in resolved:
+                    resolved.append(target)
+        return tuple(resolved)
 
     def effective_selected_ids_for(
         self,
@@ -64,20 +127,29 @@ class QuickHudSelectionStore:
     ) -> frozenset[str] | None:
         """Resolve persisted IDs through declared stable aliases, never heuristics."""
 
-        selected = self.selected_ids_for(app_id)
+        resolved = self.effective_selected_ids_in_order_for(app_id, entries)
+        return frozenset(resolved) if resolved is not None else None
+
+    def stale_selected_ids_for(
+        self,
+        app_id: str | None,
+        entries: Iterable[object],
+    ) -> tuple[str, ...] | None:
+        """Report unresolved persisted IDs in user order without mutating them."""
+
+        entry_list = tuple(entries)
+        selected = self.selected_ids_in_order_for_entries(app_id, entry_list)
         if selected is None:
             return None
-        resolved: set[str] = set()
-        for entry in entries:
+        known: set[str] = set()
+        for entry in entry_list:
             entry_id = getattr(entry, "id", None)
             aliases = getattr(entry, "id_aliases", ())
-            if not isinstance(entry_id, str):
-                continue
-            if entry_id in selected or (
-                isinstance(aliases, tuple) and any(alias in selected for alias in aliases)
-            ):
-                resolved.add(entry_id)
-        return frozenset(resolved)
+            if isinstance(entry_id, str):
+                known.add(entry_id)
+            if isinstance(aliases, tuple):
+                known.update(alias for alias in aliases if isinstance(alias, str))
+        return tuple(entry_id for entry_id in selected if entry_id not in known)
 
     def set_selected_ids(self, app_id: str, entry_ids: Iterable[str]) -> None:
         identity = normalize_application_identity(app_id)

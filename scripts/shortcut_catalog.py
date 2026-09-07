@@ -206,7 +206,7 @@ class ShortcutCatalog:
             if entry.scope == "APP" and entry.builtin
             for app_id in entry.application_ids
         }
-        external_entries, migrated_legacy_ids = _attach_legacy_selection_aliases(
+        external_entries, migrated_legacy_ids = _apply_declared_legacy_selection_aliases(
             self.entries, external.entries, formal_applications
         )
         appended: list[CatalogEntry] = []
@@ -241,33 +241,28 @@ class ShortcutCatalog:
         return result
 
 
-def _attach_legacy_selection_aliases(
+def _apply_declared_legacy_selection_aliases(
     legacy_entries: Iterable[CatalogEntry],
     pack_entries: Iterable[CatalogEntry],
     formal_applications: set[str],
 ) -> tuple[tuple[CatalogEntry, ...], frozenset[str]]:
-    """Map only exact, unique legacy triggers; retain every other old ID.
+    """Honor explicit Pack ID migrations and retain every other old ID.
 
-    This is a selection compatibility bridge, not fuzzy shortcut matching.
-    Scope, normalized application identity and complete trigger tokens must all
-    agree. A missing or ambiguous Pack candidate remains a non-default legacy
-    entry so an explicit historical selection cannot silently become Pack
-    recommendations.
+    Trigger equality alone cannot prove semantic identity for every future
+    Pack. Only a declared, unique ``id_aliases`` target may replace an old ID.
+    Missing or ambiguous declarations leave the original entry addressable as
+    a non-default compatibility row.
     """
 
     entries = list(pack_entries)
-    target_indexes: dict[tuple[str, TriggerKind, tuple[str, ...]], list[int]] = {}
     declared_alias_indexes: dict[str, list[int]] = {}
     for index, entry in enumerate(entries):
         if entry.scope != "APP" or not entry.builtin:
             continue
-        for app_id in entry.application_ids:
-            target_indexes.setdefault((app_id, entry.trigger.kind, entry.trigger.keys), []).append(index)
         for alias in entry.id_aliases:
             declared_alias_indexes.setdefault(alias, []).append(index)
 
     migrated: set[str] = set()
-    aliases: dict[int, list[str]] = {}
     for legacy in legacy_entries:
         if (
             legacy.scope != "APP"
@@ -280,26 +275,6 @@ def _attach_legacy_selection_aliases(
         declared_targets = set(declared_alias_indexes.get(legacy.id, ()))
         if len(declared_targets) == 1:
             migrated.add(legacy.id)
-            continue
-        if declared_targets:
-            continue
-        candidates = {
-            index
-            for app_id in legacy.application_ids
-            for index in target_indexes.get((app_id, legacy.trigger.kind, legacy.trigger.keys), ())
-        }
-        if len(candidates) != 1:
-            continue
-        index = candidates.pop()
-        aliases.setdefault(index, []).append(legacy.id)
-        migrated.add(legacy.id)
-
-    for index, legacy_ids in aliases.items():
-        entry = entries[index]
-        entries[index] = replace(
-            entry,
-            id_aliases=tuple(dict.fromkeys((*entry.id_aliases, *legacy_ids))),
-        )
     return tuple(entries), frozenset(migrated)
 
 
