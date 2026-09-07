@@ -52,27 +52,31 @@ class CatalogShortcutResolver:
             else:
                 layers.append((self._entries_for_scope("DEFAULT", canonical_modifier), "DEFAULT"))
         layers.append((self._entries_for_scope("GLOBAL", canonical_modifier), "GLOBAL"))
-        effective: list[tuple[CatalogEntry, str]] = []
-        seen: set[str] = set()
-        for entries, source in layers:
-            for entry in entries:
-                identity = entry.hud_key().casefold()
-                if identity not in seen:
-                    seen.add(identity)
-                    effective.append((entry, source))
-        selected = _selected_ids(selection_store, app_id, [entry for entry, _source in effective])
+        candidates = [
+            (entry, source)
+            for entries, source in layers
+            for entry in entries
+        ]
+        selected = _selected_ids(selection_store, app_id, [entry for entry, _source in candidates])
         if selected is not None:
-            effective = [
+            candidates = [
                 (entry, source)
-                for entry, source in effective
+                for entry, source in candidates
                 if source == "GLOBAL" or entry.id in selected
             ]
         else:
-            effective = [
+            candidates = [
                 (entry, source)
-                for entry, source in effective
+                for entry, source in candidates
                 if source == "GLOBAL" or entry.recommended
             ]
+        effective: list[tuple[CatalogEntry, str]] = []
+        seen: set[str] = set()
+        for entry, source in candidates:
+            identity = entry.hud_key().casefold()
+            if identity not in seen:
+                seen.add(identity)
+                effective.append((entry, source))
         return [
             ShortcutEntry(
                 entry.hud_key(),

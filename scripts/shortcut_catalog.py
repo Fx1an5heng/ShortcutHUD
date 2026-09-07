@@ -8,7 +8,7 @@ pack-shaped API without changing the HUD's visible behaviour.
 from __future__ import annotations
 
 from collections.abc import Iterable, Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 import json
 import logging
 from pathlib import Path
@@ -206,15 +206,24 @@ class ShortcutCatalog:
             if entry.scope == "APP" and entry.builtin
             for app_id in entry.application_ids
         }
-        appended: list[CatalogEntry] = [
-            entry for entry in self.entries
-            if not (
+        external_entries, migrated_legacy_ids = _attach_legacy_selection_aliases(
+            self.entries, external.entries, formal_applications
+        )
+        appended: list[CatalogEntry] = []
+        for entry in self.entries:
+            is_formal_legacy = (
                 entry.id.startswith("legacy:app:")
                 and any(app_id in formal_applications for app_id in entry.application_ids)
             )
-        ]
+            if is_formal_legacy and entry.id in migrated_legacy_ids:
+                continue
+            # A Pack cannot safely replace an old Catalog entry without one
+            # exact, unambiguous target. Keep unmatched/ambiguous legacy rows
+            # addressable for explicit selections, but never add them to the
+            # defaults of a user who has not configured that application.
+            appended.append(replace(entry, recommended=False) if is_formal_legacy else entry)
         issues = list(external.load_issues)
-        for entry in external.entries:
+        for entry in external_entries:
             if entry.id in known_ids:
                 issues.append(CatalogLoadIssue(Path(directory), f"duplicate catalog entry id: {entry.id}"))
                 logger.warning("Ignoring duplicate shortcut catalog entry: %s", entry.id)
@@ -230,6 +239,68 @@ class ShortcutCatalog:
         result.category_titles = dict(self.category_titles)
         result.category_titles.update(external.category_titles)
         return result
+
+
+def _attach_legacy_selection_aliases(
+    legacy_entries: Iterable[CatalogEntry],
+    pack_entries: Iterable[CatalogEntry],
+    formal_applications: set[str],
+) -> tuple[tuple[CatalogEntry, ...], frozenset[str]]:
+    """Map only exact, unique legacy triggers; retain every other old ID.
+
+    This is a selection compatibility bridge, not fuzzy shortcut matching.
+    Scope, normalized application identity and complete trigger tokens must all
+    agree. A missing or ambiguous Pack candidate remains a non-default legacy
+    entry so an explicit historical selection cannot silently become Pack
+    recommendations.
+    """
+
+    entries = list(pack_entries)
+    target_indexes: dict[tuple[str, TriggerKind, tuple[str, ...]], list[int]] = {}
+    declared_alias_indexes: dict[str, list[int]] = {}
+    for index, entry in enumerate(entries):
+        if entry.scope != "APP" or not entry.builtin:
+            continue
+        for app_id in entry.application_ids:
+            target_indexes.setdefault((app_id, entry.trigger.kind, entry.trigger.keys), []).append(index)
+        for alias in entry.id_aliases:
+            declared_alias_indexes.setdefault(alias, []).append(index)
+
+    migrated: set[str] = set()
+    aliases: dict[int, list[str]] = {}
+    for legacy in legacy_entries:
+        if (
+            legacy.scope != "APP"
+            or not legacy.id.startswith("legacy:app:")
+            or not any(app_id in formal_applications for app_id in legacy.application_ids)
+        ):
+            continue
+        # An explicit Pack alias is authoritative and may intentionally bridge
+        # a trigger representation change that exact matching cannot prove.
+        declared_targets = set(declared_alias_indexes.get(legacy.id, ()))
+        if len(declared_targets) == 1:
+            migrated.add(legacy.id)
+            continue
+        if declared_targets:
+            continue
+        candidates = {
+            index
+            for app_id in legacy.application_ids
+            for index in target_indexes.get((app_id, legacy.trigger.kind, legacy.trigger.keys), ())
+        }
+        if len(candidates) != 1:
+            continue
+        index = candidates.pop()
+        aliases.setdefault(index, []).append(legacy.id)
+        migrated.add(legacy.id)
+
+    for index, legacy_ids in aliases.items():
+        entry = entries[index]
+        entries[index] = replace(
+            entry,
+            id_aliases=tuple(dict.fromkeys((*entry.id_aliases, *legacy_ids))),
+        )
+    return tuple(entries), frozenset(migrated)
 
 
 def select_catalog_text(value: Mapping[str, str], language: str | None) -> str:
