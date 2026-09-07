@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from .modifier_state import normalize_modifier_combination
-from .shortcut_catalog import CatalogEntry, CatalogScope, CatalogTrigger, ShortcutCatalog
+from .shortcut_catalog import CatalogEntry, CatalogScope, CatalogTrigger, ShortcutCatalog, select_catalog_text
 from .shortcut_key import normalize_builtin_shortcut_identity
 from .shortcut_resolver import (
     RESERVED_USER_IDENTITIES,
@@ -29,6 +29,7 @@ class CatalogShortcutResolver:
         modifier_combination: str | None,
         user_profiles: Mapping[str, object] | None = None,
         selection_store: object | None = None,
+        language: str | None = None,
     ) -> list[ShortcutEntry]:
         canonical_modifier = normalize_modifier_combination(modifier_combination)
         if canonical_modifier is None:
@@ -72,7 +73,14 @@ class CatalogShortcutResolver:
                 for entry, source in effective
                 if source == "GLOBAL" or entry.recommended
             ]
-        return [ShortcutEntry(entry.hud_key(), entry.description, source) for entry, source in effective]
+        return [
+            ShortcutEntry(
+                entry.hud_key(),
+                _localized_description(entry.description, language),
+                source,
+            )
+            for entry, source in effective
+        ]
 
     def _entries_for_app(self, app_id: str | None, modifier: str) -> list[CatalogEntry]:
         if app_id is None:
@@ -176,3 +184,11 @@ def _selected_ids(
         return None
     result = method(app_id)
     return frozenset(result) if result is not None else None
+
+
+def _localized_description(value: object, language: str | None) -> object:
+    """Resolve Catalog text once, before any presentation consumes it."""
+
+    if language is None or not isinstance(value, Mapping):
+        return value
+    return select_catalog_text(value, language)

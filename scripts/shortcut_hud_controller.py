@@ -8,6 +8,8 @@ from typing import Protocol
 
 from PySide6.QtCore import QObject, QTimer, Slot
 
+from .application_descriptor import ApplicationDescriptorFactory
+from .catalog_application_registry import CatalogApplicationRegistry
 from .modifier_state import canonicalize_modifier_state
 from .shortcut_catalog import ShortcutCatalog
 from .shortcut_catalog_resolver import CatalogShortcutResolver
@@ -39,6 +41,7 @@ class _HudView(Protocol):
         modifier_combination: str,
         entries: list[ShortcutEntry],
         language: str | None,
+        application_display_name: str | None = None,
     ) -> None: ...
 
 
@@ -244,31 +247,53 @@ class ShortcutHudController(QObject):
         self._hud_window.show_hud()
 
     def _resolve_current_entries(self) -> list[ShortcutEntry]:
+        catalog = self._current_catalog()
+        return CatalogShortcutResolver(catalog).resolve(
+            self._foreground_monitor.current_app_name,
+            self._current_modifier,
+            self._user_profiles,
+            self._selection_store,
+            self._language(),
+        )
+
+    def _render(self, entries: list[ShortcutEntry]) -> None:
+        app_name = self._foreground_monitor.current_app_name
+        language = self._language()
+        self._hud_window.set_entries(
+            app_name.upper() if app_name else "DEFAULT",
+            self._current_modifier or "",
+            entries,
+            language,
+            self._application_display_name(self._current_catalog(), app_name, language),
+        )
+
+    def _current_catalog(self) -> ShortcutCatalog:
         catalog_getter = getattr(self._config_manager, "get_shortcut_catalog", None)
-        catalog = (
+        return (
             catalog_getter()
             if callable(catalog_getter)
             else ShortcutCatalog.from_legacy_shortcuts(
                 self._config_manager.get_all_shortcuts()
             )
         )
-        return CatalogShortcutResolver(catalog).resolve(
-            self._foreground_monitor.current_app_name,
-            self._current_modifier,
-            self._user_profiles,
-            self._selection_store,
-        )
 
-    def _render(self, entries: list[ShortcutEntry]) -> None:
-        app_name = self._foreground_monitor.current_app_name
+    def _language(self) -> str:
         language_setting = self._config_manager.get_setting("language", "en_US")
-        language = language_setting if isinstance(language_setting, str) else "en_US"
-        self._hud_window.set_entries(
-            app_name.upper() if app_name else "DEFAULT",
-            self._current_modifier or "",
-            entries,
-            language,
-        )
+        return language_setting if isinstance(language_setting, str) else "en_US"
+
+    def _application_display_name(
+        self,
+        catalog: ShortcutCatalog,
+        application_name: str | None,
+        language: str,
+    ) -> str:
+        record = CatalogApplicationRegistry(
+            catalog, self._user_profiles, language
+        ).find_by_identity(application_name)
+        if record is not None:
+            return record.display_name
+        descriptor = ApplicationDescriptorFactory().describe(application_name)
+        return descriptor.display_name if descriptor is not None else "DEFAULT"
 
     def _cancel_and_hide(self) -> None:
         self._show_timer.stop()

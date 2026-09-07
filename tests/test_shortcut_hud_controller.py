@@ -36,7 +36,7 @@ class _FakeHudWindow:
         self.visible = False
         self.show_calls = 0
         self.hide_calls = 0
-        self.rendered: list[tuple[str, str, list[object], str | None]] = []
+        self.rendered: list[tuple[str, str, list[object], str | None, str | None]] = []
 
     def isVisible(self) -> bool:
         return self.visible
@@ -55,9 +55,10 @@ class _FakeHudWindow:
         modifier_combination: str,
         entries: list[object],
         language: str | None,
+        application_display_name: str | None = None,
     ) -> None:
         self.rendered.append(
-            (application_name, modifier_combination, entries, language)
+            (application_name, modifier_combination, entries, language, application_display_name)
         )
 
 

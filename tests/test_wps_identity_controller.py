@@ -48,7 +48,7 @@ class _Hud:
         self.visible = True
         self.show_count += 1
 
-    def set_entries(self, _app: str, _modifier: str, entries: list, _language: str) -> None:
+    def set_entries(self, _app: str, _modifier: str, entries: list, _language: str, _display_name: str | None = None) -> None:
         self.entries = entries
 
 

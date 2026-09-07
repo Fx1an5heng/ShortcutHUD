@@ -158,6 +158,7 @@ class ShortcutHudWindow(QWidget):
         modifier_combination: str,
         entries: Sequence[ShortcutEntry],
         language: str | None,
+        application_display_name: str | None = None,
     ) -> None:
         """Replace the current rows while preserving resolver insertion order."""
 
@@ -167,10 +168,8 @@ class ShortcutHudWindow(QWidget):
             entry_limit,
         )
         display_name = (
-            get_application_display_name(
-                application_name,
-                self._user_display_names,
-            )
+            application_display_name
+            or get_application_display_name(application_name, self._user_display_names)
             if local_entries
             else None
         )

@@ -126,10 +126,12 @@ class CatalogApplicationRegistry:
     ) -> CatalogApplication:
         identity = identities[0]
         title = self.catalog.application_titles.get(identity)
-        display = select_catalog_text(title, self.language) if title else (
+        display = self._user_display_name(identities) or (
+            select_catalog_text(title, self.language) if title else (
             _PRODUCT_LABELS.get(identity)
             or get_application_display_name(identity)
             or _friendly_legacy_name(identity)
+            )
         )
         source = "PACK" if "PACK" in sources else "USER" if sources == {"USER"} else "LEGACY"
         return CatalogApplication(
@@ -140,6 +142,18 @@ class CatalogApplicationRegistry:
             source=source,
             detected=bool(set(identities) & self.detected),
         )
+
+    def _user_display_name(self, identities: Iterable[str]) -> str | None:
+        normalized = set(identities)
+        for raw_identity, profile in self.user_profiles.items():
+            if normalize_application_identity(raw_identity) not in normalized:
+                continue
+            if not isinstance(profile, Mapping):
+                continue
+            value = profile.get("display_name")
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+        return None
 
 
 def _friendly_legacy_name(identity: str) -> str:
