@@ -1,0 +1,3079 @@
+{
+  "schema_version": 1,
+  "id": "microsoft-word.windows",
+  "product": {
+    "en": "Microsoft Word",
+    "zh_CN": "Microsoft Word"
+  },
+  "app_identities": [
+    "WINWORD.EXE"
+  ],
+  "aliases": [],
+  "platforms": [
+    "windows"
+  ],
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "source": {
+    "title": "Microsoft PowerToys Shortcut Guide",
+    "url": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+    "manifest": "Microsoft.Word"
+  },
+  "coverage": {
+    "status": "substantial",
+    "official_reference_title": "Word keyboard shortcuts",
+    "official_reference_url": "https://support.microsoft.com/office/keyboard-shortcuts-in-word",
+    "verified_date": "2026-09-07"
+  },
+  "categories": {
+    "frequently-used": {
+      "en": "Frequently used",
+      "zh_CN": "常用"
+    },
+    "editing": {
+      "en": "Editing",
+      "zh_CN": "Editing"
+    },
+    "navigation": {
+      "en": "Navigation",
+      "zh_CN": "导航"
+    },
+    "selection": {
+      "en": "Selection",
+      "zh_CN": "选择"
+    },
+    "character-formatting": {
+      "en": "Character formatting",
+      "zh_CN": "字符格式"
+    },
+    "paragraph-formatting": {
+      "en": "Paragraph formatting",
+      "zh_CN": "段落格式"
+    },
+    "view-and-zoom": {
+      "en": "View and zoom",
+      "zh_CN": "视图 and zoom"
+    },
+    "insert": {
+      "en": "Insert",
+      "zh_CN": "Insert"
+    },
+    "review": {
+      "en": "Review",
+      "zh_CN": "Re视图"
+    },
+    "tables": {
+      "en": "Tables",
+      "zh_CN": "表格"
+    }
+  },
+  "entries": [
+    {
+      "id": "microsoft-word.new-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New document",
+        "zh_CN": "新建文档"
+      },
+      "description": {
+        "en": "New document",
+        "zh_CN": "新建文档"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 1,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.open",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Open",
+        "zh_CN": "Open"
+      },
+      "description": {
+        "en": "Open",
+        "zh_CN": "Open"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 2,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.save",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save",
+        "zh_CN": "Save"
+      },
+      "description": {
+        "en": "Save",
+        "zh_CN": "Save"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 3,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.close-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "W"
+        ]
+      },
+      "title": {
+        "en": "Close document",
+        "zh_CN": "关闭文档"
+      },
+      "description": {
+        "en": "Close document",
+        "zh_CN": "关闭文档"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 4,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.print",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Print",
+        "zh_CN": "打印"
+      },
+      "description": {
+        "en": "Print",
+        "zh_CN": "打印"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 5,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.cut",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Cut",
+        "zh_CN": "剪切"
+      },
+      "description": {
+        "en": "Cut",
+        "zh_CN": "剪切"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 6,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.copy",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Copy",
+        "zh_CN": "Copy"
+      },
+      "description": {
+        "en": "Copy",
+        "zh_CN": "Copy"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 7,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.paste",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "description": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 8,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.paste-text-only",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste text only",
+        "zh_CN": "粘贴文本 only"
+      },
+      "description": {
+        "en": "Paste text only",
+        "zh_CN": "粘贴文本 only"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 9,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-all",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "A"
+        ]
+      },
+      "title": {
+        "en": "Select all",
+        "zh_CN": "选择全部"
+      },
+      "description": {
+        "en": "Select all",
+        "zh_CN": "选择全部"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 10,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.undo",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "description": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 11,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.redo",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Y"
+        ]
+      },
+      "title": {
+        "en": "Redo",
+        "zh_CN": "重做"
+      },
+      "description": {
+        "en": "Redo",
+        "zh_CN": "重做"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 12,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.delete-one-word-to-the-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Backspace"
+        ]
+      },
+      "title": {
+        "en": "Delete one word to the left",
+        "zh_CN": "删除one word to the 左"
+      },
+      "description": {
+        "en": "Delete one word to the left",
+        "zh_CN": "删除one word to the 左"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 13,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.delete-one-word-to-the-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Delete"
+        ]
+      },
+      "title": {
+        "en": "Delete one word to the right",
+        "zh_CN": "删除one word to the 右"
+      },
+      "description": {
+        "en": "Delete one word to the right",
+        "zh_CN": "删除one word to the 右"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 14,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.find",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Find",
+        "zh_CN": "Find"
+      },
+      "description": {
+        "en": "Display the Navigation task pane to search the document.",
+        "zh_CN": "Find"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": true,
+      "rank": 15,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.find-and-replace",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Find and replace",
+        "zh_CN": "查找and 替换"
+      },
+      "description": {
+        "en": "Find and replace",
+        "zh_CN": "查找and 替换"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 16,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.go-to",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Go to",
+        "zh_CN": "Go to"
+      },
+      "description": {
+        "en": "Navigate to a specific page, bookmark, footnote, table, comment, graphic, or other location.",
+        "zh_CN": "Go to"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 17,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.copy-formatting",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Copy formatting",
+        "zh_CN": "复制格式ting"
+      },
+      "description": {
+        "en": "Copy formatting",
+        "zh_CN": "复制格式ting"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 18,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.paste-formatting",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste formatting",
+        "zh_CN": "粘贴格式ting"
+      },
+      "description": {
+        "en": "Paste formatting",
+        "zh_CN": "粘贴格式ting"
+      },
+      "category": "editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 19,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-one-word-to-the-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Left"
+        ]
+      },
+      "title": {
+        "en": "Move one word to the left",
+        "zh_CN": "移动one word to the 左"
+      },
+      "description": {
+        "en": "Move one word to the left",
+        "zh_CN": "移动one word to the 左"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 20,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-one-word-to-the-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Right"
+        ]
+      },
+      "title": {
+        "en": "Move one word to the right",
+        "zh_CN": "移动one word to the 右"
+      },
+      "description": {
+        "en": "Move one word to the right",
+        "zh_CN": "移动one word to the 右"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 21,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-up-one-paragraph",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Move up one paragraph",
+        "zh_CN": "移动上 one 段落"
+      },
+      "description": {
+        "en": "Move up one paragraph",
+        "zh_CN": "移动上 one 段落"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 22,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-down-one-paragraph",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Move down one paragraph",
+        "zh_CN": "移动下 one 段落"
+      },
+      "description": {
+        "en": "Move down one paragraph",
+        "zh_CN": "移动下 one 段落"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 23,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.beginning-of-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Beginning of document",
+        "zh_CN": "Beginning of 文档"
+      },
+      "description": {
+        "en": "Beginning of document",
+        "zh_CN": "Beginning of 文档"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 24,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.end-of-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "End of document",
+        "zh_CN": "End of 文档"
+      },
+      "description": {
+        "en": "End of document",
+        "zh_CN": "End of 文档"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 25,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.top-of-next-page",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Top of next page",
+        "zh_CN": "Top of 下一个 页面"
+      },
+      "description": {
+        "en": "Top of next page",
+        "zh_CN": "Top of 下一个 页面"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 26,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.top-of-previous-page",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "Top of previous page",
+        "zh_CN": "Top of 上一个 页面"
+      },
+      "description": {
+        "en": "Top of previous page",
+        "zh_CN": "Top of 上一个 页面"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 27,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.previous-revision",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Previous revision",
+        "zh_CN": "上一个 revision"
+      },
+      "description": {
+        "en": "Previous revision",
+        "zh_CN": "上一个 revision"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 28,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-word-to-the-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Left"
+        ]
+      },
+      "title": {
+        "en": "Select word to the left",
+        "zh_CN": "选择word to the 左"
+      },
+      "description": {
+        "en": "Select word to the left",
+        "zh_CN": "选择word to the 左"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 29,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-word-to-the-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Right"
+        ]
+      },
+      "title": {
+        "en": "Select word to the right",
+        "zh_CN": "选择word to the 右"
+      },
+      "description": {
+        "en": "Select word to the right",
+        "zh_CN": "选择word to the 右"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 30,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-beginning-of-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Select to beginning of line",
+        "zh_CN": "选择to beginning of line"
+      },
+      "description": {
+        "en": "Select to beginning of line",
+        "zh_CN": "选择to beginning of line"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 31,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-end-of-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Select to end of line",
+        "zh_CN": "选择to end of line"
+      },
+      "description": {
+        "en": "Select to end of line",
+        "zh_CN": "选择to end of line"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 32,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-beginning-of-paragraph",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Select to beginning of paragraph",
+        "zh_CN": "选择to beginning of 段落"
+      },
+      "description": {
+        "en": "Select to beginning of paragraph",
+        "zh_CN": "选择to beginning of 段落"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 33,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-end-of-paragraph",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Select to end of paragraph",
+        "zh_CN": "选择to end of 段落"
+      },
+      "description": {
+        "en": "Select to end of paragraph",
+        "zh_CN": "选择to end of 段落"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 34,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-beginning-of-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Select to beginning of document",
+        "zh_CN": "选择to beginning of 文档"
+      },
+      "description": {
+        "en": "Select to beginning of document",
+        "zh_CN": "选择to beginning of 文档"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 35,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.select-to-end-of-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Select to end of document",
+        "zh_CN": "选择to end of 文档"
+      },
+      "description": {
+        "en": "Select to end of document",
+        "zh_CN": "选择to end of 文档"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 36,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.bold",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "B"
+        ]
+      },
+      "title": {
+        "en": "Bold",
+        "zh_CN": "加粗"
+      },
+      "description": {
+        "en": "Bold",
+        "zh_CN": "加粗"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 37,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.italic",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Italic",
+        "zh_CN": "斜体"
+      },
+      "description": {
+        "en": "Italic",
+        "zh_CN": "斜体"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 38,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.underline",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "U"
+        ]
+      },
+      "title": {
+        "en": "Underline",
+        "zh_CN": "下划线"
+      },
+      "description": {
+        "en": "Underline",
+        "zh_CN": "下划线"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 39,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.double-underline",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Double underline",
+        "zh_CN": "Double 下划线"
+      },
+      "description": {
+        "en": "Double underline",
+        "zh_CN": "Double 下划线"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 40,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.all-uppercase",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "A"
+        ]
+      },
+      "title": {
+        "en": "All uppercase",
+        "zh_CN": "全部 上percase"
+      },
+      "description": {
+        "en": "All uppercase",
+        "zh_CN": "全部 上percase"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 41,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.change-case",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F3"
+        ]
+      },
+      "title": {
+        "en": "Change case",
+        "zh_CN": "Change case"
+      },
+      "description": {
+        "en": "Change case",
+        "zh_CN": "Change case"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 42,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.font-dialog-box",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Font dialog box",
+        "zh_CN": "Font dialog box"
+      },
+      "description": {
+        "en": "Font dialog box",
+        "zh_CN": "Font dialog box"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 43,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.increase-font-size-by-1-point",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "]"
+        ]
+      },
+      "title": {
+        "en": "Increase font size by 1 point",
+        "zh_CN": "增大 字体大小 by 1 point"
+      },
+      "description": {
+        "en": "Increase font size by 1 point",
+        "zh_CN": "增大 字体大小 by 1 point"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 44,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.decrease-font-size-by-1-point",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "["
+        ]
+      },
+      "title": {
+        "en": "Decrease font size by 1 point",
+        "zh_CN": "减小 字体大小 by 1 point"
+      },
+      "description": {
+        "en": "Decrease font size by 1 point",
+        "zh_CN": "减小 字体大小 by 1 point"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 45,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.subscript",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "-"
+        ]
+      },
+      "title": {
+        "en": "Subscript",
+        "zh_CN": "Subscript"
+      },
+      "description": {
+        "en": "Subscript",
+        "zh_CN": "Subscript"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 46,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.superscript",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Superscript",
+        "zh_CN": "S上erscript"
+      },
+      "description": {
+        "en": "Superscript",
+        "zh_CN": "S上erscript"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 47,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.remove-manual-character-formatting",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Remove manual character formatting",
+        "zh_CN": "Re移动manual 字符格式"
+      },
+      "description": {
+        "en": "Remove manual character formatting",
+        "zh_CN": "Re移动manual 字符格式"
+      },
+      "category": "character-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 48,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.center",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Center",
+        "zh_CN": "Center"
+      },
+      "description": {
+        "en": "Center",
+        "zh_CN": "Center"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 49,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.align-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "L"
+        ]
+      },
+      "title": {
+        "en": "Align left",
+        "zh_CN": "Align 左"
+      },
+      "description": {
+        "en": "Align left",
+        "zh_CN": "Align 左"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 50,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.align-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "R"
+        ]
+      },
+      "title": {
+        "en": "Align right",
+        "zh_CN": "Align 右"
+      },
+      "description": {
+        "en": "Align right",
+        "zh_CN": "Align 右"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 51,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.justify",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "J"
+        ]
+      },
+      "title": {
+        "en": "Justify",
+        "zh_CN": "Justify"
+      },
+      "description": {
+        "en": "Justify",
+        "zh_CN": "Justify"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 52,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.increase-indent",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "M"
+        ]
+      },
+      "title": {
+        "en": "Increase indent",
+        "zh_CN": "增大 indent"
+      },
+      "description": {
+        "en": "Increase indent",
+        "zh_CN": "增大 indent"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 53,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.decrease-indent",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "M"
+        ]
+      },
+      "title": {
+        "en": "Decrease indent",
+        "zh_CN": "减小 indent"
+      },
+      "description": {
+        "en": "Decrease indent",
+        "zh_CN": "减小 indent"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.hanging-indent",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Hanging indent",
+        "zh_CN": "Hanging indent"
+      },
+      "description": {
+        "en": "Hanging indent",
+        "zh_CN": "Hanging indent"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.remove-paragraph-formatting",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Q"
+        ]
+      },
+      "title": {
+        "en": "Remove paragraph formatting",
+        "zh_CN": "Re移动段落格式"
+      },
+      "description": {
+        "en": "Remove paragraph formatting",
+        "zh_CN": "Re移动段落格式"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 56,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.apply-normal-style",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "Apply Normal style",
+        "zh_CN": "Apply Normal style"
+      },
+      "description": {
+        "en": "Apply Normal style",
+        "zh_CN": "Apply Normal style"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 57,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.single-line-spacing",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "1"
+        ]
+      },
+      "title": {
+        "en": "Single line spacing",
+        "zh_CN": "Single line spacing"
+      },
+      "description": {
+        "en": "Single line spacing",
+        "zh_CN": "Single line spacing"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 58,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.double-line-spacing",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "2"
+        ]
+      },
+      "title": {
+        "en": "Double line spacing",
+        "zh_CN": "Double line spacing"
+      },
+      "description": {
+        "en": "Double line spacing",
+        "zh_CN": "Double line spacing"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 59,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.1-5-line-spacing",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "5"
+        ]
+      },
+      "title": {
+        "en": "1.5 line spacing",
+        "zh_CN": "1.5 line spacing"
+      },
+      "description": {
+        "en": "1.5 line spacing",
+        "zh_CN": "1.5 line spacing"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 60,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.apply-heading-1",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "1"
+        ]
+      },
+      "title": {
+        "en": "Apply Heading 1",
+        "zh_CN": "Apply Heading 1"
+      },
+      "description": {
+        "en": "Apply Heading 1",
+        "zh_CN": "Apply Heading 1"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 61,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.apply-heading-2",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "2"
+        ]
+      },
+      "title": {
+        "en": "Apply Heading 2",
+        "zh_CN": "Apply Heading 2"
+      },
+      "description": {
+        "en": "Apply Heading 2",
+        "zh_CN": "Apply Heading 2"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 62,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.apply-heading-3",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "3"
+        ]
+      },
+      "title": {
+        "en": "Apply Heading 3",
+        "zh_CN": "Apply Heading 3"
+      },
+      "description": {
+        "en": "Apply Heading 3",
+        "zh_CN": "Apply Heading 3"
+      },
+      "category": "paragraph-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 63,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.zoom-in",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "description": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 64,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.zoom-out",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "-"
+        ]
+      },
+      "title": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "description": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 65,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.reset-zoom-to-100",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "0"
+        ]
+      },
+      "title": {
+        "en": "Reset zoom to 100%",
+        "zh_CN": "重置 zoom to 100%"
+      },
+      "description": {
+        "en": "Reset zoom to 100%",
+        "zh_CN": "重置 zoom to 100%"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 66,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.split-the-document-window",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Split the document window",
+        "zh_CN": "Split the 文档 窗口"
+      },
+      "description": {
+        "en": "Split the document window",
+        "zh_CN": "Split the 文档 窗口"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 67,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.print-preview",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Print preview",
+        "zh_CN": "打印 pre视图"
+      },
+      "description": {
+        "en": "Print preview",
+        "zh_CN": "打印 pre视图"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 68,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.show-or-hide-nonprinting-characters",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "8"
+        ]
+      },
+      "title": {
+        "en": "Show or hide nonprinting characters",
+        "zh_CN": "显示or 隐藏non打印ing characters"
+      },
+      "description": {
+        "en": "Show or hide nonprinting characters",
+        "zh_CN": "显示or 隐藏non打印ing characters"
+      },
+      "category": "view-and-zoom",
+      "scope": "app",
+      "recommended": false,
+      "rank": 69,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-hyperlink",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "K"
+        ]
+      },
+      "title": {
+        "en": "Insert hyperlink",
+        "zh_CN": "插入超链接"
+      },
+      "description": {
+        "en": "Insert hyperlink",
+        "zh_CN": "插入超链接"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 70,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-page-break",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Insert page break",
+        "zh_CN": "插入页面 break"
+      },
+      "description": {
+        "en": "Insert page break",
+        "zh_CN": "插入页面 break"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 71,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-line-break",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Insert line break",
+        "zh_CN": "插入line break"
+      },
+      "description": {
+        "en": "Insert line break",
+        "zh_CN": "插入line break"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 72,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-column-break",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Insert column break",
+        "zh_CN": "插入列 break"
+      },
+      "description": {
+        "en": "Insert column break",
+        "zh_CN": "插入列 break"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 73,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-non-breaking-space",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Insert non-breaking space",
+        "zh_CN": "插入non-breaking space"
+      },
+      "description": {
+        "en": "Insert non-breaking space",
+        "zh_CN": "插入non-breaking space"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 74,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-footnote",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Insert footnote",
+        "zh_CN": "插入footnote"
+      },
+      "description": {
+        "en": "Insert footnote",
+        "zh_CN": "插入footnote"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 75,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-endnote",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Insert endnote",
+        "zh_CN": "插入endnote"
+      },
+      "description": {
+        "en": "Insert endnote",
+        "zh_CN": "插入endnote"
+      },
+      "category": "insert",
+      "scope": "app",
+      "recommended": false,
+      "rank": 76,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-comment",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "M"
+        ]
+      },
+      "title": {
+        "en": "Insert comment",
+        "zh_CN": "插入批注"
+      },
+      "description": {
+        "en": "Insert comment",
+        "zh_CN": "插入批注"
+      },
+      "category": "review",
+      "scope": "app",
+      "recommended": false,
+      "rank": 77,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.turn-track-changes-on-or-off",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Turn Track Changes on or off",
+        "zh_CN": "Turn Track Changes on or off"
+      },
+      "description": {
+        "en": "Turn Track Changes on or off",
+        "zh_CN": "Turn Track Changes on or off"
+      },
+      "category": "review",
+      "scope": "app",
+      "recommended": false,
+      "rank": 78,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.close-the-reviewing-pane",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Close the Reviewing pane",
+        "zh_CN": "关闭the Re视图ing pane"
+      },
+      "description": {
+        "en": "Close the Reviewing pane",
+        "zh_CN": "关闭the Re视图ing pane"
+      },
+      "category": "review",
+      "scope": "app",
+      "recommended": false,
+      "rank": 79,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-to-previous-cell",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Move to previous cell",
+        "zh_CN": "移动to 上一个 单元格"
+      },
+      "description": {
+        "en": "Move to previous cell",
+        "zh_CN": "移动to 上一个 单元格"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 80,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.first-cell-in-the-row",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "First cell in the row",
+        "zh_CN": "第一个 单元格 in the 行"
+      },
+      "description": {
+        "en": "First cell in the row",
+        "zh_CN": "第一个 单元格 in the 行"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 81,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.last-cell-in-the-row",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Last cell in the row",
+        "zh_CN": "最后一个 单元格 in the 行"
+      },
+      "description": {
+        "en": "Last cell in the row",
+        "zh_CN": "最后一个 单元格 in the 行"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 82,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.first-cell-in-the-column",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "First cell in the column",
+        "zh_CN": "第一个 单元格 in the 列"
+      },
+      "description": {
+        "en": "First cell in the column",
+        "zh_CN": "第一个 单元格 in the 列"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 83,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.last-cell-in-the-column",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Last cell in the column",
+        "zh_CN": "最后一个 单元格 in the 列"
+      },
+      "description": {
+        "en": "Last cell in the column",
+        "zh_CN": "最后一个 单元格 in the 列"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 84,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.insert-tab-character-in-a-cell",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Insert tab character in a cell",
+        "zh_CN": "插入选项卡 character in a 单元格"
+      },
+      "description": {
+        "en": "Insert tab character in a cell",
+        "zh_CN": "插入选项卡 character in a 单元格"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 85,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    }
+  ]
+}

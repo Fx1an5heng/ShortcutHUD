@@ -1,0 +1,2246 @@
+{
+  "schema_version": 1,
+  "id": "microsoft-excel.windows",
+  "product": {
+    "en": "Microsoft Excel",
+    "zh_CN": "Microsoft Excel"
+  },
+  "app_identities": [
+    "EXCEL.EXE"
+  ],
+  "aliases": [],
+  "platforms": [
+    "windows"
+  ],
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "source": {
+    "title": "Microsoft PowerToys Shortcut Guide",
+    "url": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+    "manifest": "Microsoft.Excel"
+  },
+  "coverage": {
+    "status": "substantial",
+    "official_reference_title": "Excel keyboard shortcuts",
+    "official_reference_url": "https://support.microsoft.com/office/keyboard-shortcuts-in-excel",
+    "verified_date": "2026-09-07"
+  },
+  "categories": {
+    "frequently-used": {
+      "en": "Frequently used",
+      "zh_CN": "常用"
+    },
+    "navigation": {
+      "en": "Navigation",
+      "zh_CN": "导航"
+    },
+    "selection": {
+      "en": "Selection",
+      "zh_CN": "选择"
+    },
+    "cell-formatting": {
+      "en": "Cell formatting",
+      "zh_CN": "单元格格式"
+    },
+    "data-entry-and-editing": {
+      "en": "Data entry and editing",
+      "zh_CN": "数据输入和编辑"
+    },
+    "formulas-and-functions": {
+      "en": "Formulas and functions",
+      "zh_CN": "公式和函数"
+    }
+  },
+  "entries": [
+    {
+      "id": "microsoft-excel.open-workbook",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Open workbook",
+        "zh_CN": "打开工作簿"
+      },
+      "description": {
+        "en": "Open workbook",
+        "zh_CN": "打开工作簿"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 1,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.save-workbook",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save workbook",
+        "zh_CN": "保存工作簿"
+      },
+      "description": {
+        "en": "Save workbook",
+        "zh_CN": "保存工作簿"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 2,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.close-workbook",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "W"
+        ]
+      },
+      "title": {
+        "en": "Close workbook",
+        "zh_CN": "关闭工作簿"
+      },
+      "description": {
+        "en": "Close workbook",
+        "zh_CN": "关闭工作簿"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 3,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.cut",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Cut",
+        "zh_CN": "剪切"
+      },
+      "description": {
+        "en": "Cut",
+        "zh_CN": "剪切"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 4,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.copy",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Copy",
+        "zh_CN": "Copy"
+      },
+      "description": {
+        "en": "Copy",
+        "zh_CN": "Copy"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 5,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.paste",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "description": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 6,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.paste-special",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste Special",
+        "zh_CN": "选择性粘贴"
+      },
+      "description": {
+        "en": "Paste Special",
+        "zh_CN": "选择性粘贴"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 7,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.undo",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "description": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 8,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.redo-or-repeat-last-action",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Y"
+        ]
+      },
+      "title": {
+        "en": "Redo or repeat last action",
+        "zh_CN": "重做 or repeat 最后一个 action"
+      },
+      "description": {
+        "en": "Redo or repeat last action",
+        "zh_CN": "重做 or repeat 最后一个 action"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 9,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.find",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Find",
+        "zh_CN": "Find"
+      },
+      "description": {
+        "en": "Find",
+        "zh_CN": "Find"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": true,
+      "rank": 10,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.find-and-replace",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Find and replace",
+        "zh_CN": "查找and 替换"
+      },
+      "description": {
+        "en": "Find and replace",
+        "zh_CN": "查找and 替换"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 11,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.print",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Print",
+        "zh_CN": "打印"
+      },
+      "description": {
+        "en": "Print",
+        "zh_CN": "打印"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 12,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.move-to-beginning-of-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Move to beginning of worksheet",
+        "zh_CN": "移动to beginning of 工作表"
+      },
+      "description": {
+        "en": "Move to beginning of worksheet",
+        "zh_CN": "移动to beginning of 工作表"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 13,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.move-to-last-used-cell",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Move to last used cell",
+        "zh_CN": "移动to 最后一个 used 单元格"
+      },
+      "description": {
+        "en": "Move to last used cell",
+        "zh_CN": "移动to 最后一个 used 单元格"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 14,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.next-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Next worksheet",
+        "zh_CN": "下一个 工作表"
+      },
+      "description": {
+        "en": "Next worksheet",
+        "zh_CN": "下一个 工作表"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 15,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.previous-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "Previous worksheet",
+        "zh_CN": "上一个 工作表"
+      },
+      "description": {
+        "en": "Previous worksheet",
+        "zh_CN": "上一个 工作表"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 16,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.one-screen-to-the-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "One screen to the right",
+        "zh_CN": "One screen to the 右"
+      },
+      "description": {
+        "en": "One screen to the right",
+        "zh_CN": "One screen to the 右"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 17,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.one-screen-to-the-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "One screen to the left",
+        "zh_CN": "One screen to the 左"
+      },
+      "description": {
+        "en": "One screen to the left",
+        "zh_CN": "One screen to the 左"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 18,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.open-go-to-dialog",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Open Go To dialog",
+        "zh_CN": "打开Go To dialog"
+      },
+      "description": {
+        "en": "Open Go To dialog",
+        "zh_CN": "打开Go To dialog"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 19,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.zoom-in",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "description": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 20,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.zoom-out",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "-"
+        ]
+      },
+      "title": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "description": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 21,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.select-entire-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "A"
+        ]
+      },
+      "title": {
+        "en": "Select entire worksheet",
+        "zh_CN": "选择entire 工作表"
+      },
+      "description": {
+        "en": "Select entire worksheet",
+        "zh_CN": "选择entire 工作表"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 22,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.extend-selection-to-start-of-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Extend selection to start of worksheet",
+        "zh_CN": "Extend 选择 to start of 工作表"
+      },
+      "description": {
+        "en": "Extend selection to start of worksheet",
+        "zh_CN": "Extend 选择 to start of 工作表"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 23,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.extend-selection-to-last-used-cell",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Extend selection to last used cell",
+        "zh_CN": "Extend 选择 to 最后一个 used 单元格"
+      },
+      "description": {
+        "en": "Extend selection to last used cell",
+        "zh_CN": "Extend 选择 to 最后一个 used 单元格"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 24,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.select-entire-column",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Select entire column",
+        "zh_CN": "选择entire 列"
+      },
+      "description": {
+        "en": "Select entire column",
+        "zh_CN": "选择entire 列"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 25,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.select-entire-row",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Select entire row",
+        "zh_CN": "选择entire 行"
+      },
+      "description": {
+        "en": "Select entire row",
+        "zh_CN": "选择entire 行"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 26,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.start-a-new-line-in-the-same-cell",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Start a new line in the same cell",
+        "zh_CN": "Start a 新建line in the same 单元格"
+      },
+      "description": {
+        "en": "Start a new line in the same cell",
+        "zh_CN": "Start a 新建line in the same 单元格"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 27,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.fill-selected-range-with-current-entry",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Fill selected range with current entry",
+        "zh_CN": "Fill 所选 range with 当前 entry"
+      },
+      "description": {
+        "en": "Fill selected range with current entry",
+        "zh_CN": "Fill 所选 range with 当前 entry"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 28,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.open-format-cells-dialog",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "1"
+        ]
+      },
+      "title": {
+        "en": "Open Format Cells dialog",
+        "zh_CN": "打开格式 单元格s dialog"
+      },
+      "description": {
+        "en": "Open Format Cells dialog",
+        "zh_CN": "打开格式 单元格s dialog"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 29,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.bold",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "B"
+        ]
+      },
+      "title": {
+        "en": "Bold",
+        "zh_CN": "加粗"
+      },
+      "description": {
+        "en": "Bold",
+        "zh_CN": "加粗"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 30,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.italic",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Italic",
+        "zh_CN": "斜体"
+      },
+      "description": {
+        "en": "Italic",
+        "zh_CN": "斜体"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 31,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.underline",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "U"
+        ]
+      },
+      "title": {
+        "en": "Underline",
+        "zh_CN": "下划线"
+      },
+      "description": {
+        "en": "Underline",
+        "zh_CN": "下划线"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": true,
+      "rank": 32,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.strikethrough",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "5"
+        ]
+      },
+      "title": {
+        "en": "Strikethrough",
+        "zh_CN": "Strikethrough"
+      },
+      "description": {
+        "en": "Strikethrough",
+        "zh_CN": "Strikethrough"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 33,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-general-number-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "~"
+        ]
+      },
+      "title": {
+        "en": "Apply General number format",
+        "zh_CN": "Apply General number 格式"
+      },
+      "description": {
+        "en": "Apply General number format",
+        "zh_CN": "Apply General number 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 34,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-currency-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "$"
+        ]
+      },
+      "title": {
+        "en": "Apply Currency format",
+        "zh_CN": "Apply Currency 格式"
+      },
+      "description": {
+        "en": "Apply Currency format",
+        "zh_CN": "Apply Currency 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 35,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-percentage-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "%"
+        ]
+      },
+      "title": {
+        "en": "Apply Percentage format",
+        "zh_CN": "Apply Percentage 格式"
+      },
+      "description": {
+        "en": "Apply Percentage format",
+        "zh_CN": "Apply Percentage 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 36,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-date-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "#"
+        ]
+      },
+      "title": {
+        "en": "Apply Date format",
+        "zh_CN": "Apply Date 格式"
+      },
+      "description": {
+        "en": "Apply Date format",
+        "zh_CN": "Apply Date 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 37,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-time-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "@"
+        ]
+      },
+      "title": {
+        "en": "Apply Time format",
+        "zh_CN": "Apply Time 格式"
+      },
+      "description": {
+        "en": "Apply Time format",
+        "zh_CN": "Apply Time 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 38,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-number-format",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "!"
+        ]
+      },
+      "title": {
+        "en": "Apply Number format",
+        "zh_CN": "Apply Number 格式"
+      },
+      "description": {
+        "en": "Apply Number format",
+        "zh_CN": "Apply Number 格式"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 39,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.apply-outline-border",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "&"
+        ]
+      },
+      "title": {
+        "en": "Apply outline border",
+        "zh_CN": "Apply outline border"
+      },
+      "description": {
+        "en": "Apply outline border",
+        "zh_CN": "Apply outline border"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 40,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.remove-outline-border",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "_"
+        ]
+      },
+      "title": {
+        "en": "Remove outline border",
+        "zh_CN": "Re移动outline border"
+      },
+      "description": {
+        "en": "Remove outline border",
+        "zh_CN": "Re移动outline border"
+      },
+      "category": "cell-formatting",
+      "scope": "app",
+      "recommended": false,
+      "rank": 41,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.fill-down",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Fill down",
+        "zh_CN": "Fill 下"
+      },
+      "description": {
+        "en": "Fill down",
+        "zh_CN": "Fill 下"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 42,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.enter-current-date",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          ";"
+        ]
+      },
+      "title": {
+        "en": "Enter current date",
+        "zh_CN": "Enter 当前 date"
+      },
+      "description": {
+        "en": "Enter current date",
+        "zh_CN": "Enter 当前 date"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 43,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.enter-current-time",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          ":"
+        ]
+      },
+      "title": {
+        "en": "Enter current time",
+        "zh_CN": "Enter 当前 time"
+      },
+      "description": {
+        "en": "Enter current time",
+        "zh_CN": "Enter 当前 time"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 44,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.toggle-formula-display",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "`"
+        ]
+      },
+      "title": {
+        "en": "Toggle formula display",
+        "zh_CN": "切换公式 display"
+      },
+      "description": {
+        "en": "Toggle formula display",
+        "zh_CN": "切换公式 display"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 45,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.copy-formula-from-cell-above",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "'"
+        ]
+      },
+      "title": {
+        "en": "Copy formula from cell above",
+        "zh_CN": "复制公式 from 单元格 above"
+      },
+      "description": {
+        "en": "Copy formula from cell above",
+        "zh_CN": "复制公式 from 单元格 above"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 46,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.insert-blank-cells",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Insert blank cells",
+        "zh_CN": "插入blank 单元格s"
+      },
+      "description": {
+        "en": "Insert blank cells",
+        "zh_CN": "插入blank 单元格s"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 47,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.delete-selected-cells",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "-"
+        ]
+      },
+      "title": {
+        "en": "Delete selected cells",
+        "zh_CN": "删除所选 单元格s"
+      },
+      "description": {
+        "en": "Delete selected cells",
+        "zh_CN": "删除所选 单元格s"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 48,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.insert-hyperlink",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "K"
+        ]
+      },
+      "title": {
+        "en": "Insert hyperlink",
+        "zh_CN": "插入超链接"
+      },
+      "description": {
+        "en": "Insert hyperlink",
+        "zh_CN": "插入超链接"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 49,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.flash-fill",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Flash Fill",
+        "zh_CN": "Flash Fill"
+      },
+      "description": {
+        "en": "Flash Fill",
+        "zh_CN": "Flash Fill"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 50,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.quick-analysis",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Q"
+        ]
+      },
+      "title": {
+        "en": "Quick Analysis",
+        "zh_CN": "Quick Analysis"
+      },
+      "description": {
+        "en": "Quick Analysis",
+        "zh_CN": "Quick Analysis"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 51,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.create-table",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Create Table",
+        "zh_CN": "Create 表格"
+      },
+      "description": {
+        "en": "Create Table",
+        "zh_CN": "Create 表格"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 52,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.hide-selected-rows",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "9"
+        ]
+      },
+      "title": {
+        "en": "Hide selected rows",
+        "zh_CN": "隐藏所选 行s"
+      },
+      "description": {
+        "en": "Hide selected rows",
+        "zh_CN": "隐藏所选 行s"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 53,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.hide-selected-columns",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "0"
+        ]
+      },
+      "title": {
+        "en": "Hide selected columns",
+        "zh_CN": "隐藏所选 列s"
+      },
+      "description": {
+        "en": "Hide selected columns",
+        "zh_CN": "隐藏所选 列s"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.autosum",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "="
+        ]
+      },
+      "title": {
+        "en": "AutoSum",
+        "zh_CN": "AutoSum"
+      },
+      "description": {
+        "en": "AutoSum",
+        "zh_CN": "AutoSum"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.insert-function",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F3"
+        ]
+      },
+      "title": {
+        "en": "Insert function",
+        "zh_CN": "插入function"
+      },
+      "description": {
+        "en": "Insert function",
+        "zh_CN": "插入function"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 56,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.calculate-active-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F9"
+        ]
+      },
+      "title": {
+        "en": "Calculate active worksheet",
+        "zh_CN": "Calculate active 工作表"
+      },
+      "description": {
+        "en": "Calculate active worksheet",
+        "zh_CN": "Calculate active 工作表"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 57,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.create-embedded-chart",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "F1"
+        ]
+      },
+      "title": {
+        "en": "Create embedded chart",
+        "zh_CN": "Create embedded 图表"
+      },
+      "description": {
+        "en": "Create embedded chart",
+        "zh_CN": "Create embedded 图表"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 58,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.open-macro-dialog",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "F8"
+        ]
+      },
+      "title": {
+        "en": "Open macro dialog",
+        "zh_CN": "打开macro dialog"
+      },
+      "description": {
+        "en": "Open macro dialog",
+        "zh_CN": "打开macro dialog"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 59,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.open-visual-basic-editor",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Open Visual Basic Editor",
+        "zh_CN": "打开Visual Basic 编辑器"
+      },
+      "description": {
+        "en": "Open Visual Basic Editor",
+        "zh_CN": "打开Visual Basic 编辑器"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 60,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.refresh-data-in-current-worksheet",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Refresh data in current worksheet",
+        "zh_CN": "刷新 data in 当前 工作表"
+      },
+      "description": {
+        "en": "Refresh data in current worksheet",
+        "zh_CN": "刷新 data in 当前 工作表"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 61,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.refresh-all-data-in-workbook",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Refresh all data in workbook",
+        "zh_CN": "刷新 全部 data in 工作簿"
+      },
+      "description": {
+        "en": "Refresh all data in workbook",
+        "zh_CN": "刷新 全部 data in 工作簿"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 62,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    }
+  ]
+}

@@ -52,7 +52,9 @@ class ShortcutLibraryTests(unittest.TestCase):
         entries = [entry for entry in self.catalog.entries if entry.id.startswith("vscode.")]
         self.assertGreaterEqual(len(entries), 40)
         self.assertEqual(len({entry.id for entry in entries}), len(entries))
-        self.assertTrue(all(entry.provenance["url"].startswith("https://code.visualstudio.com/") for entry in entries))
+        self.assertTrue(all(entry.provenance["url"].startswith("https://") for entry in entries))
+        self.assertTrue(any(entry.provenance["url"].startswith("https://code.visualstudio.com/") for entry in entries))
+        self.assertTrue(any("github.com/microsoft/PowerToys" in entry.provenance["url"] for entry in entries))
 
     def test_library_application_list_and_localized_rows(self) -> None:
         model = ShortcutLibraryModel(self.catalog, self.store, language="zh_CN")

@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "id": "file-explorer.windows",
+  "product": {
+    "en": "File Explorer",
+    "zh_CN": "文件资源管理器"
+  },
+  "app_identities": [
+    "EXPLORER.EXE"
+  ],
+  "aliases": [],
+  "platforms": [
+    "windows"
+  ],
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "source": {
+    "title": "Microsoft PowerToys Shortcut Guide",
+    "url": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+    "manifest": "+WindowsNT.WindowsExplorer"
+  },
+  "coverage": {
+    "status": "substantial",
+    "official_reference_title": "File Explorer keyboard shortcuts",
+    "official_reference_url": "https://support.microsoft.com/windows/keyboard-shortcuts-in-windows",
+    "verified_date": "2026-09-07"
+  },
+  "categories": {
+    "general": {
+      "en": "General",
+      "zh_CN": "General"
+    },
+    "navigation": {
+      "en": "Navigation",
+      "zh_CN": "导航"
+    },
+    "window-management": {
+      "en": "Window management",
+      "zh_CN": "窗口管理"
+    },
+    "file-management": {
+      "en": "File management",
+      "zh_CN": "文件管理"
+    }
+  },
+  "entries": [
+    {
+      "id": "file-explorer.open-file-explorer",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Win",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Open File Explorer",
+        "zh_CN": "打开文件 Explorer"
+      },
+      "description": {
+        "en": "Open File Explorer",
+        "zh_CN": "打开文件 Explorer"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": true,
+      "rank": 1,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.select-the-address-bar",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Select the address bar",
+        "zh_CN": "选择the 地址栏"
+      },
+      "description": {
+        "en": "Select the address bar",
+        "zh_CN": "选择the 地址栏"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 2,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.select-the-address-bar.04d5b81e",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "L"
+        ]
+      },
+      "title": {
+        "en": "Select the address bar",
+        "zh_CN": "选择the 地址栏"
+      },
+      "description": {
+        "en": "Select the address bar",
+        "zh_CN": "选择the 地址栏"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 3,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.select-the-search-box",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Select the search box",
+        "zh_CN": "选择the 搜索 box"
+      },
+      "description": {
+        "en": "Select the search box",
+        "zh_CN": "选择the 搜索 box"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 4,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.select-the-search-box.280b66cc",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Select the search box",
+        "zh_CN": "选择the 搜索 box"
+      },
+      "description": {
+        "en": "Select the search box",
+        "zh_CN": "选择the 搜索 box"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 5,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.navigate-to-the-previous-folder",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Left"
+        ]
+      },
+      "title": {
+        "en": "Navigate to the previous folder",
+        "zh_CN": "Navigate to the 上一个 文件夹"
+      },
+      "description": {
+        "en": "Navigate to the previous folder",
+        "zh_CN": "Navigate to the 上一个 文件夹"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 6,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.navigate-to-the-next-folder",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Right"
+        ]
+      },
+      "title": {
+        "en": "Navigate to the next folder",
+        "zh_CN": "Navigate to the 下一个 文件夹"
+      },
+      "description": {
+        "en": "Navigate to the next folder",
+        "zh_CN": "Navigate to the 下一个 文件夹"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 7,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.move-up-a-level-in-the-folder-path",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Move up a level in the folder path",
+        "zh_CN": "移动上 a level in the 文件夹 path"
+      },
+      "description": {
+        "en": "Move up a level in the folder path",
+        "zh_CN": "移动上 a level in the 文件夹 path"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 8,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.open-a-new-window",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "Open a new window",
+        "zh_CN": "打开a 新建窗口"
+      },
+      "description": {
+        "en": "Open a new window",
+        "zh_CN": "打开a 新建窗口"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 9,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.open-a-new-tab",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Open a new tab",
+        "zh_CN": "打开a 新建选项卡"
+      },
+      "description": {
+        "en": "Open a new tab",
+        "zh_CN": "打开a 新建选项卡"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": true,
+      "rank": 10,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.close-the-current-active-tab",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "W"
+        ]
+      },
+      "title": {
+        "en": "Close the current active tab",
+        "zh_CN": "关闭the 当前 active 选项卡"
+      },
+      "description": {
+        "en": "Close the current active tab",
+        "zh_CN": "关闭the 当前 active 选项卡"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 11,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.move-to-the-next-tab",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Move to the next tab",
+        "zh_CN": "移动to the 下一个 选项卡"
+      },
+      "description": {
+        "en": "Move to the next tab",
+        "zh_CN": "移动to the 下一个 选项卡"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 12,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.move-to-the-previous-tab",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Move to the previous tab",
+        "zh_CN": "移动to the 上一个 选项卡"
+      },
+      "description": {
+        "en": "Move to the previous tab",
+        "zh_CN": "移动to the 上一个 选项卡"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 13,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.show-hide-the-preview-pane",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Show/Hide the preview pane",
+        "zh_CN": "Show/隐藏the pre视图 pane"
+      },
+      "description": {
+        "en": "Show/Hide the preview pane",
+        "zh_CN": "Show/隐藏the pre视图 pane"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 14,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.show-hide-the-details-pane",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Show/Hide the details pane",
+        "zh_CN": "Show/隐藏the details pane"
+      },
+      "description": {
+        "en": "Show/Hide the details pane",
+        "zh_CN": "Show/隐藏the details pane"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 15,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.resize-all-columns-to-fit-text",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Resize all columns to fit text",
+        "zh_CN": "Resize 全部 列s to fit 文本"
+      },
+      "description": {
+        "en": "Resize all columns to fit text",
+        "zh_CN": "Resize 全部 列s to fit 文本"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 16,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.expand-all-folders",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Expand all folders",
+        "zh_CN": "Expand 全部 文件夹s"
+      },
+      "description": {
+        "en": "In the navigation pane",
+        "zh_CN": "Expand 全部 文件夹s"
+      },
+      "category": "window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 17,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.display-properties-for-the-selected-item",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Display properties for the selected item",
+        "zh_CN": "Display properties for the 所选 item"
+      },
+      "description": {
+        "en": "Display properties for the selected item",
+        "zh_CN": "Display properties for the 所选 item"
+      },
+      "category": "file-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 18,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.delete-the-selected-item",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Delete the selected item",
+        "zh_CN": "删除the 所选 item"
+      },
+      "description": {
+        "en": "Delete the selected item",
+        "zh_CN": "删除the 所选 item"
+      },
+      "category": "file-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 19,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.delete-the-selected-item-permanently",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Delete the selected item permanently",
+        "zh_CN": "删除the 所选 item permanently"
+      },
+      "description": {
+        "en": "This removes the item without sending it to the Recycle Bin",
+        "zh_CN": "删除the 所选 item permanently"
+      },
+      "category": "file-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 20,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "file-explorer.create-a-new-folder",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "Create a new folder",
+        "zh_CN": "Create a 新建文件夹"
+      },
+      "description": {
+        "en": "Create a new folder",
+        "zh_CN": "Create a 新建文件夹"
+      },
+      "category": "file-management",
+      "scope": "app",
+      "recommended": true,
+      "rank": 21,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "+WindowsNT.WindowsExplorer",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    }
+  ]
+}

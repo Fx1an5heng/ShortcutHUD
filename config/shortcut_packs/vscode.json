@@ -1,54 +1,4216 @@
 {
   "schema_version": 1,
   "id": "vscode.windows",
-  "product": {"en": "Visual Studio Code", "zh_CN": "Visual Studio Code"},
-  "app_identities": ["CODE.EXE"],
-  "aliases": ["CODE-INSIDERS.EXE"],
-  "platforms": ["windows"],
-  "locales": ["en", "zh_CN"],
-  "source": {"title": "VS Code Default Keyboard Shortcuts", "url": "https://code.visualstudio.com/docs/reference/default-keybindings"},
-  "categories": {"general":{"en":"General","zh_CN":"常规"},"basic_editing":{"en":"Basic Editing","zh_CN":"基础编辑"},"navigation":{"en":"Navigation","zh_CN":"导航"},"search":{"en":"Search","zh_CN":"搜索"},"display":{"en":"Display","zh_CN":"显示"},"editor":{"en":"Editor","zh_CN":"编辑器"},"file_management":{"en":"File Management","zh_CN":"文件管理"},"integrated_terminal":{"en":"Integrated Terminal","zh_CN":"集成终端"}},
+  "product": {
+    "en": "Visual Studio Code",
+    "zh_CN": "Visual Studio Code"
+  },
+  "app_identities": [
+    "CODE.EXE"
+  ],
+  "aliases": [
+    "CODE-INSIDERS.EXE"
+  ],
+  "platforms": [
+    "windows"
+  ],
+  "locales": [
+    "en",
+    "zh_CN"
+  ],
+  "source": {
+    "title": "Microsoft PowerToys Shortcut Guide",
+    "url": "https://github.com/microsoft/PowerToys",
+    "license": "MIT",
+    "revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+    "manifest": "Microsoft.VisualStudioCode"
+  },
+  "coverage": {
+    "status": "substantial",
+    "official_reference_title": "VS Code Default Keyboard Shortcuts",
+    "official_reference_url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+    "verified_date": "2026-09-07"
+  },
+  "categories": {
+    "general": {
+      "en": "General",
+      "zh_CN": "常规"
+    },
+    "basic_editing": {
+      "en": "Basic Editing",
+      "zh_CN": "基础编辑"
+    },
+    "navigation": {
+      "en": "Navigation",
+      "zh_CN": "导航"
+    },
+    "search": {
+      "en": "Search",
+      "zh_CN": "搜索"
+    },
+    "display": {
+      "en": "Display",
+      "zh_CN": "显示"
+    },
+    "editor": {
+      "en": "Editor",
+      "zh_CN": "编辑器"
+    },
+    "file_management": {
+      "en": "File Management",
+      "zh_CN": "文件管理"
+    },
+    "integrated_terminal": {
+      "en": "Integrated Terminal",
+      "zh_CN": "集成终端"
+    },
+    "rich-languages-editing": {
+      "en": "Rich languages editing",
+      "zh_CN": "富语言编辑"
+    },
+    "editor-and-window-management": {
+      "en": "Editor and window management",
+      "zh_CN": "编辑器 and 窗口管理"
+    },
+    "chat-and-ai": {
+      "en": "Chat and AI",
+      "zh_CN": "Chat and AI"
+    },
+    "debug": {
+      "en": "Debug",
+      "zh_CN": "Debug"
+    },
+    "tasks": {
+      "en": "Tasks",
+      "zh_CN": "Tasks"
+    }
+  },
   "entries": [
-    {"id":"vscode.command-palette","trigger":{"kind":"combo","keys":["Ctrl","Shift","P"]},"title":{"en":"Command Palette","zh_CN":"命令面板"},"description":{"en":"Show all commands","zh_CN":"显示所有命令"},"category":"general","recommended":true,"rank":10,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud","full_guide"],"builtin":true,"aliases":["commands","palette"],"id_aliases":["legacy:app:code.exe:ctrl+shift:p"]},
-    {"id":"vscode.quick-open","trigger":{"kind":"combo","keys":["Ctrl","P"]},"title":{"en":"Quick Open","zh_CN":"快速打开"},"description":{"en":"Open a file by name","zh_CN":"按名称打开文件"},"category":"general","recommended":true,"rank":11,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud","full_guide"],"builtin":true,"aliases":["file","open"],"id_aliases":["legacy:app:code.exe:ctrl:p"]},
-    {"id":"vscode.new-window","trigger":{"kind":"combo","keys":["Ctrl","Shift","N"]},"title":{"en":"New Window","zh_CN":"新建窗口"},"description":{"en":"Open a new VS Code window","zh_CN":"打开新的 VS Code 窗口"},"category":"general","recommended":false,"rank":12,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["window"]},
-    {"id":"vscode.settings","trigger":{"kind":"combo","keys":["Ctrl",","]},"title":{"en":"Open Settings","zh_CN":"打开设置"},"description":{"en":"Open user settings","zh_CN":"打开用户设置"},"category":"general","recommended":false,"rank":13,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["preferences"]},
-    {"id":"vscode.cut","trigger":{"kind":"combo","keys":["Ctrl","X"]},"title":{"en":"Cut Line","zh_CN":"剪切行"},"description":{"en":"Cut the current selection or line","zh_CN":"剪切当前选择或当前行"},"category":"basic_editing","recommended":false,"rank":20,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["cut"]},
-    {"id":"vscode.copy","trigger":{"kind":"combo","keys":["Ctrl","C"]},"title":{"en":"Copy Line","zh_CN":"复制行"},"description":{"en":"Copy the current selection or line","zh_CN":"复制当前选择或当前行"},"category":"basic_editing","recommended":false,"rank":21,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["copy"]},
-    {"id":"vscode.paste","trigger":{"kind":"combo","keys":["Ctrl","V"]},"title":{"en":"Paste","zh_CN":"粘贴"},"description":{"en":"Paste clipboard contents","zh_CN":"粘贴剪贴板内容"},"category":"basic_editing","recommended":false,"rank":22,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["clipboard"]},
-    {"id":"vscode.undo","trigger":{"kind":"combo","keys":["Ctrl","Z"]},"title":{"en":"Undo","zh_CN":"撤销"},"description":{"en":"Undo the last edit","zh_CN":"撤销上一次编辑"},"category":"basic_editing","recommended":true,"rank":23,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["undo"]},
-    {"id":"vscode.redo","trigger":{"kind":"combo","keys":["Ctrl","Y"]},"title":{"en":"Redo","zh_CN":"重做"},"description":{"en":"Redo the last edit","zh_CN":"重做上一次编辑"},"category":"basic_editing","recommended":false,"rank":24,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["redo"]},
-    {"id":"vscode.move-line-up","trigger":{"kind":"combo","keys":["Alt","Up"]},"title":{"en":"Move Line Up","zh_CN":"上移行"},"description":{"en":"Move the current line upward","zh_CN":"将当前行向上移动"},"category":"basic_editing","recommended":false,"rank":25,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["line"]},
-    {"id":"vscode.move-line-down","trigger":{"kind":"combo","keys":["Alt","Down"]},"title":{"en":"Move Line Down","zh_CN":"下移行"},"description":{"en":"Move the current line downward","zh_CN":"将当前行向下移动"},"category":"basic_editing","recommended":false,"rank":26,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["line"]},
-    {"id":"vscode.duplicate-line-up","trigger":{"kind":"combo","keys":["Shift","Alt","Up"]},"title":{"en":"Copy Line Up","zh_CN":"向上复制行"},"description":{"en":"Duplicate the current line above","zh_CN":"在上方复制当前行"},"category":"basic_editing","recommended":false,"rank":27,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["duplicate"]},
-    {"id":"vscode.duplicate-line-down","trigger":{"kind":"combo","keys":["Shift","Alt","Down"]},"title":{"en":"Copy Line Down","zh_CN":"向下复制行"},"description":{"en":"Duplicate the current line below","zh_CN":"在下方复制当前行"},"category":"basic_editing","recommended":false,"rank":28,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["duplicate"]},
-    {"id":"vscode.select-next-match","trigger":{"kind":"combo","keys":["Ctrl","D"]},"title":{"en":"Select Next Match","zh_CN":"选择下一个匹配项"},"description":{"en":"Add next matching selection","zh_CN":"添加下一个匹配选择"},"category":"basic_editing","recommended":true,"rank":29,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["multi cursor","match"]},
-    {"id":"vscode.goto-line","trigger":{"kind":"combo","keys":["Ctrl","G"]},"title":{"en":"Go to Line","zh_CN":"转到行"},"description":{"en":"Go to a line number","zh_CN":"转到指定行号"},"category":"navigation","recommended":true,"rank":30,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["line","navigation"]},
-    {"id":"vscode.goto-symbol","trigger":{"kind":"combo","keys":["Ctrl","Shift","O"]},"title":{"en":"Go to Symbol","zh_CN":"转到符号"},"description":{"en":"Go to a symbol in the current file","zh_CN":"转到当前文件中的符号"},"category":"navigation","recommended":false,"rank":31,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["symbol"]},
-    {"id":"vscode.show-all-symbols","trigger":{"kind":"combo","keys":["Ctrl","T"]},"title":{"en":"Show All Symbols","zh_CN":"显示全部符号"},"description":{"en":"Search symbols across the workspace","zh_CN":"在工作区中搜索符号"},"category":"navigation","recommended":false,"rank":32,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["workspace","symbol"]},
-    {"id":"vscode.navigate-back","trigger":{"kind":"combo","keys":["Alt","Left"]},"title":{"en":"Navigate Back","zh_CN":"后退"},"description":{"en":"Go back in editor history","zh_CN":"在编辑历史中后退"},"category":"navigation","recommended":false,"rank":33,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["history","back"]},
-    {"id":"vscode.navigate-forward","trigger":{"kind":"combo","keys":["Alt","Right"]},"title":{"en":"Navigate Forward","zh_CN":"前进"},"description":{"en":"Go forward in editor history","zh_CN":"在编辑历史中前进"},"category":"navigation","recommended":false,"rank":34,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["history","forward"]},
-    {"id":"vscode.find","trigger":{"kind":"combo","keys":["Ctrl","F"]},"title":{"en":"Find","zh_CN":"查找"},"description":{"en":"Find text in the editor","zh_CN":"在编辑器中查找文本"},"category":"search","recommended":true,"rank":40,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["search","text"]},
-    {"id":"vscode.replace","trigger":{"kind":"combo","keys":["Ctrl","H"]},"title":{"en":"Replace","zh_CN":"替换"},"description":{"en":"Find and replace in the editor","zh_CN":"在编辑器中查找并替换"},"category":"search","recommended":false,"rank":41,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["replace"]},
-    {"id":"vscode.find-in-files","trigger":{"kind":"combo","keys":["Ctrl","Shift","F"]},"title":{"en":"Find in Files","zh_CN":"在文件中查找"},"description":{"en":"Search across workspace files","zh_CN":"在工作区文件中搜索"},"category":"search","recommended":true,"rank":42,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["workspace","search"]},
-    {"id":"vscode.replace-in-files","trigger":{"kind":"combo","keys":["Ctrl","Shift","H"]},"title":{"en":"Replace in Files","zh_CN":"在文件中替换"},"description":{"en":"Replace across workspace files","zh_CN":"在工作区文件中替换"},"category":"search","recommended":false,"rank":43,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["workspace","replace"]},
-    {"id":"vscode.toggle-sidebar","trigger":{"kind":"combo","keys":["Ctrl","B"]},"title":{"en":"Toggle Sidebar","zh_CN":"切换侧边栏"},"description":{"en":"Show or hide the primary sidebar","zh_CN":"显示或隐藏主侧边栏"},"category":"display","recommended":true,"rank":50,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["sidebar","explorer"]},
-    {"id":"vscode.show-explorer","trigger":{"kind":"combo","keys":["Ctrl","Shift","E"]},"title":{"en":"Show Explorer","zh_CN":"显示资源管理器"},"description":{"en":"Focus the Explorer view","zh_CN":"聚焦资源管理器视图"},"category":"display","recommended":false,"rank":51,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["explorer","files"]},
-    {"id":"vscode.show-search","trigger":{"kind":"combo","keys":["Ctrl","Shift","F"]},"title":{"en":"Show Search","zh_CN":"显示搜索"},"description":{"en":"Focus the Search view","zh_CN":"聚焦搜索视图"},"category":"display","recommended":false,"rank":52,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["search","view"]},
-    {"id":"vscode.show-source-control","trigger":{"kind":"combo","keys":["Ctrl","Shift","G"]},"title":{"en":"Show Source Control","zh_CN":"显示源代码管理"},"description":{"en":"Focus source control","zh_CN":"聚焦源代码管理"},"category":"display","recommended":false,"rank":53,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["git","scm"]},
-    {"id":"vscode.show-debug","trigger":{"kind":"combo","keys":["Ctrl","Shift","D"]},"title":{"en":"Show Run and Debug","zh_CN":"显示运行和调试"},"description":{"en":"Focus the Run and Debug view","zh_CN":"聚焦运行和调试视图"},"category":"display","recommended":false,"rank":54,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["debug","run"]},
-    {"id":"vscode.show-extensions","trigger":{"kind":"combo","keys":["Ctrl","Shift","X"]},"title":{"en":"Show Extensions","zh_CN":"显示扩展"},"description":{"en":"Focus the Extensions view","zh_CN":"聚焦扩展视图"},"category":"display","recommended":false,"rank":55,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["extensions"]},
-    {"id":"vscode.split-editor","trigger":{"kind":"combo","keys":["Ctrl","\\"]},"title":{"en":"Split Editor","zh_CN":"拆分编辑器"},"description":{"en":"Split the active editor","zh_CN":"拆分当前编辑器"},"category":"editor","recommended":false,"rank":60,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["editor","split"]},
-    {"id":"vscode.focus-first-editor-group","trigger":{"kind":"combo","keys":["Ctrl","1"]},"title":{"en":"Focus First Editor Group","zh_CN":"聚焦第一编辑器组"},"description":{"en":"Focus editor group one","zh_CN":"聚焦编辑器组一"},"category":"editor","recommended":false,"rank":61,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["editor","group"]},
-    {"id":"vscode.focus-second-editor-group","trigger":{"kind":"combo","keys":["Ctrl","2"]},"title":{"en":"Focus Second Editor Group","zh_CN":"聚焦第二编辑器组"},"description":{"en":"Focus editor group two","zh_CN":"聚焦编辑器组二"},"category":"editor","recommended":false,"rank":62,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["editor","group"]},
-    {"id":"vscode.new-file","trigger":{"kind":"combo","keys":["Ctrl","N"]},"title":{"en":"New File","zh_CN":"新建文件"},"description":{"en":"Create an untitled file","zh_CN":"创建未命名文件"},"category":"file_management","recommended":false,"rank":70,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["file"]},
-    {"id":"vscode.open-file","trigger":{"kind":"combo","keys":["Ctrl","O"]},"title":{"en":"Open File","zh_CN":"打开文件"},"description":{"en":"Open a file from disk","zh_CN":"从磁盘打开文件"},"category":"file_management","recommended":false,"rank":71,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["file"]},
-    {"id":"vscode.save","trigger":{"kind":"combo","keys":["Ctrl","S"]},"title":{"en":"Save","zh_CN":"保存"},"description":{"en":"Save the active file","zh_CN":"保存当前文件"},"category":"file_management","recommended":true,"rank":72,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["file","save"],"id_aliases":["legacy:app:code.exe:ctrl:s"]},
-    {"id":"vscode.save-as","trigger":{"kind":"combo","keys":["Ctrl","Shift","S"]},"title":{"en":"Save As","zh_CN":"另存为"},"description":{"en":"Save the active file under a new name","zh_CN":"以新名称保存当前文件"},"category":"file_management","recommended":false,"rank":73,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["file","save"]},
-    {"id":"vscode.reopen-closed-editor","trigger":{"kind":"combo","keys":["Ctrl","Shift","T"]},"title":{"en":"Reopen Closed Editor","zh_CN":"重新打开已关闭编辑器"},"description":{"en":"Restore the last closed editor","zh_CN":"恢复最近关闭的编辑器"},"category":"file_management","recommended":false,"rank":74,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["file","reopen"]},
-    {"id":"vscode.toggle-terminal","trigger":{"kind":"combo","keys":["Ctrl","`"]},"title":{"en":"Toggle Integrated Terminal","zh_CN":"切换集成终端"},"description":{"en":"Show or hide the integrated terminal","zh_CN":"显示或隐藏集成终端"},"category":"integrated_terminal","recommended":true,"rank":80,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["terminal","console"],"id_aliases":["legacy:app:code.exe:ctrl:`"]},
-    {"id":"vscode.new-terminal","trigger":{"kind":"combo","keys":["Ctrl","Shift","`"]},"title":{"en":"New Integrated Terminal","zh_CN":"新建集成终端"},"description":{"en":"Create a new integrated terminal","zh_CN":"创建新的集成终端"},"category":"integrated_terminal","recommended":false,"rank":81,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["terminal","new"]},
-    {"id":"vscode.open-native-console","trigger":{"kind":"combo","keys":["Ctrl","Shift","C"]},"title":{"en":"Open New Command Prompt","zh_CN":"打开新的命令提示符"},"description":{"en":"Open a native command prompt","zh_CN":"打开原生命令提示符"},"category":"integrated_terminal","recommended":false,"rank":82,"provenance":{"title":"VS Code keyboard reference","url":"https://code.visualstudio.com/docs/reference/default-keybindings"},"visibility":["quick_hud"],"builtin":true,"aliases":["terminal","command prompt"]},
-    {"id":"vscode.keyboard-shortcuts","trigger":{"kind":"sequence","keys":["Ctrl+K","Ctrl+S"]},"title":{"en":"Open Keyboard Shortcuts","zh_CN":"打开键盘快捷方式"},"description":{"en":"Open the Keyboard Shortcuts editor","zh_CN":"打开键盘快捷方式编辑器"},"category":"general","recommended":false,"rank":90,"provenance":{"title":"VS Code keybindings documentation","url":"https://code.visualstudio.com/docs/configure/keybindings"},"visibility":["quick_hud","full_guide"],"builtin":true,"aliases":["keybindings","shortcuts"]}
+    {
+      "id": "vscode.command-palette",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Command Palette",
+        "zh_CN": "命令面板"
+      },
+      "description": {
+        "en": "Show all commands",
+        "zh_CN": "显示所有命令"
+      },
+      "category": "general",
+      "recommended": true,
+      "rank": 10,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": [
+        "commands",
+        "palette"
+      ],
+      "id_aliases": [
+        "legacy:app:code.exe:ctrl+shift:p"
+      ]
+    },
+    {
+      "id": "vscode.quick-open",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Quick Open",
+        "zh_CN": "快速打开"
+      },
+      "description": {
+        "en": "Open a file by name",
+        "zh_CN": "按名称打开文件"
+      },
+      "category": "general",
+      "recommended": true,
+      "rank": 11,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file",
+        "open"
+      ],
+      "id_aliases": [
+        "legacy:app:code.exe:ctrl:p"
+      ]
+    },
+    {
+      "id": "vscode.new-window",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New Window",
+        "zh_CN": "新建窗口"
+      },
+      "description": {
+        "en": "Open a new VS Code window",
+        "zh_CN": "打开新的 VS Code 窗口"
+      },
+      "category": "general",
+      "recommended": false,
+      "rank": 12,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "window"
+      ]
+    },
+    {
+      "id": "vscode.settings",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          ","
+        ]
+      },
+      "title": {
+        "en": "Open Settings",
+        "zh_CN": "打开设置"
+      },
+      "description": {
+        "en": "Open user settings",
+        "zh_CN": "打开用户设置"
+      },
+      "category": "general",
+      "recommended": false,
+      "rank": 13,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "preferences"
+      ]
+    },
+    {
+      "id": "vscode.cut",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Cut Line",
+        "zh_CN": "剪切行"
+      },
+      "description": {
+        "en": "Cut the current selection or line",
+        "zh_CN": "剪切当前选择或当前行"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 20,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "cut"
+      ]
+    },
+    {
+      "id": "vscode.copy",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Copy Line",
+        "zh_CN": "复制行"
+      },
+      "description": {
+        "en": "Copy the current selection or line",
+        "zh_CN": "复制当前选择或当前行"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 21,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "copy"
+      ]
+    },
+    {
+      "id": "vscode.paste",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste",
+        "zh_CN": "粘贴"
+      },
+      "description": {
+        "en": "Paste clipboard contents",
+        "zh_CN": "粘贴剪贴板内容"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 22,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "clipboard"
+      ]
+    },
+    {
+      "id": "vscode.undo",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "description": {
+        "en": "Undo the last edit",
+        "zh_CN": "撤销上一次编辑"
+      },
+      "category": "basic_editing",
+      "recommended": true,
+      "rank": 23,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "undo"
+      ]
+    },
+    {
+      "id": "vscode.redo",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Y"
+        ]
+      },
+      "title": {
+        "en": "Redo",
+        "zh_CN": "重做"
+      },
+      "description": {
+        "en": "Redo the last edit",
+        "zh_CN": "重做上一次编辑"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 24,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "redo"
+      ]
+    },
+    {
+      "id": "vscode.move-line-up",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Move Line Up",
+        "zh_CN": "上移行"
+      },
+      "description": {
+        "en": "Move the current line upward",
+        "zh_CN": "将当前行向上移动"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 25,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "line"
+      ]
+    },
+    {
+      "id": "vscode.move-line-down",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Move Line Down",
+        "zh_CN": "下移行"
+      },
+      "description": {
+        "en": "Move the current line downward",
+        "zh_CN": "将当前行向下移动"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 26,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "line"
+      ]
+    },
+    {
+      "id": "vscode.duplicate-line-up",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Copy Line Up",
+        "zh_CN": "向上复制行"
+      },
+      "description": {
+        "en": "Duplicate the current line above",
+        "zh_CN": "在上方复制当前行"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 27,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "duplicate"
+      ]
+    },
+    {
+      "id": "vscode.duplicate-line-down",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Copy Line Down",
+        "zh_CN": "向下复制行"
+      },
+      "description": {
+        "en": "Duplicate the current line below",
+        "zh_CN": "在下方复制当前行"
+      },
+      "category": "basic_editing",
+      "recommended": false,
+      "rank": 28,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "duplicate"
+      ]
+    },
+    {
+      "id": "vscode.select-next-match",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Select Next Match",
+        "zh_CN": "选择下一个匹配项"
+      },
+      "description": {
+        "en": "Add next matching selection",
+        "zh_CN": "添加下一个匹配选择"
+      },
+      "category": "basic_editing",
+      "recommended": true,
+      "rank": 29,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "multi cursor",
+        "match"
+      ]
+    },
+    {
+      "id": "vscode.goto-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Go to Line",
+        "zh_CN": "转到行"
+      },
+      "description": {
+        "en": "Go to a line number",
+        "zh_CN": "转到指定行号"
+      },
+      "category": "navigation",
+      "recommended": true,
+      "rank": 30,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "line",
+        "navigation"
+      ]
+    },
+    {
+      "id": "vscode.goto-symbol",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Go to Symbol",
+        "zh_CN": "转到符号"
+      },
+      "description": {
+        "en": "Go to a symbol in the current file",
+        "zh_CN": "转到当前文件中的符号"
+      },
+      "category": "navigation",
+      "recommended": false,
+      "rank": 31,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "symbol"
+      ]
+    },
+    {
+      "id": "vscode.show-all-symbols",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Show All Symbols",
+        "zh_CN": "显示全部符号"
+      },
+      "description": {
+        "en": "Search symbols across the workspace",
+        "zh_CN": "在工作区中搜索符号"
+      },
+      "category": "navigation",
+      "recommended": false,
+      "rank": 32,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "workspace",
+        "symbol"
+      ]
+    },
+    {
+      "id": "vscode.navigate-back",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Left"
+        ]
+      },
+      "title": {
+        "en": "Navigate Back",
+        "zh_CN": "后退"
+      },
+      "description": {
+        "en": "Go back in editor history",
+        "zh_CN": "在编辑历史中后退"
+      },
+      "category": "navigation",
+      "recommended": false,
+      "rank": 33,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "history",
+        "back"
+      ]
+    },
+    {
+      "id": "vscode.navigate-forward",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Right"
+        ]
+      },
+      "title": {
+        "en": "Navigate Forward",
+        "zh_CN": "前进"
+      },
+      "description": {
+        "en": "Go forward in editor history",
+        "zh_CN": "在编辑历史中前进"
+      },
+      "category": "navigation",
+      "recommended": false,
+      "rank": 34,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "history",
+        "forward"
+      ]
+    },
+    {
+      "id": "vscode.find",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Find",
+        "zh_CN": "查找"
+      },
+      "description": {
+        "en": "Find text in the editor",
+        "zh_CN": "在编辑器中查找文本"
+      },
+      "category": "search",
+      "recommended": true,
+      "rank": 40,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "search",
+        "text"
+      ]
+    },
+    {
+      "id": "vscode.replace",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Replace",
+        "zh_CN": "替换"
+      },
+      "description": {
+        "en": "Find and replace in the editor",
+        "zh_CN": "在编辑器中查找并替换"
+      },
+      "category": "search",
+      "recommended": false,
+      "rank": 41,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "replace"
+      ]
+    },
+    {
+      "id": "vscode.find-in-files",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Find in Files",
+        "zh_CN": "在文件中查找"
+      },
+      "description": {
+        "en": "Search across workspace files",
+        "zh_CN": "在工作区文件中搜索"
+      },
+      "category": "search",
+      "recommended": true,
+      "rank": 42,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "workspace",
+        "search"
+      ],
+      "id_aliases": [
+        "vscode.show-search"
+      ]
+    },
+    {
+      "id": "vscode.replace-in-files",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Replace in Files",
+        "zh_CN": "在文件中替换"
+      },
+      "description": {
+        "en": "Replace across workspace files",
+        "zh_CN": "在工作区文件中替换"
+      },
+      "category": "search",
+      "recommended": false,
+      "rank": 43,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "workspace",
+        "replace"
+      ]
+    },
+    {
+      "id": "vscode.toggle-sidebar",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "B"
+        ]
+      },
+      "title": {
+        "en": "Toggle Sidebar",
+        "zh_CN": "切换侧边栏"
+      },
+      "description": {
+        "en": "Show or hide the primary sidebar",
+        "zh_CN": "显示或隐藏主侧边栏"
+      },
+      "category": "display",
+      "recommended": true,
+      "rank": 50,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "sidebar",
+        "explorer"
+      ]
+    },
+    {
+      "id": "vscode.show-explorer",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Show Explorer",
+        "zh_CN": "显示资源管理器"
+      },
+      "description": {
+        "en": "Focus the Explorer view",
+        "zh_CN": "聚焦资源管理器视图"
+      },
+      "category": "display",
+      "recommended": false,
+      "rank": 51,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "explorer",
+        "files"
+      ]
+    },
+    {
+      "id": "vscode.show-search",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Show Search",
+        "zh_CN": "显示搜索"
+      },
+      "description": {
+        "en": "Focus the Search view",
+        "zh_CN": "聚焦搜索视图"
+      },
+      "category": "display",
+      "recommended": false,
+      "rank": 52,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": [
+        "search",
+        "view"
+      ]
+    },
+    {
+      "id": "vscode.show-source-control",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Show Source Control",
+        "zh_CN": "显示源代码管理"
+      },
+      "description": {
+        "en": "Focus source control",
+        "zh_CN": "聚焦源代码管理"
+      },
+      "category": "display",
+      "recommended": false,
+      "rank": 53,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "git",
+        "scm"
+      ]
+    },
+    {
+      "id": "vscode.show-debug",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Show Run and Debug",
+        "zh_CN": "显示运行和调试"
+      },
+      "description": {
+        "en": "Focus the Run and Debug view",
+        "zh_CN": "聚焦运行和调试视图"
+      },
+      "category": "display",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "debug",
+        "run"
+      ]
+    },
+    {
+      "id": "vscode.show-extensions",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Show Extensions",
+        "zh_CN": "显示扩展"
+      },
+      "description": {
+        "en": "Focus the Extensions view",
+        "zh_CN": "聚焦扩展视图"
+      },
+      "category": "display",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "extensions"
+      ]
+    },
+    {
+      "id": "vscode.split-editor",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "\\"
+        ]
+      },
+      "title": {
+        "en": "Split Editor",
+        "zh_CN": "拆分编辑器"
+      },
+      "description": {
+        "en": "Split the active editor",
+        "zh_CN": "拆分当前编辑器"
+      },
+      "category": "editor",
+      "recommended": false,
+      "rank": 60,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "editor",
+        "split"
+      ]
+    },
+    {
+      "id": "vscode.focus-first-editor-group",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "1"
+        ]
+      },
+      "title": {
+        "en": "Focus First Editor Group",
+        "zh_CN": "聚焦第一编辑器组"
+      },
+      "description": {
+        "en": "Focus editor group one",
+        "zh_CN": "聚焦编辑器组一"
+      },
+      "category": "editor",
+      "recommended": false,
+      "rank": 61,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "editor",
+        "group"
+      ]
+    },
+    {
+      "id": "vscode.focus-second-editor-group",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "2"
+        ]
+      },
+      "title": {
+        "en": "Focus Second Editor Group",
+        "zh_CN": "聚焦第二编辑器组"
+      },
+      "description": {
+        "en": "Focus editor group two",
+        "zh_CN": "聚焦编辑器组二"
+      },
+      "category": "editor",
+      "recommended": false,
+      "rank": 62,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "editor",
+        "group"
+      ]
+    },
+    {
+      "id": "vscode.new-file",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New File",
+        "zh_CN": "新建文件"
+      },
+      "description": {
+        "en": "Create an untitled file",
+        "zh_CN": "创建未命名文件"
+      },
+      "category": "file_management",
+      "recommended": false,
+      "rank": 70,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file"
+      ]
+    },
+    {
+      "id": "vscode.open-file",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Open File",
+        "zh_CN": "打开文件"
+      },
+      "description": {
+        "en": "Open a file from disk",
+        "zh_CN": "从磁盘打开文件"
+      },
+      "category": "file_management",
+      "recommended": false,
+      "rank": 71,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file"
+      ]
+    },
+    {
+      "id": "vscode.save",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save",
+        "zh_CN": "保存"
+      },
+      "description": {
+        "en": "Save the active file",
+        "zh_CN": "保存当前文件"
+      },
+      "category": "file_management",
+      "recommended": true,
+      "rank": 72,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file",
+        "save"
+      ],
+      "id_aliases": [
+        "legacy:app:code.exe:ctrl:s"
+      ]
+    },
+    {
+      "id": "vscode.save-as",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save As",
+        "zh_CN": "另存为"
+      },
+      "description": {
+        "en": "Save the active file under a new name",
+        "zh_CN": "以新名称保存当前文件"
+      },
+      "category": "file_management",
+      "recommended": false,
+      "rank": 73,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file",
+        "save"
+      ]
+    },
+    {
+      "id": "vscode.reopen-closed-editor",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Reopen Closed Editor",
+        "zh_CN": "重新打开已关闭编辑器"
+      },
+      "description": {
+        "en": "Restore the last closed editor",
+        "zh_CN": "恢复最近关闭的编辑器"
+      },
+      "category": "file_management",
+      "recommended": false,
+      "rank": 74,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "file",
+        "reopen"
+      ]
+    },
+    {
+      "id": "vscode.toggle-terminal",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "`"
+        ]
+      },
+      "title": {
+        "en": "Toggle Integrated Terminal",
+        "zh_CN": "切换集成终端"
+      },
+      "description": {
+        "en": "Show or hide the integrated terminal",
+        "zh_CN": "显示或隐藏集成终端"
+      },
+      "category": "integrated_terminal",
+      "recommended": true,
+      "rank": 80,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "terminal",
+        "console"
+      ],
+      "id_aliases": [
+        "legacy:app:code.exe:ctrl:`"
+      ]
+    },
+    {
+      "id": "vscode.new-terminal",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "`"
+        ]
+      },
+      "title": {
+        "en": "New Integrated Terminal",
+        "zh_CN": "新建集成终端"
+      },
+      "description": {
+        "en": "Create a new integrated terminal",
+        "zh_CN": "创建新的集成终端"
+      },
+      "category": "integrated_terminal",
+      "recommended": false,
+      "rank": 81,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "terminal",
+        "new"
+      ]
+    },
+    {
+      "id": "vscode.open-native-console",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Open New Command Prompt",
+        "zh_CN": "打开新的命令提示符"
+      },
+      "description": {
+        "en": "Open a native command prompt",
+        "zh_CN": "打开原生命令提示符"
+      },
+      "category": "integrated_terminal",
+      "recommended": false,
+      "rank": 82,
+      "provenance": {
+        "title": "VS Code keyboard reference",
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+      },
+      "visibility": [
+        "quick_hud"
+      ],
+      "builtin": true,
+      "aliases": [
+        "terminal",
+        "command prompt"
+      ]
+    },
+    {
+      "id": "vscode.keyboard-shortcuts",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Ctrl+S"
+        ]
+      },
+      "title": {
+        "en": "Open Keyboard Shortcuts",
+        "zh_CN": "打开键盘快捷方式"
+      },
+      "description": {
+        "en": "Open the Keyboard Shortcuts editor",
+        "zh_CN": "打开键盘快捷方式编辑器"
+      },
+      "category": "general",
+      "recommended": false,
+      "rank": 90,
+      "provenance": {
+        "title": "VS Code keybindings documentation",
+        "url": "https://code.visualstudio.com/docs/configure/keybindings"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": [
+        "keybindings",
+        "shortcuts"
+      ]
+    },
+    {
+      "id": "vscode.quick-open-go-to-file",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "P"
+        ]
+      },
+      "title": {
+        "en": "Quick Open / Go to File",
+        "zh_CN": "Quick 打开/ Go to 文件"
+      },
+      "description": {
+        "en": "Quick Open / Go to File",
+        "zh_CN": "Quick 打开/ Go to 文件"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 42,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.new-window.b686bc6a",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New Window",
+        "zh_CN": "新建窗口"
+      },
+      "description": {
+        "en": "New Window",
+        "zh_CN": "新建窗口"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 43,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.close-window",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Close Window",
+        "zh_CN": "关闭窗口"
+      },
+      "description": {
+        "en": "Close Window",
+        "zh_CN": "关闭窗口"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 44,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-settings",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          ","
+        ]
+      },
+      "title": {
+        "en": "Open Settings",
+        "zh_CN": "打开设置"
+      },
+      "description": {
+        "en": "Open Settings",
+        "zh_CN": "打开设置"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 45,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-keyboard-shortcuts",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Ctrl+S"
+        ]
+      },
+      "title": {
+        "en": "Open Keyboard Shortcuts",
+        "zh_CN": "打开Keyboard Short剪切s"
+      },
+      "description": {
+        "en": "Open Keyboard Shortcuts",
+        "zh_CN": "打开Keyboard Short剪切s"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 46,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.zoom-in",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "+"
+        ]
+      },
+      "title": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "description": {
+        "en": "Zoom in",
+        "zh_CN": "放大"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 47,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.zoom-out",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "-"
+        ]
+      },
+      "title": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "description": {
+        "en": "Zoom out",
+        "zh_CN": "缩小"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 48,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.cut-line-empty-selection",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Cut line (empty selection)",
+        "zh_CN": "剪切 line (empty 选择)"
+      },
+      "description": {
+        "en": "Cut line (empty selection)",
+        "zh_CN": "剪切 line (empty 选择)"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 49,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.copy-line-empty-selection",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "C"
+        ]
+      },
+      "title": {
+        "en": "Copy line (empty selection)",
+        "zh_CN": "复制line (empty 选择)"
+      },
+      "description": {
+        "en": "Copy line (empty selection)",
+        "zh_CN": "复制line (empty 选择)"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 50,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.paste.b2450db0",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "description": {
+        "en": "Paste",
+        "zh_CN": "Paste"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 51,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.delete-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "K"
+        ]
+      },
+      "title": {
+        "en": "Delete Line",
+        "zh_CN": "删除Line"
+      },
+      "description": {
+        "en": "Delete Line",
+        "zh_CN": "删除Line"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 52,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.insert-line-below",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Insert Line Below",
+        "zh_CN": "插入Line Below"
+      },
+      "description": {
+        "en": "Insert Line Below",
+        "zh_CN": "插入Line Below"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 53,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.insert-line-above",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Enter"
+        ]
+      },
+      "title": {
+        "en": "Insert Line Above",
+        "zh_CN": "插入Line Above"
+      },
+      "description": {
+        "en": "Insert Line Above",
+        "zh_CN": "插入Line Above"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.move-line-down.ca5e7eac",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Move Line Down",
+        "zh_CN": "移动Line 下"
+      },
+      "description": {
+        "en": "Move Line Down",
+        "zh_CN": "移动Line 下"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.move-line-up.c457a71b",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Move Line Up",
+        "zh_CN": "移动Line 上"
+      },
+      "description": {
+        "en": "Move Line Up",
+        "zh_CN": "移动Line 上"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 56,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.copy-line-down",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Copy Line Down",
+        "zh_CN": "复制Line 下"
+      },
+      "description": {
+        "en": "Copy Line Down",
+        "zh_CN": "复制Line 下"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 57,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.copy-line-up",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Copy Line Up",
+        "zh_CN": "复制Line 上"
+      },
+      "description": {
+        "en": "Copy Line Up",
+        "zh_CN": "复制Line 上"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 58,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.undo.4ab27e3d",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "description": {
+        "en": "Undo",
+        "zh_CN": "撤销"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 59,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.redo.205e046e",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Y"
+        ]
+      },
+      "title": {
+        "en": "Redo",
+        "zh_CN": "重做"
+      },
+      "description": {
+        "en": "Redo",
+        "zh_CN": "重做"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 60,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.add-selection-to-next-find-match",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Add Selection To Next Find Match",
+        "zh_CN": "Add 选择 To 下一个 查找Match"
+      },
+      "description": {
+        "en": "Add Selection To Next Find Match",
+        "zh_CN": "Add 选择 To 下一个 查找Match"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 61,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.select-all-occurrences-of-current-selection",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "L"
+        ]
+      },
+      "title": {
+        "en": "Select all occurrences of current selection",
+        "zh_CN": "选择全部 occurrences of 当前 选择"
+      },
+      "description": {
+        "en": "Select all occurrences of current selection",
+        "zh_CN": "选择全部 occurrences of 当前 选择"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 62,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.insert-cursor-below",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "Down"
+        ]
+      },
+      "title": {
+        "en": "Insert Cursor Below",
+        "zh_CN": "插入Cursor Below"
+      },
+      "description": {
+        "en": "Insert Cursor Below",
+        "zh_CN": "插入Cursor Below"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 63,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.insert-cursor-above",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "Up"
+        ]
+      },
+      "title": {
+        "en": "Insert Cursor Above",
+        "zh_CN": "插入Cursor Above"
+      },
+      "description": {
+        "en": "Insert Cursor Above",
+        "zh_CN": "插入Cursor Above"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 64,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-line-comment",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "/"
+        ]
+      },
+      "title": {
+        "en": "Toggle Line Comment",
+        "zh_CN": "切换Line 批注"
+      },
+      "description": {
+        "en": "Toggle Line Comment",
+        "zh_CN": "切换Line 批注"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 65,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-block-comment",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "A"
+        ]
+      },
+      "title": {
+        "en": "Toggle Block Comment",
+        "zh_CN": "切换Block 批注"
+      },
+      "description": {
+        "en": "Toggle Block Comment",
+        "zh_CN": "切换Block 批注"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 66,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.indent-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "]"
+        ]
+      },
+      "title": {
+        "en": "Indent Line",
+        "zh_CN": "Indent Line"
+      },
+      "description": {
+        "en": "Indent Line",
+        "zh_CN": "Indent Line"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 67,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.outdent-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "["
+        ]
+      },
+      "title": {
+        "en": "Outdent Line",
+        "zh_CN": "Outdent Line"
+      },
+      "description": {
+        "en": "Outdent Line",
+        "zh_CN": "Outdent Line"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 68,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.find.280b66cc",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Find",
+        "zh_CN": "Find"
+      },
+      "description": {
+        "en": "Find",
+        "zh_CN": "Find"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 69,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.replace.418466bb",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Replace",
+        "zh_CN": "替换"
+      },
+      "description": {
+        "en": "Replace",
+        "zh_CN": "替换"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 70,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.find-previous",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F3"
+        ]
+      },
+      "title": {
+        "en": "Find Previous",
+        "zh_CN": "查找上一个"
+      },
+      "description": {
+        "en": "Find Previous",
+        "zh_CN": "查找上一个"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 71,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-word-wrap",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Toggle Word Wrap",
+        "zh_CN": "切换Word Wrap"
+      },
+      "description": {
+        "en": "Toggle Word Wrap",
+        "zh_CN": "切换Word Wrap"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 72,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.trigger-suggest",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Trigger Suggest",
+        "zh_CN": "Trigger Suggest"
+      },
+      "description": {
+        "en": "Trigger Suggest",
+        "zh_CN": "Trigger Suggest"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 73,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.trigger-parameter-hints",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Trigger Parameter Hints",
+        "zh_CN": "Trigger Parameter Hints"
+      },
+      "description": {
+        "en": "Trigger Parameter Hints",
+        "zh_CN": "Trigger Parameter Hints"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 74,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.format-document",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "Alt",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Format Document",
+        "zh_CN": "格式 文档"
+      },
+      "description": {
+        "en": "Format Document",
+        "zh_CN": "格式 文档"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 75,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.format-selection",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Ctrl+F"
+        ]
+      },
+      "title": {
+        "en": "Format Selection",
+        "zh_CN": "格式 选择"
+      },
+      "description": {
+        "en": "Format Selection",
+        "zh_CN": "格式 选择"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 76,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-hover",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Ctrl+I"
+        ]
+      },
+      "title": {
+        "en": "Show Hover",
+        "zh_CN": "显示Hover"
+      },
+      "description": {
+        "en": "Show Hover",
+        "zh_CN": "显示Hover"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 77,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.peek-definition",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "F12"
+        ]
+      },
+      "title": {
+        "en": "Peek Definition",
+        "zh_CN": "Peek Definition"
+      },
+      "description": {
+        "en": "Peek Definition",
+        "zh_CN": "Peek Definition"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 78,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.quick-fix",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "."
+        ]
+      },
+      "title": {
+        "en": "Quick Fix",
+        "zh_CN": "Quick Fix"
+      },
+      "description": {
+        "en": "Quick Fix",
+        "zh_CN": "Quick Fix"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 79,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-references",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F12"
+        ]
+      },
+      "title": {
+        "en": "Go to References",
+        "zh_CN": "Go to References"
+      },
+      "description": {
+        "en": "Go to References",
+        "zh_CN": "Go to References"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 80,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-all-symbols.c82b6fdf",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Show All Symbols",
+        "zh_CN": "显示全部 Symbols"
+      },
+      "description": {
+        "en": "Show All Symbols",
+        "zh_CN": "显示全部 Symbols"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 81,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-line",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Go to Line",
+        "zh_CN": "Go to Line"
+      },
+      "description": {
+        "en": "Go to Line",
+        "zh_CN": "Go to Line"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 82,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-symbol",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Go to Symbol",
+        "zh_CN": "Go to Symbol"
+      },
+      "description": {
+        "en": "Go to Symbol",
+        "zh_CN": "Go to Symbol"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 83,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-problems",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "M"
+        ]
+      },
+      "title": {
+        "en": "Show Problems",
+        "zh_CN": "显示Problems"
+      },
+      "description": {
+        "en": "Show Problems",
+        "zh_CN": "显示Problems"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 84,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-previous-error-or-warning",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F8"
+        ]
+      },
+      "title": {
+        "en": "Go to Previous Error or Warning",
+        "zh_CN": "Go to 上一个 Error or Warning"
+      },
+      "description": {
+        "en": "Go to Previous Error or Warning",
+        "zh_CN": "Go to 上一个 Error or Warning"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 85,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-back",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Left"
+        ]
+      },
+      "title": {
+        "en": "Go Back",
+        "zh_CN": "Go 后退"
+      },
+      "description": {
+        "en": "Go Back",
+        "zh_CN": "Go 后退"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 86,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-forward",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Alt",
+          "Right"
+        ]
+      },
+      "title": {
+        "en": "Go Forward",
+        "zh_CN": "Go 前进"
+      },
+      "description": {
+        "en": "Go Forward",
+        "zh_CN": "Go 前进"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 87,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.close-editor",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Close Editor",
+        "zh_CN": "关闭编辑器"
+      },
+      "description": {
+        "en": "Close Editor",
+        "zh_CN": "关闭编辑器"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 88,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.split-editor.6625970a",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "\\"
+        ]
+      },
+      "title": {
+        "en": "Split Editor",
+        "zh_CN": "Split 编辑器"
+      },
+      "description": {
+        "en": "Split Editor",
+        "zh_CN": "Split 编辑器"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 89,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.focus-into-first-editor-group",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "1"
+        ]
+      },
+      "title": {
+        "en": "Focus into First Editor Group",
+        "zh_CN": "焦点 into 第一个 编辑器 Gro上"
+      },
+      "description": {
+        "en": "Focus into First Editor Group",
+        "zh_CN": "焦点 into 第一个 编辑器 Gro上"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 90,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.focus-into-second-editor-group",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "2"
+        ]
+      },
+      "title": {
+        "en": "Focus into Second Editor Group",
+        "zh_CN": "焦点 into Second 编辑器 Gro上"
+      },
+      "description": {
+        "en": "Focus into Second Editor Group",
+        "zh_CN": "焦点 into Second 编辑器 Gro上"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 91,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.focus-into-third-editor-group",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "3"
+        ]
+      },
+      "title": {
+        "en": "Focus into Third Editor Group",
+        "zh_CN": "焦点 into Third 编辑器 Gro上"
+      },
+      "description": {
+        "en": "Focus into Third Editor Group",
+        "zh_CN": "焦点 into Third 编辑器 Gro上"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 92,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.move-editor-left",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "Move Editor Left",
+        "zh_CN": "移动编辑器 左"
+      },
+      "description": {
+        "en": "Move Editor Left",
+        "zh_CN": "移动编辑器 左"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 93,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.move-editor-right",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Move Editor Right",
+        "zh_CN": "移动编辑器 右"
+      },
+      "description": {
+        "en": "Move Editor Right",
+        "zh_CN": "移动编辑器 右"
+      },
+      "category": "editor-and-window-management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 94,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.new-file.14cd5df2",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New File",
+        "zh_CN": "新建文件"
+      },
+      "description": {
+        "en": "New File",
+        "zh_CN": "新建文件"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 95,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-file.8b08124d",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "O"
+        ]
+      },
+      "title": {
+        "en": "Open File",
+        "zh_CN": "打开文件"
+      },
+      "description": {
+        "en": "Open File",
+        "zh_CN": "打开文件"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 96,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.save.d7b20c07",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save",
+        "zh_CN": "Save"
+      },
+      "description": {
+        "en": "Save",
+        "zh_CN": "Save"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 97,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.save-as.6bac672d",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "S"
+        ]
+      },
+      "title": {
+        "en": "Save As",
+        "zh_CN": "保存As"
+      },
+      "description": {
+        "en": "Save As",
+        "zh_CN": "保存As"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 98,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.close",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "W"
+        ]
+      },
+      "title": {
+        "en": "Close",
+        "zh_CN": "Close"
+      },
+      "description": {
+        "en": "Close",
+        "zh_CN": "Close"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 99,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.close-all",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Ctrl+W"
+        ]
+      },
+      "title": {
+        "en": "Close All",
+        "zh_CN": "关闭全部"
+      },
+      "description": {
+        "en": "Close All",
+        "zh_CN": "关闭全部"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 100,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.reopen-closed-editor.bf05efdc",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "T"
+        ]
+      },
+      "title": {
+        "en": "Reopen Closed Editor",
+        "zh_CN": "Re打开Closed 编辑器"
+      },
+      "description": {
+        "en": "Reopen Closed Editor",
+        "zh_CN": "Re打开Closed 编辑器"
+      },
+      "category": "file_management",
+      "scope": "app",
+      "recommended": false,
+      "rank": 101,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-sidebar-visibility",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "B"
+        ]
+      },
+      "title": {
+        "en": "Toggle Sidebar Visibility",
+        "zh_CN": "切换Side栏 Visibility"
+      },
+      "description": {
+        "en": "Toggle Sidebar Visibility",
+        "zh_CN": "切换Side栏 Visibility"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 102,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-explorer-toggle-focus",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "E"
+        ]
+      },
+      "title": {
+        "en": "Show Explorer / Toggle Focus",
+        "zh_CN": "显示Explorer / 切换焦点"
+      },
+      "description": {
+        "en": "Show Explorer / Toggle Focus",
+        "zh_CN": "显示Explorer / 切换焦点"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 103,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-search.a18916d0",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "F"
+        ]
+      },
+      "title": {
+        "en": "Show Search",
+        "zh_CN": "显示搜索"
+      },
+      "description": {
+        "en": "Show Search",
+        "zh_CN": "显示搜索"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 104,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-source-control.a523597d",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "G"
+        ]
+      },
+      "title": {
+        "en": "Show Source Control",
+        "zh_CN": "显示Source Control"
+      },
+      "description": {
+        "en": "Show Source Control",
+        "zh_CN": "显示Source Control"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 105,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-run",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "D"
+        ]
+      },
+      "title": {
+        "en": "Show Run",
+        "zh_CN": "显示Run"
+      },
+      "description": {
+        "en": "Show Run",
+        "zh_CN": "显示Run"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 106,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-extensions.8b21064c",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "X"
+        ]
+      },
+      "title": {
+        "en": "Show Extensions",
+        "zh_CN": "显示Extensions"
+      },
+      "description": {
+        "en": "Show Extensions",
+        "zh_CN": "显示Extensions"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 107,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.show-output",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "U"
+        ]
+      },
+      "title": {
+        "en": "Show Output",
+        "zh_CN": "显示Output"
+      },
+      "description": {
+        "en": "Show Output",
+        "zh_CN": "显示Output"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 108,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-markdown-preview",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "V"
+        ]
+      },
+      "title": {
+        "en": "Toggle Markdown Preview",
+        "zh_CN": "切换Mark下 Pre视图"
+      },
+      "description": {
+        "en": "Toggle Markdown Preview",
+        "zh_CN": "切换Mark下 Pre视图"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 109,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-integrated-terminal",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "`"
+        ]
+      },
+      "title": {
+        "en": "Toggle Integrated Terminal",
+        "zh_CN": "切换Integrated 终端"
+      },
+      "description": {
+        "en": "Toggle Integrated Terminal",
+        "zh_CN": "切换Integrated 终端"
+      },
+      "category": "display",
+      "scope": "app",
+      "recommended": false,
+      "rank": 110,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.replace-in-files.f575e0f1",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "H"
+        ]
+      },
+      "title": {
+        "en": "Replace in Files",
+        "zh_CN": "替换 in 文件s"
+      },
+      "description": {
+        "en": "Replace in Files",
+        "zh_CN": "替换 in 文件s"
+      },
+      "category": "search",
+      "scope": "app",
+      "recommended": false,
+      "rank": 111,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-search-details",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "J"
+        ]
+      },
+      "title": {
+        "en": "Toggle Search Details",
+        "zh_CN": "切换搜索 Details"
+      },
+      "description": {
+        "en": "Toggle Search Details",
+        "zh_CN": "切换搜索 Details"
+      },
+      "category": "search",
+      "scope": "app",
+      "recommended": false,
+      "rank": 112,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.focus-previous-search-result",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Shift",
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Focus Previous Search Result",
+        "zh_CN": "焦点 上一个 搜索 结果"
+      },
+      "description": {
+        "en": "Focus Previous Search Result",
+        "zh_CN": "焦点 上一个 搜索 结果"
+      },
+      "category": "search",
+      "scope": "app",
+      "recommended": false,
+      "rank": 113,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-chat-view",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Alt",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Open Chat view",
+        "zh_CN": "打开Chat 视图"
+      },
+      "description": {
+        "en": "Open Chat view",
+        "zh_CN": "打开Chat 视图"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 114,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-chat-in-agent-mode",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Open chat in agent mode",
+        "zh_CN": "打开chat in agent mode"
+      },
+      "description": {
+        "en": "Open chat in agent mode",
+        "zh_CN": "打开chat in agent mode"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 115,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-editor-inline-chat",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "I"
+        ]
+      },
+      "title": {
+        "en": "Open editor inline chat",
+        "zh_CN": "打开编辑器 inline chat"
+      },
+      "description": {
+        "en": "Open editor inline chat",
+        "zh_CN": "打开编辑器 inline chat"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 116,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.open-quick-chat",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "Alt",
+          "L"
+        ]
+      },
+      "title": {
+        "en": "Open quick chat",
+        "zh_CN": "打开quick chat"
+      },
+      "description": {
+        "en": "Open quick chat",
+        "zh_CN": "打开quick chat"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 117,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.new-chat-session",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "N"
+        ]
+      },
+      "title": {
+        "en": "New chat session",
+        "zh_CN": "新建chat session"
+      },
+      "description": {
+        "en": "New chat session",
+        "zh_CN": "新建chat session"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 118,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.start-without-debugging",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Start without debugging",
+        "zh_CN": "Start without 调试"
+      },
+      "description": {
+        "en": "Start without debugging",
+        "zh_CN": "Start without 调试"
+      },
+      "category": "debug",
+      "scope": "app",
+      "recommended": false,
+      "rank": 119,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.run-build-task",
+      "trigger": {
+        "kind": "combo",
+        "keys": [
+          "Ctrl",
+          "Shift",
+          "B"
+        ]
+      },
+      "title": {
+        "en": "Run Build Task",
+        "zh_CN": "Run Build Task"
+      },
+      "description": {
+        "en": "Run Build Task",
+        "zh_CN": "Run Build Task"
+      },
+      "category": "tasks",
+      "scope": "app",
+      "recommended": false,
+      "rank": 120,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    }
   ]
 }
