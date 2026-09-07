@@ -290,6 +290,9 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
 
         self.assertEqual(center_buttons, [settings.custom_apps_button])
         self.assertEqual(settings._custom_apps_group_box.title(), "Shortcuts")
+        self.assertTrue(
+            bool(settings.windowFlags() & Qt.WindowType.WindowStaysOnTopHint)
+        )
         self.assertEqual(
             settings._custom_apps_description.text(),
             "Browse collected shortcuts, choose Quick HUD hints, and manage your own shortcuts.",
@@ -745,7 +748,7 @@ class UserShortcutManagerDialogTests(unittest.TestCase):
         self.assertEqual(self.dialog.draft.list_profiles(), ["CODE.EXE"])
 
     def test_reserved_candidate_is_rejected_and_wps_logical_id_is_allowed(self) -> None:
-        for identity in ("WINDOWS_SHELL", "WPS_UNKNOWN"):
+        for identity in ("WINDOWS_SHELL", "SHELL_DESKTOP", "WPS_UNKNOWN"):
             with self.subTest(identity=identity):
                 self.tracker.set_candidate(identity)
                 self.assertFalse(self.dialog.add_current_application())

@@ -420,7 +420,7 @@ class ShortcutOverlayApplication(QApplication):
         )
         dialog.settings_changed.connect(self.handle_settings_changed)
         dialog.custom_apps_requested.connect(
-            lambda: self.open_shortcut_center_dialog(dialog)
+            lambda: self.open_shortcut_center_from_settings(dialog)
         )
         dialog.setWindowModality(Qt.ApplicationModal) # Block interaction with parent.
         dialog.exec() # Show modally.
@@ -441,8 +441,28 @@ class ShortcutOverlayApplication(QApplication):
         dialog.setWindowModality(Qt.ApplicationModal)
         dialog.exec()
 
+    def open_shortcut_center_from_settings(self, settings_dialog) -> None:
+        """Navigate without leaving Settings visibly stacked behind Center."""
+
+        hide = getattr(settings_dialog, "hide", None)
+        if callable(hide):
+            hide()
+        try:
+            self.open_shortcut_center_dialog(settings_dialog)
+        finally:
+            for method_name in ("show", "raise_", "activateWindow"):
+                method = getattr(settings_dialog, method_name, None)
+                if callable(method):
+                    method()
+
     def open_shortcut_center_dialog(self, parent=None) -> None:
         """Open the unified Catalog and USER shortcut center."""
+
+        active = getattr(self, "_shortcut_center_dialog", None)
+        if active is not None:
+            active.raise_()
+            active.activateWindow()
+            return
 
         from scripts.shortcut_library_dialog import (
             ShortcutLibraryDialog,
@@ -454,7 +474,7 @@ class ShortcutOverlayApplication(QApplication):
             self.quick_hud_selection_store,
             self.user_shortcut_store.snapshot(),
             self.config_mgr.get_setting("language", "en_US"),
-            current_descriptor=self.current_application_candidate.current_descriptor,
+            current_descriptor=self.current_application_candidate.center_context,
             recent_descriptors=self.current_application_candidate.recent_descriptors,
             user_store=self.user_shortcut_store,
             apply_user_profiles=self.apply_user_profiles,
@@ -467,9 +487,13 @@ class ShortcutOverlayApplication(QApplication):
                 parent or self.overlay_window
             ),
         )
+        self._shortcut_center_dialog = dialog
         dialog.setWindowModality(Qt.ApplicationModal)
-        dialog.exec()
-        self.hud_controller.refresh_current_state()
+        try:
+            dialog.exec()
+        finally:
+            self._shortcut_center_dialog = None
+            self.hud_controller.refresh_current_state()
 
     def open_shortcut_library_dialog(self, parent=None) -> None:
         """Compatibility alias for integrations created before Shortcut Center."""

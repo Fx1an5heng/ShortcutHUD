@@ -12,6 +12,7 @@ from scripts.shortcut_catalog_resolver import CatalogShortcutResolver
 from scripts.shortcut_library_dialog import ShortcutLibraryModel
 from scripts.shortcut_library_dialog import ShortcutLibraryDialog
 from scripts.application_descriptor import ApplicationDescriptorFactory
+from scripts.shell_identity import WINDOWS_DESKTOP
 from scripts.user_shortcut_store import UserShortcutStore
 
 
@@ -20,15 +21,19 @@ _PACK_DIRECTORY = Path(__file__).resolve().parents[1] / "config" / "shortcut_pac
 
 class _FakeTracker(QObject):
     candidate_changed = Signal(object)
+    foreground_context_changed = Signal(object)
 
     def __init__(self, current, recent=()):
         super().__init__()
         self.current_descriptor = current
+        self.center_context = current
         self.recent_descriptors = recent
 
     def set_current(self, current, recent=()):
         self.current_descriptor = current
+        self.center_context = current
         self.recent_descriptors = recent
+        self.foreground_context_changed.emit(current)
         self.candidate_changed.emit(current.runtime_identity if current else None)
 
 
@@ -181,6 +186,12 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
             self.assertEqual(dialog.table.horizontalHeaderItem(2).text(), "用途")
             self.assertEqual(dialog.restore_button.text(), "恢复推荐")
             self.assertEqual(dialog.clear_button.text(), "全部取消")
+            self.assertEqual(
+                dialog._display_name(
+                    ApplicationDescriptorFactory().describe(WINDOWS_DESKTOP)
+                ),
+                "Windows 桌面",
+            )
             dialog.deleteLater()
         finally:
             self.application.removeTranslator(translator)
@@ -266,6 +277,29 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
             self.assertEqual(dialog.application_combo.currentData(), "TYPORA.EXE")
             self.assertFalse(dialog.empty_builtin_label.isHidden())
             self.assertEqual(dialog.table.rowCount(), 0)
+            dialog.deleteLater()
+
+    def test_desktop_context_follows_without_reusing_stale_external_application(self) -> None:
+        factory = ApplicationDescriptorFactory()
+        vscode = factory.describe("CODE.EXE")
+        desktop = factory.describe(WINDOWS_DESKTOP)
+        tracker = _FakeTracker(vscode, (vscode,))
+        legacy_path = Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"
+        catalog = ShortcutCatalog.from_legacy_shortcuts(
+            json.loads(legacy_path.read_text(encoding="utf-8"))
+        ).with_packs_from(_PACK_DIRECTORY)
+        with TemporaryDirectory() as directory:
+            dialog = ShortcutLibraryDialog(
+                ShortcutLibraryModel(
+                    catalog,
+                    QuickHudSelectionStore(Path(directory) / "selection.json"),
+                    current_descriptor=vscode,
+                ),
+                candidate_tracker=tracker,
+            )
+            tracker.set_current(desktop, (vscode,))
+            self.assertEqual(dialog.application_combo.currentData(), WINDOWS_DESKTOP)
+            self.assertTrue(dialog.empty_builtin_label.isVisible() or not dialog.empty_builtin_label.isHidden())
             dialog.deleteLater()
 
 

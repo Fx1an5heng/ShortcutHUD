@@ -102,6 +102,7 @@ class SettingsDialog(QDialog):
             parent: The parent widget of this dialog.
         """
         super().__init__(parent)
+        self.setWindowFlag(Qt.WindowType.WindowStaysOnTopHint, True)
         self.setObjectName("SettingsDialog")  # For specific QSS styling.
         # self.setAttribute(Qt.WA_TranslucentBackground) # Enable if DIALOG_BACKGROUND_COLOR uses alpha.
 
@@ -135,7 +136,6 @@ class SettingsDialog(QDialog):
         self.custom_text_color_button: Optional[QPushButton] = None
         self.button_box: Optional[QDialogButtonBox] = None
         self.custom_apps_button: Optional[QPushButton] = None
-        self.shortcut_library_button: Optional[QPushButton] = None
         self._custom_apps_description: Optional[QLabel] = None
         self.fullscreen_suppression_checkbox: Optional[QCheckBox] = None
         self.excluded_applications_list: Optional[QListWidget] = None

@@ -165,7 +165,7 @@ class ShortcutLibraryDialog(QDialog):
         self.follow_current_checkbox.setChecked(True); self._populate_applications(select_identity=self._current_identity())
         self.application_combo.currentIndexChanged.connect(self._on_application_changed); self.search_box.textChanged.connect(self._render); self.table.itemChanged.connect(self._on_item_changed); self.table.itemSelectionChanged.connect(self._update_action_state); self.follow_current_checkbox.toggled.connect(self._on_follow_changed)
         self.add_button.clicked.connect(self._add_shortcut); self.edit_button.clicked.connect(self._edit_shortcut); self.delete_button.clicked.connect(self._delete_shortcut); self.restore_button.clicked.connect(self._restore_recommended); self.clear_button.clicked.connect(self._clear_all); self.advanced_button.clicked.connect(self._open_advanced_manager); self.advanced_button.setVisible(advanced_manager_opener is not None)
-        signal = getattr(candidate_tracker, "candidate_changed", None)
+        signal = getattr(candidate_tracker, "foreground_context_changed", None) or getattr(candidate_tracker, "candidate_changed", None)
         if signal is not None and hasattr(signal, "connect"): signal.connect(self._on_candidate_changed)
         self._render()
 
@@ -178,19 +178,22 @@ class ShortcutLibraryDialog(QDialog):
 
     def _populate_applications(self, *, select_identity: str | None) -> None:
         self._populating = True; self.application_combo.clear(); current = self.model.current_descriptor
-        if current is not None: self._add_group_header(self.tr("Current Application")); self.application_combo.addItem(current.display_name, current.runtime_identity)
+        if current is not None: self._add_group_header(self.tr("Current Application")); self.application_combo.addItem(self._display_name(current), current.runtime_identity)
         if self.model.recent_descriptors:
             self._add_group_header(self.tr("Recent Applications"))
             for descriptor in self.model.recent_descriptors:
-                if current is None or descriptor.runtime_identity != current.runtime_identity: self.application_combo.addItem(descriptor.display_name, descriptor.runtime_identity)
+                if current is None or descriptor.runtime_identity != current.runtime_identity: self.application_combo.addItem(self._display_name(descriptor), descriptor.runtime_identity)
         self._add_group_header(self.tr("All Supported Applications")); seen: set[str] = set()
         for descriptor in self.model.supported_descriptors():
-            if descriptor.runtime_identity not in seen: seen.add(descriptor.runtime_identity); self.application_combo.addItem(descriptor.display_name, descriptor.runtime_identity)
+            if descriptor.runtime_identity not in seen: seen.add(descriptor.runtime_identity); self.application_combo.addItem(self._display_name(descriptor), descriptor.runtime_identity)
         target = self.application_combo.findData(select_identity) if select_identity else -1; self.application_combo.setCurrentIndex(target if target >= 0 else (1 if self.application_combo.count() > 1 else -1)); self._populating = False
 
     def _add_group_header(self, label: str) -> None:
         index = self.application_combo.count(); self.application_combo.addItem(label); item = self.application_combo.model().item(index)
         if item is not None: item.setEnabled(False)
+
+    def _display_name(self, descriptor: ApplicationDescriptor) -> str:
+        return self.tr("Windows Desktop") if descriptor.context_kind == "desktop" else descriptor.display_name
 
     def _current_app_id(self) -> str | None:
         value = self.application_combo.currentData(); return value if isinstance(value, str) else None
@@ -217,7 +220,7 @@ class ShortcutLibraryDialog(QDialog):
 
     def _follow_latest_candidate(self) -> None:
         if not self.follow_current_checkbox.isChecked() or self._candidate_tracker is None: return
-        current = getattr(self._candidate_tracker, "current_descriptor", None); recent = getattr(self._candidate_tracker, "recent_descriptors", ())
+        current = getattr(self._candidate_tracker, "center_context", None) or getattr(self._candidate_tracker, "current_descriptor", None); recent = getattr(self._candidate_tracker, "recent_descriptors", ())
         if current is None: return
         self.model.update_detected(current, tuple(recent) if isinstance(recent, tuple) else ()); self._populate_applications(select_identity=current.runtime_identity); self._render()
 
@@ -269,7 +272,8 @@ class ShortcutLibraryDialog(QDialog):
         if (app_id := self._current_app_id()) is not None: self.model.clear_all(app_id); self._render()
 
     def _update_action_state(self) -> None:
-        editable = self._current_app_id() is not None; self.add_button.setEnabled(editable); selected = self._selected_user_identity() is not None; self.edit_button.setEnabled(selected); self.delete_button.setEnabled(selected)
+        descriptor = self.model.descriptor_for(self._current_app_id())
+        editable = descriptor is not None and descriptor.context_kind == "application"; self.add_button.setEnabled(editable); selected = self._selected_user_identity() is not None; self.edit_button.setEnabled(selected); self.delete_button.setEnabled(selected)
 
 
 ShortcutCenterDialog = ShortcutLibraryDialog

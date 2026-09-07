@@ -63,6 +63,23 @@ class _FakeTrayIcon:
         pass
 
 
+class _FakeNavigableSettings:
+    def __init__(self) -> None:
+        self.calls: list[str] = []
+
+    def hide(self) -> None:
+        self.calls.append("hide")
+
+    def show(self) -> None:
+        self.calls.append("show")
+
+    def raise_(self) -> None:
+        self.calls.append("raise")
+
+    def activateWindow(self) -> None:
+        self.calls.append("activate")
+
+
 class ShortcutManagerEntryWiringTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -77,7 +94,7 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
                 editable_candidate=lambda: "CODE.EXE"
             ),
             handle_settings_changed=lambda _settings: None,
-            open_shortcut_center_dialog=lambda parent=None: opened.append(parent),
+            open_shortcut_center_from_settings=lambda parent=None: opened.append(parent),
         )
 
         with patch("main.SettingsDialog", _FakeSettingsDialog):
@@ -87,6 +104,30 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
         self.assertEqual(opened, [dialog])
         self.assertEqual(dialog.modality, Qt.ApplicationModal)
         self.assertEqual(dialog.current_app_provider(), "CODE.EXE")
+
+    def test_center_navigation_hides_then_restores_the_same_settings_dialog(self) -> None:
+        settings = _FakeNavigableSettings()
+        observed = []
+        application = SimpleNamespace(
+            open_shortcut_center_dialog=lambda parent=None: observed.append((parent, list(settings.calls))),
+        )
+
+        ShortcutOverlayApplication.open_shortcut_center_from_settings(application, settings)
+
+        self.assertEqual(observed, [(settings, ["hide"])])
+        self.assertEqual(settings.calls, ["hide", "show", "raise", "activate"])
+
+    def test_existing_center_is_reused_instead_of_creating_a_duplicate(self) -> None:
+        calls = []
+        active = SimpleNamespace(
+            raise_=lambda: calls.append("raise"),
+            activateWindow=lambda: calls.append("activate"),
+        )
+        application = SimpleNamespace(_shortcut_center_dialog=active)
+
+        ShortcutOverlayApplication.open_shortcut_center_dialog(application)
+
+        self.assertEqual(calls, ["raise", "activate"])
 
     def test_new_entry_constructs_user_shortcut_manager_dialog(self) -> None:
         store = object()

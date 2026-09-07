@@ -4,14 +4,14 @@
 <context>
     <name>AboutDialog</name>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="715"/>
-        <location filename="../scripts/settings_dialog.py" line="811"/>
+        <location filename="../scripts/settings_dialog.py" line="714"/>
+        <location filename="../scripts/settings_dialog.py" line="810"/>
         <source>About ShortcutHUD</source>
         <translation>关于 ShortcutHUD</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="719"/>
-        <location filename="../scripts/settings_dialog.py" line="812"/>
+        <location filename="../scripts/settings_dialog.py" line="718"/>
+        <location filename="../scripts/settings_dialog.py" line="811"/>
         <source>ShortcutHUD</source>
         <translation>ShortcutHUD</translation>
     </message>
@@ -20,20 +20,20 @@
         <translation type="vanished">开发者：</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="734"/>
-        <location filename="../scripts/settings_dialog.py" line="814"/>
+        <location filename="../scripts/settings_dialog.py" line="733"/>
+        <location filename="../scripts/settings_dialog.py" line="813"/>
         <source>Hold a modifier key to discover high-value shortcuts for the current app.</source>
         <translation>按住修饰键，快速发现当前应用的高价值快捷键。</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="755"/>
-        <location filename="../scripts/settings_dialog.py" line="823"/>
+        <location filename="../scripts/settings_dialog.py" line="754"/>
+        <location filename="../scripts/settings_dialog.py" line="822"/>
         <source>Based on shortcut_overlay by ByronLeeeee</source>
         <translation>基于 ByronLeeeee 的 shortcut_overlay 开发</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="774"/>
-        <location filename="../scripts/settings_dialog.py" line="832"/>
+        <location filename="../scripts/settings_dialog.py" line="773"/>
+        <location filename="../scripts/settings_dialog.py" line="831"/>
         <source>OK</source>
         <translation>确定</translation>
     </message>
@@ -42,8 +42,8 @@
         <translation type="vanished">版本：</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="764"/>
-        <location filename="../scripts/settings_dialog.py" line="829"/>
+        <location filename="../scripts/settings_dialog.py" line="763"/>
+        <location filename="../scripts/settings_dialog.py" line="828"/>
         <source>Icons by:</source>
         <translation>图标：</translation>
     </message>
@@ -52,330 +52,330 @@
     <name>SettingsDialog</name>
     <message>
         <location filename="../scripts/settings_dialog.py" line="109"/>
-        <location filename="../scripts/settings_dialog.py" line="574"/>
+        <location filename="../scripts/settings_dialog.py" line="573"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="207"/>
-        <location filename="../scripts/settings_dialog.py" line="576"/>
+        <location filename="../scripts/settings_dialog.py" line="206"/>
+        <location filename="../scripts/settings_dialog.py" line="575"/>
         <source>Appearance</source>
         <translation>外观</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="211"/>
-        <location filename="../scripts/settings_dialog.py" line="632"/>
+        <location filename="../scripts/settings_dialog.py" line="210"/>
+        <location filename="../scripts/settings_dialog.py" line="631"/>
         <source>Default Dark</source>
         <translation>默认暗色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="212"/>
-        <location filename="../scripts/settings_dialog.py" line="633"/>
+        <location filename="../scripts/settings_dialog.py" line="211"/>
+        <location filename="../scripts/settings_dialog.py" line="632"/>
         <source>Light Steel</source>
         <translation>浅钢色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="213"/>
-        <location filename="../scripts/settings_dialog.py" line="634"/>
+        <location filename="../scripts/settings_dialog.py" line="212"/>
+        <location filename="../scripts/settings_dialog.py" line="633"/>
         <source>Midnight Blue</source>
         <translation>午夜蓝</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="240"/>
-        <location filename="../scripts/settings_dialog.py" line="661"/>
+        <location filename="../scripts/settings_dialog.py" line="239"/>
+        <location filename="../scripts/settings_dialog.py" line="660"/>
         <source>Custom...</source>
         <translation>自定义...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="258"/>
-        <location filename="../scripts/settings_dialog.py" line="620"/>
+        <location filename="../scripts/settings_dialog.py" line="257"/>
+        <location filename="../scripts/settings_dialog.py" line="619"/>
         <source>Background Color...</source>
         <translation>背景色...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="214"/>
-        <location filename="../scripts/settings_dialog.py" line="635"/>
+        <location filename="../scripts/settings_dialog.py" line="213"/>
+        <location filename="../scripts/settings_dialog.py" line="634"/>
         <source>Nord Dark</source>
         <translation>北欧深色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="215"/>
-        <location filename="../scripts/settings_dialog.py" line="636"/>
+        <location filename="../scripts/settings_dialog.py" line="214"/>
+        <location filename="../scripts/settings_dialog.py" line="635"/>
         <source>Tokyo Night</source>
         <translation>东京夜色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="216"/>
-        <location filename="../scripts/settings_dialog.py" line="637"/>
+        <location filename="../scripts/settings_dialog.py" line="215"/>
+        <location filename="../scripts/settings_dialog.py" line="636"/>
         <source>Dracula</source>
         <translation>德古拉</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="217"/>
-        <location filename="../scripts/settings_dialog.py" line="638"/>
+        <location filename="../scripts/settings_dialog.py" line="216"/>
+        <location filename="../scripts/settings_dialog.py" line="637"/>
         <source>Forest Green</source>
         <translation>森林绿</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="218"/>
-        <location filename="../scripts/settings_dialog.py" line="639"/>
+        <location filename="../scripts/settings_dialog.py" line="217"/>
+        <location filename="../scripts/settings_dialog.py" line="638"/>
         <source>Warm Sepia</source>
         <translation>暖褐色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="219"/>
-        <location filename="../scripts/settings_dialog.py" line="640"/>
+        <location filename="../scripts/settings_dialog.py" line="218"/>
+        <location filename="../scripts/settings_dialog.py" line="639"/>
         <source>Soft Purple</source>
         <translation>柔紫色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="220"/>
-        <location filename="../scripts/settings_dialog.py" line="641"/>
+        <location filename="../scripts/settings_dialog.py" line="219"/>
+        <location filename="../scripts/settings_dialog.py" line="640"/>
         <source>High Contrast Dark</source>
         <translation>高对比深色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="221"/>
-        <location filename="../scripts/settings_dialog.py" line="642"/>
+        <location filename="../scripts/settings_dialog.py" line="220"/>
+        <location filename="../scripts/settings_dialog.py" line="641"/>
         <source>High Contrast Light</source>
         <translation>高对比浅色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="222"/>
-        <location filename="../scripts/settings_dialog.py" line="643"/>
+        <location filename="../scripts/settings_dialog.py" line="221"/>
+        <location filename="../scripts/settings_dialog.py" line="642"/>
         <source>Neon Cyber</source>
         <translation>霓虹赛博</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="223"/>
-        <location filename="../scripts/settings_dialog.py" line="644"/>
+        <location filename="../scripts/settings_dialog.py" line="222"/>
+        <location filename="../scripts/settings_dialog.py" line="643"/>
         <source>RGB Gaming</source>
         <translation>RGB游戏</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="224"/>
-        <location filename="../scripts/settings_dialog.py" line="645"/>
+        <location filename="../scripts/settings_dialog.py" line="223"/>
+        <location filename="../scripts/settings_dialog.py" line="644"/>
         <source>Retro Synthwave</source>
         <translation>复古合成波</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="225"/>
-        <location filename="../scripts/settings_dialog.py" line="646"/>
+        <location filename="../scripts/settings_dialog.py" line="224"/>
+        <location filename="../scripts/settings_dialog.py" line="645"/>
         <source>Corporate Blue</source>
         <translation>商务蓝</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="226"/>
-        <location filename="../scripts/settings_dialog.py" line="647"/>
+        <location filename="../scripts/settings_dialog.py" line="225"/>
+        <location filename="../scripts/settings_dialog.py" line="646"/>
         <source>Elegant Gray</source>
         <translation>雅致灰</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="227"/>
-        <location filename="../scripts/settings_dialog.py" line="648"/>
+        <location filename="../scripts/settings_dialog.py" line="226"/>
+        <location filename="../scripts/settings_dialog.py" line="647"/>
         <source>Professional Green</source>
         <translation>专业绿</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="228"/>
-        <location filename="../scripts/settings_dialog.py" line="649"/>
+        <location filename="../scripts/settings_dialog.py" line="227"/>
+        <location filename="../scripts/settings_dialog.py" line="648"/>
         <source>Sunset Orange</source>
         <translation>日落橙</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="229"/>
-        <location filename="../scripts/settings_dialog.py" line="650"/>
+        <location filename="../scripts/settings_dialog.py" line="228"/>
+        <location filename="../scripts/settings_dialog.py" line="649"/>
         <source>Cherry Blossom</source>
         <translation>樱花色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="230"/>
-        <location filename="../scripts/settings_dialog.py" line="651"/>
+        <location filename="../scripts/settings_dialog.py" line="229"/>
+        <location filename="../scripts/settings_dialog.py" line="650"/>
         <source>Golden Hour</source>
         <translation>黄金时光</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="231"/>
-        <location filename="../scripts/settings_dialog.py" line="652"/>
+        <location filename="../scripts/settings_dialog.py" line="230"/>
+        <location filename="../scripts/settings_dialog.py" line="651"/>
         <source>Ocean Breeze</source>
         <translation>海洋微风</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="232"/>
-        <location filename="../scripts/settings_dialog.py" line="653"/>
+        <location filename="../scripts/settings_dialog.py" line="231"/>
+        <location filename="../scripts/settings_dialog.py" line="652"/>
         <source>Spring Mint</source>
         <translation>春薄荷</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="233"/>
-        <location filename="../scripts/settings_dialog.py" line="654"/>
+        <location filename="../scripts/settings_dialog.py" line="232"/>
+        <location filename="../scripts/settings_dialog.py" line="653"/>
         <source>Lavender Dream</source>
         <translation>薰衣草梦</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="234"/>
-        <location filename="../scripts/settings_dialog.py" line="655"/>
+        <location filename="../scripts/settings_dialog.py" line="233"/>
+        <location filename="../scripts/settings_dialog.py" line="654"/>
         <source>Pure White</source>
         <translation>纯白色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="235"/>
-        <location filename="../scripts/settings_dialog.py" line="656"/>
+        <location filename="../scripts/settings_dialog.py" line="234"/>
+        <location filename="../scripts/settings_dialog.py" line="655"/>
         <source>Deep Black</source>
         <translation>深黑色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="236"/>
-        <location filename="../scripts/settings_dialog.py" line="657"/>
+        <location filename="../scripts/settings_dialog.py" line="235"/>
+        <location filename="../scripts/settings_dialog.py" line="656"/>
         <source>Monochrome</source>
         <translation>单色调</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="237"/>
-        <location filename="../scripts/settings_dialog.py" line="658"/>
+        <location filename="../scripts/settings_dialog.py" line="236"/>
+        <location filename="../scripts/settings_dialog.py" line="657"/>
         <source>Low Light</source>
         <translation>微光模式</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="238"/>
-        <location filename="../scripts/settings_dialog.py" line="659"/>
+        <location filename="../scripts/settings_dialog.py" line="237"/>
+        <location filename="../scripts/settings_dialog.py" line="658"/>
         <source>Blue Light Filter</source>
         <translation>蓝光过滤</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="239"/>
-        <location filename="../scripts/settings_dialog.py" line="660"/>
+        <location filename="../scripts/settings_dialog.py" line="238"/>
+        <location filename="../scripts/settings_dialog.py" line="659"/>
         <source>Accessibility</source>
         <translation>无障碍模式</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="259"/>
-        <location filename="../scripts/settings_dialog.py" line="622"/>
+        <location filename="../scripts/settings_dialog.py" line="258"/>
+        <location filename="../scripts/settings_dialog.py" line="621"/>
         <source>Key Color...</source>
         <translation>按键色...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="260"/>
-        <location filename="../scripts/settings_dialog.py" line="624"/>
+        <location filename="../scripts/settings_dialog.py" line="259"/>
+        <location filename="../scripts/settings_dialog.py" line="623"/>
         <source>Key Text Color...</source>
         <translation>按键文本颜色...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="276"/>
-        <location filename="../scripts/settings_dialog.py" line="586"/>
+        <location filename="../scripts/settings_dialog.py" line="275"/>
+        <location filename="../scripts/settings_dialog.py" line="585"/>
         <source>Theme:</source>
         <translation>主题:</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="278"/>
-        <location filename="../scripts/settings_dialog.py" line="613"/>
+        <location filename="../scripts/settings_dialog.py" line="277"/>
+        <location filename="../scripts/settings_dialog.py" line="612"/>
         <source>Custom BG:</source>
         <translation>自定义背景:</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="279"/>
-        <location filename="../scripts/settings_dialog.py" line="615"/>
+        <location filename="../scripts/settings_dialog.py" line="278"/>
+        <location filename="../scripts/settings_dialog.py" line="614"/>
         <source>Custom Key:</source>
         <translation>自定义按键:</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="280"/>
-        <location filename="../scripts/settings_dialog.py" line="617"/>
+        <location filename="../scripts/settings_dialog.py" line="279"/>
+        <location filename="../scripts/settings_dialog.py" line="616"/>
         <source>Custom Text:</source>
         <translation>自定义文本:</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="289"/>
-        <location filename="../scripts/settings_dialog.py" line="578"/>
+        <location filename="../scripts/settings_dialog.py" line="288"/>
+        <location filename="../scripts/settings_dialog.py" line="577"/>
         <source>Opacity</source>
         <translation>不透明度</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="301"/>
-        <location filename="../scripts/settings_dialog.py" line="588"/>
+        <location filename="../scripts/settings_dialog.py" line="300"/>
+        <location filename="../scripts/settings_dialog.py" line="587"/>
         <source>Window Opacity:</source>
         <translation>窗口不透明度:</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="310"/>
-        <location filename="../scripts/settings_dialog.py" line="580"/>
+        <location filename="../scripts/settings_dialog.py" line="309"/>
+        <location filename="../scripts/settings_dialog.py" line="579"/>
         <source>Language</source>
         <translation>语言</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="322"/>
-        <location filename="../scripts/settings_dialog.py" line="590"/>
+        <location filename="../scripts/settings_dialog.py" line="321"/>
+        <location filename="../scripts/settings_dialog.py" line="589"/>
         <source>Interface Language:</source>
         <translation>界面语言：</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="333"/>
+        <location filename="../scripts/settings_dialog.py" line="332"/>
         <source>Browse collected shortcuts, choose Quick HUD hints, and manage your own shortcuts.</source>
         <translation>浏览已收录快捷键，选择 Quick HUD 提示，并管理自己的快捷键。</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="339"/>
+        <location filename="../scripts/settings_dialog.py" line="338"/>
         <source>Shortcut Center...</source>
         <translation>快捷键中心...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="465"/>
+        <location filename="../scripts/settings_dialog.py" line="464"/>
         <source>Select Background Color</source>
         <translation>选择背景色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="469"/>
+        <location filename="../scripts/settings_dialog.py" line="468"/>
         <source>Select Key Color</source>
         <translation>选择按键颜色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="473"/>
+        <location filename="../scripts/settings_dialog.py" line="472"/>
         <source>Select Key Text Color</source>
         <translation>选择按键文本颜色</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="329"/>
-        <location filename="../scripts/settings_dialog.py" line="582"/>
+        <location filename="../scripts/settings_dialog.py" line="328"/>
+        <location filename="../scripts/settings_dialog.py" line="581"/>
         <source>Shortcuts</source>
         <translation>快捷键</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="594"/>
+        <location filename="../scripts/settings_dialog.py" line="593"/>
         <source>Add custom shortcuts and hide or restore built-in app shortcuts.</source>
         <translation>添加自定义快捷键，并隐藏或恢复应用内置快捷键。</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="598"/>
+        <location filename="../scripts/settings_dialog.py" line="597"/>
         <source>Manage Shortcuts...</source>
         <translation>管理快捷键...</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="350"/>
-        <location filename="../scripts/settings_dialog.py" line="584"/>
+        <location filename="../scripts/settings_dialog.py" line="349"/>
+        <location filename="../scripts/settings_dialog.py" line="583"/>
         <source>Game Guard</source>
         <translation>游戏保护</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="357"/>
-        <location filename="../scripts/settings_dialog.py" line="601"/>
+        <location filename="../scripts/settings_dialog.py" line="356"/>
+        <location filename="../scripts/settings_dialog.py" line="600"/>
         <source>Enable automatic fullscreen Quick HUD suppression (optional)</source>
         <translation>启用自动全屏快捷提示压制（可选）</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="367"/>
-        <location filename="../scripts/settings_dialog.py" line="605"/>
+        <location filename="../scripts/settings_dialog.py" line="366"/>
+        <location filename="../scripts/settings_dialog.py" line="604"/>
         <source>Excluded Applications</source>
         <translation>排除的应用</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="379"/>
-        <location filename="../scripts/settings_dialog.py" line="608"/>
+        <location filename="../scripts/settings_dialog.py" line="378"/>
+        <location filename="../scripts/settings_dialog.py" line="607"/>
         <source>Add current app</source>
         <translation>添加当前应用</translation>
     </message>
     <message>
-        <location filename="../scripts/settings_dialog.py" line="383"/>
-        <location filename="../scripts/settings_dialog.py" line="610"/>
+        <location filename="../scripts/settings_dialog.py" line="382"/>
+        <location filename="../scripts/settings_dialog.py" line="609"/>
         <source>Remove</source>
         <translation>移除</translation>
     </message>
@@ -580,17 +580,22 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
         <translation>最近使用的应用</translation>
     </message>
     <message>
-        <location filename="../scripts/shortcut_library_dialog.py" line="203"/>
+        <location filename="../scripts/shortcut_library_dialog.py" line="196"/>
+        <source>Windows Desktop</source>
+        <translation>Windows 桌面</translation>
+    </message>
+    <message>
+        <location filename="../scripts/shortcut_library_dialog.py" line="206"/>
         <source>My Shortcut</source>
         <translation>我的</translation>
     </message>
     <message>
-        <location filename="../scripts/shortcut_library_dialog.py" line="203"/>
+        <location filename="../scripts/shortcut_library_dialog.py" line="206"/>
         <source>Built-in</source>
         <translation>内置</translation>
     </message>
     <message>
-        <location filename="../scripts/shortcut_library_dialog.py" line="203"/>
+        <location filename="../scripts/shortcut_library_dialog.py" line="206"/>
         <source>★ Recommended</source>
         <translation>★ 推荐</translation>
     </message>
@@ -604,7 +609,7 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
         <translation>所有支持的应用</translation>
     </message>
     <message>
-        <location filename="../scripts/shortcut_library_dialog.py" line="200"/>
+        <location filename="../scripts/shortcut_library_dialog.py" line="203"/>
         <source>Selected for Quick HUD: %1</source>
         <translation>已加入 Quick HUD：%1</translation>
     </message>
