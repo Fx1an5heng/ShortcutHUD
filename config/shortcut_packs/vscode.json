@@ -27,7 +27,7 @@
   },
   "coverage": {
     "status": "substantial",
-    "official_reference_title": "VS Code Default Keyboard Shortcuts",
+    "official_reference_title": "Visual Studio Code keyboard shortcuts",
     "official_reference_url": "https://code.visualstudio.com/docs/reference/default-keybindings",
     "verified_date": "2026-09-07"
   },
@@ -1448,7 +1448,6 @@
         "url": "https://code.visualstudio.com/docs/configure/keybindings"
       },
       "visibility": [
-        "quick_hud",
         "full_guide"
       ],
       "builtin": true,
@@ -1456,6 +1455,40 @@
         "keybindings",
         "shortcuts"
       ]
+    },
+    {
+      "id": "vscode.show-all-commands-command-palette",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+Shift+P",
+          "F1"
+        ]
+      },
+      "title": {
+        "en": "Show All Commands (Command Palette)",
+        "zh_CN": "显示全部 Commands (命令 Palette)"
+      },
+      "description": {
+        "en": "Show All Commands (Command Palette)",
+        "zh_CN": "显示全部 Commands (命令 Palette)"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 42,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
     },
     {
       "id": "vscode.quick-open-go-to-file",
@@ -1477,7 +1510,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1512,7 +1545,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 44,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1546,7 +1579,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1581,7 +1614,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1606,16 +1639,83 @@
       },
       "title": {
         "en": "Open Keyboard Shortcuts",
-        "zh_CN": "打开Keyboard Short剪切s"
+        "zh_CN": "打开Keyboard Shortcuts"
       },
       "description": {
         "en": "Open Keyboard Shortcuts",
-        "zh_CN": "打开Keyboard Short剪切s"
+        "zh_CN": "打开Keyboard Shortcuts"
       },
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 47,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-full-screen",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Toggle Full Screen",
+        "zh_CN": "切换全屏"
+      },
+      "description": {
+        "en": "Toggle Full Screen",
+        "zh_CN": "切换全屏"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 48,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-zen-mode",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+K",
+          "Z"
+        ]
+      },
+      "title": {
+        "en": "Toggle Zen Mode",
+        "zh_CN": "切换Zen Mode"
+      },
+      "description": {
+        "en": "Toggle Zen Mode",
+        "zh_CN": "切换Zen Mode"
+      },
+      "category": "general",
+      "scope": "app",
+      "recommended": false,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1649,7 +1749,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1684,7 +1784,7 @@
       "category": "general",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1719,7 +1819,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 52,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1753,7 +1853,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 53,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1778,16 +1878,16 @@
       },
       "title": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "description": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 51,
+      "rank": 54,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1822,7 +1922,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 52,
+      "rank": 55,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1857,7 +1957,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 53,
+      "rank": 56,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1893,7 +1993,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 54,
+      "rank": 57,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1928,7 +2028,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 55,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1962,7 +2062,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 56,
+      "rank": 59,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -1997,7 +2097,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 57,
+      "rank": 60,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2032,7 +2132,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 58,
+      "rank": 61,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2066,7 +2166,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 59,
+      "rank": 62,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2100,7 +2200,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 60,
+      "rank": 63,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2134,7 +2234,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 61,
+      "rank": 64,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2169,7 +2269,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 62,
+      "rank": 65,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2205,7 +2305,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 63,
+      "rank": 66,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2241,7 +2341,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 64,
+      "rank": 67,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2276,7 +2376,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 65,
+      "rank": 68,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2312,7 +2412,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 66,
+      "rank": 69,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2347,7 +2447,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 67,
+      "rank": 70,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2382,7 +2482,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 68,
+      "rank": 71,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2408,16 +2508,16 @@
       },
       "title": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "description": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 69,
+      "rank": 72,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2451,7 +2551,40 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 70,
+      "rank": 73,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.find-next",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F3"
+        ]
+      },
+      "title": {
+        "en": "Find Next",
+        "zh_CN": "查找下一个"
+      },
+      "description": {
+        "en": "Find Next",
+        "zh_CN": "查找下一个"
+      },
+      "category": "basic_editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 74,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2485,7 +2618,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 71,
+      "rank": 75,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2520,7 +2653,7 @@
       "category": "basic_editing",
       "scope": "app",
       "recommended": false,
-      "rank": 72,
+      "rank": 76,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2546,16 +2679,16 @@
       },
       "title": {
         "en": "Trigger Suggest",
-        "zh_CN": "Trigger Suggest"
+        "zh_CN": "触发建议"
       },
       "description": {
         "en": "Trigger Suggest",
-        "zh_CN": "Trigger Suggest"
+        "zh_CN": "触发建议"
       },
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 73,
+      "rank": 77,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2591,7 +2724,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 74,
+      "rank": 78,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2627,7 +2760,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 75,
+      "rank": 79,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2662,7 +2795,40 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 76,
+      "rank": 80,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-definition",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F12"
+        ]
+      },
+      "title": {
+        "en": "Go to Definition",
+        "zh_CN": "Go to Definition"
+      },
+      "description": {
+        "en": "Go to Definition",
+        "zh_CN": "Go to Definition"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 81,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2696,7 +2862,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 77,
+      "rank": 82,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2730,7 +2896,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 78,
+      "rank": 83,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2765,7 +2931,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 79,
+      "rank": 84,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2800,7 +2966,7 @@
       "category": "rich-languages-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 80,
+      "rank": 85,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2810,6 +2976,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.rename-symbol",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F2"
+        ]
+      },
+      "title": {
+        "en": "Rename Symbol",
+        "zh_CN": "Rename Symbol"
+      },
+      "description": {
+        "en": "Rename Symbol",
+        "zh_CN": "Rename Symbol"
+      },
+      "category": "rich-languages-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 86,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2835,7 +3034,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 81,
+      "rank": 87,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2869,7 +3068,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 82,
+      "rank": 88,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2904,7 +3103,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 83,
+      "rank": 89,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2939,7 +3138,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 84,
+      "rank": 90,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -2949,6 +3148,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.go-to-next-error-or-warning",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F8"
+        ]
+      },
+      "title": {
+        "en": "Go to Next Error or Warning",
+        "zh_CN": "Go to 下一个 Error or Warning"
+      },
+      "description": {
+        "en": "Go to Next Error or Warning",
+        "zh_CN": "Go to 下一个 Error or Warning"
+      },
+      "category": "navigation",
+      "scope": "app",
+      "recommended": false,
+      "rank": 91,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2974,7 +3206,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 85,
+      "rank": 92,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3009,7 +3241,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 86,
+      "rank": 93,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3043,7 +3275,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 87,
+      "rank": 94,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3077,7 +3309,7 @@
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 88,
+      "rank": 95,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3112,7 +3344,7 @@
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 89,
+      "rank": 96,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3137,16 +3369,16 @@
       },
       "title": {
         "en": "Focus into First Editor Group",
-        "zh_CN": "焦点 into 第一个 编辑器 Gro上"
+        "zh_CN": "焦点 into 第一个 编辑器 Group"
       },
       "description": {
         "en": "Focus into First Editor Group",
-        "zh_CN": "焦点 into 第一个 编辑器 Gro上"
+        "zh_CN": "焦点 into 第一个 编辑器 Group"
       },
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 90,
+      "rank": 97,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3171,16 +3403,16 @@
       },
       "title": {
         "en": "Focus into Second Editor Group",
-        "zh_CN": "焦点 into Second 编辑器 Gro上"
+        "zh_CN": "焦点 into Second 编辑器 Group"
       },
       "description": {
         "en": "Focus into Second Editor Group",
-        "zh_CN": "焦点 into Second 编辑器 Gro上"
+        "zh_CN": "焦点 into Second 编辑器 Group"
       },
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 91,
+      "rank": 98,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3205,16 +3437,16 @@
       },
       "title": {
         "en": "Focus into Third Editor Group",
-        "zh_CN": "焦点 into Third 编辑器 Gro上"
+        "zh_CN": "焦点 into Third 编辑器 Group"
       },
       "description": {
         "en": "Focus into Third Editor Group",
-        "zh_CN": "焦点 into Third 编辑器 Gro上"
+        "zh_CN": "焦点 into Third 编辑器 Group"
       },
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 92,
+      "rank": 99,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3250,7 +3482,7 @@
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 93,
+      "rank": 100,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3286,7 +3518,7 @@
       "category": "editor-and-window-management",
       "scope": "app",
       "recommended": false,
-      "rank": 94,
+      "rank": 101,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3321,7 +3553,7 @@
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 95,
+      "rank": 102,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3355,7 +3587,7 @@
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 96,
+      "rank": 103,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3380,16 +3612,16 @@
       },
       "title": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "description": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 97,
+      "rank": 104,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3415,16 +3647,16 @@
       },
       "title": {
         "en": "Save As",
-        "zh_CN": "保存As"
+        "zh_CN": "另存为"
       },
       "description": {
         "en": "Save As",
-        "zh_CN": "保存As"
+        "zh_CN": "另存为"
       },
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 98,
+      "rank": 105,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3458,7 +3690,7 @@
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 99,
+      "rank": 106,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3493,7 +3725,7 @@
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 100,
+      "rank": 107,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3519,16 +3751,16 @@
       },
       "title": {
         "en": "Reopen Closed Editor",
-        "zh_CN": "Re打开Closed 编辑器"
+        "zh_CN": "Reopen Closed 编辑器"
       },
       "description": {
         "en": "Reopen Closed Editor",
-        "zh_CN": "Re打开Closed 编辑器"
+        "zh_CN": "Reopen Closed 编辑器"
       },
       "category": "file_management",
       "scope": "app",
       "recommended": false,
-      "rank": 101,
+      "rank": 108,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3553,16 +3785,16 @@
       },
       "title": {
         "en": "Toggle Sidebar Visibility",
-        "zh_CN": "切换Side栏 Visibility"
+        "zh_CN": "切换Sidebar Visibility"
       },
       "description": {
         "en": "Toggle Sidebar Visibility",
-        "zh_CN": "切换Side栏 Visibility"
+        "zh_CN": "切换Sidebar Visibility"
       },
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 102,
+      "rank": 109,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3597,7 +3829,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 103,
+      "rank": 110,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3632,7 +3864,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 104,
+      "rank": 111,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3667,7 +3899,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 105,
+      "rank": 112,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3702,7 +3934,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 106,
+      "rank": 113,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3737,7 +3969,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 107,
+      "rank": 114,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3772,7 +4004,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 108,
+      "rank": 115,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3799,16 +4031,16 @@
       },
       "title": {
         "en": "Toggle Markdown Preview",
-        "zh_CN": "切换Mark下 Pre视图"
+        "zh_CN": "切换Markdown Preview"
       },
       "description": {
         "en": "Toggle Markdown Preview",
-        "zh_CN": "切换Mark下 Pre视图"
+        "zh_CN": "切换Markdown Preview"
       },
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 109,
+      "rank": 116,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3843,7 +4075,7 @@
       "category": "display",
       "scope": "app",
       "recommended": false,
-      "rank": 110,
+      "rank": 117,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3869,16 +4101,16 @@
       },
       "title": {
         "en": "Replace in Files",
-        "zh_CN": "替换 in 文件s"
+        "zh_CN": "替换 in Files"
       },
       "description": {
         "en": "Replace in Files",
-        "zh_CN": "替换 in 文件s"
+        "zh_CN": "替换 in Files"
       },
       "category": "search",
       "scope": "app",
       "recommended": false,
-      "rank": 111,
+      "rank": 118,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3913,7 +4145,7 @@
       "category": "search",
       "scope": "app",
       "recommended": false,
-      "rank": 112,
+      "rank": 119,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3923,6 +4155,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.focus-next-search-result",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Focus Next Search Result",
+        "zh_CN": "焦点 下一个 搜索 结果"
+      },
+      "description": {
+        "en": "Focus Next Search Result",
+        "zh_CN": "焦点 下一个 搜索 结果"
+      },
+      "category": "search",
+      "scope": "app",
+      "recommended": false,
+      "rank": 120,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -3948,7 +4213,7 @@
       "category": "search",
       "scope": "app",
       "recommended": false,
-      "rank": 113,
+      "rank": 121,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -3975,16 +4240,16 @@
       },
       "title": {
         "en": "Open Chat view",
-        "zh_CN": "打开Chat 视图"
+        "zh_CN": "打开聊天视图"
       },
       "description": {
         "en": "Open Chat view",
-        "zh_CN": "打开Chat 视图"
+        "zh_CN": "打开聊天视图"
       },
       "category": "chat-and-ai",
       "scope": "app",
       "recommended": false,
-      "rank": 114,
+      "rank": 122,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4020,7 +4285,7 @@
       "category": "chat-and-ai",
       "scope": "app",
       "recommended": false,
-      "rank": 115,
+      "rank": 123,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4055,7 +4320,7 @@
       "category": "chat-and-ai",
       "scope": "app",
       "recommended": false,
-      "rank": 116,
+      "rank": 124,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4092,7 +4357,7 @@
       "category": "chat-and-ai",
       "scope": "app",
       "recommended": false,
-      "rank": 117,
+      "rank": 125,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4127,7 +4392,106 @@
       "category": "chat-and-ai",
       "scope": "app",
       "recommended": false,
-      "rank": 118,
+      "rank": 126,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.accept-inline-suggestion",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Accept inline suggestion",
+        "zh_CN": "Accept inline suggestion"
+      },
+      "description": {
+        "en": "Accept inline suggestion",
+        "zh_CN": "Accept inline suggestion"
+      },
+      "category": "chat-and-ai",
+      "scope": "app",
+      "recommended": false,
+      "rank": 127,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.toggle-breakpoint",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F9"
+        ]
+      },
+      "title": {
+        "en": "Toggle Breakpoint",
+        "zh_CN": "切换断点"
+      },
+      "description": {
+        "en": "Toggle Breakpoint",
+        "zh_CN": "切换断点"
+      },
+      "category": "debug",
+      "scope": "app",
+      "recommended": false,
+      "rank": 128,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.start-continue",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Start / Continue",
+        "zh_CN": "Start / Continue"
+      },
+      "description": {
+        "en": "Start / Continue",
+        "zh_CN": "Start / Continue"
+      },
+      "category": "debug",
+      "scope": "app",
+      "recommended": false,
+      "rank": 129,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4161,7 +4525,7 @@
       "category": "debug",
       "scope": "app",
       "recommended": false,
-      "rank": 119,
+      "rank": 130,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
@@ -4171,6 +4535,72 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.pause",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F6"
+        ]
+      },
+      "title": {
+        "en": "Pause",
+        "zh_CN": "Pause"
+      },
+      "description": {
+        "en": "Pause",
+        "zh_CN": "Pause"
+      },
+      "category": "debug",
+      "scope": "app",
+      "recommended": false,
+      "rank": 131,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "vscode.step-into",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Step Into",
+        "zh_CN": "Step Into"
+      },
+      "description": {
+        "en": "Step Into",
+        "zh_CN": "Step Into"
+      },
+      "category": "debug",
+      "scope": "app",
+      "recommended": false,
+      "rank": 132,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.VisualStudioCode",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -4188,16 +4618,16 @@
       },
       "title": {
         "en": "Run Build Task",
-        "zh_CN": "Run Build Task"
+        "zh_CN": "运行生成任务"
       },
       "description": {
         "en": "Run Build Task",
-        "zh_CN": "Run Build Task"
+        "zh_CN": "运行生成任务"
       },
       "category": "tasks",
       "scope": "app",
       "recommended": false,
-      "rank": 120,
+      "rank": 133,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",

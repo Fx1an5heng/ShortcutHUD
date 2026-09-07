@@ -99,11 +99,11 @@
       },
       "title": {
         "en": "Reopen the last closed tab",
-        "zh_CN": "Re打开the 最后一个 closed 选项卡"
+        "zh_CN": "重新打开最近关闭的选项卡"
       },
       "description": {
         "en": "Reopen the last closed tab",
-        "zh_CN": "Re打开the 最后一个 closed 选项卡"
+        "zh_CN": "重新打开最近关闭的选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -134,11 +134,11 @@
       },
       "title": {
         "en": "Switch to the next tab",
-        "zh_CN": "Switch to the 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "description": {
         "en": "Switch to the next tab",
-        "zh_CN": "Switch to the 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -170,11 +170,11 @@
       },
       "title": {
         "en": "Switch to the previous tab",
-        "zh_CN": "Switch to the 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "description": {
         "en": "Switch to the previous tab",
-        "zh_CN": "Switch to the 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -205,11 +205,11 @@
       },
       "title": {
         "en": "Switch to a specific tab",
-        "zh_CN": "Switch to a specific 选项卡"
+        "zh_CN": "切换到指定选项卡"
       },
       "description": {
         "en": "Switch to a specific tab",
-        "zh_CN": "Switch to a specific 选项卡"
+        "zh_CN": "切换到指定选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -240,11 +240,11 @@
       },
       "title": {
         "en": "Switch to the last tab",
-        "zh_CN": "Switch to the 最后一个 选项卡"
+        "zh_CN": "切换到最后一个选项卡"
       },
       "description": {
         "en": "Switch to the last tab",
-        "zh_CN": "Switch to the 最后一个 选项卡"
+        "zh_CN": "切换到最后一个选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -275,11 +275,11 @@
       },
       "title": {
         "en": "Close the current tab",
-        "zh_CN": "关闭the 当前 选项卡"
+        "zh_CN": "关闭当前选项卡"
       },
       "description": {
         "en": "Close the current tab",
-        "zh_CN": "关闭the 当前 选项卡"
+        "zh_CN": "关闭当前选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -310,11 +310,11 @@
       },
       "title": {
         "en": "Close the current tab (alt)",
-        "zh_CN": "关闭the 当前 选项卡 (alt)"
+        "zh_CN": "关闭当前选项卡（备用）"
       },
       "description": {
         "en": "Close the current tab (alt)",
-        "zh_CN": "关闭the 当前 选项卡 (alt)"
+        "zh_CN": "关闭当前选项卡（备用）"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -346,11 +346,11 @@
       },
       "title": {
         "en": "Close the current window",
-        "zh_CN": "关闭the 当前 窗口"
+        "zh_CN": "关闭当前窗口"
       },
       "description": {
         "en": "Close the current window",
-        "zh_CN": "关闭the 当前 窗口"
+        "zh_CN": "关闭当前窗口"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -381,11 +381,11 @@
       },
       "title": {
         "en": "Close the current window (alt)",
-        "zh_CN": "关闭the 当前 窗口 (alt)"
+        "zh_CN": "关闭当前窗口（备用）"
       },
       "description": {
         "en": "Close the current window (alt)",
-        "zh_CN": "关闭the 当前 窗口 (alt)"
+        "zh_CN": "关闭当前窗口（备用）"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -452,11 +452,11 @@
       },
       "title": {
         "en": "New InPrivate window",
-        "zh_CN": "新建InPrivate 窗口"
+        "zh_CN": "新建 InPrivate 窗口"
       },
       "description": {
         "en": "New InPrivate window",
-        "zh_CN": "新建InPrivate 窗口"
+        "zh_CN": "新建 InPrivate 窗口"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -488,11 +488,11 @@
       },
       "title": {
         "en": "Duplicate the current tab",
-        "zh_CN": "D上licate the 当前 选项卡"
+        "zh_CN": "复制当前选项卡"
       },
       "description": {
         "en": "Duplicate the current tab",
-        "zh_CN": "D上licate the 当前 选项卡"
+        "zh_CN": "复制当前选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -523,11 +523,11 @@
       },
       "title": {
         "en": "Mute the current tab",
-        "zh_CN": "Mute the 当前 选项卡"
+        "zh_CN": "静音当前选项卡"
       },
       "description": {
         "en": "Mute the current tab",
-        "zh_CN": "Mute the 当前 选项卡"
+        "zh_CN": "静音当前选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -558,11 +558,11 @@
       },
       "title": {
         "en": "Switch to the next tab (alt)",
-        "zh_CN": "Switch to the 下一个 选项卡 (alt)"
+        "zh_CN": "切换到下一个选项卡（备用）"
       },
       "description": {
         "en": "Switch to the next tab (alt)",
-        "zh_CN": "Switch to the 下一个 选项卡 (alt)"
+        "zh_CN": "切换到下一个选项卡（备用）"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -593,11 +593,11 @@
       },
       "title": {
         "en": "Switch to the previous tab (alt)",
-        "zh_CN": "Switch to the 上一个 选项卡 (alt)"
+        "zh_CN": "切换到上一个选项卡（备用）"
       },
       "description": {
         "en": "Switch to the previous tab (alt)",
-        "zh_CN": "Switch to the 上一个 选项卡 (alt)"
+        "zh_CN": "切换到上一个选项卡（备用）"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -618,6 +618,74 @@
       "aliases": []
     },
     {
+      "id": "microsoft-edge.enter-full-screen",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Enter full screen",
+        "zh_CN": "进入全屏"
+      },
+      "description": {
+        "en": "Enter full screen",
+        "zh_CN": "进入全屏"
+      },
+      "category": "tabs-and-windows",
+      "scope": "app",
+      "recommended": false,
+      "rank": 17,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.select-the-url-in-the-address-bar",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+L",
+          "Alt+D",
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Select the URL in the address bar",
+        "zh_CN": "选择地址栏中的 URL"
+      },
+      "description": {
+        "en": "Select the URL in the address bar",
+        "zh_CN": "选择地址栏中的 URL"
+      },
+      "category": "address-bar",
+      "scope": "app",
+      "recommended": false,
+      "rank": 18,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
       "id": "microsoft-edge.open-a-search-query-in-the-address-bar",
       "trigger": {
         "kind": "sequence",
@@ -628,16 +696,16 @@
       },
       "title": {
         "en": "Open a search query in the address bar",
-        "zh_CN": "打开a 搜索 query in the 地址栏"
+        "zh_CN": "在地址栏中打开搜索查询"
       },
       "description": {
         "en": "Open a search query in the address bar",
-        "zh_CN": "打开a 搜索 query in the 地址栏"
+        "zh_CN": "在地址栏中打开搜索查询"
       },
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -671,7 +739,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -698,16 +766,16 @@
       },
       "title": {
         "en": "Paste and search or paste and go",
-        "zh_CN": "粘贴and 搜索 or 粘贴and go"
+        "zh_CN": "粘贴并搜索，或粘贴并转到"
       },
       "description": {
         "en": "Paste and search or paste and go",
-        "zh_CN": "粘贴and 搜索 or 粘贴and go"
+        "zh_CN": "粘贴并搜索，或粘贴并转到"
       },
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -733,16 +801,16 @@
       },
       "title": {
         "en": "Open Settings and more menu",
-        "zh_CN": "打开设置 and more 菜单"
+        "zh_CN": "打开“设置及更多”菜单"
       },
       "description": {
         "en": "Open Settings and more menu",
-        "zh_CN": "打开设置 and more 菜单"
+        "zh_CN": "打开“设置及更多”菜单"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -776,7 +844,7 @@
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 23,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -802,16 +870,16 @@
       },
       "title": {
         "en": "Open Downloads",
-        "zh_CN": "打开下loads"
+        "zh_CN": "打开下载内容"
       },
       "description": {
         "en": "Open Downloads",
-        "zh_CN": "打开下loads"
+        "zh_CN": "打开下载内容"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -847,7 +915,7 @@
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 23,
+      "rank": 25,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -874,16 +942,16 @@
       },
       "title": {
         "en": "Open Collections",
-        "zh_CN": "打开Collections"
+        "zh_CN": "打开集锦"
       },
       "description": {
         "en": "Open Collections",
-        "zh_CN": "打开Collections"
+        "zh_CN": "打开集锦"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -910,16 +978,16 @@
       },
       "title": {
         "en": "Open search in sidebar",
-        "zh_CN": "打开搜索 in side栏"
+        "zh_CN": "在侧边栏中打开搜索"
       },
       "description": {
         "en": "Open search in sidebar",
-        "zh_CN": "打开搜索 in side栏"
+        "zh_CN": "在侧边栏中打开搜索"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -946,16 +1014,16 @@
       },
       "title": {
         "en": "Show or hide the favorites bar",
-        "zh_CN": "显示or 隐藏the 收藏夹 栏"
+        "zh_CN": "显示或隐藏收藏夹栏"
       },
       "description": {
         "en": "Show or hide the favorites bar",
-        "zh_CN": "显示or 隐藏the 收藏夹 栏"
+        "zh_CN": "显示或隐藏收藏夹栏"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 26,
+      "rank": 28,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -981,16 +1049,16 @@
       },
       "title": {
         "en": "Save the current tab as a favorite",
-        "zh_CN": "保存the 当前 选项卡 as a favorite"
+        "zh_CN": "将当前选项卡保存为收藏夹"
       },
       "description": {
         "en": "Save the current tab as a favorite",
-        "zh_CN": "保存the 当前 选项卡 as a favorite"
+        "zh_CN": "将当前选项卡保存为收藏夹"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1017,16 +1085,16 @@
       },
       "title": {
         "en": "Save all open tabs as favorites in a new folder",
-        "zh_CN": "保存全部 打开选项卡s as 收藏夹 in a 新建文件夹"
+        "zh_CN": "保存全部 打开tabs as 收藏夹 in a 新建文件夹"
       },
       "description": {
         "en": "Save all open tabs as favorites in a new folder",
-        "zh_CN": "保存全部 打开选项卡s as 收藏夹 in a 新建文件夹"
+        "zh_CN": "保存全部 打开tabs as 收藏夹 in a 新建文件夹"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 30,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1036,6 +1104,40 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.open-developer-tools",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+Shift+I",
+          "F12"
+        ]
+      },
+      "title": {
+        "en": "Open Developer Tools",
+        "zh_CN": "打开开发者工具"
+      },
+      "description": {
+        "en": "Open Developer Tools",
+        "zh_CN": "打开开发者工具"
+      },
+      "category": "browser-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 31,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1053,16 +1155,16 @@
       },
       "title": {
         "en": "Open Send feedback dialog",
-        "zh_CN": "打开Send feed后退 dialog"
+        "zh_CN": "打开Send feedback dialog"
       },
       "description": {
         "en": "Open Send feedback dialog",
-        "zh_CN": "打开Send feed后退 dialog"
+        "zh_CN": "打开Send feedback dialog"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1089,16 +1191,16 @@
       },
       "title": {
         "en": "Sign in as different user / browse as guest",
-        "zh_CN": "Sign in as different user / b行se as guest"
+        "zh_CN": "Sign in as different user / browse as guest"
       },
       "description": {
         "en": "Sign in as different user / browse as guest",
-        "zh_CN": "Sign in as different user / b行se as guest"
+        "zh_CN": "Sign in as different user / browse as guest"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 30,
+      "rank": 33,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1125,16 +1227,16 @@
       },
       "title": {
         "en": "Open clear browsing data options",
-        "zh_CN": "打开clear b行sing data options"
+        "zh_CN": "打开clear browsing data options"
       },
       "description": {
         "en": "Open clear browsing data options",
-        "zh_CN": "打开clear b行sing data options"
+        "zh_CN": "打开clear browsing data options"
       },
       "category": "browser-features",
       "scope": "app",
       "recommended": false,
-      "rank": 31,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1144,6 +1246,139 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.open-help",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F1"
+        ]
+      },
+      "title": {
+        "en": "Open Help",
+        "zh_CN": "打开Help"
+      },
+      "description": {
+        "en": "Open Help",
+        "zh_CN": "打开Help"
+      },
+      "category": "browser-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 35,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.turn-caret-browsing-on-or-off",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F7"
+        ]
+      },
+      "title": {
+        "en": "Turn caret browsing on or off",
+        "zh_CN": "Turn caret browsing on or off"
+      },
+      "description": {
+        "en": "Turn caret browsing on or off",
+        "zh_CN": "Turn caret browsing on or off"
+      },
+      "category": "browser-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 36,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.enter-or-exit-immersive-reader",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F9"
+        ]
+      },
+      "title": {
+        "en": "Enter or exit Immersive Reader",
+        "zh_CN": "Enter or exit Immersive Reader"
+      },
+      "description": {
+        "en": "Enter or exit Immersive Reader",
+        "zh_CN": "Enter or exit Immersive Reader"
+      },
+      "category": "browser-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 37,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.open-find-on-page",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+F",
+          "F3"
+        ]
+      },
+      "title": {
+        "en": "Open find on page",
+        "zh_CN": "在页面中打开查找"
+      },
+      "description": {
+        "en": "Open find on page",
+        "zh_CN": "在页面中打开查找"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 38,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1169,7 +1404,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 32,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1205,7 +1440,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1215,6 +1450,40 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.reload-the-current-page",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Ctrl+R",
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Reload the current page",
+        "zh_CN": "重新加载 the 当前 页面"
+      },
+      "description": {
+        "en": "Reload the current page",
+        "zh_CN": "重新加载 the 当前 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 41,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1240,7 +1509,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 42,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1274,7 +1543,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1309,7 +1578,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 44,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1345,7 +1614,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 37,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1380,7 +1649,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 38,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1415,7 +1684,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 39,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1451,7 +1720,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1478,16 +1747,16 @@
       },
       "title": {
         "en": "Paste without formatting",
-        "zh_CN": "粘贴without 格式ting"
+        "zh_CN": "粘贴without formatting"
       },
       "description": {
         "en": "Paste without formatting",
-        "zh_CN": "粘贴without 格式ting"
+        "zh_CN": "粘贴without formatting"
       },
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1522,7 +1791,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1557,7 +1826,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1592,7 +1861,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 52,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1602,6 +1871,173 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.stop-loading-page-close-dialog-or-pop-up",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Esc"
+        ]
+      },
+      "title": {
+        "en": "Stop loading page; close dialog or pop-up",
+        "zh_CN": "Stop loading 页面; 关闭dialog or pop-上"
+      },
+      "description": {
+        "en": "Stop loading page; close dialog or pop-up",
+        "zh_CN": "Stop loading 页面; 关闭dialog or pop-上"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 53,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.scroll-down-a-screen",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Space",
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Scroll down a screen",
+        "zh_CN": "Scroll 下 a screen"
+      },
+      "description": {
+        "en": "Scroll down a screen",
+        "zh_CN": "Scroll 下 a screen"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.scroll-up-a-screen",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Shift+Space",
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "Scroll up a screen",
+        "zh_CN": "Scroll 上 a screen"
+      },
+      "description": {
+        "en": "Scroll up a screen",
+        "zh_CN": "Scroll 上 a screen"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.go-to-top-of-page",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Go to top of page",
+        "zh_CN": "Go to top of 页面"
+      },
+      "description": {
+        "en": "Go to top of page",
+        "zh_CN": "Go to top of 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 56,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.go-to-bottom-of-page",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Go to bottom of page",
+        "zh_CN": "Go to bottom of 页面"
+      },
+      "description": {
+        "en": "Go to bottom of page",
+        "zh_CN": "Go to bottom of 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 57,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1627,7 +2063,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1662,7 +2098,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 59,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1688,16 +2124,16 @@
       },
       "title": {
         "en": "Open home page in current tab",
-        "zh_CN": "打开主页 页面 in 当前 选项卡"
+        "zh_CN": "在当前选项卡打开主页"
       },
       "description": {
         "en": "Open home page in current tab",
-        "zh_CN": "打开主页 页面 in 当前 选项卡"
+        "zh_CN": "在当前选项卡打开主页"
       },
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 60,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1707,6 +2143,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.move-focus-to-next-pane",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F6"
+        ]
+      },
+      "title": {
+        "en": "Move focus to next pane",
+        "zh_CN": "将焦点移到下一个窗格"
+      },
+      "description": {
+        "en": "Move focus to next pane",
+        "zh_CN": "将焦点移到下一个窗格"
+      },
+      "category": "focus",
+      "scope": "app",
+      "recommended": false,
+      "rank": 61,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1732,7 +2201,7 @@
       "category": "focus",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 62,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1767,7 +2236,7 @@
       "category": "focus",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 63,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1803,7 +2272,7 @@
       "category": "focus",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 64,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1830,16 +2299,16 @@
       },
       "title": {
         "en": "Set focus on the app bar toolbar (first item)",
-        "zh_CN": "Set 焦点 on the app 栏 tool栏 (第一个 item)"
+        "zh_CN": "Set 焦点 on the app 栏 toolbar (第一个 item)"
       },
       "description": {
         "en": "Set focus on the app bar toolbar (first item)",
-        "zh_CN": "Set 焦点 on the app 栏 tool栏 (第一个 item)"
+        "zh_CN": "Set 焦点 on the app 栏 toolbar (第一个 item)"
       },
       "category": "focus",
       "scope": "app",
       "recommended": false,
-      "rank": 51,
+      "rank": 65,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
@@ -1849,6 +2318,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-edge.set-focus-on-settings-and-more-button",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F10"
+        ]
+      },
+      "title": {
+        "en": "Set focus on Settings and more button",
+        "zh_CN": "Set 焦点 on 设置 and more button"
+      },
+      "description": {
+        "en": "Set focus on Settings and more button",
+        "zh_CN": "Set 焦点 on 设置 and more button"
+      },
+      "category": "focus",
+      "scope": "app",
+      "recommended": false,
+      "rank": 66,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Edge",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1865,16 +2367,16 @@
       },
       "title": {
         "en": "Open context menu",
-        "zh_CN": "打开con文本 菜单"
+        "zh_CN": "打开context 菜单"
       },
       "description": {
         "en": "Open context menu",
-        "zh_CN": "打开con文本 菜单"
+        "zh_CN": "打开context 菜单"
       },
       "category": "focus",
       "scope": "app",
       "recommended": false,
-      "rank": 52,
+      "rank": 67,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",

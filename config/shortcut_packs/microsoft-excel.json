@@ -207,11 +207,11 @@
       },
       "title": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "description": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -242,11 +242,11 @@
       },
       "title": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "description": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -348,11 +348,11 @@
       },
       "title": {
         "en": "Redo or repeat last action",
-        "zh_CN": "重做 or repeat 最后一个 action"
+        "zh_CN": "重做或重复上一步操作"
       },
       "description": {
         "en": "Redo or repeat last action",
-        "zh_CN": "重做 or repeat 最后一个 action"
+        "zh_CN": "重做或重复上一步操作"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -373,6 +373,39 @@
       "aliases": []
     },
     {
+      "id": "microsoft-excel.remove-cell-contents",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Delete"
+        ]
+      },
+      "title": {
+        "en": "Remove cell contents",
+        "zh_CN": "Remove 单元格 contents"
+      },
+      "description": {
+        "en": "Remove cell contents",
+        "zh_CN": "Remove 单元格 contents"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 10,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
       "id": "microsoft-excel.find",
       "trigger": {
         "kind": "combo",
@@ -383,16 +416,16 @@
       },
       "title": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "description": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "category": "frequently-used",
       "scope": "app",
       "recommended": true,
-      "rank": 10,
+      "rank": 11,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -418,16 +451,16 @@
       },
       "title": {
         "en": "Find and replace",
-        "zh_CN": "查找and 替换"
+        "zh_CN": "查找和替换"
       },
       "description": {
         "en": "Find and replace",
-        "zh_CN": "查找and 替换"
+        "zh_CN": "查找和替换"
       },
       "category": "frequently-used",
       "scope": "app",
       "recommended": false,
-      "rank": 11,
+      "rank": 12,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -462,7 +495,7 @@
       "category": "frequently-used",
       "scope": "app",
       "recommended": false,
-      "rank": 12,
+      "rank": 13,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -488,16 +521,16 @@
       },
       "title": {
         "en": "Move to beginning of worksheet",
-        "zh_CN": "移动to beginning of 工作表"
+        "zh_CN": "移到工作表开头"
       },
       "description": {
         "en": "Move to beginning of worksheet",
-        "zh_CN": "移动to beginning of 工作表"
+        "zh_CN": "移到工作表开头"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 13,
+      "rank": 14,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -532,7 +565,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 14,
+      "rank": 15,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -567,7 +600,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 15,
+      "rank": 16,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -602,7 +635,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 16,
+      "rank": 17,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -637,7 +670,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 18,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -672,7 +705,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -698,16 +731,16 @@
       },
       "title": {
         "en": "Open Go To dialog",
-        "zh_CN": "打开Go To dialog"
+        "zh_CN": "打开“转到”对话框"
       },
       "description": {
         "en": "Open Go To dialog",
-        "zh_CN": "打开Go To dialog"
+        "zh_CN": "打开“转到”对话框"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -743,7 +776,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -779,7 +812,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -805,16 +838,16 @@
       },
       "title": {
         "en": "Select entire worksheet",
-        "zh_CN": "选择entire 工作表"
+        "zh_CN": "选择整个工作表"
       },
       "description": {
         "en": "Select entire worksheet",
-        "zh_CN": "选择entire 工作表"
+        "zh_CN": "选择整个工作表"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 23,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -850,7 +883,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 23,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -886,7 +919,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 25,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -912,16 +945,16 @@
       },
       "title": {
         "en": "Select entire column",
-        "zh_CN": "选择entire 列"
+        "zh_CN": "选择整列"
       },
       "description": {
         "en": "Select entire column",
-        "zh_CN": "选择entire 列"
+        "zh_CN": "选择整列"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -947,16 +980,16 @@
       },
       "title": {
         "en": "Select entire row",
-        "zh_CN": "选择entire 行"
+        "zh_CN": "选择整行"
       },
       "description": {
         "en": "Select entire row",
-        "zh_CN": "选择entire 行"
+        "zh_CN": "选择整行"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 26,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -966,6 +999,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.turn-extend-mode-on",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F8"
+        ]
+      },
+      "title": {
+        "en": "Turn extend mode on",
+        "zh_CN": "开启扩展模式"
+      },
+      "description": {
+        "en": "Turn extend mode on",
+        "zh_CN": "开启扩展模式"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 28,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -982,16 +1048,16 @@
       },
       "title": {
         "en": "Start a new line in the same cell",
-        "zh_CN": "Start a 新建line in the same 单元格"
+        "zh_CN": "在同一单元格中换行"
       },
       "description": {
         "en": "Start a new line in the same cell",
-        "zh_CN": "Start a 新建line in the same 单元格"
+        "zh_CN": "在同一单元格中换行"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1026,7 +1092,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 30,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1052,16 +1118,16 @@
       },
       "title": {
         "en": "Open Format Cells dialog",
-        "zh_CN": "打开格式 单元格s dialog"
+        "zh_CN": "打开“设置单元格格式”对话框"
       },
       "description": {
         "en": "Open Format Cells dialog",
-        "zh_CN": "打开格式 单元格s dialog"
+        "zh_CN": "打开“设置单元格格式”对话框"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 31,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1096,7 +1162,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 30,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1131,7 +1197,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 31,
+      "rank": 33,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1166,7 +1232,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 32,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1192,16 +1258,16 @@
       },
       "title": {
         "en": "Strikethrough",
-        "zh_CN": "Strikethrough"
+        "zh_CN": "删除线"
       },
       "description": {
         "en": "Strikethrough",
-        "zh_CN": "Strikethrough"
+        "zh_CN": "删除线"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 35,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1228,16 +1294,16 @@
       },
       "title": {
         "en": "Apply General number format",
-        "zh_CN": "Apply General number 格式"
+        "zh_CN": "应用常规数字格式"
       },
       "description": {
         "en": "Apply General number format",
-        "zh_CN": "Apply General number 格式"
+        "zh_CN": "应用常规数字格式"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 36,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1264,16 +1330,16 @@
       },
       "title": {
         "en": "Apply Currency format",
-        "zh_CN": "Apply Currency 格式"
+        "zh_CN": "应用货币格式"
       },
       "description": {
         "en": "Apply Currency format",
-        "zh_CN": "Apply Currency 格式"
+        "zh_CN": "应用货币格式"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 37,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1300,16 +1366,16 @@
       },
       "title": {
         "en": "Apply Percentage format",
-        "zh_CN": "Apply Percentage 格式"
+        "zh_CN": "应用百分比格式"
       },
       "description": {
         "en": "Apply Percentage format",
-        "zh_CN": "Apply Percentage 格式"
+        "zh_CN": "应用百分比格式"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 38,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1336,16 +1402,16 @@
       },
       "title": {
         "en": "Apply Date format",
-        "zh_CN": "Apply Date 格式"
+        "zh_CN": "应用日期格式"
       },
       "description": {
         "en": "Apply Date format",
-        "zh_CN": "Apply Date 格式"
+        "zh_CN": "应用日期格式"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 37,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1381,7 +1447,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 38,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1417,7 +1483,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 39,
+      "rank": 41,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1453,7 +1519,7 @@
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 42,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1480,16 +1546,16 @@
       },
       "title": {
         "en": "Remove outline border",
-        "zh_CN": "Re移动outline border"
+        "zh_CN": "Remove outline border"
       },
       "description": {
         "en": "Remove outline border",
-        "zh_CN": "Re移动outline border"
+        "zh_CN": "Remove outline border"
       },
       "category": "cell-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1499,6 +1565,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.edit-active-cell",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F2"
+        ]
+      },
+      "title": {
+        "en": "Edit active cell",
+        "zh_CN": "编辑活动单元格"
+      },
+      "description": {
+        "en": "Edit active cell",
+        "zh_CN": "编辑活动单元格"
+      },
+      "category": "data-entry-and-editing",
+      "scope": "app",
+      "recommended": false,
+      "rank": 44,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1524,7 +1623,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1559,7 +1658,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1595,7 +1694,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1630,7 +1729,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1665,7 +1764,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1692,16 +1791,16 @@
       },
       "title": {
         "en": "Insert blank cells",
-        "zh_CN": "插入blank 单元格s"
+        "zh_CN": "插入blank cells"
       },
       "description": {
         "en": "Insert blank cells",
-        "zh_CN": "插入blank 单元格s"
+        "zh_CN": "插入blank cells"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1727,16 +1826,16 @@
       },
       "title": {
         "en": "Delete selected cells",
-        "zh_CN": "删除所选 单元格s"
+        "zh_CN": "删除所选 cells"
       },
       "description": {
         "en": "Delete selected cells",
-        "zh_CN": "删除所选 单元格s"
+        "zh_CN": "删除所选 cells"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1771,7 +1870,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 52,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1806,7 +1905,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 53,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1841,7 +1940,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 51,
+      "rank": 54,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1876,7 +1975,7 @@
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 52,
+      "rank": 55,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1902,16 +2001,16 @@
       },
       "title": {
         "en": "Hide selected rows",
-        "zh_CN": "隐藏所选 行s"
+        "zh_CN": "隐藏所选 rows"
       },
       "description": {
         "en": "Hide selected rows",
-        "zh_CN": "隐藏所选 行s"
+        "zh_CN": "隐藏所选 rows"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 53,
+      "rank": 56,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1937,16 +2036,16 @@
       },
       "title": {
         "en": "Hide selected columns",
-        "zh_CN": "隐藏所选 列s"
+        "zh_CN": "隐藏所选 columns"
       },
       "description": {
         "en": "Hide selected columns",
-        "zh_CN": "隐藏所选 列s"
+        "zh_CN": "隐藏所选 columns"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 54,
+      "rank": 57,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -1972,16 +2071,16 @@
       },
       "title": {
         "en": "AutoSum",
-        "zh_CN": "AutoSum"
+        "zh_CN": "自动求和"
       },
       "description": {
         "en": "AutoSum",
-        "zh_CN": "AutoSum"
+        "zh_CN": "自动求和"
       },
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 55,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2016,7 +2115,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 56,
+      "rank": 59,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2026,6 +2125,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.calculate-all-worksheets",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F9"
+        ]
+      },
+      "title": {
+        "en": "Calculate all worksheets",
+        "zh_CN": "Calculate 全部 worksheets"
+      },
+      "description": {
+        "en": "Calculate all worksheets",
+        "zh_CN": "Calculate 全部 worksheets"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 60,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2051,7 +2183,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 57,
+      "rank": 61,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2061,6 +2193,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.cycle-absolute-and-relative-references",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F4"
+        ]
+      },
+      "title": {
+        "en": "Cycle absolute and relative references",
+        "zh_CN": "Cycle absolute and relative references"
+      },
+      "description": {
+        "en": "Cycle absolute and relative references",
+        "zh_CN": "Cycle absolute and relative references"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 62,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2086,7 +2251,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 58,
+      "rank": 63,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2096,6 +2261,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-excel.create-chart-on-new-sheet",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Create chart on new sheet",
+        "zh_CN": "Create 图表 on 新建sheet"
+      },
+      "description": {
+        "en": "Create chart on new sheet",
+        "zh_CN": "Create 图表 on 新建sheet"
+      },
+      "category": "formulas-and-functions",
+      "scope": "app",
+      "recommended": false,
+      "rank": 64,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Excel",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2121,7 +2319,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 59,
+      "rank": 65,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2156,7 +2354,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 60,
+      "rank": 66,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2191,7 +2389,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 61,
+      "rank": 67,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
@@ -2227,7 +2425,7 @@
       "category": "formulas-and-functions",
       "scope": "app",
       "recommended": false,
-      "rank": 62,
+      "rank": 68,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",

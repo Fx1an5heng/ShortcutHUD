@@ -92,6 +92,40 @@
       "aliases": []
     },
     {
+      "id": "windows-terminal.toggle-full-screen",
+      "trigger": {
+        "kind": "sequence",
+        "keys": [
+          "Alt+Enter",
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Toggle full-screen",
+        "zh_CN": "切换全屏"
+      },
+      "description": {
+        "en": "Toggle full-screen",
+        "zh_CN": "切换全屏"
+      },
+      "category": "application",
+      "scope": "app",
+      "recommended": false,
+      "rank": 2,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.WindowsTerminal",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
       "id": "windows-terminal.open-new-tab-dropdown",
       "trigger": {
         "kind": "combo",
@@ -103,16 +137,16 @@
       },
       "title": {
         "en": "Open new tab dropdown",
-        "zh_CN": "打开新建选项卡 drop下"
+        "zh_CN": "打开新建选项卡下拉菜单"
       },
       "description": {
         "en": "Open new tab dropdown",
-        "zh_CN": "打开新建选项卡 drop下"
+        "zh_CN": "打开新建选项卡下拉菜单"
       },
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 2,
+      "rank": 3,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -138,16 +172,16 @@
       },
       "title": {
         "en": "Open settings UI",
-        "zh_CN": "打开设置 UI"
+        "zh_CN": "打开设置界面"
       },
       "description": {
         "en": "Open settings UI",
-        "zh_CN": "打开设置 UI"
+        "zh_CN": "打开设置界面"
       },
       "category": "application",
       "scope": "app",
       "recommended": true,
-      "rank": 3,
+      "rank": 4,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -183,7 +217,7 @@
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 4,
+      "rank": 5,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -210,16 +244,16 @@
       },
       "title": {
         "en": "Open default settings file",
-        "zh_CN": "打开default 设置 文件"
+        "zh_CN": "打开默认设置文件"
       },
       "description": {
         "en": "Open default settings file",
-        "zh_CN": "打开default 设置 文件"
+        "zh_CN": "打开默认设置文件"
       },
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 5,
+      "rank": 6,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -255,7 +289,7 @@
       "category": "application",
       "scope": "app",
       "recommended": true,
-      "rank": 6,
+      "rank": 7,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -282,16 +316,16 @@
       },
       "title": {
         "en": "Toggle command palette",
-        "zh_CN": "切换命令 palette"
+        "zh_CN": "切换命令面板"
       },
       "description": {
         "en": "Toggle command palette",
-        "zh_CN": "切换命令 palette"
+        "zh_CN": "切换命令面板"
       },
       "category": "application",
       "scope": "app",
       "recommended": true,
-      "rank": 7,
+      "rank": 8,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -326,7 +360,7 @@
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 8,
+      "rank": 9,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -352,16 +386,16 @@
       },
       "title": {
         "en": "Open system menu",
-        "zh_CN": "打开system 菜单"
+        "zh_CN": "打开系统菜单"
       },
       "description": {
         "en": "Open system menu",
-        "zh_CN": "打开system 菜单"
+        "zh_CN": "打开系统菜单"
       },
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 9,
+      "rank": 10,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -388,16 +422,16 @@
       },
       "title": {
         "en": "Show command suggestions",
-        "zh_CN": "显示命令 suggestions"
+        "zh_CN": "显示命令建议"
       },
       "description": {
         "en": "Show command suggestions",
-        "zh_CN": "显示命令 suggestions"
+        "zh_CN": "显示命令建议"
       },
       "category": "application",
       "scope": "app",
       "recommended": false,
-      "rank": 10,
+      "rank": 11,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -433,7 +467,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": true,
-      "rank": 11,
+      "rank": 12,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -469,7 +503,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 12,
+      "rank": 13,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -496,16 +530,16 @@
       },
       "title": {
         "en": "Duplicate current tab",
-        "zh_CN": "D上licate 当前 选项卡"
+        "zh_CN": "复制当前选项卡"
       },
       "description": {
         "en": "Duplicate current tab",
-        "zh_CN": "D上licate 当前 选项卡"
+        "zh_CN": "复制当前选项卡"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 13,
+      "rank": 14,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -540,7 +574,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 14,
+      "rank": 15,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -576,7 +610,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 15,
+      "rank": 16,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -603,16 +637,16 @@
       },
       "title": {
         "en": "Open new tab with profile 1",
-        "zh_CN": "打开新建选项卡 with pro文件 1"
+        "zh_CN": "打开新建选项卡 with profile 1"
       },
       "description": {
         "en": "Open new tab with profile 1",
-        "zh_CN": "打开新建选项卡 with pro文件 1"
+        "zh_CN": "打开新建选项卡 with profile 1"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 16,
+      "rank": 17,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -639,16 +673,16 @@
       },
       "title": {
         "en": "Open new tab with profile 2",
-        "zh_CN": "打开新建选项卡 with pro文件 2"
+        "zh_CN": "打开新建选项卡 with profile 2"
       },
       "description": {
         "en": "Open new tab with profile 2",
-        "zh_CN": "打开新建选项卡 with pro文件 2"
+        "zh_CN": "打开新建选项卡 with profile 2"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 18,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -675,16 +709,16 @@
       },
       "title": {
         "en": "Open new tab with profile 3",
-        "zh_CN": "打开新建选项卡 with pro文件 3"
+        "zh_CN": "打开新建选项卡 with profile 3"
       },
       "description": {
         "en": "Open new tab with profile 3",
-        "zh_CN": "打开新建选项卡 with pro文件 3"
+        "zh_CN": "打开新建选项卡 with profile 3"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -711,16 +745,16 @@
       },
       "title": {
         "en": "Open new tab with profile 4",
-        "zh_CN": "打开新建选项卡 with pro文件 4"
+        "zh_CN": "打开新建选项卡 with profile 4"
       },
       "description": {
         "en": "Open new tab with profile 4",
-        "zh_CN": "打开新建选项卡 with pro文件 4"
+        "zh_CN": "打开新建选项卡 with profile 4"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -747,16 +781,16 @@
       },
       "title": {
         "en": "Open new tab with profile 5",
-        "zh_CN": "打开新建选项卡 with pro文件 5"
+        "zh_CN": "打开新建选项卡 with profile 5"
       },
       "description": {
         "en": "Open new tab with profile 5",
-        "zh_CN": "打开新建选项卡 with pro文件 5"
+        "zh_CN": "打开新建选项卡 with profile 5"
       },
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -792,7 +826,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -828,7 +862,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 23,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -864,7 +898,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 23,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -900,7 +934,7 @@
       "category": "tab-management",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 25,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -927,16 +961,16 @@
       },
       "title": {
         "en": "Close current pane",
-        "zh_CN": "关闭当前 pane"
+        "zh_CN": "关闭当前窗格"
       },
       "description": {
         "en": "Close current pane",
-        "zh_CN": "关闭当前 pane"
+        "zh_CN": "关闭当前窗格"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -963,16 +997,16 @@
       },
       "title": {
         "en": "Duplicate pane (horizontal split)",
-        "zh_CN": "D上licate pane (horizontal split)"
+        "zh_CN": "复制窗格（水平拆分）"
       },
       "description": {
         "en": "Duplicate pane (horizontal split)",
-        "zh_CN": "D上licate pane (horizontal split)"
+        "zh_CN": "复制窗格（水平拆分）"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 26,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -999,16 +1033,16 @@
       },
       "title": {
         "en": "Duplicate pane (vertical split)",
-        "zh_CN": "D上licate pane (vertical split)"
+        "zh_CN": "复制窗格（垂直拆分）"
       },
       "description": {
         "en": "Duplicate pane (vertical split)",
-        "zh_CN": "D上licate pane (vertical split)"
+        "zh_CN": "复制窗格（垂直拆分）"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 28,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1035,16 +1069,16 @@
       },
       "title": {
         "en": "Resize pane down",
-        "zh_CN": "Resize pane 下"
+        "zh_CN": "向下调整窗格大小"
       },
       "description": {
         "en": "Resize pane down",
-        "zh_CN": "Resize pane 下"
+        "zh_CN": "向下调整窗格大小"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1071,16 +1105,16 @@
       },
       "title": {
         "en": "Resize pane up",
-        "zh_CN": "Resize pane 上"
+        "zh_CN": "向上调整窗格大小"
       },
       "description": {
         "en": "Resize pane up",
-        "zh_CN": "Resize pane 上"
+        "zh_CN": "向上调整窗格大小"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 30,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1107,16 +1141,16 @@
       },
       "title": {
         "en": "Resize pane left",
-        "zh_CN": "Resize pane 左"
+        "zh_CN": "向左调整窗格大小"
       },
       "description": {
         "en": "Resize pane left",
-        "zh_CN": "Resize pane 左"
+        "zh_CN": "向左调整窗格大小"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 30,
+      "rank": 31,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1143,16 +1177,16 @@
       },
       "title": {
         "en": "Resize pane right",
-        "zh_CN": "Resize pane 右"
+        "zh_CN": "向右调整窗格大小"
       },
       "description": {
         "en": "Resize pane right",
-        "zh_CN": "Resize pane 右"
+        "zh_CN": "向右调整窗格大小"
       },
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 31,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1187,7 +1221,7 @@
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 32,
+      "rank": 33,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1222,7 +1256,7 @@
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1257,7 +1291,7 @@
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 35,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1292,7 +1326,7 @@
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 36,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1328,7 +1362,7 @@
       "category": "pane-management",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 37,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1354,16 +1388,16 @@
       },
       "title": {
         "en": "Copy to clipboard",
-        "zh_CN": "复制to clipboard"
+        "zh_CN": "复制到剪贴板"
       },
       "description": {
         "en": "Copy to clipboard",
-        "zh_CN": "复制to clipboard"
+        "zh_CN": "复制到剪贴板"
       },
       "category": "clipboard-and-selection",
       "scope": "app",
       "recommended": false,
-      "rank": 37,
+      "rank": 38,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1397,7 +1431,7 @@
       "category": "clipboard-and-selection",
       "scope": "app",
       "recommended": false,
-      "rank": 38,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1432,7 +1466,7 @@
       "category": "clipboard-and-selection",
       "scope": "app",
       "recommended": false,
-      "rank": 39,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1468,7 +1502,7 @@
       "category": "clipboard-and-selection",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 41,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1495,16 +1529,16 @@
       },
       "title": {
         "en": "Scroll down one line",
-        "zh_CN": "Scroll 下 one line"
+        "zh_CN": "向下滚动一行"
       },
       "description": {
         "en": "Scroll down one line",
-        "zh_CN": "Scroll 下 one line"
+        "zh_CN": "向下滚动一行"
       },
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 42,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1540,7 +1574,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1576,7 +1610,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 44,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1612,7 +1646,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1648,7 +1682,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1684,7 +1718,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1720,7 +1754,7 @@
       "category": "scrollback",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1746,16 +1780,16 @@
       },
       "title": {
         "en": "Increase font size",
-        "zh_CN": "增大 字体大小"
+        "zh_CN": "增大字体大小"
       },
       "description": {
         "en": "Increase font size",
-        "zh_CN": "增大 字体大小"
+        "zh_CN": "增大字体大小"
       },
       "category": "font-size",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1781,16 +1815,16 @@
       },
       "title": {
         "en": "Decrease font size",
-        "zh_CN": "减小 字体大小"
+        "zh_CN": "减小字体大小"
       },
       "description": {
         "en": "Decrease font size",
-        "zh_CN": "减小 字体大小"
+        "zh_CN": "减小字体大小"
       },
       "category": "font-size",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
@@ -1825,7 +1859,7 @@
       "category": "font-size",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",

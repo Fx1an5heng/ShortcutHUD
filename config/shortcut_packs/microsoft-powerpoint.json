@@ -36,7 +36,7 @@
     },
     "slides": {
       "en": "Slides",
-      "zh_CN": "幻灯片s"
+      "zh_CN": "Slides"
     },
     "slide-show-and-view": {
       "en": "Slide show and view",
@@ -44,7 +44,7 @@
     },
     "objects": {
       "en": "Objects",
-      "zh_CN": "对象s"
+      "zh_CN": "Objects"
     },
     "text-editing": {
       "en": "Text editing",
@@ -141,11 +141,11 @@
       },
       "title": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "description": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -177,11 +177,11 @@
       },
       "title": {
         "en": "Save As",
-        "zh_CN": "保存As"
+        "zh_CN": "另存为"
       },
       "description": {
         "en": "Save As",
-        "zh_CN": "保存As"
+        "zh_CN": "另存为"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -282,11 +282,11 @@
       },
       "title": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "description": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -317,11 +317,11 @@
       },
       "title": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "description": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -529,11 +529,11 @@
       },
       "title": {
         "en": "Close PowerPoint",
-        "zh_CN": "关闭PowerPoint"
+        "zh_CN": "关闭 PowerPoint"
       },
       "description": {
         "en": "Close PowerPoint",
-        "zh_CN": "关闭PowerPoint"
+        "zh_CN": "关闭 PowerPoint"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -600,11 +600,11 @@
       },
       "title": {
         "en": "Duplicate selected slide",
-        "zh_CN": "D上licate 所选 幻灯片"
+        "zh_CN": "复制所选幻灯片"
       },
       "description": {
         "en": "Duplicate selected slide",
-        "zh_CN": "D上licate 所选 幻灯片"
+        "zh_CN": "复制所选幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -619,6 +619,72 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.next-slide",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "PageDown"
+        ]
+      },
+      "title": {
+        "en": "Next slide",
+        "zh_CN": "下一个 幻灯片"
+      },
+      "description": {
+        "en": "Next slide",
+        "zh_CN": "下一个 幻灯片"
+      },
+      "category": "slides",
+      "scope": "app",
+      "recommended": false,
+      "rank": 17,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.previous-slide",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "PageUp"
+        ]
+      },
+      "title": {
+        "en": "Previous slide",
+        "zh_CN": "上一个 幻灯片"
+      },
+      "description": {
+        "en": "Previous slide",
+        "zh_CN": "上一个 幻灯片"
+      },
+      "category": "slides",
+      "scope": "app",
+      "recommended": false,
+      "rank": 18,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -644,7 +710,7 @@
       "category": "slides",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -679,7 +745,7 @@
       "category": "slides",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -715,7 +781,7 @@
       "category": "slides",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -751,7 +817,7 @@
       "category": "slides",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -761,6 +827,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.start-slide-show",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Start slide show",
+        "zh_CN": "开始幻灯片放映"
+      },
+      "description": {
+        "en": "Start slide show",
+        "zh_CN": "开始幻灯片放映"
+      },
+      "category": "slide-show-and-view",
+      "scope": "app",
+      "recommended": false,
+      "rank": 23,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -777,16 +876,16 @@
       },
       "title": {
         "en": "Start Presenter view",
-        "zh_CN": "Start Presenter 视图"
+        "zh_CN": "开始演示者视图"
       },
       "description": {
         "en": "Start Presenter view",
-        "zh_CN": "Start Presenter 视图"
+        "zh_CN": "开始演示者视图"
       },
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -796,6 +895,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.end-slide-show",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Esc"
+        ]
+      },
+      "title": {
+        "en": "End slide show",
+        "zh_CN": "结束幻灯片放映"
+      },
+      "description": {
+        "en": "End slide show",
+        "zh_CN": "结束幻灯片放映"
+      },
+      "category": "slide-show-and-view",
+      "scope": "app",
+      "recommended": false,
+      "rank": 25,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -821,7 +953,7 @@
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -856,7 +988,7 @@
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 23,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -883,16 +1015,16 @@
       },
       "title": {
         "en": "Zoom to fit",
-        "zh_CN": "Zoom to fit"
+        "zh_CN": "缩放至适合窗口"
       },
       "description": {
         "en": "Zoom to fit",
-        "zh_CN": "Zoom to fit"
+        "zh_CN": "缩放至适合窗口"
       },
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 28,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -927,7 +1059,7 @@
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -953,16 +1085,16 @@
       },
       "title": {
         "en": "Show or hide guides",
-        "zh_CN": "显示or 隐藏guides"
+        "zh_CN": "显示或隐藏参考线"
       },
       "description": {
         "en": "Show or hide guides",
-        "zh_CN": "显示or 隐藏guides"
+        "zh_CN": "显示或隐藏参考线"
       },
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 26,
+      "rank": 30,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -988,16 +1120,16 @@
       },
       "title": {
         "en": "Show or hide grid",
-        "zh_CN": "显示or 隐藏grid"
+        "zh_CN": "显示或隐藏网格"
       },
       "description": {
         "en": "Show or hide grid",
-        "zh_CN": "显示or 隐藏grid"
+        "zh_CN": "显示或隐藏网格"
       },
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 31,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1024,16 +1156,16 @@
       },
       "title": {
         "en": "Toggle Outline and Thumbnail views",
-        "zh_CN": "切换Outline and Thumbnail 视图s"
+        "zh_CN": "切换大纲和缩略图视图"
       },
       "description": {
         "en": "Toggle Outline and Thumbnail views",
-        "zh_CN": "切换Outline and Thumbnail 视图s"
+        "zh_CN": "切换大纲和缩略图视图"
       },
       "category": "slide-show-and-view",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1043,6 +1175,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.cycle-through-panes",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F6"
+        ]
+      },
+      "title": {
+        "en": "Cycle through panes",
+        "zh_CN": "在窗格之间切换"
+      },
+      "description": {
+        "en": "Cycle through panes",
+        "zh_CN": "在窗格之间切换"
+      },
+      "category": "slide-show-and-view",
+      "scope": "app",
+      "recommended": false,
+      "rank": 33,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1059,16 +1224,16 @@
       },
       "title": {
         "en": "Select all objects",
-        "zh_CN": "选择全部 对象s"
+        "zh_CN": "选择所有对象"
       },
       "description": {
         "en": "Select all objects",
-        "zh_CN": "选择全部 对象s"
+        "zh_CN": "选择所有对象"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1094,16 +1259,16 @@
       },
       "title": {
         "en": "Duplicate selected object",
-        "zh_CN": "D上licate 所选 对象"
+        "zh_CN": "Duplicate 所选 对象"
       },
       "description": {
         "en": "Duplicate selected object",
-        "zh_CN": "D上licate 所选 对象"
+        "zh_CN": "Duplicate 所选 对象"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 30,
+      "rank": 35,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1129,16 +1294,16 @@
       },
       "title": {
         "en": "Group selected objects",
-        "zh_CN": "Gro上 所选 对象s"
+        "zh_CN": "Group 所选 objects"
       },
       "description": {
         "en": "Group selected objects",
-        "zh_CN": "Gro上 所选 对象s"
+        "zh_CN": "Group 所选 objects"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 31,
+      "rank": 36,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1165,16 +1330,16 @@
       },
       "title": {
         "en": "Ungroup selected group",
-        "zh_CN": "Ungro上 所选 gro上"
+        "zh_CN": "Ungroup 所选 group"
       },
       "description": {
         "en": "Ungroup selected group",
-        "zh_CN": "Ungro上 所选 gro上"
+        "zh_CN": "Ungroup 所选 group"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 32,
+      "rank": 37,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1201,16 +1366,16 @@
       },
       "title": {
         "en": "Regroup objects",
-        "zh_CN": "Regro上 对象s"
+        "zh_CN": "Regroup objects"
       },
       "description": {
         "en": "Regroup objects",
-        "zh_CN": "Regro上 对象s"
+        "zh_CN": "Regroup objects"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 38,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1246,7 +1411,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1282,7 +1447,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1317,7 +1482,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 41,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1352,7 +1517,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 37,
+      "rank": 42,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1379,16 +1544,16 @@
       },
       "title": {
         "en": "Copy object formatting",
-        "zh_CN": "复制对象 格式ting"
+        "zh_CN": "复制对象 formatting"
       },
       "description": {
         "en": "Copy object formatting",
-        "zh_CN": "复制对象 格式ting"
+        "zh_CN": "复制对象 formatting"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 38,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1415,16 +1580,16 @@
       },
       "title": {
         "en": "Paste object formatting",
-        "zh_CN": "粘贴对象 格式ting"
+        "zh_CN": "粘贴对象 formatting"
       },
       "description": {
         "en": "Paste object formatting",
-        "zh_CN": "粘贴对象 格式ting"
+        "zh_CN": "粘贴对象 formatting"
       },
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 39,
+      "rank": 44,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1460,7 +1625,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1496,7 +1661,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1531,7 +1696,7 @@
       "category": "objects",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1557,16 +1722,16 @@
       },
       "title": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "description": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "category": "text-editing",
       "scope": "app",
       "recommended": true,
-      "rank": 43,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1601,7 +1766,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1636,7 +1801,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1671,7 +1836,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1706,7 +1871,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 52,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1741,7 +1906,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 53,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1776,7 +1941,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 54,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1810,7 +1975,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 55,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1844,7 +2009,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 51,
+      "rank": 56,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1879,7 +2044,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 52,
+      "rank": 57,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1915,7 +2080,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 53,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1951,7 +2116,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 54,
+      "rank": 59,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -1987,7 +2152,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 55,
+      "rank": 60,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2022,7 +2187,7 @@
       "category": "text-editing",
       "scope": "app",
       "recommended": false,
-      "rank": 56,
+      "rank": 61,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2056,7 +2221,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 57,
+      "rank": 62,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2091,7 +2256,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 58,
+      "rank": 63,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2126,7 +2291,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 59,
+      "rank": 64,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2161,7 +2326,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 60,
+      "rank": 65,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2196,7 +2361,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 61,
+      "rank": 66,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2231,7 +2396,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 62,
+      "rank": 67,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2258,16 +2423,16 @@
       },
       "title": {
         "en": "Superscript",
-        "zh_CN": "S上erscript"
+        "zh_CN": "Superscript"
       },
       "description": {
         "en": "Superscript",
-        "zh_CN": "S上erscript"
+        "zh_CN": "Superscript"
       },
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 63,
+      "rank": 68,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2293,16 +2458,16 @@
       },
       "title": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Re移动manual 字符格式"
+        "zh_CN": "Remove manual 字符格式"
       },
       "description": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Re移动manual 字符格式"
+        "zh_CN": "Remove manual 字符格式"
       },
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 64,
+      "rank": 69,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2336,7 +2501,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 65,
+      "rank": 70,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2371,7 +2536,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 66,
+      "rank": 71,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2406,7 +2571,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 67,
+      "rank": 72,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2441,7 +2606,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 68,
+      "rank": 73,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2477,7 +2642,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 69,
+      "rank": 74,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2513,7 +2678,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 70,
+      "rank": 75,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2549,7 +2714,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 71,
+      "rank": 76,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2585,7 +2750,7 @@
       "category": "text-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 72,
+      "rank": 77,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2595,6 +2760,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-powerpoint.move-to-next-cell",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Move to next cell",
+        "zh_CN": "移到下一个单元格"
+      },
+      "description": {
+        "en": "Move to next cell",
+        "zh_CN": "移到下一个单元格"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 78,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.PowerPoint",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2620,7 +2818,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 73,
+      "rank": 79,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
@@ -2655,7 +2853,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 74,
+      "rank": 80,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",

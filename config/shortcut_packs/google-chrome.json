@@ -25,7 +25,7 @@
   },
   "coverage": {
     "status": "substantial",
-    "official_reference_title": "Chrome keyboard shortcuts",
+    "official_reference_title": "Google Chrome keyboard shortcuts",
     "official_reference_url": "https://support.google.com/chrome/answer/157179",
     "verified_date": "2026-09-07"
   },
@@ -95,11 +95,11 @@
       },
       "title": {
         "en": "New incognito window",
-        "zh_CN": "新建incognito 窗口"
+        "zh_CN": "新建无痕窗口"
       },
       "description": {
         "en": "New incognito window",
-        "zh_CN": "新建incognito 窗口"
+        "zh_CN": "新建无痕窗口"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -166,11 +166,11 @@
       },
       "title": {
         "en": "Reopen previously closed tab",
-        "zh_CN": "Re打开上一个ly closed 选项卡"
+        "zh_CN": "重新打开最近关闭的选项卡"
       },
       "description": {
         "en": "Reopen previously closed tab",
-        "zh_CN": "Re打开上一个ly closed 选项卡"
+        "zh_CN": "重新打开最近关闭的选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -201,11 +201,11 @@
       },
       "title": {
         "en": "Jump to next tab",
-        "zh_CN": "Jump to 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "description": {
         "en": "Jump to next tab",
-        "zh_CN": "Jump to 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -237,11 +237,11 @@
       },
       "title": {
         "en": "Jump to previous tab",
-        "zh_CN": "Jump to 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "description": {
         "en": "Jump to previous tab",
-        "zh_CN": "Jump to 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -272,11 +272,11 @@
       },
       "title": {
         "en": "Jump to specific tab (1–8)",
-        "zh_CN": "Jump to specific 选项卡 (1–8)"
+        "zh_CN": "切换到指定选项卡（1–8）"
       },
       "description": {
         "en": "Jump to specific tab (1–8)",
-        "zh_CN": "Jump to specific 选项卡 (1–8)"
+        "zh_CN": "切换到指定选项卡（1–8）"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -307,11 +307,11 @@
       },
       "title": {
         "en": "Jump to rightmost tab",
-        "zh_CN": "Jump to 右most 选项卡"
+        "zh_CN": "切换到最右侧选项卡"
       },
       "description": {
         "en": "Jump to rightmost tab",
-        "zh_CN": "Jump to 右most 选项卡"
+        "zh_CN": "切换到最右侧选项卡"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -342,11 +342,11 @@
       },
       "title": {
         "en": "Open home page in current tab",
-        "zh_CN": "打开主页 页面 in 当前 选项卡"
+        "zh_CN": "在当前选项卡打开主页"
       },
       "description": {
         "en": "Open home page in current tab",
-        "zh_CN": "打开主页 页面 in 当前 选项卡"
+        "zh_CN": "在当前选项卡打开主页"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -377,11 +377,11 @@
       },
       "title": {
         "en": "Open previous page in history",
-        "zh_CN": "打开上一个 页面 in 历史记录"
+        "zh_CN": "打开历史记录中的上一页"
       },
       "description": {
         "en": "Open previous page in history",
-        "zh_CN": "打开上一个 页面 in 历史记录"
+        "zh_CN": "打开历史记录中的上一页"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -412,11 +412,11 @@
       },
       "title": {
         "en": "Open next page in history",
-        "zh_CN": "打开下一个 页面 in 历史记录"
+        "zh_CN": "打开历史记录中的下一页"
       },
       "description": {
         "en": "Open next page in history",
-        "zh_CN": "打开下一个 页面 in 历史记录"
+        "zh_CN": "打开历史记录中的下一页"
       },
       "category": "tabs-and-windows",
       "scope": "app",
@@ -580,6 +580,39 @@
       "aliases": []
     },
     {
+      "id": "google-chrome.turn-full-screen-mode-on-off",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F11"
+        ]
+      },
+      "title": {
+        "en": "Turn full-screen mode on/off",
+        "zh_CN": "切换全屏模式"
+      },
+      "description": {
+        "en": "Turn full-screen mode on/off",
+        "zh_CN": "切换全屏模式"
+      },
+      "category": "tabs-and-windows",
+      "scope": "app",
+      "recommended": false,
+      "rank": 16,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
       "id": "google-chrome.open-split-view-in-active-tab",
       "trigger": {
         "kind": "combo",
@@ -591,16 +624,16 @@
       },
       "title": {
         "en": "Open split view in active tab",
-        "zh_CN": "打开split 视图 in active 选项卡"
+        "zh_CN": "在活动选项卡中打开拆分视图"
       },
       "description": {
         "en": "Open split view in active tab",
-        "zh_CN": "打开split 视图 in active 选项卡"
+        "zh_CN": "在活动选项卡中打开拆分视图"
       },
       "category": "tabs-and-windows",
       "scope": "app",
       "recommended": false,
-      "rank": 16,
+      "rank": 17,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -626,16 +659,16 @@
       },
       "title": {
         "en": "Open the Chrome menu",
-        "zh_CN": "打开the Chrome 菜单"
+        "zh_CN": "打开 Chrome 菜单"
       },
       "description": {
         "en": "Open the Chrome menu",
-        "zh_CN": "打开the Chrome 菜单"
+        "zh_CN": "打开 Chrome 菜单"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 18,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -662,16 +695,16 @@
       },
       "title": {
         "en": "Show or hide bookmarks bar",
-        "zh_CN": "显示or 隐藏书签 栏"
+        "zh_CN": "显示或隐藏书签栏"
       },
       "description": {
         "en": "Show or hide bookmarks bar",
-        "zh_CN": "显示or 隐藏书签 栏"
+        "zh_CN": "显示或隐藏书签栏"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -698,16 +731,16 @@
       },
       "title": {
         "en": "Open Bookmarks Manager",
-        "zh_CN": "打开书签 Manager"
+        "zh_CN": "打开书签管理器"
       },
       "description": {
         "en": "Open Bookmarks Manager",
-        "zh_CN": "打开书签 Manager"
+        "zh_CN": "打开书签管理器"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -742,7 +775,7 @@
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -768,16 +801,16 @@
       },
       "title": {
         "en": "Open Downloads page",
-        "zh_CN": "打开下loads 页面"
+        "zh_CN": "打开下载页面"
       },
       "description": {
         "en": "Open Downloads page",
-        "zh_CN": "打开下loads 页面"
+        "zh_CN": "打开下载页面"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -803,16 +836,16 @@
       },
       "title": {
         "en": "Open Chrome Task Manager",
-        "zh_CN": "打开Chrome Task Manager"
+        "zh_CN": "打开 Chrome 任务管理器"
       },
       "description": {
         "en": "Open Chrome Task Manager",
-        "zh_CN": "打开Chrome Task Manager"
+        "zh_CN": "打开 Chrome 任务管理器"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 23,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -847,7 +880,7 @@
       "category": "chrome-features",
       "scope": "app",
       "recommended": true,
-      "rank": 23,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -873,16 +906,16 @@
       },
       "title": {
         "en": "Find next match",
-        "zh_CN": "查找下一个 match"
+        "zh_CN": "查找下一个匹配项"
       },
       "description": {
         "en": "Find next match",
-        "zh_CN": "查找下一个 match"
+        "zh_CN": "查找下一个匹配项"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 25,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -909,16 +942,16 @@
       },
       "title": {
         "en": "Find previous match",
-        "zh_CN": "查找上一个 match"
+        "zh_CN": "查找上一个匹配项"
       },
       "description": {
         "en": "Find previous match",
-        "zh_CN": "查找上一个 match"
+        "zh_CN": "查找上一个匹配项"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -954,7 +987,7 @@
       "category": "chrome-features",
       "scope": "app",
       "recommended": true,
-      "rank": 26,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -964,6 +997,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.open-developer-tools-alt",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F12"
+        ]
+      },
+      "title": {
+        "en": "Open Developer Tools (alt)",
+        "zh_CN": "打开开发者工具（备用）"
+      },
+      "description": {
+        "en": "Open Developer Tools (alt)",
+        "zh_CN": "打开开发者工具（备用）"
+      },
+      "category": "chrome-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 28,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -981,16 +1047,16 @@
       },
       "title": {
         "en": "Clear Browsing Data",
-        "zh_CN": "Clear B行sing Data"
+        "zh_CN": "清除浏览数据"
       },
       "description": {
         "en": "Clear Browsing Data",
-        "zh_CN": "Clear B行sing Data"
+        "zh_CN": "清除浏览数据"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1000,6 +1066,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.open-help-center",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F1"
+        ]
+      },
+      "title": {
+        "en": "Open Help Center",
+        "zh_CN": "打开帮助中心"
+      },
+      "description": {
+        "en": "Open Help Center",
+        "zh_CN": "打开帮助中心"
+      },
+      "category": "chrome-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 30,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1017,16 +1116,16 @@
       },
       "title": {
         "en": "Switch user / browse as guest",
-        "zh_CN": "Switch user / b行se as guest"
+        "zh_CN": "切换用户或以访客身份浏览"
       },
       "description": {
         "en": "Switch user / browse as guest",
-        "zh_CN": "Switch user / b行se as guest"
+        "zh_CN": "切换用户或以访客身份浏览"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 31,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1053,16 +1152,16 @@
       },
       "title": {
         "en": "Open feedback form",
-        "zh_CN": "打开feed后退 form"
+        "zh_CN": "打开反馈表单"
       },
       "description": {
         "en": "Open feedback form",
-        "zh_CN": "打开feed后退 form"
+        "zh_CN": "打开反馈表单"
       },
       "category": "chrome-features",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1072,6 +1171,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.toggle-caret-browsing",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F7"
+        ]
+      },
+      "title": {
+        "en": "Toggle caret browsing",
+        "zh_CN": "切换插入符浏览"
+      },
+      "description": {
+        "en": "Toggle caret browsing",
+        "zh_CN": "切换插入符浏览"
+      },
+      "category": "chrome-features",
+      "scope": "app",
+      "recommended": false,
+      "rank": 33,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1088,16 +1220,16 @@
       },
       "title": {
         "en": "Jump to address bar",
-        "zh_CN": "Jump to 地址栏"
+        "zh_CN": "转到地址栏"
       },
       "description": {
         "en": "Jump to address bar",
-        "zh_CN": "Jump to 地址栏"
+        "zh_CN": "转到地址栏"
       },
       "category": "address-bar",
       "scope": "app",
       "recommended": true,
-      "rank": 30,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1132,7 +1264,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 31,
+      "rank": 35,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1167,7 +1299,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 32,
+      "rank": 36,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1203,7 +1335,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 37,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1238,7 +1370,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 38,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1273,7 +1405,7 @@
       "category": "address-bar",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1299,16 +1431,16 @@
       },
       "title": {
         "en": "Print current page",
-        "zh_CN": "打印 当前 页面"
+        "zh_CN": "打印当前页面"
       },
       "description": {
         "en": "Print current page",
-        "zh_CN": "打印 当前 页面"
+        "zh_CN": "打印当前页面"
       },
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1343,7 +1475,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 37,
+      "rank": 41,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1353,6 +1485,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.reload-current-page",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F5"
+        ]
+      },
+      "title": {
+        "en": "Reload current page",
+        "zh_CN": "重新加载 当前 页面"
+      },
+      "description": {
+        "en": "Reload current page",
+        "zh_CN": "重新加载 当前 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 42,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1379,7 +1544,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 38,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1389,6 +1554,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.stop-loading",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Esc"
+        ]
+      },
+      "title": {
+        "en": "Stop loading",
+        "zh_CN": "Stop loading"
+      },
+      "description": {
+        "en": "Stop loading",
+        "zh_CN": "Stop loading"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 44,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1414,7 +1612,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 39,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1449,7 +1647,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1484,7 +1682,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1511,16 +1709,16 @@
       },
       "title": {
         "en": "Bookmark all open tabs",
-        "zh_CN": "Bookmark 全部 打开选项卡s"
+        "zh_CN": "Bookmark 全部 打开tabs"
       },
       "description": {
         "en": "Bookmark all open tabs",
-        "zh_CN": "Bookmark 全部 打开选项卡s"
+        "zh_CN": "Bookmark 全部 打开tabs"
       },
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1555,7 +1753,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1590,7 +1788,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1625,7 +1823,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1635,6 +1833,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.scroll-down-a-screen",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Space"
+        ]
+      },
+      "title": {
+        "en": "Scroll down a screen",
+        "zh_CN": "Scroll 下 a screen"
+      },
+      "description": {
+        "en": "Scroll down a screen",
+        "zh_CN": "Scroll 下 a screen"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 52,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1660,7 +1891,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 53,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1670,6 +1901,72 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.go-to-top-of-page",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Home"
+        ]
+      },
+      "title": {
+        "en": "Go to top of page",
+        "zh_CN": "Go to top of 页面"
+      },
+      "description": {
+        "en": "Go to top of page",
+        "zh_CN": "Go to top of 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 54,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "google-chrome.go-to-bottom-of-page",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "End"
+        ]
+      },
+      "title": {
+        "en": "Go to bottom of page",
+        "zh_CN": "Go to bottom of 页面"
+      },
+      "description": {
+        "en": "Go to bottom of page",
+        "zh_CN": "Go to bottom of 页面"
+      },
+      "category": "web-page",
+      "scope": "app",
+      "recommended": false,
+      "rank": 55,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Google.Chrome",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1695,7 +1992,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 56,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1730,7 +2027,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 57,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",
@@ -1765,7 +2062,7 @@
       "category": "web-page",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Google.Chrome.en-US.yml",

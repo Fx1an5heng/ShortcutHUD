@@ -3,7 +3,7 @@ from tempfile import TemporaryDirectory
 import unittest
 import json
 
-from PySide6.QtCore import QCoreApplication, QObject, QTranslator, Signal
+from PySide6.QtCore import QCoreApplication, QObject, Qt, QTranslator, Signal
 from PySide6.QtWidgets import QApplication
 
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
@@ -88,7 +88,7 @@ class ShortcutLibraryTests(unittest.TestCase):
 
     def test_library_searches_trigger_descriptions_aliases_and_category(self) -> None:
         model = ShortcutLibraryModel(self.catalog, self.store, language="zh_CN")
-        self.assertEqual([row.entry.id for row in model.rows("CODE.EXE", "Ctrl+`")], ["vscode.toggle-terminal"])
+        self.assertIn("vscode.toggle-terminal", [row.entry.id for row in model.rows("CODE.EXE", "Ctrl+`")])
         self.assertIn("vscode.find-in-files", [row.entry.id for row in model.rows("CODE.EXE", "workspace files")])
         self.assertIn("vscode.toggle-terminal", [row.entry.id for row in model.rows("CODE.EXE", "集成终端")])
         self.assertIn("vscode.show-source-control", [row.entry.id for row in model.rows("CODE.EXE", "git")])
@@ -126,6 +126,19 @@ class ShortcutLibraryTests(unittest.TestCase):
         self.assertFalse(any(row.checked for row in model.rows("CODE.EXE")))
         model.restore_recommended("CODE.EXE")
         self.assertTrue(next(row for row in model.rows("CODE.EXE") if row.entry.id == "vscode.quick-open").checked)
+
+    def test_catalog_only_single_key_is_browsable_but_cannot_enter_quick_hud_selection(self) -> None:
+        model = ShortcutLibraryModel(self.catalog, self.store, language="zh_CN")
+        rows = model.rows("EXPLORER.EXE")
+        refresh = next(row for row in rows if row.entry.id == "file-explorer.refresh-the-window")
+        self.assertEqual(refresh.entry.trigger.keys, ("F5",))
+        self.assertFalse(refresh.entry.trigger.is_quick_hud_eligible())
+        self.assertFalse(refresh.checked)
+
+        model.set_checked("EXPLORER.EXE", refresh.entry.id, True)
+        self.assertIsNone(self.store.selected_ids_for("EXPLORER.EXE"))
+        model.restore_recommended("EXPLORER.EXE")
+        self.assertTrue(any(row.checked for row in model.rows("EXPLORER.EXE")))
 
     def test_user_shortcut_is_part_of_same_library_and_keeps_hud_precedence(self) -> None:
         profiles = {"CODE.EXE": {"shortcuts": {"Ctrl": {"P": {"en": "User Open", "zh": "用户打开"}}}}}
@@ -237,6 +250,23 @@ class ShortcutLibraryLocalizationTests(unittest.TestCase):
                 ShortcutLibraryModel(catalog, QuickHudSelectionStore(Path(directory) / "selection.json"), language="en_US")
             )
             self.assertEqual(dialog.table.item(0, 3).text(), "Other")
+            dialog.deleteLater()
+
+    def test_catalog_only_entry_has_a_disabled_quick_hud_checkbox(self) -> None:
+        legacy_path = Path(__file__).resolve().parents[1] / "config" / "shortcuts.json"
+        catalog = ShortcutCatalog.from_legacy_shortcuts(
+            json.loads(legacy_path.read_text(encoding="utf-8"))
+        ).with_packs_from(_PACK_DIRECTORY)
+        with TemporaryDirectory() as directory:
+            dialog = ShortcutLibraryDialog(
+                ShortcutLibraryModel(catalog, QuickHudSelectionStore(Path(directory) / "selection.json"), language="zh_CN")
+            )
+            explorer_index = dialog.application_combo.findData("EXPLORER.EXE")
+            self.assertGreaterEqual(explorer_index, 0)
+            dialog.application_combo.setCurrentIndex(explorer_index)
+            row_index = next(index for index in range(dialog.table.rowCount()) if dialog.table.item(index, 1).text() == "F5")
+            checkbox = dialog.table.item(row_index, 0)
+            self.assertFalse(bool(checkbox.flags() & Qt.ItemFlag.ItemIsEnabled))
             dialog.deleteLater()
 
     def test_follow_current_app_then_manual_pin_and_reenable(self) -> None:

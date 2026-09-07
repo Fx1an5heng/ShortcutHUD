@@ -64,7 +64,7 @@
     },
     "review": {
       "en": "Review",
-      "zh_CN": "Re视图"
+      "zh_CN": "Review"
     },
     "tables": {
       "en": "Tables",
@@ -118,11 +118,11 @@
       },
       "title": {
         "en": "Open",
-        "zh_CN": "Open"
+        "zh_CN": "打开"
       },
       "description": {
         "en": "Open",
-        "zh_CN": "Open"
+        "zh_CN": "打开"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -153,11 +153,11 @@
       },
       "title": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "description": {
         "en": "Save",
-        "zh_CN": "Save"
+        "zh_CN": "保存"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -293,11 +293,11 @@
       },
       "title": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "description": {
         "en": "Copy",
-        "zh_CN": "Copy"
+        "zh_CN": "复制"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -328,11 +328,11 @@
       },
       "title": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "description": {
         "en": "Paste",
-        "zh_CN": "Paste"
+        "zh_CN": "粘贴"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -364,11 +364,11 @@
       },
       "title": {
         "en": "Paste text only",
-        "zh_CN": "粘贴文本 only"
+        "zh_CN": "仅粘贴文本"
       },
       "description": {
         "en": "Paste text only",
-        "zh_CN": "粘贴文本 only"
+        "zh_CN": "仅粘贴文本"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -494,6 +494,39 @@
       "aliases": []
     },
     {
+      "id": "microsoft-word.cancel-a-command",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Esc"
+        ]
+      },
+      "title": {
+        "en": "Cancel a command",
+        "zh_CN": "取消命令"
+      },
+      "description": {
+        "en": "Cancel a command",
+        "zh_CN": "取消命令"
+      },
+      "category": "frequently-used",
+      "scope": "app",
+      "recommended": false,
+      "rank": 13,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
       "id": "microsoft-word.delete-one-word-to-the-left",
       "trigger": {
         "kind": "combo",
@@ -504,16 +537,16 @@
       },
       "title": {
         "en": "Delete one word to the left",
-        "zh_CN": "删除one word to the 左"
+        "zh_CN": "删除左侧的一个单词"
       },
       "description": {
         "en": "Delete one word to the left",
-        "zh_CN": "删除one word to the 左"
+        "zh_CN": "删除左侧的一个单词"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 13,
+      "rank": 14,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -539,16 +572,16 @@
       },
       "title": {
         "en": "Delete one word to the right",
-        "zh_CN": "删除one word to the 右"
+        "zh_CN": "删除右侧的一个单词"
       },
       "description": {
         "en": "Delete one word to the right",
-        "zh_CN": "删除one word to the 右"
+        "zh_CN": "删除右侧的一个单词"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 14,
+      "rank": 15,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -574,16 +607,16 @@
       },
       "title": {
         "en": "Find",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "description": {
         "en": "Display the Navigation task pane to search the document.",
-        "zh_CN": "Find"
+        "zh_CN": "查找"
       },
       "category": "editing",
       "scope": "app",
       "recommended": true,
-      "rank": 15,
+      "rank": 16,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -609,16 +642,16 @@
       },
       "title": {
         "en": "Find and replace",
-        "zh_CN": "查找and 替换"
+        "zh_CN": "查找和替换"
       },
       "description": {
         "en": "Find and replace",
-        "zh_CN": "查找and 替换"
+        "zh_CN": "查找和替换"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 16,
+      "rank": 17,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -644,16 +677,16 @@
       },
       "title": {
         "en": "Go to",
-        "zh_CN": "Go to"
+        "zh_CN": "转到"
       },
       "description": {
         "en": "Navigate to a specific page, bookmark, footnote, table, comment, graphic, or other location.",
-        "zh_CN": "Go to"
+        "zh_CN": "转到"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 17,
+      "rank": 18,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -680,16 +713,16 @@
       },
       "title": {
         "en": "Copy formatting",
-        "zh_CN": "复制格式ting"
+        "zh_CN": "复制格式"
       },
       "description": {
         "en": "Copy formatting",
-        "zh_CN": "复制格式ting"
+        "zh_CN": "复制格式"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 18,
+      "rank": 19,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -716,16 +749,16 @@
       },
       "title": {
         "en": "Paste formatting",
-        "zh_CN": "粘贴格式ting"
+        "zh_CN": "粘贴格式"
       },
       "description": {
         "en": "Paste formatting",
-        "zh_CN": "粘贴格式ting"
+        "zh_CN": "粘贴格式"
       },
       "category": "editing",
       "scope": "app",
       "recommended": false,
-      "rank": 19,
+      "rank": 20,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -751,16 +784,16 @@
       },
       "title": {
         "en": "Move one word to the left",
-        "zh_CN": "移动one word to the 左"
+        "zh_CN": "向左移动一个单词"
       },
       "description": {
         "en": "Move one word to the left",
-        "zh_CN": "移动one word to the 左"
+        "zh_CN": "向左移动一个单词"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 20,
+      "rank": 21,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -786,16 +819,16 @@
       },
       "title": {
         "en": "Move one word to the right",
-        "zh_CN": "移动one word to the 右"
+        "zh_CN": "向右移动一个单词"
       },
       "description": {
         "en": "Move one word to the right",
-        "zh_CN": "移动one word to the 右"
+        "zh_CN": "向右移动一个单词"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 21,
+      "rank": 22,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -830,7 +863,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 22,
+      "rank": 23,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -865,7 +898,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 23,
+      "rank": 24,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -891,16 +924,16 @@
       },
       "title": {
         "en": "Beginning of document",
-        "zh_CN": "Beginning of 文档"
+        "zh_CN": "文档开头"
       },
       "description": {
         "en": "Beginning of document",
-        "zh_CN": "Beginning of 文档"
+        "zh_CN": "文档开头"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 24,
+      "rank": 25,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -926,16 +959,16 @@
       },
       "title": {
         "en": "End of document",
-        "zh_CN": "End of 文档"
+        "zh_CN": "文档末尾"
       },
       "description": {
         "en": "End of document",
-        "zh_CN": "End of 文档"
+        "zh_CN": "文档末尾"
       },
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 25,
+      "rank": 26,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -970,7 +1003,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 26,
+      "rank": 27,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1005,7 +1038,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 27,
+      "rank": 28,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1040,7 +1073,7 @@
       "category": "navigation",
       "scope": "app",
       "recommended": false,
-      "rank": 28,
+      "rank": 29,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1067,16 +1100,16 @@
       },
       "title": {
         "en": "Select word to the left",
-        "zh_CN": "选择word to the 左"
+        "zh_CN": "选择左侧的单词"
       },
       "description": {
         "en": "Select word to the left",
-        "zh_CN": "选择word to the 左"
+        "zh_CN": "选择左侧的单词"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 29,
+      "rank": 30,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1103,16 +1136,16 @@
       },
       "title": {
         "en": "Select word to the right",
-        "zh_CN": "选择word to the 右"
+        "zh_CN": "选择右侧的单词"
       },
       "description": {
         "en": "Select word to the right",
-        "zh_CN": "选择word to the 右"
+        "zh_CN": "选择右侧的单词"
       },
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 30,
+      "rank": 31,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1147,7 +1180,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 31,
+      "rank": 32,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1182,7 +1215,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 32,
+      "rank": 33,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1218,7 +1251,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 33,
+      "rank": 34,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1254,7 +1287,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 34,
+      "rank": 35,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1290,7 +1323,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 35,
+      "rank": 36,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1326,7 +1359,7 @@
       "category": "selection",
       "scope": "app",
       "recommended": false,
-      "rank": 36,
+      "rank": 37,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1336,6 +1369,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.start-extending-the-selection",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "F8"
+        ]
+      },
+      "title": {
+        "en": "Start extending the selection",
+        "zh_CN": "Start extending the 选择"
+      },
+      "description": {
+        "en": "Start extending the selection",
+        "zh_CN": "Start extending the 选择"
+      },
+      "category": "selection",
+      "scope": "app",
+      "recommended": false,
+      "rank": 38,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -1361,7 +1427,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 37,
+      "rank": 39,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1396,7 +1462,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 38,
+      "rank": 40,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1431,7 +1497,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": true,
-      "rank": 39,
+      "rank": 41,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1467,7 +1533,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 40,
+      "rank": 42,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1494,16 +1560,16 @@
       },
       "title": {
         "en": "All uppercase",
-        "zh_CN": "全部 上percase"
+        "zh_CN": "全部 uppercase"
       },
       "description": {
         "en": "All uppercase",
-        "zh_CN": "全部 上percase"
+        "zh_CN": "全部 uppercase"
       },
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 41,
+      "rank": 43,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1538,7 +1604,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 42,
+      "rank": 44,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1573,7 +1639,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 43,
+      "rank": 45,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1608,7 +1674,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 44,
+      "rank": 46,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1643,7 +1709,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 45,
+      "rank": 47,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1679,7 +1745,7 @@
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 46,
+      "rank": 48,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1706,16 +1772,16 @@
       },
       "title": {
         "en": "Superscript",
-        "zh_CN": "S上erscript"
+        "zh_CN": "Superscript"
       },
       "description": {
         "en": "Superscript",
-        "zh_CN": "S上erscript"
+        "zh_CN": "Superscript"
       },
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 47,
+      "rank": 49,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1741,16 +1807,16 @@
       },
       "title": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Re移动manual 字符格式"
+        "zh_CN": "Remove manual 字符格式"
       },
       "description": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Re移动manual 字符格式"
+        "zh_CN": "Remove manual 字符格式"
       },
       "category": "character-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 48,
+      "rank": 50,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1776,16 +1842,16 @@
       },
       "title": {
         "en": "Center",
-        "zh_CN": "Center"
+        "zh_CN": "居中"
       },
       "description": {
         "en": "Center",
-        "zh_CN": "Center"
+        "zh_CN": "居中"
       },
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 49,
+      "rank": 51,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1820,7 +1886,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 50,
+      "rank": 52,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1855,7 +1921,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 51,
+      "rank": 53,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1890,7 +1956,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 52,
+      "rank": 54,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1925,7 +1991,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 53,
+      "rank": 55,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1961,7 +2027,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 54,
+      "rank": 56,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -1996,7 +2062,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 55,
+      "rank": 57,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2022,16 +2088,16 @@
       },
       "title": {
         "en": "Remove paragraph formatting",
-        "zh_CN": "Re移动段落格式"
+        "zh_CN": "Remove 段落格式"
       },
       "description": {
         "en": "Remove paragraph formatting",
-        "zh_CN": "Re移动段落格式"
+        "zh_CN": "Remove 段落格式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 56,
+      "rank": 58,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2067,7 +2133,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 57,
+      "rank": 59,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2102,7 +2168,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 58,
+      "rank": 60,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2137,7 +2203,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 59,
+      "rank": 61,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2172,7 +2238,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 60,
+      "rank": 62,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2208,7 +2274,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 61,
+      "rank": 63,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2244,7 +2310,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 62,
+      "rank": 64,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2280,7 +2346,7 @@
       "category": "paragraph-formatting",
       "scope": "app",
       "recommended": false,
-      "rank": 63,
+      "rank": 65,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2315,7 +2381,7 @@
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 64,
+      "rank": 66,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2350,7 +2416,7 @@
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 65,
+      "rank": 67,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2385,7 +2451,7 @@
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 66,
+      "rank": 68,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2421,7 +2487,7 @@
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 67,
+      "rank": 69,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2448,16 +2514,16 @@
       },
       "title": {
         "en": "Print preview",
-        "zh_CN": "打印 pre视图"
+        "zh_CN": "打印 preview"
       },
       "description": {
         "en": "Print preview",
-        "zh_CN": "打印 pre视图"
+        "zh_CN": "打印 preview"
       },
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 68,
+      "rank": 70,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2484,16 +2550,16 @@
       },
       "title": {
         "en": "Show or hide nonprinting characters",
-        "zh_CN": "显示or 隐藏non打印ing characters"
+        "zh_CN": "显示or 隐藏nonprinting characters"
       },
       "description": {
         "en": "Show or hide nonprinting characters",
-        "zh_CN": "显示or 隐藏non打印ing characters"
+        "zh_CN": "显示or 隐藏nonprinting characters"
       },
       "category": "view-and-zoom",
       "scope": "app",
       "recommended": false,
-      "rank": 69,
+      "rank": 71,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2528,7 +2594,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 70,
+      "rank": 72,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2563,7 +2629,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 71,
+      "rank": 73,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2598,7 +2664,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 72,
+      "rank": 74,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2634,7 +2700,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 73,
+      "rank": 75,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2670,7 +2736,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 74,
+      "rank": 76,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2706,7 +2772,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 75,
+      "rank": 77,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2742,7 +2808,7 @@
       "category": "insert",
       "scope": "app",
       "recommended": false,
-      "rank": 76,
+      "rank": 78,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2778,7 +2844,7 @@
       "category": "review",
       "scope": "app",
       "recommended": false,
-      "rank": 77,
+      "rank": 79,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2814,7 +2880,7 @@
       "category": "review",
       "scope": "app",
       "recommended": false,
-      "rank": 78,
+      "rank": 80,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2841,16 +2907,16 @@
       },
       "title": {
         "en": "Close the Reviewing pane",
-        "zh_CN": "关闭the Re视图ing pane"
+        "zh_CN": "关闭the Reviewing pane"
       },
       "description": {
         "en": "Close the Reviewing pane",
-        "zh_CN": "关闭the Re视图ing pane"
+        "zh_CN": "关闭the Reviewing pane"
       },
       "category": "review",
       "scope": "app",
       "recommended": false,
-      "rank": 79,
+      "rank": 81,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2860,6 +2926,39 @@
       },
       "visibility": [
         "quick_hud",
+        "full_guide"
+      ],
+      "builtin": true,
+      "aliases": []
+    },
+    {
+      "id": "microsoft-word.move-to-next-cell",
+      "trigger": {
+        "kind": "single",
+        "keys": [
+          "Tab"
+        ]
+      },
+      "title": {
+        "en": "Move to next cell",
+        "zh_CN": "移到下一个单元格"
+      },
+      "description": {
+        "en": "Move to next cell",
+        "zh_CN": "移到下一个单元格"
+      },
+      "category": "tables",
+      "scope": "app",
+      "recommended": false,
+      "rank": 82,
+      "provenance": {
+        "title": "PowerToys Shortcut Guide manifest",
+        "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
+        "source_type": "PowerToys bundled manifest",
+        "upstream_package": "Microsoft.Word",
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+      },
+      "visibility": [
         "full_guide"
       ],
       "builtin": true,
@@ -2885,7 +2984,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 80,
+      "rank": 83,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2920,7 +3019,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 81,
+      "rank": 84,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2955,7 +3054,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 82,
+      "rank": 85,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -2990,7 +3089,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 83,
+      "rank": 86,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -3025,7 +3124,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 84,
+      "rank": 87,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
@@ -3060,7 +3159,7 @@
       "category": "tables",
       "scope": "app",
       "recommended": false,
-      "rank": 85,
+      "rank": 88,
       "provenance": {
         "title": "PowerToys Shortcut Guide manifest",
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",

@@ -43,6 +43,8 @@ def _validate_triggers(path: Path, pack: object) -> None:
     seen: set[tuple[str, tuple[str, ...]]] = set()
     for entry in pack.entries:
         trigger = (entry.trigger.kind, entry.trigger.keys)
+        if "quick_hud" in entry.visibility and not entry.trigger.is_quick_hud_eligible():
+            raise ValueError(f"Quick HUD visibility requires a modifier combo: {entry.id}")
         if trigger in seen and "quick_hud" in entry.visibility: raise ValueError(f"duplicate Quick HUD trigger {trigger}")
         if "quick_hud" in entry.visibility: seen.add(trigger)
 

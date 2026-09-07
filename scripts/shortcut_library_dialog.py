@@ -75,14 +75,16 @@ class ShortcutLibraryModel:
         identity = normalize_application_identity(app_id)
         if identity is None: return []
         entries = self._entries_for_application(identity)
-        explicit = self.selection_store.effective_selected_ids_for(identity, [entry for entry, _ in entries])
+        eligible = [entry for entry, _ in entries if entry.trigger.is_quick_hud_eligible()]
+        explicit = self.selection_store.effective_selected_ids_for(identity, eligible)
         folded_query = query.casefold().strip(); rows: list[LibraryRow] = []
         for entry, source in entries:
             title = select_catalog_text(entry.title, self.language); description = _localized_description(entry.description, self.language); category = self.category_label(entry.category)
             category_values = self.catalog.category_titles.get(entry.category, {}).values()
             terms = (_trigger_text(entry), entry.hud_key(), title, description, category, entry.category, *category_values, *entry.title.values(), *_description_values(entry.description), *entry.aliases)
             if folded_query and not any(folded_query in term.casefold() for term in terms): continue
-            rows.append(LibraryRow(entry, source, entry.recommended if explicit is None else entry.id in explicit, title, description))
+            checked = entry.trigger.is_quick_hud_eligible() and (entry.recommended if explicit is None else entry.id in explicit)
+            rows.append(LibraryRow(entry, source, checked, title, description))
         return rows
 
     def category_label(self, category: str) -> str:
@@ -93,7 +95,8 @@ class ShortcutLibraryModel:
         return select_catalog_text(labels, self.language) if labels else category
 
     def set_checked(self, app_id: str, entry_id: str, checked: bool) -> None:
-        identity = _require_identity(app_id); entries = [entry for entry, _ in self._entries_for_application(identity)]
+        identity = _require_identity(app_id); entries = [entry for entry, _ in self._entries_for_application(identity) if entry.trigger.is_quick_hud_eligible()]
+        if entry_id not in {entry.id for entry in entries}: return
         selected = self.selection_store.effective_selected_ids_for(identity, entries)
         chosen = set(selected) if selected is not None else {entry.id for entry in entries if entry.recommended}
         chosen.add(entry_id) if checked else chosen.discard(entry_id)
@@ -142,7 +145,7 @@ class ShortcutLibraryModel:
         if self.apply_user_profiles is not None: self.apply_user_profiles(snapshot)
 
     def _entries_for_application(self, app_id: str) -> list[tuple[CatalogEntry, str]]:
-        builtin = [(entry, "builtin") for entry in self.catalog.entries if entry.scope == "APP" and app_id in entry.application_ids and "quick_hud" in entry.visibility]
+        builtin = [(entry, "builtin") for entry in self.catalog.entries if entry.scope == "APP" and app_id in entry.application_ids]
         return sorted([*_user_catalog_entries(self.user_profiles, app_id), *builtin], key=lambda item: (item[0].category.casefold(), item[0].rank, item[0].order, item[0].id))
 
 
@@ -202,7 +205,7 @@ class ShortcutLibraryDialog(QDialog):
     def _render(self) -> None:
         app_id = self._current_app_id(); descriptor = self.model.descriptor_for(app_id); rows = self.model.rows(app_id or "", self.search_box.text()); self._rendering = True; self.table.setRowCount(len(rows)); self.empty_builtin_label.setVisible(descriptor is not None and not descriptor.supported); self.selection_label.setText(self.tr("Selected for Quick HUD: %1").replace("%1", str(sum(row.checked for row in self.model.rows(app_id or "")))))
         for index, row in enumerate(rows):
-            checkbox = QTableWidgetItem(); checkbox.setData(Qt.ItemDataRole.UserRole, row.entry.id); checkbox.setFlags(Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable); checkbox.setCheckState(Qt.CheckState.Checked if row.checked else Qt.CheckState.Unchecked); self.table.setItem(index, 0, checkbox); self.table.setItem(index, 1, QTableWidgetItem(_trigger_text(row.entry))); self.table.setItem(index, 2, QTableWidgetItem(row.description)); self.table.setItem(index, 3, QTableWidgetItem(self.model.category_label(row.entry.category)))
+            checkbox = QTableWidgetItem(); checkbox.setData(Qt.ItemDataRole.UserRole, row.entry.id); eligible = row.entry.trigger.is_quick_hud_eligible(); checkbox.setFlags((Qt.ItemFlag.ItemIsUserCheckable | Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable) if eligible else Qt.ItemFlag.NoItemFlags); checkbox.setCheckState(Qt.CheckState.Checked if row.checked else Qt.CheckState.Unchecked); self.table.setItem(index, 0, checkbox); self.table.setItem(index, 1, QTableWidgetItem(_trigger_text(row.entry))); self.table.setItem(index, 2, QTableWidgetItem(row.description)); self.table.setItem(index, 3, QTableWidgetItem(self.model.category_label(row.entry.category)))
             source_item = QTableWidgetItem(self.tr("My Shortcut") if row.source == "user" else self.tr("Built-in")); source_item.setData(Qt.ItemDataRole.UserRole, row.source); source_item.setData(Qt.ItemDataRole.UserRole + 1, (row.entry.legacy_runtime_modifier, row.entry.legacy_display_key)); self.table.setItem(index, 4, source_item); self.table.setItem(index, 5, QTableWidgetItem(self.tr("★ Recommended") if row.entry.recommended else ""))
         self._rendering = False; self._update_action_state()
 

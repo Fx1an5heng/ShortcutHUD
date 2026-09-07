@@ -21,7 +21,7 @@ from .shortcut_resolver import normalize_application_identity
 
 
 CatalogScope = Literal["APP", "DEFAULT", "GLOBAL"]
-TriggerKind = Literal["combo", "sequence", "double_tap"]
+TriggerKind = Literal["single", "combo", "sequence", "double_tap"]
 PACK_SCHEMA_VERSION = 1
 _ENTRY_ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._:-]*$")
 _VALID_VISIBILITY = frozenset({"quick_hud", "full_guide"})
@@ -49,6 +49,9 @@ class CatalogTrigger:
         if self.kind != "combo" or len(self.keys) < 2:
             return None
         return canonicalize_modifier_state(self.keys[:-1])
+
+    def is_quick_hud_eligible(self) -> bool:
+        return self.kind == "combo" and self.runtime_modifier() is not None
 
     def display_key(self) -> str:
         return self.keys[-1] if self.kind == "combo" else " ".join(self.keys)
@@ -329,13 +332,15 @@ def _parse_trigger(raw: object) -> CatalogTrigger:
     if not isinstance(raw, Mapping):
         raise CatalogValidationError("trigger must be an object")
     kind = raw.get("kind")
-    if kind not in {"combo", "sequence", "double_tap"}:
+    if kind not in {"single", "combo", "sequence", "double_tap"}:
         raise CatalogValidationError("trigger kind is invalid")
     keys = _string_list(raw.get("keys"), "trigger keys")
     if not keys:
         raise CatalogValidationError("trigger keys must not be empty")
     if kind == "combo" and len(keys) < 2:
         raise CatalogValidationError("combo trigger requires modifier and terminal key")
+    if kind == "single" and len(keys) != 1:
+        raise CatalogValidationError("single trigger requires exactly one key")
     return CatalogTrigger(kind, keys)
 
 

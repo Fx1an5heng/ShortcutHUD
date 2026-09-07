@@ -72,16 +72,20 @@ class ShortcutCatalogTests(unittest.TestCase):
 
         self.assertEqual([(item.key, item.description, item.source) for item in resolved], [("P", "User", "USER_APP"), ("G", "Global", "GLOBAL")])
 
-    def test_pack_has_structured_future_trigger_kinds_but_runtime_uses_combo_only(self) -> None:
+    def test_pack_has_structured_trigger_kinds_but_runtime_uses_modifier_combos_only(self) -> None:
         document = _pack(entries=[
-            {**_pack()["entries"][0], "id": "sample.combo"},
+            {**_pack()["entries"][0], "id": "sample.combo", "trigger": {"kind": "combo", "keys": ["Ctrl", "P"]}},
+            {**_pack()["entries"][0], "id": "sample.single", "trigger": {"kind": "single", "keys": ["F5"]}, "visibility": ["full_guide"]},
             {**_pack()["entries"][0], "id": "sample.sequence", "trigger": {"kind": "sequence", "keys": ["Ctrl+K", "Ctrl+S"]}},
             {**_pack()["entries"][0], "id": "sample.double", "trigger": {"kind": "double_tap", "keys": ["Shift"]}},
         ])
         pack = parse_shortcut_pack(document)
-        self.assertEqual([entry.trigger.kind for entry in pack.entries], ["combo", "sequence", "double_tap"])
+        self.assertEqual([entry.trigger.kind for entry in pack.entries], ["combo", "single", "sequence", "double_tap"])
+        self.assertFalse(pack.entries[1].trigger.is_quick_hud_eligible())
+        self.assertFalse(pack.entries[2].trigger.is_quick_hud_eligible())
+        self.assertTrue(pack.entries[0].trigger.is_quick_hud_eligible())
         catalog = ShortcutCatalog(pack.entries)
-        self.assertEqual([entry.key for entry in CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl")], ["S"])
+        self.assertEqual([entry.key for entry in CatalogShortcutResolver(catalog).resolve("SAMPLE.EXE", "Ctrl")], ["P"])
 
     def test_pack_alias_identity_matches_same_catalog_entries(self) -> None:
         pack = parse_shortcut_pack(_pack())
