@@ -4,6 +4,7 @@ from scripts.application_descriptor import (
     ApplicationDescriptorFactory,
     ApplicationMetadata,
 )
+from scripts.shell_identity import WINDOWS_DESKTOP
 
 
 class ApplicationDescriptorTests(unittest.TestCase):
@@ -32,6 +33,13 @@ class ApplicationDescriptorTests(unittest.TestCase):
         descriptor = ApplicationDescriptorFactory(failing_provider).describe("my_tool.exe")
 
         self.assertEqual(descriptor.display_name, "My Tool")
+
+    def test_desktop_has_a_first_class_context_descriptor(self) -> None:
+        descriptor = ApplicationDescriptorFactory().describe(WINDOWS_DESKTOP)
+
+        self.assertEqual(descriptor.display_name, "Windows Desktop")
+        self.assertEqual(descriptor.context_kind, "desktop")
+        self.assertFalse(descriptor.supported)
 
 
 if __name__ == "__main__":

@@ -12,7 +12,9 @@ from .shortcut_resolver import (
     normalize_application_identity,
 )
 
-_GLOBAL_ONLY_IDENTITIES = frozenset({"WINDOWS_SHELL", "WPS_UNKNOWN"})
+_GLOBAL_ONLY_IDENTITIES = frozenset(
+    {"WINDOWS_SHELL", "SHELL_DESKTOP", "WPS_UNKNOWN"}
+)
 
 
 class CatalogShortcutResolver:

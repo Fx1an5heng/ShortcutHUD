@@ -29,10 +29,11 @@ RESERVED_USER_IDENTITIES = frozenset(
         _DEFAULT_LAYER,
         _GLOBAL_LAYER,
         "WINDOWS_SHELL",
+        "SHELL_DESKTOP",
         "WPS_UNKNOWN",
     }
 )
-_GLOBAL_ONLY_IDENTITIES = frozenset({"WINDOWS_SHELL", "WPS_UNKNOWN"})
+_GLOBAL_ONLY_IDENTITIES = frozenset({"WINDOWS_SHELL", "SHELL_DESKTOP", "WPS_UNKNOWN"})
 
 
 @dataclass(frozen=True, slots=True)

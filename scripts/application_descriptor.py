@@ -7,6 +7,7 @@ from dataclasses import dataclass, replace
 from pathlib import PureWindowsPath
 
 from .application_display_names import get_application_display_name
+from .shell_identity import WINDOWS_DESKTOP
 from .shortcut_resolver import normalize_application_identity
 
 
@@ -30,6 +31,7 @@ class ApplicationDescriptor:
     supported: bool = False
     aliases: tuple[str, ...] = ()
     last_detected_order: int = 0
+    context_kind: str = "application"
 
     def with_catalog(
         self,
@@ -66,6 +68,15 @@ class ApplicationDescriptorFactory:
         identity = normalize_application_identity(runtime_identity)
         if identity is None:
             return None
+        if identity == WINDOWS_DESKTOP:
+            return ApplicationDescriptor(
+                runtime_identity=identity,
+                executable_name="EXPLORER.EXE",
+                executable_path=None,
+                display_name="Windows Desktop",
+                last_detected_order=order,
+                context_kind="desktop",
+            )
         path = _clean_path(executable_path)
         metadata = self._metadata(path) if path else ApplicationMetadata()
         executable_name = PureWindowsPath(path).name.upper() if path else identity

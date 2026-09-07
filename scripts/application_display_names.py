@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 
-from .shell_identity import WINDOWS_SHELL
+from .shell_identity import WINDOWS_DESKTOP, WINDOWS_SHELL
 from .wps_identity import (
     WPS_PDF,
     WPS_PRESENTATION,
@@ -19,6 +19,7 @@ _APPLICATION_DISPLAY_NAMES = {
     WPS_PRESENTATION: "WPS Presentation",
     WPS_UNKNOWN: None,
     WINDOWS_SHELL: None,
+    WINDOWS_DESKTOP: None,
 }
 
 

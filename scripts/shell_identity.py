@@ -10,6 +10,7 @@ from typing import Callable
 
 EXPLORER_EXECUTABLE = "EXPLORER.EXE"
 WINDOWS_SHELL = "WINDOWS_SHELL"
+WINDOWS_DESKTOP = "SHELL_DESKTOP"
 
 _FILE_EXPLORER_WINDOW_CLASSES = frozenset(
     {
@@ -17,6 +18,7 @@ _FILE_EXPLORER_WINDOW_CLASSES = frozenset(
         "explorewclass",
     }
 )
+_DESKTOP_WINDOW_CLASSES = frozenset({"progman", "workerw"})
 _USER32 = ctypes.WinDLL("user32", use_last_error=True)
 _USER32.GetClassNameW.argtypes = (
     wintypes.HWND,
@@ -65,11 +67,15 @@ def classify_shell_application(
         window_class = window_class_provider(hwnd)
     except BaseException:
         window_class = None
-    if (
-        isinstance(window_class, str)
-        and window_class.strip().casefold() in _FILE_EXPLORER_WINDOW_CLASSES
-    ):
+    normalized_class = (
+        window_class.strip().casefold()
+        if isinstance(window_class, str)
+        else ""
+    )
+    if normalized_class in _FILE_EXPLORER_WINDOW_CLASSES:
         return EXPLORER_EXECUTABLE
+    if normalized_class in _DESKTOP_WINDOW_CLASSES:
+        return WINDOWS_DESKTOP
     return WINDOWS_SHELL
 
 

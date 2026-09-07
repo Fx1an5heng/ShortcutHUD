@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import os
 from collections.abc import Callable
+from dataclasses import replace
 
 import win32process
 from PySide6.QtCore import QObject, Signal, Slot
 
 from .application_descriptor import ApplicationDescriptor, ApplicationDescriptorFactory
+from .shell_identity import WINDOWS_DESKTOP
 from .shortcut_resolver import (
     RESERVED_USER_IDENTITIES,
     normalize_application_identity,
@@ -29,6 +31,7 @@ class CurrentApplicationCandidateTracker(QObject):
     """Remember the final app identity while excluding this process by HWND PID."""
 
     candidate_changed = Signal(object)
+    foreground_context_changed = Signal(object)
 
     def __init__(
         self,
@@ -47,6 +50,7 @@ class CurrentApplicationCandidateTracker(QObject):
         self._candidate: str | None = None
         self._recent_candidates: list[str] = []
         self._current_descriptor: ApplicationDescriptor | None = None
+        self._actual_context: ApplicationDescriptor | None = None
         self._recent_descriptors: list[ApplicationDescriptor] = []
         self._executable_path_provider = executable_path_provider or (lambda: None)
         self._descriptor_factory = descriptor_factory or ApplicationDescriptorFactory()
@@ -73,8 +77,26 @@ class CurrentApplicationCandidateTracker(QObject):
 
     @property
     def current_descriptor(self) -> ApplicationDescriptor | None:
-        """Latest valid external application, whether Catalog supports it or not."""
+        """Last valid external application, kept for ShortcutHUD self fallback."""
 
+        return self._current_descriptor
+
+    @property
+    def last_external_descriptor(self) -> ApplicationDescriptor | None:
+        return self._current_descriptor
+
+    @property
+    def actual_context(self) -> ApplicationDescriptor | None:
+        """The real foreground context; this may be desktop or ShortcutHUD itself."""
+
+        return self._actual_context
+
+    @property
+    def center_context(self) -> ApplicationDescriptor | None:
+        """Use actual external/desktop context, otherwise the self-window fallback."""
+
+        if self._actual_context is not None and self._actual_context.context_kind != "self":
+            return self._actual_context
         return self._current_descriptor
 
     @property
@@ -95,18 +117,26 @@ class CurrentApplicationCandidateTracker(QObject):
             process_id = self._process_id_provider(hwnd)
         except (OSError, TypeError, ValueError):
             return
-        if process_id is None or process_id == self._own_process_id:
-            return
-
         normalized_identity = normalize_application_identity(application_identity)
+        if process_id is None:
+            return
+        if process_id == self._own_process_id:
+            self._set_actual_context(self._self_context(normalized_identity))
+            return
+        if normalized_identity == WINDOWS_DESKTOP:
+            self._detection_order += 1
+            self._set_actual_context(
+                self._descriptor_factory.describe(normalized_identity, order=self._detection_order)
+            )
+            return
+        if normalized_identity is None or normalized_identity in RESERVED_USER_IDENTITIES:
+            self._set_actual_context(None)
+            return
         if normalized_identity == self._candidate:
+            self._set_actual_context(self._current_descriptor)
             return
         self._candidate = normalized_identity
         if normalized_identity is not None:
-            if normalized_identity in RESERVED_USER_IDENTITIES:
-                self._current_descriptor = None
-                self.candidate_changed.emit(self._candidate)
-                return
             if normalized_identity in self._recent_candidates:
                 self._recent_candidates.remove(normalized_identity)
             self._recent_candidates.insert(0, normalized_identity)
@@ -130,4 +160,19 @@ class CurrentApplicationCandidateTracker(QObject):
                 ]
                 self._recent_descriptors.insert(0, descriptor)
                 del self._recent_descriptors[8:]
+            self._set_actual_context(descriptor)
         self.candidate_changed.emit(self._candidate)
+
+    def _set_actual_context(self, descriptor: ApplicationDescriptor | None) -> None:
+        if descriptor == self._actual_context:
+            return
+        self._actual_context = descriptor
+        self.foreground_context_changed.emit(descriptor)
+
+    def _self_context(self, identity: str | None) -> ApplicationDescriptor | None:
+        if identity is None:
+            return None
+        descriptor = self._descriptor_factory.describe(identity)
+        if descriptor is None:
+            return None
+        return replace(descriptor, context_kind="self")

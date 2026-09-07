@@ -42,7 +42,9 @@ class UserProfileDraftTests(unittest.TestCase):
 
     def test_wps_logical_identity_is_allowed_but_reserved_identity_is_not(self) -> None:
         self.assertTrue(self.draft.add_profile("WPS_PDF"))
-        for identity in ("DEFAULT", "GLOBAL", "WINDOWS_SHELL", "WPS_UNKNOWN"):
+        for identity in (
+            "DEFAULT", "GLOBAL", "WINDOWS_SHELL", "SHELL_DESKTOP", "WPS_UNKNOWN"
+        ):
             with self.subTest(identity=identity):
                 with self.assertRaises(ProfileValidationError):
                     self.draft.add_profile(identity)

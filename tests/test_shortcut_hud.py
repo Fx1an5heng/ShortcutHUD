@@ -11,7 +11,7 @@ from scripts.shortcut_hud import (
     select_visible_entry_groups,
 )
 from scripts.shortcut_resolver import ShortcutEntry, resolve_shortcuts
-from scripts.shell_identity import WINDOWS_SHELL
+from scripts.shell_identity import WINDOWS_DESKTOP, WINDOWS_SHELL
 from scripts.wps_identity import (
     WPS_PDF,
     WPS_PRESENTATION,
@@ -228,7 +228,7 @@ class ShortcutHudPresentationTests(unittest.TestCase):
             ShortcutEntry("F4", "Close current window", "GLOBAL"),
         ]
 
-        for application_name in (WINDOWS_SHELL, WPS_UNKNOWN):
+        for application_name in (WINDOWS_SHELL, WINDOWS_DESKTOP, WPS_UNKNOWN):
             with self.subTest(application_name=application_name):
                 hud = ShortcutHudWindow()
                 hud.set_entries(application_name, "Alt", entries, "zh_CN")

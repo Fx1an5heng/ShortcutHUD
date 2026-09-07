@@ -2,6 +2,7 @@ import unittest
 
 from scripts.shell_identity import (
     EXPLORER_EXECUTABLE,
+    WINDOWS_DESKTOP,
     WINDOWS_SHELL,
     classify_shell_application,
 )
@@ -20,18 +21,24 @@ class ShellIdentityTests(unittest.TestCase):
                     EXPLORER_EXECUTABLE,
                 )
 
-    def test_desktop_and_taskbar_classes_use_shell_identity(self) -> None:
-        for window_class in (
-            "Shell_TrayWnd",
-            "Shell_SecondaryTrayWnd",
-            "Progman",
-            "WorkerW",
-        ):
+    def test_desktop_classes_have_a_distinct_desktop_identity(self) -> None:
+        for window_class in ("Progman", "WorkerW"):
             with self.subTest(window_class=window_class):
                 self.assertEqual(
                     classify_shell_application(
                         "EXPLORER.EXE",
                         202,
+                        lambda _hwnd, value=window_class: value,
+                    ),
+                    WINDOWS_DESKTOP,
+                )
+
+    def test_taskbar_classes_remain_non_desktop_shell_contexts(self) -> None:
+        for window_class in ("Shell_TrayWnd", "Shell_SecondaryTrayWnd"):
+            with self.subTest(window_class=window_class):
+                self.assertEqual(
+                    classify_shell_application(
+                        "EXPLORER.EXE", 202,
                         lambda _hwnd, value=window_class: value,
                     ),
                     WINDOWS_SHELL,

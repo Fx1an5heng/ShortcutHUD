@@ -155,6 +155,7 @@ class ApplicationIdentityRuntime(QObject):
     """Publish a resolver-facing app profile without blocking the Qt thread."""
 
     active_app_changed = Signal(str)
+    foreground_event_processed = Signal(int)
     identity_result_published = Signal(object)
     _worker_result_received = Signal(object)
     _windows_event_received = Signal(int, object, int, int)
@@ -250,6 +251,7 @@ class ApplicationIdentityRuntime(QObject):
 
         generation_before_refresh = self._generation
         self._foreground_monitor.check_foreground_app()
+        self.foreground_event_processed.emit(event)
         executable = _normalize_executable(
             self._foreground_monitor.current_app_name
         )

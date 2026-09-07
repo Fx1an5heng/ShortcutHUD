@@ -2,6 +2,7 @@ import unittest
 
 from scripts.application_descriptor import ApplicationDescriptorFactory, ApplicationMetadata
 from scripts.current_application_candidate import CurrentApplicationCandidateTracker
+from scripts.shell_identity import WINDOWS_DESKTOP
 
 
 class CurrentApplicationCandidateTrackerTests(unittest.TestCase):
@@ -32,12 +33,32 @@ class CurrentApplicationCandidateTrackerTests(unittest.TestCase):
 
         self.assertEqual(self.tracker.editable_candidate(), "WPS_PDF")
 
-    def test_reserved_identity_is_visible_but_not_editable(self) -> None:
+    def test_non_external_identity_does_not_replace_last_external_candidate(self) -> None:
+        self.tracker.on_active_app_changed("CODE.EXE")
         for identity in ("DEFAULT", "GLOBAL", "WINDOWS_SHELL", "WPS_UNKNOWN"):
             with self.subTest(identity=identity):
                 self.tracker.on_active_app_changed(identity)
-                self.assertEqual(self.tracker.current_candidate, identity)
-                self.assertIsNone(self.tracker.editable_candidate())
+                self.assertEqual(self.tracker.current_candidate, "CODE.EXE")
+                self.assertEqual(self.tracker.editable_candidate(), "CODE.EXE")
+
+    def test_desktop_is_actual_context_without_replacing_last_external_candidate(self) -> None:
+        self.tracker.on_active_app_changed("CODE.EXE")
+        self.tracker.on_active_app_changed(WINDOWS_DESKTOP)
+
+        self.assertEqual(self.tracker.actual_context.runtime_identity, WINDOWS_DESKTOP)
+        self.assertEqual(self.tracker.center_context.runtime_identity, WINDOWS_DESKTOP)
+        self.assertEqual(self.tracker.last_external_descriptor.runtime_identity, "CODE.EXE")
+        self.assertEqual(self.tracker.editable_candidate(), "CODE.EXE")
+
+    def test_duplicate_foreground_context_does_not_emit_again(self) -> None:
+        observed: list[object] = []
+        self.tracker.foreground_context_changed.connect(observed.append)
+
+        self.tracker.on_active_app_changed("CODE.EXE")
+        self.tracker.on_active_app_changed("CODE.EXE")
+
+        self.assertEqual(len(observed), 1)
+        self.assertEqual(observed[0].runtime_identity, "CODE.EXE")
 
     def test_latest_external_application_replaces_previous_candidate(self) -> None:
         self.tracker.on_active_app_changed("CODE.EXE")
@@ -54,6 +75,8 @@ class CurrentApplicationCandidateTrackerTests(unittest.TestCase):
         self.tracker.on_active_app_changed("OTHER.EXE")
 
         self.assertEqual(self.tracker.current_candidate, "CODE.EXE")
+        self.assertEqual(self.tracker.actual_context.runtime_identity, "CODE.EXE")
+        self.assertEqual(self.tracker.center_context.runtime_identity, "CODE.EXE")
 
     def test_unknown_external_application_is_retained_with_friendly_metadata(self) -> None:
         tracker = CurrentApplicationCandidateTracker(

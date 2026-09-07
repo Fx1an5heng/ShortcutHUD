@@ -27,6 +27,7 @@ class UserShortcutResolverTests(unittest.TestCase):
                 "Win": {"R": "Run"},
             },
             "WINDOWS_SHELL": {},
+            "SHELL_DESKTOP": {},
             "WPS_UNKNOWN": {},
             "WPS_WRITER": {"Ctrl": {"B": "Bold"}},
         }
@@ -182,12 +183,15 @@ class UserShortcutResolverTests(unittest.TestCase):
             "WINDOWS_SHELL": self._profile(
                 {"Alt": {"X": "Malicious shell local"}}
             ),
+            "SHELL_DESKTOP": self._profile(
+                {"Alt": {"D": "Malicious desktop local"}}
+            ),
             "WPS_UNKNOWN": self._profile(
                 {"Alt": {"Y": "Malicious WPS local"}}
             ),
         }
 
-        for app_id in ("WINDOWS_SHELL", "WPS_UNKNOWN"):
+        for app_id in ("WINDOWS_SHELL", "SHELL_DESKTOP", "WPS_UNKNOWN"):
             with self.subTest(app_id=app_id):
                 self.assertEqual(
                     resolve_shortcuts(self.data, app_id, "Alt", users),

@@ -11,7 +11,7 @@ from scripts.application_identity import (
     ApplicationIdentityRuntime,
 )
 from scripts.foreground_monitor import ForegroundMonitor
-from scripts.shell_identity import EXPLORER_EXECUTABLE, WINDOWS_SHELL
+from scripts.shell_identity import EXPLORER_EXECUTABLE, WINDOWS_DESKTOP, WINDOWS_SHELL
 from scripts.shortcut_resolver import resolve_shortcuts
 from scripts.wps_identity import (
     HIGH_CONFIDENCE,
@@ -149,7 +149,7 @@ class ApplicationIdentityRuntimeTests(unittest.TestCase):
             observed,
             [
                 EXPLORER_EXECUTABLE,
-                WINDOWS_SHELL,
+                WINDOWS_DESKTOP,
                 WINDOWS_SHELL,
                 EXPLORER_EXECUTABLE,
             ],
@@ -235,6 +235,30 @@ class ApplicationIdentityRuntimeTests(unittest.TestCase):
 
         self.assertLess(elapsed_ms, 20)
         self.assertGreater(self.worker.requests[-1].generation, previous_generation)
+
+    def test_foreground_event_is_bridged_through_a_qt_signal(self) -> None:
+        events: list[int] = []
+        self.runtime.foreground_event_processed.connect(events.append)
+
+        self.runtime._on_windows_event(EVENT_OBJECT_FOCUS, 0, 0, 0)
+
+        self.assertEqual(self.monitor.check_count, 1)
+        self.assertEqual(events, [EVENT_OBJECT_FOCUS])
+
+    def test_foreground_event_refreshes_the_existing_identity_pipeline(self) -> None:
+        self.monitor.current_hwnd = 456
+        self.monitor.current_app_name = "chrome.exe"
+        observed: list[str] = []
+        self.runtime.active_app_changed.connect(observed.append)
+
+        def refresh() -> bool:
+            self.runtime.on_foreground_changed(456, "chrome.exe")
+            return True
+
+        self.monitor.check_foreground_app = refresh
+        self.runtime._on_windows_event(EVENT_OBJECT_FOCUS, 0, 0, 0)
+
+        self.assertEqual(observed, ["CHROME.EXE"])
 
     def test_shutdown_order_stops_requests_hook_then_worker(self) -> None:
         self.runtime.stop()
