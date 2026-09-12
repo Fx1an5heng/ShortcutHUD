@@ -1209,8 +1209,6 @@ Custom shortcuts and the display name will not be changed.</source>
     <message><source>Full Guide</source><translation>快捷键指南</translation></message>
     <message><source>Search shortcuts…</source><translation>搜索快捷键…</translation></message>
     <message><source>Columns</source><translation>列数</translation></message>
-    <message><source>Auto columns</source><translation>自动列数</translation></message>
-    <message><source>%1 columns</source><translation>%1 列</translation></message>
     <message><source>Close</source><translation>关闭</translation></message>
     <message><source>Open Shortcut Center</source><translation>打开快捷键中心</translation></message>
     <message><source>Ctrl+F  Search     Esc  Clear search / Close     ★  Recommended</source><translation>Ctrl+F  搜索     Esc  清空搜索 / 关闭     ★  推荐</translation></message>

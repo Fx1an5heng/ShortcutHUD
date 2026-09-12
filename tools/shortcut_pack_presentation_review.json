@@ -1,0 +1,604 @@
+{
+  "packs": [
+    "file-explorer",
+    "google-chrome",
+    "microsoft-edge",
+    "microsoft-excel",
+    "microsoft-powerpoint",
+    "microsoft-word",
+    "vscode",
+    "windows-terminal"
+  ],
+  "evidence": "Reviewed against shipping Pack provenance, VS Code official command reference, and shipping legacy English action identities. Presentation only: NOT id_aliases or selection migration.",
+  "equivalences": [
+    [
+      "vscode.quick-open",
+      "vscode.quick-open-go-to-file"
+    ],
+    [
+      "vscode.new-window",
+      "vscode.new-window.b686bc6a"
+    ],
+    [
+      "vscode.settings",
+      "vscode.open-settings"
+    ],
+    [
+      "vscode.cut",
+      "vscode.cut-line-empty-selection"
+    ],
+    [
+      "vscode.copy",
+      "vscode.copy-line-empty-selection"
+    ],
+    [
+      "vscode.paste",
+      "vscode.paste.b2450db0"
+    ],
+    [
+      "vscode.undo",
+      "vscode.undo.4ab27e3d"
+    ],
+    [
+      "vscode.redo",
+      "vscode.redo.205e046e"
+    ],
+    [
+      "vscode.move-line-up",
+      "vscode.move-line-up.c457a71b"
+    ],
+    [
+      "vscode.move-line-down",
+      "vscode.move-line-down.ca5e7eac"
+    ],
+    [
+      "vscode.duplicate-line-up",
+      "vscode.copy-line-up"
+    ],
+    [
+      "vscode.duplicate-line-down",
+      "vscode.copy-line-down"
+    ],
+    [
+      "vscode.select-next-match",
+      "vscode.add-selection-to-next-find-match"
+    ],
+    [
+      "vscode.goto-line",
+      "vscode.go-to-line"
+    ],
+    [
+      "vscode.goto-symbol",
+      "vscode.go-to-symbol"
+    ],
+    [
+      "vscode.show-all-symbols",
+      "vscode.show-all-symbols.c82b6fdf"
+    ],
+    [
+      "vscode.navigate-back",
+      "vscode.go-back"
+    ],
+    [
+      "vscode.navigate-forward",
+      "vscode.go-forward"
+    ],
+    [
+      "vscode.find",
+      "vscode.find.280b66cc"
+    ],
+    [
+      "vscode.replace",
+      "vscode.replace.418466bb"
+    ],
+    [
+      "vscode.find-in-files",
+      "vscode.show-search",
+      "vscode.show-search.a18916d0"
+    ],
+    [
+      "vscode.replace-in-files",
+      "vscode.replace-in-files.f575e0f1"
+    ],
+    [
+      "vscode.keyboard-shortcuts",
+      "vscode.open-keyboard-shortcuts"
+    ],
+    [
+      "vscode.toggle-sidebar",
+      "vscode.toggle-sidebar-visibility"
+    ],
+    [
+      "vscode.show-explorer",
+      "vscode.show-explorer-toggle-focus"
+    ],
+    [
+      "vscode.show-source-control",
+      "vscode.show-source-control.a523597d"
+    ],
+    [
+      "vscode.show-debug",
+      "vscode.show-run"
+    ],
+    [
+      "vscode.show-extensions",
+      "vscode.show-extensions.8b21064c"
+    ],
+    [
+      "vscode.split-editor",
+      "vscode.split-editor.6625970a"
+    ],
+    [
+      "vscode.focus-first-editor-group",
+      "vscode.focus-into-first-editor-group"
+    ],
+    [
+      "vscode.focus-second-editor-group",
+      "vscode.focus-into-second-editor-group"
+    ],
+    [
+      "vscode.new-file",
+      "vscode.new-file.14cd5df2"
+    ],
+    [
+      "vscode.open-file",
+      "vscode.open-file.8b08124d"
+    ],
+    [
+      "vscode.save",
+      "vscode.save.d7b20c07"
+    ],
+    [
+      "vscode.save-as",
+      "vscode.save-as.6bac672d"
+    ],
+    [
+      "vscode.reopen-closed-editor",
+      "vscode.reopen-closed-editor.bf05efdc"
+    ],
+    [
+      "vscode.toggle-terminal",
+      "vscode.toggle-integrated-terminal"
+    ]
+  ],
+  "legacy_titles": {
+    "Select the address bar": [
+      "Address Bar"
+    ],
+    "Open a new tab": [
+      "New Tab"
+    ],
+    "Close the current active tab": [
+      "Close Tab"
+    ],
+    "Move to the next tab": [
+      "Next Tab"
+    ],
+    "Open a new window": [
+      "New Window"
+    ],
+    "Select the search box": [
+      "Search"
+    ],
+    "Delete the selected item": [
+      "Move to Recycle Bin"
+    ],
+    "Create a new folder": [
+      "New Folder"
+    ],
+    "Move to the previous tab": [
+      "Previous Tab"
+    ],
+    "Expand all folders": [
+      "Expand Navigation Tree"
+    ],
+    "Move up a level in the folder path": [
+      "Up One Level"
+    ],
+    "Navigate to the previous folder": [
+      "Back"
+    ],
+    "Navigate to the next folder": [
+      "Forward"
+    ],
+    "Display properties for the selected item": [
+      "Properties"
+    ],
+    "Show/Hide the preview pane": [
+      "Preview Pane"
+    ],
+    "Show/Hide the details pane": [
+      "Details Pane"
+    ],
+    "New tab": [
+      "New Tab"
+    ],
+    "Close current tab": [
+      "Close Tab"
+    ],
+    "Jump to address bar": [
+      "Address Bar"
+    ],
+    "Jump to next tab": [
+      "Next Tab"
+    ],
+    "Open History page": [
+      "History"
+    ],
+    "Open Downloads page": [
+      "Downloads"
+    ],
+    "Bookmark current page": [
+      "Bookmark Page"
+    ],
+    "New window": [
+      "New Window"
+    ],
+    "Reopen previously closed tab": [
+      "Reopen Closed Tab"
+    ],
+    "New incognito window": [
+      "New Incognito Window"
+    ],
+    "Open Bookmarks Manager": [
+      "Bookmark Manager"
+    ],
+    "Reload, ignoring cache": [
+      "Hard Reload"
+    ],
+    "Jump to previous tab": [
+      "Previous Tab"
+    ],
+    "Clear Browsing Data": [
+      "Clear Browsing Data"
+    ],
+    "Show or hide bookmarks bar": [
+      "Show/Hide Bookmarks Bar"
+    ],
+    "Open previous page in history": [
+      "Back"
+    ],
+    "Open next page in history": [
+      "Forward"
+    ],
+    "Jump to address bar (alt)": [
+      "Address Bar"
+    ],
+    "Open home page in current tab": [
+      "Home Page"
+    ],
+    "Open the Chrome menu": [
+      "Chrome Menu"
+    ],
+    "Close the current tab": [
+      "Close Tab"
+    ],
+    "Switch to the next tab": [
+      "Next Tab"
+    ],
+    "Open History": [
+      "History"
+    ],
+    "Open Downloads": [
+      "Downloads"
+    ],
+    "Save the current tab as a favorite": [
+      "Add Favorite"
+    ],
+    "Reopen the last closed tab": [
+      "Reopen Closed Tab"
+    ],
+    "New InPrivate window": [
+      "New InPrivate Window"
+    ],
+    "Open Favorites": [
+      "Favorites"
+    ],
+    "Duplicate the current tab": [
+      "Duplicate Tab"
+    ],
+    "Switch to the previous tab": [
+      "Previous Tab"
+    ],
+    "Open clear browsing data options": [
+      "Clear Browsing Data"
+    ],
+    "Go back": [
+      "Back"
+    ],
+    "Go forward": [
+      "Forward"
+    ],
+    "Open Format Cells dialog": [
+      "Format Cells"
+    ],
+    "Create Table": [
+      "Create Table"
+    ],
+    "Fill down": [
+      "Fill Down"
+    ],
+    "Flash Fill": [
+      "Flash Fill"
+    ],
+    "Enter current date": [
+      "Current Date"
+    ],
+    "Toggle formula display": [
+      "Show/Hide Formulas"
+    ],
+    "Previous worksheet": [
+      "Previous Sheet"
+    ],
+    "Next worksheet": [
+      "Next Sheet"
+    ],
+    "Insert blank cells": [
+      "Insert Cells"
+    ],
+    "Enter current time": [
+      "Current Time"
+    ],
+    "Apply Currency format": [
+      "Currency Format"
+    ],
+    "Apply Percentage format": [
+      "Percentage Format"
+    ],
+    "Apply Date format": [
+      "Date Format"
+    ],
+    "Apply Time format": [
+      "Time Format"
+    ],
+    "Apply Number format": [
+      "Number Format"
+    ],
+    "Paste Special": [
+      "Paste Special"
+    ],
+    "Refresh all data in workbook": [
+      "Refresh All Data"
+    ],
+    "Insert new slide": [
+      "New Slide"
+    ],
+    "Group selected objects": [
+      "Group"
+    ],
+    "Insert hyperlink": [
+      "Hyperlink"
+    ],
+    "Zoom in": [
+      "Zoom In"
+    ],
+    "Zoom out": [
+      "Zoom Out"
+    ],
+    "Move slide up in order": [
+      "Move Slide Up"
+    ],
+    "Move slide down in order": [
+      "Move Slide Down"
+    ],
+    "Full screen": [
+      "Full Screen"
+    ],
+    "Duplicate selected slide": [
+      "Duplicate Slide"
+    ],
+    "Ungroup selected group": [
+      "Ungroup"
+    ],
+    "Copy object formatting": [
+      "Copy Formatting"
+    ],
+    "Paste object formatting": [
+      "Paste Formatting"
+    ],
+    "Regroup objects": [
+      "Regroup"
+    ],
+    "Toggle Outline and Thumbnail views": [
+      "Toggle Outline/Thumbnail"
+    ],
+    "Insert new comment": [
+      "New Comment"
+    ],
+    "Zoom to fit": [
+      "Zoom to Fit"
+    ],
+    "Copy animation painter": [
+      "Copy Animation"
+    ],
+    "Paste animation painter": [
+      "Paste Animation"
+    ],
+    "Bold": [
+      "Bold"
+    ],
+    "Italic": [
+      "Italic"
+    ],
+    "Underline": [
+      "Underline"
+    ],
+    "Find and replace": [
+      "Replace"
+    ],
+    "Insert page break": [
+      "Page Break"
+    ],
+    "Center": [
+      "Center"
+    ],
+    "Justify": [
+      "Justify"
+    ],
+    "Paste text only": [
+      "Paste Text Only"
+    ],
+    "Turn Track Changes on or off": [
+      "Track Changes"
+    ],
+    "Show or hide nonprinting characters": [
+      "Show Formatting Marks"
+    ],
+    "Apply Normal style": [
+      "Normal Style"
+    ],
+    "Insert column break": [
+      "Column Break"
+    ],
+    "Apply Heading 1": [
+      "Heading 1"
+    ],
+    "Apply Heading 2": [
+      "Heading 2"
+    ],
+    "Apply Heading 3": [
+      "Heading 3"
+    ],
+    "Insert comment": [
+      "New Comment"
+    ],
+    "Insert footnote": [
+      "Footnote"
+    ],
+    "Insert endnote": [
+      "Endnote"
+    ],
+    "Toggle Line Comment": [
+      "Toggle Line Comment"
+    ],
+    "Toggle Sidebar": [
+      "Toggle Sidebar"
+    ],
+    "Go to Line": [
+      "Go to Line"
+    ],
+    "Replace": [
+      "Replace"
+    ],
+    "Insert Line Below": [
+      "Insert Line Below"
+    ],
+    "Find in Files": [
+      "Search"
+    ],
+    "Show Explorer": [
+      "Explorer"
+    ],
+    "Show Source Control": [
+      "Source Control"
+    ],
+    "Show Run and Debug": [
+      "Run and Debug"
+    ],
+    "Show Extensions": [
+      "Extensions"
+    ],
+    "Go to Symbol": [
+      "Go to Symbol"
+    ],
+    "Show Problems": [
+      "Problems"
+    ],
+    "Move Line Up": [
+      "Move Line Up"
+    ],
+    "Move Line Down": [
+      "Move Line Down"
+    ],
+    "Toggle Word Wrap": [
+      "Toggle Word Wrap"
+    ],
+    "Navigate Back": [
+      "Navigate Back"
+    ],
+    "Navigate Forward": [
+      "Navigate Forward"
+    ],
+    "Peek Definition": [
+      "Peek Definition"
+    ],
+    "Format Document": [
+      "Format Document"
+    ],
+    "Toggle Block Comment": [
+      "Toggle Block Comment"
+    ],
+    "Copy Line Up": [
+      "Copy Line Up"
+    ],
+    "Copy Line Down": [
+      "Copy Line Down"
+    ],
+    "Go to References": [
+      "Go to References"
+    ],
+    "Next tab": [
+      "Next Tab"
+    ],
+    "Open settings UI": [
+      "Settings"
+    ],
+    "Increase font size": [
+      "Increase Font Size"
+    ],
+    "Decrease font size": [
+      "Decrease Font Size"
+    ],
+    "Reset font size": [
+      "Reset Font Size"
+    ],
+    "Open new tab": [
+      "New Tab"
+    ],
+    "Close current pane": [
+      "Close Pane/Tab"
+    ],
+    "Toggle command palette": [
+      "Command Palette"
+    ],
+    "Find text": [
+      "Find"
+    ],
+    "Duplicate current tab": [
+      "Duplicate Tab"
+    ],
+    "Open new window": [
+      "New Window"
+    ],
+    "Move focus up": [
+      "Focus Pane Up"
+    ],
+    "Move focus down": [
+      "Focus Pane Down"
+    ],
+    "Move focus left": [
+      "Focus Pane Left"
+    ],
+    "Move focus right": [
+      "Focus Pane Right"
+    ],
+    "Duplicate pane (horizontal split)": [
+      "Split Down"
+    ],
+    "Duplicate pane (vertical split)": [
+      "Split Right"
+    ],
+    "Resize pane up": [
+      "Resize Pane Up"
+    ],
+    "Resize pane down": [
+      "Resize Pane Down"
+    ],
+    "Resize pane left": [
+      "Resize Pane Left"
+    ],
+    "Resize pane right": [
+      "Resize Pane Right"
+    ]
+  }
+}

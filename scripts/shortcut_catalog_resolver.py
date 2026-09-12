@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+from dataclasses import replace
 from .catalog_presentation import ResolvedCatalogEntry, resolve_presentation
+from .catalog_presentation_dedup import normalized_trigger, presentation_groups
 from .modifier_state import normalize_modifier_combination
 from .shortcut_catalog import CatalogEntry, CatalogScope, CatalogTrigger, ShortcutCatalog, select_catalog_text
 from .shortcut_key import normalize_builtin_shortcut_identity
@@ -119,14 +121,7 @@ class CatalogShortcutResolver:
 
 def _trigger_identity(entry: CatalogEntry) -> tuple[str, ...]:
     """Deduplicate complete triggers, never just the last key or description."""
-    if entry.trigger.kind == "combo":
-        modifier = entry.legacy_runtime_modifier or entry.trigger.runtime_modifier()
-        try:
-            modifier, key = normalize_builtin_shortcut_identity(modifier, entry.hud_key())
-            return ("combo", modifier, key.casefold())
-        except ValueError:
-            pass
-    return (entry.trigger.kind, *(key.casefold() for key in entry.trigger.keys))
+    return normalized_trigger(entry)
 
 
 def resolve_catalog_view(catalog: ShortcutCatalog, app_id: str | None, profiles: Mapping[str, object] | None = None, language: str | None = None, *, include_default: bool = False) -> tuple[ResolvedCatalogEntry, ...]:
@@ -134,14 +129,12 @@ def resolve_catalog_view(catalog: ShortcutCatalog, app_id: str | None, profiles:
 
     An unknown Guide deliberately excludes generic DEFAULT advice. Legacy
     records remain readable, including compatibility-only IDs, but an official
-    Pack row wins an identical trigger within the builtin layer.
+    Pack row wins a proven equivalent record within the builtin layer.
     """
     identity = normalize_application_identity(app_id)
     profile = _find_profile(profiles, identity)
     builtin = [entry for entry in catalog.entries if entry.scope == "APP" and identity in entry.application_ids]
     builtin.sort(key=lambda entry: (entry.provenance.get("kind") == "legacy", entry.rank, entry.order, entry.id))
-    pack_triggers = {_trigger_identity(entry) for entry in builtin if entry.provenance.get("kind") != "legacy"}
-    builtin = [entry for entry in builtin if entry.provenance.get("kind") != "legacy" or _trigger_identity(entry) not in pack_triggers]
     if profile is not None:
         builtin = [entry for entry in builtin if not entry.trigger.runtime_modifier() or _hide_builtin([entry], profile, entry.legacy_runtime_modifier or entry.trigger.runtime_modifier())]
     users: list[CatalogEntry] = []
@@ -160,7 +153,7 @@ def resolve_catalog_view(catalog: ShortcutCatalog, app_id: str | None, profiles:
     for entries, source in layers:
         layer_keys: set[tuple[str, ...]] = set()
         layer_ids: set[str] = set()
-        for entry in entries:
+        for entry, members in presentation_groups(entries, identity):
             key = _trigger_identity(entry)
             # Context-dependent commands within the same Pack may share a
             # trigger (F11 full screen / debugger step into). Only lower
@@ -168,7 +161,10 @@ def resolve_catalog_view(catalog: ShortcutCatalog, app_id: str | None, profiles:
             if key not in seen and entry.id not in layer_ids:
                 layer_keys.add(key)
                 layer_ids.add(entry.id)
-                rows.append(resolve_presentation(catalog, entry, source, language))
+                row = resolve_presentation(catalog, entry, source, language)
+                # Search stays on deduplicated rows, retaining source synonyms.
+                search_text = "\n".join(resolve_presentation(catalog, member, source, language).search_text for member in members)
+                rows.append(replace(row, search_text=search_text))
         seen.update(layer_keys)
     return tuple(rows)
 

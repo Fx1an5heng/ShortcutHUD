@@ -12,7 +12,7 @@ def _manifest():
 
 class PowerToysImporterTests(unittest.TestCase):
     def _convert(self, document=None):
-        return convert_manifest(document or _manifest(), pack_id="example.windows", product={"en": "Example", "zh_CN": "示例"}, app_identities=["EXAMPLE.EXE"], aliases=[], official_reference_title="Official", official_reference_url="https://example.test/docs", upstream_revision="abc123", translation_map={"General": "常规", "Open File": "打开文件", "Chord": "组合键"})
+        return convert_manifest(document or _manifest(), pack_id="example.windows", product={"en": "Example", "zh_CN": "示例"}, app_identities=["EXAMPLE.EXE"], aliases=[], official_reference_title="Official", official_reference_url="https://example.test/docs", upstream_revision="abc123", translation_map={"General": "常规", "Open File": "打开文件", "Refresh": "刷新", "Chord": "组合键"})
 
     def test_valid_manifest_is_deterministic_and_maps_core_fields(self):
         first = self._convert(); second = self._convert()
@@ -36,6 +36,10 @@ class PowerToysImporterTests(unittest.TestCase):
     def test_background_manifest_fails_safely(self):
         document = _manifest(); document["BackgroundProcess"] = True
         with self.assertRaises(ManifestImportError): self._convert(document)
+
+    def test_missing_exact_translation_fails_instead_of_shipping_mixed_text(self):
+        with self.assertRaisesRegex(ManifestImportError, "missing exact zh_CN"):
+            convert_manifest(_manifest(), pack_id="example.windows", product={"en": "Example", "zh_CN": "示例"}, app_identities=["EXAMPLE.EXE"], aliases=[], official_reference_title="Official", official_reference_url="https://example.test/docs", upstream_revision="abc123", translation_map={"General": "常规"})
 
 
 if __name__ == "__main__": unittest.main()

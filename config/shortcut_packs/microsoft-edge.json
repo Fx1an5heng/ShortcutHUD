@@ -78,7 +78,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -114,7 +117,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Reopen Closed Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -149,7 +155,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Next Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -185,7 +194,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Previous Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -290,7 +302,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Close Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -431,7 +446,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Window"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -467,7 +485,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New InPrivate Window"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -503,7 +524,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Duplicate Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -730,11 +754,11 @@
       },
       "title": {
         "en": "Add www. and .com to text in the address bar",
-        "zh_CN": "Add www. and .com to 文本 in the 地址栏"
+        "zh_CN": "为地址栏文本补全 www. 和 .com"
       },
       "description": {
         "en": "Add www. and .com to text in the address bar",
-        "zh_CN": "Add www. and .com to 文本 in the 地址栏"
+        "zh_CN": "为地址栏文本补全 www. 和 .com"
       },
       "category": "address-bar",
       "scope": "app",
@@ -850,7 +874,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "History"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -885,7 +912,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Downloads"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -921,7 +951,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Favorites"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1064,7 +1097,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Add Favorite"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1085,11 +1121,11 @@
       },
       "title": {
         "en": "Save all open tabs as favorites in a new folder",
-        "zh_CN": "保存全部 打开tabs as 收藏夹 in a 新建文件夹"
+        "zh_CN": "将所有打开的选项卡收藏到新文件夹"
       },
       "description": {
         "en": "Save all open tabs as favorites in a new folder",
-        "zh_CN": "保存全部 打开tabs as 收藏夹 in a 新建文件夹"
+        "zh_CN": "将所有打开的选项卡收藏到新文件夹"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1155,11 +1191,11 @@
       },
       "title": {
         "en": "Open Send feedback dialog",
-        "zh_CN": "打开Send feedback dialog"
+        "zh_CN": "打开发送反馈对话框"
       },
       "description": {
         "en": "Open Send feedback dialog",
-        "zh_CN": "打开Send feedback dialog"
+        "zh_CN": "打开发送反馈对话框"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1191,11 +1227,11 @@
       },
       "title": {
         "en": "Sign in as different user / browse as guest",
-        "zh_CN": "Sign in as different user / browse as guest"
+        "zh_CN": "切换用户登录或以访客身份浏览"
       },
       "description": {
         "en": "Sign in as different user / browse as guest",
-        "zh_CN": "Sign in as different user / browse as guest"
+        "zh_CN": "切换用户登录或以访客身份浏览"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1227,11 +1263,11 @@
       },
       "title": {
         "en": "Open clear browsing data options",
-        "zh_CN": "打开clear browsing data options"
+        "zh_CN": "打开清除浏览数据选项"
       },
       "description": {
         "en": "Open clear browsing data options",
-        "zh_CN": "打开clear browsing data options"
+        "zh_CN": "打开清除浏览数据选项"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1242,7 +1278,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Clear Browsing Data"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1261,11 +1300,11 @@
       },
       "title": {
         "en": "Open Help",
-        "zh_CN": "打开Help"
+        "zh_CN": "打开帮助"
       },
       "description": {
         "en": "Open Help",
-        "zh_CN": "打开Help"
+        "zh_CN": "打开帮助"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1294,11 +1333,11 @@
       },
       "title": {
         "en": "Turn caret browsing on or off",
-        "zh_CN": "Turn caret browsing on or off"
+        "zh_CN": "开启或关闭插入符浏览"
       },
       "description": {
         "en": "Turn caret browsing on or off",
-        "zh_CN": "Turn caret browsing on or off"
+        "zh_CN": "开启或关闭插入符浏览"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1327,11 +1366,11 @@
       },
       "title": {
         "en": "Enter or exit Immersive Reader",
-        "zh_CN": "Enter or exit Immersive Reader"
+        "zh_CN": "进入或退出沉浸式阅读器"
       },
       "description": {
         "en": "Enter or exit Immersive Reader",
-        "zh_CN": "Enter or exit Immersive Reader"
+        "zh_CN": "进入或退出沉浸式阅读器"
       },
       "category": "browser-features",
       "scope": "app",
@@ -1395,11 +1434,11 @@
       },
       "title": {
         "en": "Find next result",
-        "zh_CN": "查找下一个 结果"
+        "zh_CN": "查找下一个结果"
       },
       "description": {
         "en": "Find next result",
-        "zh_CN": "查找下一个 结果"
+        "zh_CN": "查找下一个结果"
       },
       "category": "web-page",
       "scope": "app",
@@ -1431,11 +1470,11 @@
       },
       "title": {
         "en": "Find previous result",
-        "zh_CN": "查找上一个 结果"
+        "zh_CN": "查找上一个结果"
       },
       "description": {
         "en": "Find previous result",
-        "zh_CN": "查找上一个 结果"
+        "zh_CN": "查找上一个结果"
       },
       "category": "web-page",
       "scope": "app",
@@ -1466,11 +1505,11 @@
       },
       "title": {
         "en": "Reload the current page",
-        "zh_CN": "重新加载 the 当前 页面"
+        "zh_CN": "重新加载当前页面"
       },
       "description": {
         "en": "Reload the current page",
-        "zh_CN": "重新加载 the 当前 页面"
+        "zh_CN": "重新加载当前页面"
       },
       "category": "web-page",
       "scope": "app",
@@ -1500,11 +1539,11 @@
       },
       "title": {
         "en": "Reload, ignoring cached content",
-        "zh_CN": "重新加载, ignoring cached content"
+        "zh_CN": "忽略缓存并重新加载"
       },
       "description": {
         "en": "Reload, ignoring cached content",
-        "zh_CN": "重新加载, ignoring cached content"
+        "zh_CN": "忽略缓存并重新加载"
       },
       "category": "web-page",
       "scope": "app",
@@ -1534,11 +1573,11 @@
       },
       "title": {
         "en": "Save the current page",
-        "zh_CN": "保存the 当前 页面"
+        "zh_CN": "保存当前页面"
       },
       "description": {
         "en": "Save the current page",
-        "zh_CN": "保存the 当前 页面"
+        "zh_CN": "保存当前页面"
       },
       "category": "web-page",
       "scope": "app",
@@ -1569,11 +1608,11 @@
       },
       "title": {
         "en": "Print the current page",
-        "zh_CN": "打印 the 当前 页面"
+        "zh_CN": "打印当前页面"
       },
       "description": {
         "en": "Print the current page",
-        "zh_CN": "打印 the 当前 页面"
+        "zh_CN": "打印当前页面"
       },
       "category": "web-page",
       "scope": "app",
@@ -1605,11 +1644,11 @@
       },
       "title": {
         "en": "Print using the system dialog",
-        "zh_CN": "打印 using the system dialog"
+        "zh_CN": "使用系统对话框打印"
       },
       "description": {
         "en": "Print using the system dialog",
-        "zh_CN": "打印 using the system dialog"
+        "zh_CN": "使用系统对话框打印"
       },
       "category": "web-page",
       "scope": "app",
@@ -1640,11 +1679,11 @@
       },
       "title": {
         "en": "Open a file in Edge",
-        "zh_CN": "打开a 文件 in Edge"
+        "zh_CN": "在 Edge 中打开文件"
       },
       "description": {
         "en": "Open a file in Edge",
-        "zh_CN": "打开a 文件 in Edge"
+        "zh_CN": "在 Edge 中打开文件"
       },
       "category": "web-page",
       "scope": "app",
@@ -1675,11 +1714,11 @@
       },
       "title": {
         "en": "View source",
-        "zh_CN": "视图 source"
+        "zh_CN": "查看源代码"
       },
       "description": {
         "en": "View source",
-        "zh_CN": "视图 source"
+        "zh_CN": "查看源代码"
       },
       "category": "web-page",
       "scope": "app",
@@ -1711,11 +1750,11 @@
       },
       "title": {
         "en": "Start or stop Read Aloud",
-        "zh_CN": "Start or stop Read Aloud"
+        "zh_CN": "开始或停止朗读"
       },
       "description": {
         "en": "Start or stop Read Aloud",
-        "zh_CN": "Start or stop Read Aloud"
+        "zh_CN": "开始或停止朗读"
       },
       "category": "web-page",
       "scope": "app",
@@ -1747,11 +1786,11 @@
       },
       "title": {
         "en": "Paste without formatting",
-        "zh_CN": "粘贴without formatting"
+        "zh_CN": "粘贴为纯文本"
       },
       "description": {
         "en": "Paste without formatting",
-        "zh_CN": "粘贴without formatting"
+        "zh_CN": "粘贴为纯文本"
       },
       "category": "web-page",
       "scope": "app",
@@ -1797,7 +1836,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom In"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1832,7 +1874,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom Out"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1852,11 +1897,11 @@
       },
       "title": {
         "en": "Reset page zoom level",
-        "zh_CN": "重置 页面 zoom level"
+        "zh_CN": "重置页面缩放"
       },
       "description": {
         "en": "Reset page zoom level",
-        "zh_CN": "重置 页面 zoom level"
+        "zh_CN": "重置页面缩放"
       },
       "category": "web-page",
       "scope": "app",
@@ -1886,11 +1931,11 @@
       },
       "title": {
         "en": "Stop loading page; close dialog or pop-up",
-        "zh_CN": "Stop loading 页面; 关闭dialog or pop-上"
+        "zh_CN": "停止加载页面，或关闭对话框与弹窗"
       },
       "description": {
         "en": "Stop loading page; close dialog or pop-up",
-        "zh_CN": "Stop loading 页面; 关闭dialog or pop-上"
+        "zh_CN": "停止加载页面，或关闭对话框与弹窗"
       },
       "category": "web-page",
       "scope": "app",
@@ -1920,11 +1965,11 @@
       },
       "title": {
         "en": "Scroll down a screen",
-        "zh_CN": "Scroll 下 a screen"
+        "zh_CN": "向下滚动一屏"
       },
       "description": {
         "en": "Scroll down a screen",
-        "zh_CN": "Scroll 下 a screen"
+        "zh_CN": "向下滚动一屏"
       },
       "category": "web-page",
       "scope": "app",
@@ -1954,11 +1999,11 @@
       },
       "title": {
         "en": "Scroll up a screen",
-        "zh_CN": "Scroll 上 a screen"
+        "zh_CN": "向上滚动一屏"
       },
       "description": {
         "en": "Scroll up a screen",
-        "zh_CN": "Scroll 上 a screen"
+        "zh_CN": "向上滚动一屏"
       },
       "category": "web-page",
       "scope": "app",
@@ -1987,11 +2032,11 @@
       },
       "title": {
         "en": "Go to top of page",
-        "zh_CN": "Go to top of 页面"
+        "zh_CN": "转到页面顶部"
       },
       "description": {
         "en": "Go to top of page",
-        "zh_CN": "Go to top of 页面"
+        "zh_CN": "转到页面顶部"
       },
       "category": "web-page",
       "scope": "app",
@@ -2020,11 +2065,11 @@
       },
       "title": {
         "en": "Go to bottom of page",
-        "zh_CN": "Go to bottom of 页面"
+        "zh_CN": "转到页面底部"
       },
       "description": {
         "en": "Go to bottom of page",
-        "zh_CN": "Go to bottom of 页面"
+        "zh_CN": "转到页面底部"
       },
       "category": "web-page",
       "scope": "app",
@@ -2054,11 +2099,11 @@
       },
       "title": {
         "en": "Go back",
-        "zh_CN": "Go 后退"
+        "zh_CN": "后退"
       },
       "description": {
         "en": "Go back",
-        "zh_CN": "Go 后退"
+        "zh_CN": "后退"
       },
       "category": "web-page",
       "scope": "app",
@@ -2069,7 +2114,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Back"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2089,11 +2137,11 @@
       },
       "title": {
         "en": "Go forward",
-        "zh_CN": "Go 前进"
+        "zh_CN": "前进"
       },
       "description": {
         "en": "Go forward",
-        "zh_CN": "Go 前进"
+        "zh_CN": "前进"
       },
       "category": "web-page",
       "scope": "app",
@@ -2104,7 +2152,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Forward"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2139,7 +2190,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Edge.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Edge",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Home Page"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2192,11 +2246,11 @@
       },
       "title": {
         "en": "Move focus to previous pane",
-        "zh_CN": "移动焦点 to 上一个 pane"
+        "zh_CN": "将焦点移到上一个窗格"
       },
       "description": {
         "en": "Move focus to previous pane",
-        "zh_CN": "移动焦点 to 上一个 pane"
+        "zh_CN": "将焦点移到上一个窗格"
       },
       "category": "focus",
       "scope": "app",
@@ -2227,11 +2281,11 @@
       },
       "title": {
         "en": "Move focus to web content pane",
-        "zh_CN": "移动焦点 to web content pane"
+        "zh_CN": "将焦点移到网页内容"
       },
       "description": {
         "en": "Move focus to web content pane",
-        "zh_CN": "移动焦点 to web content pane"
+        "zh_CN": "将焦点移到网页内容"
       },
       "category": "focus",
       "scope": "app",
@@ -2263,11 +2317,11 @@
       },
       "title": {
         "en": "Set focus on the favorites bar (first item)",
-        "zh_CN": "Set 焦点 on the 收藏夹 栏 (第一个 item)"
+        "zh_CN": "聚焦收藏夹栏的第一项"
       },
       "description": {
         "en": "Set focus on the favorites bar (first item)",
-        "zh_CN": "Set 焦点 on the 收藏夹 栏 (第一个 item)"
+        "zh_CN": "聚焦收藏夹栏的第一项"
       },
       "category": "focus",
       "scope": "app",
@@ -2299,11 +2353,11 @@
       },
       "title": {
         "en": "Set focus on the app bar toolbar (first item)",
-        "zh_CN": "Set 焦点 on the app 栏 toolbar (第一个 item)"
+        "zh_CN": "聚焦应用栏工具栏的第一项"
       },
       "description": {
         "en": "Set focus on the app bar toolbar (first item)",
-        "zh_CN": "Set 焦点 on the app 栏 toolbar (第一个 item)"
+        "zh_CN": "聚焦应用栏工具栏的第一项"
       },
       "category": "focus",
       "scope": "app",
@@ -2333,11 +2387,11 @@
       },
       "title": {
         "en": "Set focus on Settings and more button",
-        "zh_CN": "Set 焦点 on 设置 and more button"
+        "zh_CN": "聚焦“设置及更多”按钮"
       },
       "description": {
         "en": "Set focus on Settings and more button",
-        "zh_CN": "Set 焦点 on 设置 and more button"
+        "zh_CN": "聚焦“设置及更多”按钮"
       },
       "category": "focus",
       "scope": "app",
@@ -2367,11 +2421,11 @@
       },
       "title": {
         "en": "Open context menu",
-        "zh_CN": "打开context 菜单"
+        "zh_CN": "打开上下文菜单"
       },
       "description": {
         "en": "Open context menu",
-        "zh_CN": "打开context 菜单"
+        "zh_CN": "打开上下文菜单"
       },
       "category": "focus",
       "scope": "app",

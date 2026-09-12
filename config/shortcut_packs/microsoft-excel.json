@@ -293,7 +293,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Paste Special"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -382,11 +385,11 @@
       },
       "title": {
         "en": "Remove cell contents",
-        "zh_CN": "Remove 单元格 contents"
+        "zh_CN": "清除单元格内容"
       },
       "description": {
         "en": "Remove cell contents",
-        "zh_CN": "Remove 单元格 contents"
+        "zh_CN": "清除单元格内容"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -466,7 +469,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Replace"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -556,11 +562,11 @@
       },
       "title": {
         "en": "Move to last used cell",
-        "zh_CN": "移动to 最后一个 used 单元格"
+        "zh_CN": "移到最后一个已使用的单元格"
       },
       "description": {
         "en": "Move to last used cell",
-        "zh_CN": "移动to 最后一个 used 单元格"
+        "zh_CN": "移到最后一个已使用的单元格"
       },
       "category": "navigation",
       "scope": "app",
@@ -591,11 +597,11 @@
       },
       "title": {
         "en": "Next worksheet",
-        "zh_CN": "下一个 工作表"
+        "zh_CN": "切换到下一个工作表"
       },
       "description": {
         "en": "Next worksheet",
-        "zh_CN": "下一个 工作表"
+        "zh_CN": "切换到下一个工作表"
       },
       "category": "navigation",
       "scope": "app",
@@ -606,7 +612,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Next Sheet"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -626,11 +635,11 @@
       },
       "title": {
         "en": "Previous worksheet",
-        "zh_CN": "上一个 工作表"
+        "zh_CN": "切换到上一个工作表"
       },
       "description": {
         "en": "Previous worksheet",
-        "zh_CN": "上一个 工作表"
+        "zh_CN": "切换到上一个工作表"
       },
       "category": "navigation",
       "scope": "app",
@@ -641,7 +650,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Previous Sheet"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -661,11 +673,11 @@
       },
       "title": {
         "en": "One screen to the right",
-        "zh_CN": "One screen to the 右"
+        "zh_CN": "向右滚动一屏"
       },
       "description": {
         "en": "One screen to the right",
-        "zh_CN": "One screen to the 右"
+        "zh_CN": "向右滚动一屏"
       },
       "category": "navigation",
       "scope": "app",
@@ -696,11 +708,11 @@
       },
       "title": {
         "en": "One screen to the left",
-        "zh_CN": "One screen to the 左"
+        "zh_CN": "向左滚动一屏"
       },
       "description": {
         "en": "One screen to the left",
-        "zh_CN": "One screen to the 左"
+        "zh_CN": "向左滚动一屏"
       },
       "category": "navigation",
       "scope": "app",
@@ -782,7 +794,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom In"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -818,7 +833,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom Out"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -874,11 +892,11 @@
       },
       "title": {
         "en": "Extend selection to start of worksheet",
-        "zh_CN": "Extend 选择 to start of 工作表"
+        "zh_CN": "将选区扩展到工作表开头"
       },
       "description": {
         "en": "Extend selection to start of worksheet",
-        "zh_CN": "Extend 选择 to start of 工作表"
+        "zh_CN": "将选区扩展到工作表开头"
       },
       "category": "selection",
       "scope": "app",
@@ -910,11 +928,11 @@
       },
       "title": {
         "en": "Extend selection to last used cell",
-        "zh_CN": "Extend 选择 to 最后一个 used 单元格"
+        "zh_CN": "将选区扩展到最后一个已使用的单元格"
       },
       "description": {
         "en": "Extend selection to last used cell",
-        "zh_CN": "Extend 选择 to 最后一个 used 单元格"
+        "zh_CN": "将选区扩展到最后一个已使用的单元格"
       },
       "category": "selection",
       "scope": "app",
@@ -1083,11 +1101,11 @@
       },
       "title": {
         "en": "Fill selected range with current entry",
-        "zh_CN": "Fill 所选 range with 当前 entry"
+        "zh_CN": "用当前输入填充选中区域"
       },
       "description": {
         "en": "Fill selected range with current entry",
-        "zh_CN": "Fill 所选 range with 当前 entry"
+        "zh_CN": "用当前输入填充选中区域"
       },
       "category": "selection",
       "scope": "app",
@@ -1133,7 +1151,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Format Cells"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1168,7 +1189,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Bold"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1203,7 +1227,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Italic"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1238,7 +1265,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Underline"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1345,7 +1375,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Currency Format"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1381,7 +1414,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Percentage Format"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1417,7 +1453,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Date Format"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1438,11 +1477,11 @@
       },
       "title": {
         "en": "Apply Time format",
-        "zh_CN": "Apply Time 格式"
+        "zh_CN": "应用时间格式"
       },
       "description": {
         "en": "Apply Time format",
-        "zh_CN": "Apply Time 格式"
+        "zh_CN": "应用时间格式"
       },
       "category": "cell-formatting",
       "scope": "app",
@@ -1453,7 +1492,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Time Format"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1474,11 +1516,11 @@
       },
       "title": {
         "en": "Apply Number format",
-        "zh_CN": "Apply Number 格式"
+        "zh_CN": "应用数字格式"
       },
       "description": {
         "en": "Apply Number format",
-        "zh_CN": "Apply Number 格式"
+        "zh_CN": "应用数字格式"
       },
       "category": "cell-formatting",
       "scope": "app",
@@ -1489,7 +1531,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Number Format"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1510,11 +1555,11 @@
       },
       "title": {
         "en": "Apply outline border",
-        "zh_CN": "Apply outline border"
+        "zh_CN": "添加外边框"
       },
       "description": {
         "en": "Apply outline border",
-        "zh_CN": "Apply outline border"
+        "zh_CN": "添加外边框"
       },
       "category": "cell-formatting",
       "scope": "app",
@@ -1546,11 +1591,11 @@
       },
       "title": {
         "en": "Remove outline border",
-        "zh_CN": "Remove outline border"
+        "zh_CN": "移除外边框"
       },
       "description": {
         "en": "Remove outline border",
-        "zh_CN": "Remove outline border"
+        "zh_CN": "移除外边框"
       },
       "category": "cell-formatting",
       "scope": "app",
@@ -1614,11 +1659,11 @@
       },
       "title": {
         "en": "Fill down",
-        "zh_CN": "Fill 下"
+        "zh_CN": "向下填充"
       },
       "description": {
         "en": "Fill down",
-        "zh_CN": "Fill 下"
+        "zh_CN": "向下填充"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1629,7 +1674,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Fill Down"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1649,11 +1697,11 @@
       },
       "title": {
         "en": "Enter current date",
-        "zh_CN": "Enter 当前 date"
+        "zh_CN": "输入当前日期"
       },
       "description": {
         "en": "Enter current date",
-        "zh_CN": "Enter 当前 date"
+        "zh_CN": "输入当前日期"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1664,7 +1712,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Current Date"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1685,11 +1736,11 @@
       },
       "title": {
         "en": "Enter current time",
-        "zh_CN": "Enter 当前 time"
+        "zh_CN": "输入当前时间"
       },
       "description": {
         "en": "Enter current time",
-        "zh_CN": "Enter 当前 time"
+        "zh_CN": "输入当前时间"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1700,7 +1751,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Current Time"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1720,11 +1774,11 @@
       },
       "title": {
         "en": "Toggle formula display",
-        "zh_CN": "切换公式 display"
+        "zh_CN": "显示或隐藏公式"
       },
       "description": {
         "en": "Toggle formula display",
-        "zh_CN": "切换公式 display"
+        "zh_CN": "显示或隐藏公式"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1735,7 +1789,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Show/Hide Formulas"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1755,11 +1812,11 @@
       },
       "title": {
         "en": "Copy formula from cell above",
-        "zh_CN": "复制公式 from 单元格 above"
+        "zh_CN": "复制上方单元格的公式"
       },
       "description": {
         "en": "Copy formula from cell above",
-        "zh_CN": "复制公式 from 单元格 above"
+        "zh_CN": "复制上方单元格的公式"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1791,11 +1848,11 @@
       },
       "title": {
         "en": "Insert blank cells",
-        "zh_CN": "插入blank cells"
+        "zh_CN": "插入空白单元格"
       },
       "description": {
         "en": "Insert blank cells",
-        "zh_CN": "插入blank cells"
+        "zh_CN": "插入空白单元格"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1806,7 +1863,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Insert Cells"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1826,11 +1886,11 @@
       },
       "title": {
         "en": "Delete selected cells",
-        "zh_CN": "删除所选 cells"
+        "zh_CN": "删除所选单元格"
       },
       "description": {
         "en": "Delete selected cells",
-        "zh_CN": "删除所选 cells"
+        "zh_CN": "删除所选单元格"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1876,7 +1936,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Hyperlink"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1896,11 +1959,11 @@
       },
       "title": {
         "en": "Flash Fill",
-        "zh_CN": "Flash Fill"
+        "zh_CN": "快速填充"
       },
       "description": {
         "en": "Flash Fill",
-        "zh_CN": "Flash Fill"
+        "zh_CN": "快速填充"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1911,7 +1974,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Flash Fill"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1931,11 +1997,11 @@
       },
       "title": {
         "en": "Quick Analysis",
-        "zh_CN": "Quick Analysis"
+        "zh_CN": "快速分析"
       },
       "description": {
         "en": "Quick Analysis",
-        "zh_CN": "Quick Analysis"
+        "zh_CN": "快速分析"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1966,11 +2032,11 @@
       },
       "title": {
         "en": "Create Table",
-        "zh_CN": "Create 表格"
+        "zh_CN": "创建表格"
       },
       "description": {
         "en": "Create Table",
-        "zh_CN": "Create 表格"
+        "zh_CN": "创建表格"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -1981,7 +2047,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Create Table"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2001,11 +2070,11 @@
       },
       "title": {
         "en": "Hide selected rows",
-        "zh_CN": "隐藏所选 rows"
+        "zh_CN": "隐藏所选行"
       },
       "description": {
         "en": "Hide selected rows",
-        "zh_CN": "隐藏所选 rows"
+        "zh_CN": "隐藏所选行"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -2036,11 +2105,11 @@
       },
       "title": {
         "en": "Hide selected columns",
-        "zh_CN": "隐藏所选 columns"
+        "zh_CN": "隐藏所选列"
       },
       "description": {
         "en": "Hide selected columns",
-        "zh_CN": "隐藏所选 columns"
+        "zh_CN": "隐藏所选列"
       },
       "category": "data-entry-and-editing",
       "scope": "app",
@@ -2106,11 +2175,11 @@
       },
       "title": {
         "en": "Insert function",
-        "zh_CN": "插入function"
+        "zh_CN": "插入函数"
       },
       "description": {
         "en": "Insert function",
-        "zh_CN": "插入function"
+        "zh_CN": "插入函数"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2140,11 +2209,11 @@
       },
       "title": {
         "en": "Calculate all worksheets",
-        "zh_CN": "Calculate 全部 worksheets"
+        "zh_CN": "计算所有工作表"
       },
       "description": {
         "en": "Calculate all worksheets",
-        "zh_CN": "Calculate 全部 worksheets"
+        "zh_CN": "计算所有工作表"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2174,11 +2243,11 @@
       },
       "title": {
         "en": "Calculate active worksheet",
-        "zh_CN": "Calculate active 工作表"
+        "zh_CN": "计算当前工作表"
       },
       "description": {
         "en": "Calculate active worksheet",
-        "zh_CN": "Calculate active 工作表"
+        "zh_CN": "计算当前工作表"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2208,11 +2277,11 @@
       },
       "title": {
         "en": "Cycle absolute and relative references",
-        "zh_CN": "Cycle absolute and relative references"
+        "zh_CN": "切换绝对引用与相对引用"
       },
       "description": {
         "en": "Cycle absolute and relative references",
-        "zh_CN": "Cycle absolute and relative references"
+        "zh_CN": "切换绝对引用与相对引用"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2242,11 +2311,11 @@
       },
       "title": {
         "en": "Create embedded chart",
-        "zh_CN": "Create embedded 图表"
+        "zh_CN": "创建嵌入式图表"
       },
       "description": {
         "en": "Create embedded chart",
-        "zh_CN": "Create embedded 图表"
+        "zh_CN": "创建嵌入式图表"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2276,11 +2345,11 @@
       },
       "title": {
         "en": "Create chart on new sheet",
-        "zh_CN": "Create 图表 on 新建sheet"
+        "zh_CN": "在新工作表中创建图表"
       },
       "description": {
         "en": "Create chart on new sheet",
-        "zh_CN": "Create 图表 on 新建sheet"
+        "zh_CN": "在新工作表中创建图表"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2310,11 +2379,11 @@
       },
       "title": {
         "en": "Open macro dialog",
-        "zh_CN": "打开macro dialog"
+        "zh_CN": "打开宏对话框"
       },
       "description": {
         "en": "Open macro dialog",
-        "zh_CN": "打开macro dialog"
+        "zh_CN": "打开宏对话框"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2345,11 +2414,11 @@
       },
       "title": {
         "en": "Open Visual Basic Editor",
-        "zh_CN": "打开Visual Basic 编辑器"
+        "zh_CN": "打开 Visual Basic 编辑器"
       },
       "description": {
         "en": "Open Visual Basic Editor",
-        "zh_CN": "打开Visual Basic 编辑器"
+        "zh_CN": "打开 Visual Basic 编辑器"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2380,11 +2449,11 @@
       },
       "title": {
         "en": "Refresh data in current worksheet",
-        "zh_CN": "刷新 data in 当前 工作表"
+        "zh_CN": "刷新当前工作表的数据"
       },
       "description": {
         "en": "Refresh data in current worksheet",
-        "zh_CN": "刷新 data in 当前 工作表"
+        "zh_CN": "刷新当前工作表的数据"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2416,11 +2485,11 @@
       },
       "title": {
         "en": "Refresh all data in workbook",
-        "zh_CN": "刷新 全部 data in 工作簿"
+        "zh_CN": "刷新工作簿中的所有数据"
       },
       "description": {
         "en": "Refresh all data in workbook",
-        "zh_CN": "刷新 全部 data in 工作簿"
+        "zh_CN": "刷新工作簿中的所有数据"
       },
       "category": "formulas-and-functions",
       "scope": "app",
@@ -2431,7 +2500,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Excel.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Excel",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Refresh All Data"
+        ]
       },
       "visibility": [
         "quick_hud",

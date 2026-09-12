@@ -36,7 +36,7 @@
     },
     "slides": {
       "en": "Slides",
-      "zh_CN": "Slides"
+      "zh_CN": "幻灯片"
     },
     "slide-show-and-view": {
       "en": "Slide show and view",
@@ -44,7 +44,7 @@
     },
     "objects": {
       "en": "Objects",
-      "zh_CN": "Objects"
+      "zh_CN": "对象"
     },
     "text-editing": {
       "en": "Text editing",
@@ -368,7 +368,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Paste Special"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -473,7 +476,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Hyperlink"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -494,11 +500,11 @@
       },
       "title": {
         "en": "Insert new comment",
-        "zh_CN": "插入新建批注"
+        "zh_CN": "插入新批注"
       },
       "description": {
         "en": "Insert new comment",
-        "zh_CN": "插入新建批注"
+        "zh_CN": "插入新批注"
       },
       "category": "frequently-used",
       "scope": "app",
@@ -509,7 +515,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Comment"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -564,11 +573,11 @@
       },
       "title": {
         "en": "Insert new slide",
-        "zh_CN": "插入新建幻灯片"
+        "zh_CN": "插入新幻灯片"
       },
       "description": {
         "en": "Insert new slide",
-        "zh_CN": "插入新建幻灯片"
+        "zh_CN": "插入新幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -579,7 +588,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Slide"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -615,7 +627,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Duplicate Slide"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -634,11 +649,11 @@
       },
       "title": {
         "en": "Next slide",
-        "zh_CN": "下一个 幻灯片"
+        "zh_CN": "下一张幻灯片"
       },
       "description": {
         "en": "Next slide",
-        "zh_CN": "下一个 幻灯片"
+        "zh_CN": "下一张幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -667,11 +682,11 @@
       },
       "title": {
         "en": "Previous slide",
-        "zh_CN": "上一个 幻灯片"
+        "zh_CN": "上一张幻灯片"
       },
       "description": {
         "en": "Previous slide",
-        "zh_CN": "上一个 幻灯片"
+        "zh_CN": "上一张幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -701,11 +716,11 @@
       },
       "title": {
         "en": "Move slide up in order",
-        "zh_CN": "移动幻灯片 上 in order"
+        "zh_CN": "上移幻灯片"
       },
       "description": {
         "en": "Move slide up in order",
-        "zh_CN": "移动幻灯片 上 in order"
+        "zh_CN": "上移幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -716,7 +731,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Move Slide Up"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -736,11 +754,11 @@
       },
       "title": {
         "en": "Move slide down in order",
-        "zh_CN": "移动幻灯片 下 in order"
+        "zh_CN": "下移幻灯片"
       },
       "description": {
         "en": "Move slide down in order",
-        "zh_CN": "移动幻灯片 下 in order"
+        "zh_CN": "下移幻灯片"
       },
       "category": "slides",
       "scope": "app",
@@ -751,7 +769,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Move Slide Down"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -772,11 +793,11 @@
       },
       "title": {
         "en": "Move slide to beginning",
-        "zh_CN": "移动幻灯片 to beginning"
+        "zh_CN": "将幻灯片移到开头"
       },
       "description": {
         "en": "Move slide to beginning",
-        "zh_CN": "移动幻灯片 to beginning"
+        "zh_CN": "将幻灯片移到开头"
       },
       "category": "slides",
       "scope": "app",
@@ -808,11 +829,11 @@
       },
       "title": {
         "en": "Move slide to end",
-        "zh_CN": "移动幻灯片 to end"
+        "zh_CN": "将幻灯片移到末尾"
       },
       "description": {
         "en": "Move slide to end",
-        "zh_CN": "移动幻灯片 to end"
+        "zh_CN": "将幻灯片移到末尾"
       },
       "category": "slides",
       "scope": "app",
@@ -959,7 +980,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom In"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -994,7 +1018,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom Out"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1030,7 +1057,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom to Fit"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1065,7 +1095,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Full Screen"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1171,7 +1204,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Toggle Outline/Thumbnail"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1259,11 +1295,11 @@
       },
       "title": {
         "en": "Duplicate selected object",
-        "zh_CN": "Duplicate 所选 对象"
+        "zh_CN": "复制所选对象"
       },
       "description": {
         "en": "Duplicate selected object",
-        "zh_CN": "Duplicate 所选 对象"
+        "zh_CN": "复制所选对象"
       },
       "category": "objects",
       "scope": "app",
@@ -1294,11 +1330,11 @@
       },
       "title": {
         "en": "Group selected objects",
-        "zh_CN": "Group 所选 objects"
+        "zh_CN": "组合所选对象"
       },
       "description": {
         "en": "Group selected objects",
-        "zh_CN": "Group 所选 objects"
+        "zh_CN": "组合所选对象"
       },
       "category": "objects",
       "scope": "app",
@@ -1309,7 +1345,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Group"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1330,11 +1369,11 @@
       },
       "title": {
         "en": "Ungroup selected group",
-        "zh_CN": "Ungroup 所选 group"
+        "zh_CN": "取消所选对象的组合"
       },
       "description": {
         "en": "Ungroup selected group",
-        "zh_CN": "Ungroup 所选 group"
+        "zh_CN": "取消所选对象的组合"
       },
       "category": "objects",
       "scope": "app",
@@ -1345,7 +1384,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Ungroup"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1366,11 +1408,11 @@
       },
       "title": {
         "en": "Regroup objects",
-        "zh_CN": "Regroup objects"
+        "zh_CN": "重新组合对象"
       },
       "description": {
         "en": "Regroup objects",
-        "zh_CN": "Regroup objects"
+        "zh_CN": "重新组合对象"
       },
       "category": "objects",
       "scope": "app",
@@ -1381,7 +1423,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Regroup"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1402,11 +1447,11 @@
       },
       "title": {
         "en": "Send object back one position",
-        "zh_CN": "Send 对象 后退 one position"
+        "zh_CN": "将对象下移一层"
       },
       "description": {
         "en": "Send object back one position",
-        "zh_CN": "Send 对象 后退 one position"
+        "zh_CN": "将对象下移一层"
       },
       "category": "objects",
       "scope": "app",
@@ -1438,11 +1483,11 @@
       },
       "title": {
         "en": "Send object forward one position",
-        "zh_CN": "Send 对象 前进 one position"
+        "zh_CN": "将对象上移一层"
       },
       "description": {
         "en": "Send object forward one position",
-        "zh_CN": "Send 对象 前进 one position"
+        "zh_CN": "将对象上移一层"
       },
       "category": "objects",
       "scope": "app",
@@ -1473,11 +1518,11 @@
       },
       "title": {
         "en": "Rotate object clockwise 15 degrees",
-        "zh_CN": "Rotate 对象 clockwise 15 degrees"
+        "zh_CN": "将对象顺时针旋转 15 度"
       },
       "description": {
         "en": "Rotate object clockwise 15 degrees",
-        "zh_CN": "Rotate 对象 clockwise 15 degrees"
+        "zh_CN": "将对象顺时针旋转 15 度"
       },
       "category": "objects",
       "scope": "app",
@@ -1508,11 +1553,11 @@
       },
       "title": {
         "en": "Rotate object counterclockwise 15 degrees",
-        "zh_CN": "Rotate 对象 counterclockwise 15 degrees"
+        "zh_CN": "将对象逆时针旋转 15 度"
       },
       "description": {
         "en": "Rotate object counterclockwise 15 degrees",
-        "zh_CN": "Rotate 对象 counterclockwise 15 degrees"
+        "zh_CN": "将对象逆时针旋转 15 度"
       },
       "category": "objects",
       "scope": "app",
@@ -1544,11 +1589,11 @@
       },
       "title": {
         "en": "Copy object formatting",
-        "zh_CN": "复制对象 formatting"
+        "zh_CN": "复制对象格式"
       },
       "description": {
         "en": "Copy object formatting",
-        "zh_CN": "复制对象 formatting"
+        "zh_CN": "复制对象格式"
       },
       "category": "objects",
       "scope": "app",
@@ -1559,7 +1604,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Copy Formatting"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1580,11 +1628,11 @@
       },
       "title": {
         "en": "Paste object formatting",
-        "zh_CN": "粘贴对象 formatting"
+        "zh_CN": "粘贴对象格式"
       },
       "description": {
         "en": "Paste object formatting",
-        "zh_CN": "粘贴对象 formatting"
+        "zh_CN": "粘贴对象格式"
       },
       "category": "objects",
       "scope": "app",
@@ -1595,7 +1643,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Paste Formatting"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1616,11 +1667,11 @@
       },
       "title": {
         "en": "Copy animation painter",
-        "zh_CN": "复制animation painter"
+        "zh_CN": "复制动画效果"
       },
       "description": {
         "en": "Copy animation painter",
-        "zh_CN": "复制animation painter"
+        "zh_CN": "复制动画效果"
       },
       "category": "objects",
       "scope": "app",
@@ -1631,7 +1682,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Copy Animation"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1652,11 +1706,11 @@
       },
       "title": {
         "en": "Paste animation painter",
-        "zh_CN": "粘贴animation painter"
+        "zh_CN": "粘贴动画效果"
       },
       "description": {
         "en": "Paste animation painter",
-        "zh_CN": "粘贴animation painter"
+        "zh_CN": "粘贴动画效果"
       },
       "category": "objects",
       "scope": "app",
@@ -1667,7 +1721,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Paste Animation"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1687,11 +1744,11 @@
       },
       "title": {
         "en": "Play or pause media",
-        "zh_CN": "Play or pause media"
+        "zh_CN": "播放或暂停媒体"
       },
       "description": {
         "en": "Play or pause media",
-        "zh_CN": "Play or pause media"
+        "zh_CN": "播放或暂停媒体"
       },
       "category": "objects",
       "scope": "app",
@@ -1772,7 +1829,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Replace"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1792,11 +1852,11 @@
       },
       "title": {
         "en": "Delete word to the left",
-        "zh_CN": "删除word to the 左"
+        "zh_CN": "删除左侧单词"
       },
       "description": {
         "en": "Delete word to the left",
-        "zh_CN": "删除word to the 左"
+        "zh_CN": "删除左侧单词"
       },
       "category": "text-editing",
       "scope": "app",
@@ -1827,11 +1887,11 @@
       },
       "title": {
         "en": "Delete word to the right",
-        "zh_CN": "删除word to the 右"
+        "zh_CN": "删除右侧单词"
       },
       "description": {
         "en": "Delete word to the right",
-        "zh_CN": "删除word to the 右"
+        "zh_CN": "删除右侧单词"
       },
       "category": "text-editing",
       "scope": "app",
@@ -1862,11 +1922,11 @@
       },
       "title": {
         "en": "Move one word left",
-        "zh_CN": "移动one word 左"
+        "zh_CN": "向左移动一个单词"
       },
       "description": {
         "en": "Move one word left",
-        "zh_CN": "移动one word 左"
+        "zh_CN": "向左移动一个单词"
       },
       "category": "text-editing",
       "scope": "app",
@@ -1897,11 +1957,11 @@
       },
       "title": {
         "en": "Move one word right",
-        "zh_CN": "移动one word 右"
+        "zh_CN": "向右移动一个单词"
       },
       "description": {
         "en": "Move one word right",
-        "zh_CN": "移动one word 右"
+        "zh_CN": "向右移动一个单词"
       },
       "category": "text-editing",
       "scope": "app",
@@ -1932,11 +1992,11 @@
       },
       "title": {
         "en": "Move up one paragraph",
-        "zh_CN": "移动上 one 段落"
+        "zh_CN": "上移一个段落"
       },
       "description": {
         "en": "Move up one paragraph",
-        "zh_CN": "移动上 one 段落"
+        "zh_CN": "上移一个段落"
       },
       "category": "text-editing",
       "scope": "app",
@@ -1966,11 +2026,11 @@
       },
       "title": {
         "en": "Move down one paragraph",
-        "zh_CN": "移动下 one 段落"
+        "zh_CN": "下移一个段落"
       },
       "description": {
         "en": "Move down one paragraph",
-        "zh_CN": "移动下 one 段落"
+        "zh_CN": "下移一个段落"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2000,11 +2060,11 @@
       },
       "title": {
         "en": "Beginning of text box",
-        "zh_CN": "Beginning of 文本 box"
+        "zh_CN": "转到文本框开头"
       },
       "description": {
         "en": "Beginning of text box",
-        "zh_CN": "Beginning of 文本 box"
+        "zh_CN": "转到文本框开头"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2035,11 +2095,11 @@
       },
       "title": {
         "en": "End of text box",
-        "zh_CN": "End of 文本 box"
+        "zh_CN": "转到文本框末尾"
       },
       "description": {
         "en": "End of text box",
-        "zh_CN": "End of 文本 box"
+        "zh_CN": "转到文本框末尾"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2071,11 +2131,11 @@
       },
       "title": {
         "en": "Select to end of word",
-        "zh_CN": "选择to end of word"
+        "zh_CN": "选择到单词末尾"
       },
       "description": {
         "en": "Select to end of word",
-        "zh_CN": "选择to end of word"
+        "zh_CN": "选择到单词末尾"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2107,11 +2167,11 @@
       },
       "title": {
         "en": "Select to beginning of word",
-        "zh_CN": "选择to beginning of word"
+        "zh_CN": "选择到单词开头"
       },
       "description": {
         "en": "Select to beginning of word",
-        "zh_CN": "选择to beginning of word"
+        "zh_CN": "选择到单词开头"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2143,11 +2203,11 @@
       },
       "title": {
         "en": "Select to end of paragraph",
-        "zh_CN": "选择to end of 段落"
+        "zh_CN": "选择到段落末尾"
       },
       "description": {
         "en": "Select to end of paragraph",
-        "zh_CN": "选择to end of 段落"
+        "zh_CN": "选择到段落末尾"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2178,11 +2238,11 @@
       },
       "title": {
         "en": "Select to beginning of paragraph",
-        "zh_CN": "选择to beginning of 段落"
+        "zh_CN": "选择到段落开头"
       },
       "description": {
         "en": "Select to beginning of paragraph",
-        "zh_CN": "选择to beginning of 段落"
+        "zh_CN": "选择到段落开头"
       },
       "category": "text-editing",
       "scope": "app",
@@ -2227,7 +2287,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Bold"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2262,7 +2325,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Italic"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2297,7 +2363,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.PowerPoint.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.PowerPoint",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Underline"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2317,11 +2386,11 @@
       },
       "title": {
         "en": "Open Font dialog",
-        "zh_CN": "打开Font dialog"
+        "zh_CN": "打开字体对话框"
       },
       "description": {
         "en": "Open Font dialog",
-        "zh_CN": "打开Font dialog"
+        "zh_CN": "打开字体对话框"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2352,11 +2421,11 @@
       },
       "title": {
         "en": "Change case",
-        "zh_CN": "Change case"
+        "zh_CN": "切换大小写"
       },
       "description": {
         "en": "Change case",
-        "zh_CN": "Change case"
+        "zh_CN": "切换大小写"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2387,11 +2456,11 @@
       },
       "title": {
         "en": "Subscript",
-        "zh_CN": "Subscript"
+        "zh_CN": "下标"
       },
       "description": {
         "en": "Subscript",
-        "zh_CN": "Subscript"
+        "zh_CN": "下标"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2423,11 +2492,11 @@
       },
       "title": {
         "en": "Superscript",
-        "zh_CN": "Superscript"
+        "zh_CN": "上标"
       },
       "description": {
         "en": "Superscript",
-        "zh_CN": "Superscript"
+        "zh_CN": "上标"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2458,11 +2527,11 @@
       },
       "title": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Remove manual 字符格式"
+        "zh_CN": "清除手动字符格式"
       },
       "description": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Remove manual 字符格式"
+        "zh_CN": "清除手动字符格式"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2492,11 +2561,11 @@
       },
       "title": {
         "en": "Center paragraph",
-        "zh_CN": "Center 段落"
+        "zh_CN": "段落居中"
       },
       "description": {
         "en": "Center paragraph",
-        "zh_CN": "Center 段落"
+        "zh_CN": "段落居中"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2527,11 +2596,11 @@
       },
       "title": {
         "en": "Justify paragraph",
-        "zh_CN": "Justify 段落"
+        "zh_CN": "段落两端对齐"
       },
       "description": {
         "en": "Justify paragraph",
-        "zh_CN": "Justify 段落"
+        "zh_CN": "段落两端对齐"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2562,11 +2631,11 @@
       },
       "title": {
         "en": "Left align paragraph",
-        "zh_CN": "左 align 段落"
+        "zh_CN": "段落左对齐"
       },
       "description": {
         "en": "Left align paragraph",
-        "zh_CN": "左 align 段落"
+        "zh_CN": "段落左对齐"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2597,11 +2666,11 @@
       },
       "title": {
         "en": "Right align paragraph",
-        "zh_CN": "右 align 段落"
+        "zh_CN": "段落右对齐"
       },
       "description": {
         "en": "Right align paragraph",
-        "zh_CN": "右 align 段落"
+        "zh_CN": "段落右对齐"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2633,11 +2702,11 @@
       },
       "title": {
         "en": "Promote paragraph",
-        "zh_CN": "Promote 段落"
+        "zh_CN": "提升段落级别"
       },
       "description": {
         "en": "Promote paragraph",
-        "zh_CN": "Promote 段落"
+        "zh_CN": "提升段落级别"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2669,11 +2738,11 @@
       },
       "title": {
         "en": "Demote paragraph",
-        "zh_CN": "Demote 段落"
+        "zh_CN": "降低段落级别"
       },
       "description": {
         "en": "Demote paragraph",
-        "zh_CN": "Demote 段落"
+        "zh_CN": "降低段落级别"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2705,11 +2774,11 @@
       },
       "title": {
         "en": "Move paragraph up",
-        "zh_CN": "移动段落 上"
+        "zh_CN": "上移段落"
       },
       "description": {
         "en": "Move paragraph up",
-        "zh_CN": "移动段落 上"
+        "zh_CN": "上移段落"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2741,11 +2810,11 @@
       },
       "title": {
         "en": "Move paragraph down",
-        "zh_CN": "移动段落 下"
+        "zh_CN": "下移段落"
       },
       "description": {
         "en": "Move paragraph down",
-        "zh_CN": "移动段落 下"
+        "zh_CN": "下移段落"
       },
       "category": "text-formatting",
       "scope": "app",
@@ -2809,11 +2878,11 @@
       },
       "title": {
         "en": "Move to preceding cell",
-        "zh_CN": "移动to preceding 单元格"
+        "zh_CN": "移到前一个单元格"
       },
       "description": {
         "en": "Move to preceding cell",
-        "zh_CN": "移动to preceding 单元格"
+        "zh_CN": "移到前一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -2844,11 +2913,11 @@
       },
       "title": {
         "en": "Insert tab in a cell",
-        "zh_CN": "插入选项卡 in a 单元格"
+        "zh_CN": "在单元格中插入制表符"
       },
       "description": {
         "en": "Insert tab in a cell",
-        "zh_CN": "插入选项卡 in a 单元格"
+        "zh_CN": "在单元格中插入制表符"
       },
       "category": "tables",
       "scope": "app",

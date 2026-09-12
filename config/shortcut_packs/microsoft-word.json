@@ -36,7 +36,7 @@
     },
     "editing": {
       "en": "Editing",
-      "zh_CN": "Editing"
+      "zh_CN": "编辑"
     },
     "navigation": {
       "en": "Navigation",
@@ -56,15 +56,15 @@
     },
     "view-and-zoom": {
       "en": "View and zoom",
-      "zh_CN": "视图 and zoom"
+      "zh_CN": "视图与缩放"
     },
     "insert": {
       "en": "Insert",
-      "zh_CN": "Insert"
+      "zh_CN": "插入"
     },
     "review": {
       "en": "Review",
-      "zh_CN": "Review"
+      "zh_CN": "审阅"
     },
     "tables": {
       "en": "Tables",
@@ -379,7 +379,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Paste Text Only"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -611,7 +614,7 @@
       },
       "description": {
         "en": "Display the Navigation task pane to search the document.",
-        "zh_CN": "查找"
+        "zh_CN": "打开导航窗格以搜索文档"
       },
       "category": "editing",
       "scope": "app",
@@ -657,7 +660,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Replace"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -681,7 +687,7 @@
       },
       "description": {
         "en": "Navigate to a specific page, bookmark, footnote, table, comment, graphic, or other location.",
-        "zh_CN": "转到"
+        "zh_CN": "转到指定页、书签、脚注、表格、批注或图形等位置"
       },
       "category": "editing",
       "scope": "app",
@@ -854,11 +860,11 @@
       },
       "title": {
         "en": "Move up one paragraph",
-        "zh_CN": "移动上 one 段落"
+        "zh_CN": "上移一个段落"
       },
       "description": {
         "en": "Move up one paragraph",
-        "zh_CN": "移动上 one 段落"
+        "zh_CN": "上移一个段落"
       },
       "category": "navigation",
       "scope": "app",
@@ -889,11 +895,11 @@
       },
       "title": {
         "en": "Move down one paragraph",
-        "zh_CN": "移动下 one 段落"
+        "zh_CN": "下移一个段落"
       },
       "description": {
         "en": "Move down one paragraph",
-        "zh_CN": "移动下 one 段落"
+        "zh_CN": "下移一个段落"
       },
       "category": "navigation",
       "scope": "app",
@@ -994,11 +1000,11 @@
       },
       "title": {
         "en": "Top of next page",
-        "zh_CN": "Top of 下一个 页面"
+        "zh_CN": "转到下一页顶部"
       },
       "description": {
         "en": "Top of next page",
-        "zh_CN": "Top of 下一个 页面"
+        "zh_CN": "转到下一页顶部"
       },
       "category": "navigation",
       "scope": "app",
@@ -1029,11 +1035,11 @@
       },
       "title": {
         "en": "Top of previous page",
-        "zh_CN": "Top of 上一个 页面"
+        "zh_CN": "转到上一页顶部"
       },
       "description": {
         "en": "Top of previous page",
-        "zh_CN": "Top of 上一个 页面"
+        "zh_CN": "转到上一页顶部"
       },
       "category": "navigation",
       "scope": "app",
@@ -1064,11 +1070,11 @@
       },
       "title": {
         "en": "Previous revision",
-        "zh_CN": "上一个 revision"
+        "zh_CN": "转到上一处修订"
       },
       "description": {
         "en": "Previous revision",
-        "zh_CN": "上一个 revision"
+        "zh_CN": "转到上一处修订"
       },
       "category": "navigation",
       "scope": "app",
@@ -1171,11 +1177,11 @@
       },
       "title": {
         "en": "Select to beginning of line",
-        "zh_CN": "选择to beginning of line"
+        "zh_CN": "选择到行首"
       },
       "description": {
         "en": "Select to beginning of line",
-        "zh_CN": "选择to beginning of line"
+        "zh_CN": "选择到行首"
       },
       "category": "selection",
       "scope": "app",
@@ -1206,11 +1212,11 @@
       },
       "title": {
         "en": "Select to end of line",
-        "zh_CN": "选择to end of line"
+        "zh_CN": "选择到行尾"
       },
       "description": {
         "en": "Select to end of line",
-        "zh_CN": "选择to end of line"
+        "zh_CN": "选择到行尾"
       },
       "category": "selection",
       "scope": "app",
@@ -1242,11 +1248,11 @@
       },
       "title": {
         "en": "Select to beginning of paragraph",
-        "zh_CN": "选择to beginning of 段落"
+        "zh_CN": "选择到段落开头"
       },
       "description": {
         "en": "Select to beginning of paragraph",
-        "zh_CN": "选择to beginning of 段落"
+        "zh_CN": "选择到段落开头"
       },
       "category": "selection",
       "scope": "app",
@@ -1278,11 +1284,11 @@
       },
       "title": {
         "en": "Select to end of paragraph",
-        "zh_CN": "选择to end of 段落"
+        "zh_CN": "选择到段落末尾"
       },
       "description": {
         "en": "Select to end of paragraph",
-        "zh_CN": "选择to end of 段落"
+        "zh_CN": "选择到段落末尾"
       },
       "category": "selection",
       "scope": "app",
@@ -1314,11 +1320,11 @@
       },
       "title": {
         "en": "Select to beginning of document",
-        "zh_CN": "选择to beginning of 文档"
+        "zh_CN": "选择到文档开头"
       },
       "description": {
         "en": "Select to beginning of document",
-        "zh_CN": "选择to beginning of 文档"
+        "zh_CN": "选择到文档开头"
       },
       "category": "selection",
       "scope": "app",
@@ -1350,11 +1356,11 @@
       },
       "title": {
         "en": "Select to end of document",
-        "zh_CN": "选择to end of 文档"
+        "zh_CN": "选择到文档末尾"
       },
       "description": {
         "en": "Select to end of document",
-        "zh_CN": "选择to end of 文档"
+        "zh_CN": "选择到文档末尾"
       },
       "category": "selection",
       "scope": "app",
@@ -1384,11 +1390,11 @@
       },
       "title": {
         "en": "Start extending the selection",
-        "zh_CN": "Start extending the 选择"
+        "zh_CN": "开始扩展选区"
       },
       "description": {
         "en": "Start extending the selection",
-        "zh_CN": "Start extending the 选择"
+        "zh_CN": "开始扩展选区"
       },
       "category": "selection",
       "scope": "app",
@@ -1433,7 +1439,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Bold"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1468,7 +1477,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Italic"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1503,7 +1515,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Underline"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1524,11 +1539,11 @@
       },
       "title": {
         "en": "Double underline",
-        "zh_CN": "Double 下划线"
+        "zh_CN": "双下划线"
       },
       "description": {
         "en": "Double underline",
-        "zh_CN": "Double 下划线"
+        "zh_CN": "双下划线"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1560,11 +1575,11 @@
       },
       "title": {
         "en": "All uppercase",
-        "zh_CN": "全部 uppercase"
+        "zh_CN": "全部大写"
       },
       "description": {
         "en": "All uppercase",
-        "zh_CN": "全部 uppercase"
+        "zh_CN": "全部大写"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1595,11 +1610,11 @@
       },
       "title": {
         "en": "Change case",
-        "zh_CN": "Change case"
+        "zh_CN": "切换大小写"
       },
       "description": {
         "en": "Change case",
-        "zh_CN": "Change case"
+        "zh_CN": "切换大小写"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1630,11 +1645,11 @@
       },
       "title": {
         "en": "Font dialog box",
-        "zh_CN": "Font dialog box"
+        "zh_CN": "打开字体对话框"
       },
       "description": {
         "en": "Font dialog box",
-        "zh_CN": "Font dialog box"
+        "zh_CN": "打开字体对话框"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1665,11 +1680,11 @@
       },
       "title": {
         "en": "Increase font size by 1 point",
-        "zh_CN": "增大 字体大小 by 1 point"
+        "zh_CN": "增大字号 1 磅"
       },
       "description": {
         "en": "Increase font size by 1 point",
-        "zh_CN": "增大 字体大小 by 1 point"
+        "zh_CN": "增大字号 1 磅"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1700,11 +1715,11 @@
       },
       "title": {
         "en": "Decrease font size by 1 point",
-        "zh_CN": "减小 字体大小 by 1 point"
+        "zh_CN": "减小字号 1 磅"
       },
       "description": {
         "en": "Decrease font size by 1 point",
-        "zh_CN": "减小 字体大小 by 1 point"
+        "zh_CN": "减小字号 1 磅"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1736,11 +1751,11 @@
       },
       "title": {
         "en": "Subscript",
-        "zh_CN": "Subscript"
+        "zh_CN": "下标"
       },
       "description": {
         "en": "Subscript",
-        "zh_CN": "Subscript"
+        "zh_CN": "下标"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1772,11 +1787,11 @@
       },
       "title": {
         "en": "Superscript",
-        "zh_CN": "Superscript"
+        "zh_CN": "上标"
       },
       "description": {
         "en": "Superscript",
-        "zh_CN": "Superscript"
+        "zh_CN": "上标"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1807,11 +1822,11 @@
       },
       "title": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Remove manual 字符格式"
+        "zh_CN": "清除手动字符格式"
       },
       "description": {
         "en": "Remove manual character formatting",
-        "zh_CN": "Remove manual 字符格式"
+        "zh_CN": "清除手动字符格式"
       },
       "category": "character-formatting",
       "scope": "app",
@@ -1857,7 +1872,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Center"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1877,11 +1895,11 @@
       },
       "title": {
         "en": "Align left",
-        "zh_CN": "Align 左"
+        "zh_CN": "左对齐"
       },
       "description": {
         "en": "Align left",
-        "zh_CN": "Align 左"
+        "zh_CN": "左对齐"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -1912,11 +1930,11 @@
       },
       "title": {
         "en": "Align right",
-        "zh_CN": "Align 右"
+        "zh_CN": "右对齐"
       },
       "description": {
         "en": "Align right",
-        "zh_CN": "Align 右"
+        "zh_CN": "右对齐"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -1947,11 +1965,11 @@
       },
       "title": {
         "en": "Justify",
-        "zh_CN": "Justify"
+        "zh_CN": "两端对齐"
       },
       "description": {
         "en": "Justify",
-        "zh_CN": "Justify"
+        "zh_CN": "两端对齐"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -1962,7 +1980,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Justify"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1982,11 +2003,11 @@
       },
       "title": {
         "en": "Increase indent",
-        "zh_CN": "增大 indent"
+        "zh_CN": "增加缩进"
       },
       "description": {
         "en": "Increase indent",
-        "zh_CN": "增大 indent"
+        "zh_CN": "增加缩进"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2018,11 +2039,11 @@
       },
       "title": {
         "en": "Decrease indent",
-        "zh_CN": "减小 indent"
+        "zh_CN": "减少缩进"
       },
       "description": {
         "en": "Decrease indent",
-        "zh_CN": "减小 indent"
+        "zh_CN": "减少缩进"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2053,11 +2074,11 @@
       },
       "title": {
         "en": "Hanging indent",
-        "zh_CN": "Hanging indent"
+        "zh_CN": "悬挂缩进"
       },
       "description": {
         "en": "Hanging indent",
-        "zh_CN": "Hanging indent"
+        "zh_CN": "悬挂缩进"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2088,11 +2109,11 @@
       },
       "title": {
         "en": "Remove paragraph formatting",
-        "zh_CN": "Remove 段落格式"
+        "zh_CN": "清除段落格式"
       },
       "description": {
         "en": "Remove paragraph formatting",
-        "zh_CN": "Remove 段落格式"
+        "zh_CN": "清除段落格式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2124,11 +2145,11 @@
       },
       "title": {
         "en": "Apply Normal style",
-        "zh_CN": "Apply Normal style"
+        "zh_CN": "应用正文样式"
       },
       "description": {
         "en": "Apply Normal style",
-        "zh_CN": "Apply Normal style"
+        "zh_CN": "应用正文样式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2139,7 +2160,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Normal Style"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2159,11 +2183,11 @@
       },
       "title": {
         "en": "Single line spacing",
-        "zh_CN": "Single line spacing"
+        "zh_CN": "单倍行距"
       },
       "description": {
         "en": "Single line spacing",
-        "zh_CN": "Single line spacing"
+        "zh_CN": "单倍行距"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2194,11 +2218,11 @@
       },
       "title": {
         "en": "Double line spacing",
-        "zh_CN": "Double line spacing"
+        "zh_CN": "双倍行距"
       },
       "description": {
         "en": "Double line spacing",
-        "zh_CN": "Double line spacing"
+        "zh_CN": "双倍行距"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2229,11 +2253,11 @@
       },
       "title": {
         "en": "1.5 line spacing",
-        "zh_CN": "1.5 line spacing"
+        "zh_CN": "1.5 倍行距"
       },
       "description": {
         "en": "1.5 line spacing",
-        "zh_CN": "1.5 line spacing"
+        "zh_CN": "1.5 倍行距"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2265,11 +2289,11 @@
       },
       "title": {
         "en": "Apply Heading 1",
-        "zh_CN": "Apply Heading 1"
+        "zh_CN": "应用标题 1 样式"
       },
       "description": {
         "en": "Apply Heading 1",
-        "zh_CN": "Apply Heading 1"
+        "zh_CN": "应用标题 1 样式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2280,7 +2304,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Heading 1"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2301,11 +2328,11 @@
       },
       "title": {
         "en": "Apply Heading 2",
-        "zh_CN": "Apply Heading 2"
+        "zh_CN": "应用标题 2 样式"
       },
       "description": {
         "en": "Apply Heading 2",
-        "zh_CN": "Apply Heading 2"
+        "zh_CN": "应用标题 2 样式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2316,7 +2343,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Heading 2"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2337,11 +2367,11 @@
       },
       "title": {
         "en": "Apply Heading 3",
-        "zh_CN": "Apply Heading 3"
+        "zh_CN": "应用标题 3 样式"
       },
       "description": {
         "en": "Apply Heading 3",
-        "zh_CN": "Apply Heading 3"
+        "zh_CN": "应用标题 3 样式"
       },
       "category": "paragraph-formatting",
       "scope": "app",
@@ -2352,7 +2382,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Heading 3"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2387,7 +2420,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom In"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2422,7 +2458,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom Out"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2442,11 +2481,11 @@
       },
       "title": {
         "en": "Reset zoom to 100%",
-        "zh_CN": "重置 zoom to 100%"
+        "zh_CN": "将缩放重置为 100%"
       },
       "description": {
         "en": "Reset zoom to 100%",
-        "zh_CN": "重置 zoom to 100%"
+        "zh_CN": "将缩放重置为 100%"
       },
       "category": "view-and-zoom",
       "scope": "app",
@@ -2478,11 +2517,11 @@
       },
       "title": {
         "en": "Split the document window",
-        "zh_CN": "Split the 文档 窗口"
+        "zh_CN": "拆分文档窗口"
       },
       "description": {
         "en": "Split the document window",
-        "zh_CN": "Split the 文档 窗口"
+        "zh_CN": "拆分文档窗口"
       },
       "category": "view-and-zoom",
       "scope": "app",
@@ -2514,11 +2553,11 @@
       },
       "title": {
         "en": "Print preview",
-        "zh_CN": "打印 preview"
+        "zh_CN": "打印预览"
       },
       "description": {
         "en": "Print preview",
-        "zh_CN": "打印 preview"
+        "zh_CN": "打印预览"
       },
       "category": "view-and-zoom",
       "scope": "app",
@@ -2550,11 +2589,11 @@
       },
       "title": {
         "en": "Show or hide nonprinting characters",
-        "zh_CN": "显示or 隐藏nonprinting characters"
+        "zh_CN": "显示或隐藏非打印字符"
       },
       "description": {
         "en": "Show or hide nonprinting characters",
-        "zh_CN": "显示or 隐藏nonprinting characters"
+        "zh_CN": "显示或隐藏非打印字符"
       },
       "category": "view-and-zoom",
       "scope": "app",
@@ -2565,7 +2604,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Show Formatting Marks"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2600,7 +2642,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Hyperlink"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2620,11 +2665,11 @@
       },
       "title": {
         "en": "Insert page break",
-        "zh_CN": "插入页面 break"
+        "zh_CN": "插入分页符"
       },
       "description": {
         "en": "Insert page break",
-        "zh_CN": "插入页面 break"
+        "zh_CN": "插入分页符"
       },
       "category": "insert",
       "scope": "app",
@@ -2635,7 +2680,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Page Break"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2655,11 +2703,11 @@
       },
       "title": {
         "en": "Insert line break",
-        "zh_CN": "插入line break"
+        "zh_CN": "插入换行符"
       },
       "description": {
         "en": "Insert line break",
-        "zh_CN": "插入line break"
+        "zh_CN": "插入换行符"
       },
       "category": "insert",
       "scope": "app",
@@ -2691,11 +2739,11 @@
       },
       "title": {
         "en": "Insert column break",
-        "zh_CN": "插入列 break"
+        "zh_CN": "插入分栏符"
       },
       "description": {
         "en": "Insert column break",
-        "zh_CN": "插入列 break"
+        "zh_CN": "插入分栏符"
       },
       "category": "insert",
       "scope": "app",
@@ -2706,7 +2754,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Column Break"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2727,11 +2778,11 @@
       },
       "title": {
         "en": "Insert non-breaking space",
-        "zh_CN": "插入non-breaking space"
+        "zh_CN": "插入不间断空格"
       },
       "description": {
         "en": "Insert non-breaking space",
-        "zh_CN": "插入non-breaking space"
+        "zh_CN": "插入不间断空格"
       },
       "category": "insert",
       "scope": "app",
@@ -2763,11 +2814,11 @@
       },
       "title": {
         "en": "Insert footnote",
-        "zh_CN": "插入footnote"
+        "zh_CN": "插入脚注"
       },
       "description": {
         "en": "Insert footnote",
-        "zh_CN": "插入footnote"
+        "zh_CN": "插入脚注"
       },
       "category": "insert",
       "scope": "app",
@@ -2778,7 +2829,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Footnote"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2799,11 +2853,11 @@
       },
       "title": {
         "en": "Insert endnote",
-        "zh_CN": "插入endnote"
+        "zh_CN": "插入尾注"
       },
       "description": {
         "en": "Insert endnote",
-        "zh_CN": "插入endnote"
+        "zh_CN": "插入尾注"
       },
       "category": "insert",
       "scope": "app",
@@ -2814,7 +2868,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Endnote"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2850,7 +2907,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Comment"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2871,11 +2931,11 @@
       },
       "title": {
         "en": "Turn Track Changes on or off",
-        "zh_CN": "Turn Track Changes on or off"
+        "zh_CN": "开启或关闭修订"
       },
       "description": {
         "en": "Turn Track Changes on or off",
-        "zh_CN": "Turn Track Changes on or off"
+        "zh_CN": "开启或关闭修订"
       },
       "category": "review",
       "scope": "app",
@@ -2886,7 +2946,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.Word.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.Word",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Track Changes"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2907,11 +2970,11 @@
       },
       "title": {
         "en": "Close the Reviewing pane",
-        "zh_CN": "关闭the Reviewing pane"
+        "zh_CN": "关闭审阅窗格"
       },
       "description": {
         "en": "Close the Reviewing pane",
-        "zh_CN": "关闭the Reviewing pane"
+        "zh_CN": "关闭审阅窗格"
       },
       "category": "review",
       "scope": "app",
@@ -2975,11 +3038,11 @@
       },
       "title": {
         "en": "Move to previous cell",
-        "zh_CN": "移动to 上一个 单元格"
+        "zh_CN": "移到上一个单元格"
       },
       "description": {
         "en": "Move to previous cell",
-        "zh_CN": "移动to 上一个 单元格"
+        "zh_CN": "移到上一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -3010,11 +3073,11 @@
       },
       "title": {
         "en": "First cell in the row",
-        "zh_CN": "第一个 单元格 in the 行"
+        "zh_CN": "转到该行的第一个单元格"
       },
       "description": {
         "en": "First cell in the row",
-        "zh_CN": "第一个 单元格 in the 行"
+        "zh_CN": "转到该行的第一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -3045,11 +3108,11 @@
       },
       "title": {
         "en": "Last cell in the row",
-        "zh_CN": "最后一个 单元格 in the 行"
+        "zh_CN": "转到该行的最后一个单元格"
       },
       "description": {
         "en": "Last cell in the row",
-        "zh_CN": "最后一个 单元格 in the 行"
+        "zh_CN": "转到该行的最后一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -3080,11 +3143,11 @@
       },
       "title": {
         "en": "First cell in the column",
-        "zh_CN": "第一个 单元格 in the 列"
+        "zh_CN": "转到该列的第一个单元格"
       },
       "description": {
         "en": "First cell in the column",
-        "zh_CN": "第一个 单元格 in the 列"
+        "zh_CN": "转到该列的第一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -3115,11 +3178,11 @@
       },
       "title": {
         "en": "Last cell in the column",
-        "zh_CN": "最后一个 单元格 in the 列"
+        "zh_CN": "转到该列的最后一个单元格"
       },
       "description": {
         "en": "Last cell in the column",
-        "zh_CN": "最后一个 单元格 in the 列"
+        "zh_CN": "转到该列的最后一个单元格"
       },
       "category": "tables",
       "scope": "app",
@@ -3150,11 +3213,11 @@
       },
       "title": {
         "en": "Insert tab character in a cell",
-        "zh_CN": "插入选项卡 character in a 单元格"
+        "zh_CN": "在单元格中插入制表符"
       },
       "description": {
         "en": "Insert tab character in a cell",
-        "zh_CN": "插入选项卡 character in a 单元格"
+        "zh_CN": "在单元格中插入制表符"
       },
       "category": "tables",
       "scope": "app",

@@ -2,7 +2,7 @@
 from PySide6.QtCore import QEvent, Qt, QTimer, Signal
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
-    QComboBox, QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
+    QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
     QScrollArea, QSizePolicy, QVBoxLayout, QWidget,
 )
 
@@ -23,6 +23,7 @@ class FullGuideWindow(QWidget):
         self.rows = ()
         self.sections = ()
         self.rendered_columns = ()
+        self._debug_column_count = None
         self._last_width = 0
         self._layout_timer = QTimer(self)
         self._layout_timer.setSingleShot(True)
@@ -32,6 +33,7 @@ class FullGuideWindow(QWidget):
         layout.setContentsMargins(28, 22, 28, 16)
         layout.setSpacing(16)
         top = QHBoxLayout()
+        top.setSpacing(16)
         identity = QVBoxLayout()
         self.app_label = QLabel(self)
         self.app_label.setObjectName("guideApplication")
@@ -47,12 +49,6 @@ class FullGuideWindow(QWidget):
         self.search_box.setClearButtonEnabled(True)
         self.search_box.setMinimumWidth(170)
         top.addWidget(self.search_box, 2)
-        self.columns_box = QComboBox(self)
-        self.columns_box.setAccessibleName(self.tr("Columns"))
-        self.columns_box.addItem(self.tr("Auto columns"), 0)
-        for count in (3, 4, 5):
-            self.columns_box.addItem(self.tr("%1 columns").replace("%1", str(count)), count)
-        top.addWidget(self.columns_box)
         self.close_button = QPushButton("×", self)
         self.close_button.setObjectName("guideClose")
         self.close_button.setAccessibleName(self.tr("Close"))
@@ -86,7 +82,6 @@ class FullGuideWindow(QWidget):
         self.footer.setObjectName("guideFooter")
         layout.addWidget(self.footer)
         self.search_box.textChanged.connect(self._search_changed)
-        self.columns_box.currentIndexChanged.connect(self._render_sections)
         self._find = QShortcut(QKeySequence("Ctrl+F"), self)
         self._find.activated.connect(self._focus_search)
         self._escape = QShortcut(QKeySequence("Esc"), self)
@@ -100,7 +95,7 @@ class FullGuideWindow(QWidget):
             QLineEdit#guideSearch { color: #edf2fa; background: #2b3040; border: 1px solid #4b5670;
                 border-radius: 8px; padding: 11px 14px; font-size: 14px; }
             QLineEdit#guideSearch:focus { border-color: #91b6ec; }
-            QComboBox, QPushButton { color: #dce2ed; background: #303747; border: 1px solid #485269;
+            QPushButton { color: #dce2ed; background: #303747; border: 1px solid #485269;
                 border-radius: 6px; padding: 8px 12px; }
             QPushButton:hover { background: #46536b; }
             QPushButton#guideClose { font-size: 24px; padding: 2px 12px; border: none; background: transparent; }
@@ -109,7 +104,7 @@ class FullGuideWindow(QWidget):
             QFrame#guideRow { background: transparent; border: none; }
             QFrame#guideRow:hover { background: #343d4e; border-radius: 4px; }
             QLabel#guideTrigger { color: #b8cff3; font-size: 12px; font-weight: 600; }
-            QLabel#guideBadge { color: #d6b66f; font-size: 11px; }
+            QLabel#guideBadge { color: #a99468; font-size: 11px; }
             QScrollArea { background: transparent; border: none; }
             QScrollBar:vertical { background: #20232e; width: 8px; }
             QScrollBar::handle:vertical { background: #55617a; border-radius: 4px; min-height: 28px; }
@@ -135,10 +130,6 @@ class FullGuideWindow(QWidget):
         if event.type() == QEvent.Type.LanguageChange:
             self.setWindowTitle(self.tr("Full Guide"))
             self.search_box.setPlaceholderText(self.tr("Search shortcuts…"))
-            self.columns_box.setAccessibleName(self.tr("Columns"))
-            self.columns_box.setItemText(0, self.tr("Auto columns"))
-            for index, count in enumerate((3, 4, 5), 1):
-                self.columns_box.setItemText(index, self.tr("%1 columns").replace("%1", str(count)))
             self.close_button.setAccessibleName(self.tr("Close"))
             self.close_button.setToolTip(self.tr("Close"))
             self.center_button.setText(self.tr("Open Shortcut Center"))
@@ -181,7 +172,7 @@ class FullGuideWindow(QWidget):
         width = max(1, self.width() - 64)
         self._last_width = width
         automatic = column_count_for_width(width)
-        requested = self.columns_box.currentData() or automatic
+        requested = self._debug_column_count or automatic
         # A suggested column count never forces horizontal scrolling.
         columns = min(requested, automatic)
         self.rendered_columns = balance_categories(self.sections, columns)
@@ -196,6 +187,11 @@ class FullGuideWindow(QWidget):
                 stack.addWidget(self._section_widget(section, column))
             stack.addStretch(1)
             self.columns_layout.addWidget(column, 1)
+
+    def set_debug_column_count(self, count: int | None) -> None:
+        """Test/developer hook; no ordinary-user control is rendered."""
+        self._debug_column_count = count
+        self._render_sections()
 
     def _section_widget(self, section, parent):
         panel = QFrame(parent)

@@ -66,23 +66,23 @@
     },
     "rich-languages-editing": {
       "en": "Rich languages editing",
-      "zh_CN": "富语言编辑"
+      "zh_CN": "代码编辑"
     },
     "editor-and-window-management": {
       "en": "Editor and window management",
-      "zh_CN": "编辑器 and 窗口管理"
+      "zh_CN": "编辑器与窗口管理"
     },
     "chat-and-ai": {
       "en": "Chat and AI",
-      "zh_CN": "Chat and AI"
+      "zh_CN": "聊天与 AI"
     },
     "debug": {
       "en": "Debug",
-      "zh_CN": "Debug"
+      "zh_CN": "调试"
     },
     "tasks": {
       "en": "Tasks",
-      "zh_CN": "Tasks"
+      "zh_CN": "任务"
     }
   },
   "entries": [
@@ -146,7 +146,8 @@
       "rank": 11,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.quick-open"
       },
       "visibility": [
         "quick_hud",
@@ -184,7 +185,8 @@
       "rank": 12,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.new-window"
       },
       "visibility": [
         "quick_hud"
@@ -216,7 +218,8 @@
       "rank": 13,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.settings"
       },
       "visibility": [
         "quick_hud"
@@ -248,7 +251,8 @@
       "rank": 20,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.cut"
       },
       "visibility": [
         "quick_hud"
@@ -280,7 +284,8 @@
       "rank": 21,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.copy"
       },
       "visibility": [
         "quick_hud"
@@ -312,7 +317,8 @@
       "rank": 22,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.paste"
       },
       "visibility": [
         "quick_hud"
@@ -344,7 +350,8 @@
       "rank": 23,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.undo"
       },
       "visibility": [
         "quick_hud"
@@ -376,7 +383,8 @@
       "rank": 24,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.redo"
       },
       "visibility": [
         "quick_hud"
@@ -408,7 +416,11 @@
       "rank": 25,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.move-line-up",
+        "presentation_legacy_titles": [
+          "Move Line Up"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -440,7 +452,11 @@
       "rank": 26,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.move-line-down",
+        "presentation_legacy_titles": [
+          "Move Line Down"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -473,7 +489,11 @@
       "rank": 27,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.duplicate-line-up",
+        "presentation_legacy_titles": [
+          "Copy Line Up"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -506,7 +526,11 @@
       "rank": 28,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.duplicate-line-down",
+        "presentation_legacy_titles": [
+          "Copy Line Down"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -538,7 +562,8 @@
       "rank": 29,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.select-next-match"
       },
       "visibility": [
         "quick_hud"
@@ -571,7 +596,11 @@
       "rank": 30,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.goto-line",
+        "presentation_legacy_titles": [
+          "Go to Line"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -605,7 +634,11 @@
       "rank": 31,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.goto-symbol",
+        "presentation_legacy_titles": [
+          "Go to Symbol"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -637,7 +670,8 @@
       "rank": 32,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.show-all-symbols"
       },
       "visibility": [
         "quick_hud"
@@ -670,7 +704,11 @@
       "rank": 33,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.navigate-back",
+        "presentation_legacy_titles": [
+          "Navigate Back"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -703,7 +741,11 @@
       "rank": 34,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.navigate-forward",
+        "presentation_legacy_titles": [
+          "Navigate Forward"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -736,7 +778,8 @@
       "rank": 40,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.find"
       },
       "visibility": [
         "quick_hud"
@@ -769,7 +812,11 @@
       "rank": 41,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.replace",
+        "presentation_legacy_titles": [
+          "Replace"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -802,7 +849,11 @@
       "rank": 42,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.find-in-files",
+        "presentation_legacy_titles": [
+          "Search"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -839,7 +890,8 @@
       "rank": 43,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.replace-in-files"
       },
       "visibility": [
         "quick_hud"
@@ -872,7 +924,11 @@
       "rank": 50,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.toggle-sidebar",
+        "presentation_legacy_titles": [
+          "Toggle Sidebar"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -906,7 +962,11 @@
       "rank": 51,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.show-explorer",
+        "presentation_legacy_titles": [
+          "Explorer"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -940,7 +1000,8 @@
       "rank": 52,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.find-in-files"
       },
       "visibility": [
         "full_guide"
@@ -974,7 +1035,11 @@
       "rank": 53,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.show-source-control",
+        "presentation_legacy_titles": [
+          "Source Control"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -1008,7 +1073,11 @@
       "rank": 54,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.show-debug",
+        "presentation_legacy_titles": [
+          "Run and Debug"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -1042,7 +1111,11 @@
       "rank": 55,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.show-extensions",
+        "presentation_legacy_titles": [
+          "Extensions"
+        ]
       },
       "visibility": [
         "quick_hud"
@@ -1074,7 +1147,8 @@
       "rank": 60,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.split-editor"
       },
       "visibility": [
         "quick_hud"
@@ -1107,7 +1181,8 @@
       "rank": 61,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.focus-first-editor-group"
       },
       "visibility": [
         "quick_hud"
@@ -1140,7 +1215,8 @@
       "rank": 62,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.focus-second-editor-group"
       },
       "visibility": [
         "quick_hud"
@@ -1173,7 +1249,8 @@
       "rank": 70,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.new-file"
       },
       "visibility": [
         "quick_hud"
@@ -1205,7 +1282,8 @@
       "rank": 71,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.open-file"
       },
       "visibility": [
         "quick_hud"
@@ -1237,7 +1315,8 @@
       "rank": 72,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.save"
       },
       "visibility": [
         "quick_hud"
@@ -1274,7 +1353,8 @@
       "rank": 73,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.save-as"
       },
       "visibility": [
         "quick_hud"
@@ -1308,7 +1388,8 @@
       "rank": 74,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.reopen-closed-editor"
       },
       "visibility": [
         "quick_hud"
@@ -1341,7 +1422,8 @@
       "rank": 80,
       "provenance": {
         "title": "VS Code keyboard reference",
-        "url": "https://code.visualstudio.com/docs/reference/default-keybindings"
+        "url": "https://code.visualstudio.com/docs/reference/default-keybindings",
+        "presentation_semantic_id": "vscode.toggle-terminal"
       },
       "visibility": [
         "quick_hud"
@@ -1445,7 +1527,8 @@
       "rank": 90,
       "provenance": {
         "title": "VS Code keybindings documentation",
-        "url": "https://code.visualstudio.com/docs/configure/keybindings"
+        "url": "https://code.visualstudio.com/docs/configure/keybindings",
+        "presentation_semantic_id": "vscode.keyboard-shortcuts"
       },
       "visibility": [
         "full_guide"
@@ -1467,11 +1550,11 @@
       },
       "title": {
         "en": "Show All Commands (Command Palette)",
-        "zh_CN": "显示全部 Commands (命令 Palette)"
+        "zh_CN": "显示所有命令"
       },
       "description": {
         "en": "Show All Commands (Command Palette)",
-        "zh_CN": "显示全部 Commands (命令 Palette)"
+        "zh_CN": "显示所有命令"
       },
       "category": "general",
       "scope": "app",
@@ -1501,11 +1584,11 @@
       },
       "title": {
         "en": "Quick Open / Go to File",
-        "zh_CN": "Quick 打开/ Go to 文件"
+        "zh_CN": "快速打开文件"
       },
       "description": {
         "en": "Quick Open / Go to File",
-        "zh_CN": "Quick 打开/ Go to 文件"
+        "zh_CN": "快速打开文件"
       },
       "category": "general",
       "scope": "app",
@@ -1516,7 +1599,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.quick-open"
       },
       "visibility": [
         "full_guide"
@@ -1551,7 +1635,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.new-window"
       },
       "visibility": [
         "full_guide"
@@ -1620,7 +1705,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.settings"
       },
       "visibility": [
         "full_guide"
@@ -1639,11 +1725,11 @@
       },
       "title": {
         "en": "Open Keyboard Shortcuts",
-        "zh_CN": "打开Keyboard Shortcuts"
+        "zh_CN": "打开键盘快捷方式"
       },
       "description": {
         "en": "Open Keyboard Shortcuts",
-        "zh_CN": "打开Keyboard Shortcuts"
+        "zh_CN": "打开键盘快捷方式"
       },
       "category": "general",
       "scope": "app",
@@ -1654,7 +1740,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.keyboard-shortcuts"
       },
       "visibility": [
         "full_guide"
@@ -1706,11 +1793,11 @@
       },
       "title": {
         "en": "Toggle Zen Mode",
-        "zh_CN": "切换Zen Mode"
+        "zh_CN": "切换禅模式"
       },
       "description": {
         "en": "Toggle Zen Mode",
-        "zh_CN": "切换Zen Mode"
+        "zh_CN": "切换禅模式"
       },
       "category": "general",
       "scope": "app",
@@ -1755,7 +1842,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom In"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1790,7 +1880,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Zoom Out"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1810,11 +1903,11 @@
       },
       "title": {
         "en": "Cut line (empty selection)",
-        "zh_CN": "剪切 line (empty 选择)"
+        "zh_CN": "剪切选区，未选择时剪切当前行"
       },
       "description": {
         "en": "Cut line (empty selection)",
-        "zh_CN": "剪切 line (empty 选择)"
+        "zh_CN": "剪切选区，未选择时剪切当前行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -1825,7 +1918,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.cut"
       },
       "visibility": [
         "full_guide"
@@ -1844,11 +1938,11 @@
       },
       "title": {
         "en": "Copy line (empty selection)",
-        "zh_CN": "复制line (empty 选择)"
+        "zh_CN": "复制选区，未选择时复制当前行"
       },
       "description": {
         "en": "Copy line (empty selection)",
-        "zh_CN": "复制line (empty 选择)"
+        "zh_CN": "复制选区，未选择时复制当前行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -1859,7 +1953,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.copy"
       },
       "visibility": [
         "full_guide"
@@ -1893,7 +1988,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.paste"
       },
       "visibility": [
         "full_guide"
@@ -1913,11 +2009,11 @@
       },
       "title": {
         "en": "Delete Line",
-        "zh_CN": "删除Line"
+        "zh_CN": "删除当前行"
       },
       "description": {
         "en": "Delete Line",
-        "zh_CN": "删除Line"
+        "zh_CN": "删除当前行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -1948,11 +2044,11 @@
       },
       "title": {
         "en": "Insert Line Below",
-        "zh_CN": "插入Line Below"
+        "zh_CN": "在下方插入一行"
       },
       "description": {
         "en": "Insert Line Below",
-        "zh_CN": "插入Line Below"
+        "zh_CN": "在下方插入一行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -1963,7 +2059,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Insert Line Below"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1984,11 +2083,11 @@
       },
       "title": {
         "en": "Insert Line Above",
-        "zh_CN": "插入Line Above"
+        "zh_CN": "在上方插入一行"
       },
       "description": {
         "en": "Insert Line Above",
-        "zh_CN": "插入Line Above"
+        "zh_CN": "在上方插入一行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2019,11 +2118,11 @@
       },
       "title": {
         "en": "Move Line Down",
-        "zh_CN": "移动Line 下"
+        "zh_CN": "下移行"
       },
       "description": {
         "en": "Move Line Down",
-        "zh_CN": "移动Line 下"
+        "zh_CN": "下移行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2034,7 +2133,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.move-line-down",
+        "presentation_legacy_titles": [
+          "Move Line Down"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -2053,11 +2156,11 @@
       },
       "title": {
         "en": "Move Line Up",
-        "zh_CN": "移动Line 上"
+        "zh_CN": "上移行"
       },
       "description": {
         "en": "Move Line Up",
-        "zh_CN": "移动Line 上"
+        "zh_CN": "上移行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2068,7 +2171,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.move-line-up",
+        "presentation_legacy_titles": [
+          "Move Line Up"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -2088,11 +2195,11 @@
       },
       "title": {
         "en": "Copy Line Down",
-        "zh_CN": "复制Line 下"
+        "zh_CN": "向下复制行"
       },
       "description": {
         "en": "Copy Line Down",
-        "zh_CN": "复制Line 下"
+        "zh_CN": "向下复制行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2103,7 +2210,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.duplicate-line-down",
+        "presentation_legacy_titles": [
+          "Copy Line Down"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -2123,11 +2234,11 @@
       },
       "title": {
         "en": "Copy Line Up",
-        "zh_CN": "复制Line 上"
+        "zh_CN": "向上复制行"
       },
       "description": {
         "en": "Copy Line Up",
-        "zh_CN": "复制Line 上"
+        "zh_CN": "向上复制行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2138,7 +2249,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.duplicate-line-up",
+        "presentation_legacy_titles": [
+          "Copy Line Up"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -2172,7 +2287,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.undo"
       },
       "visibility": [
         "full_guide"
@@ -2206,7 +2322,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.redo"
       },
       "visibility": [
         "full_guide"
@@ -2225,11 +2342,11 @@
       },
       "title": {
         "en": "Add Selection To Next Find Match",
-        "zh_CN": "Add 选择 To 下一个 查找Match"
+        "zh_CN": "选中下一个匹配项"
       },
       "description": {
         "en": "Add Selection To Next Find Match",
-        "zh_CN": "Add 选择 To 下一个 查找Match"
+        "zh_CN": "选中下一个匹配项"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2240,7 +2357,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.select-next-match"
       },
       "visibility": [
         "full_guide"
@@ -2260,11 +2378,11 @@
       },
       "title": {
         "en": "Select all occurrences of current selection",
-        "zh_CN": "选择全部 occurrences of 当前 选择"
+        "zh_CN": "选中当前选区的所有匹配项"
       },
       "description": {
         "en": "Select all occurrences of current selection",
-        "zh_CN": "选择全部 occurrences of 当前 选择"
+        "zh_CN": "选中当前选区的所有匹配项"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2296,11 +2414,11 @@
       },
       "title": {
         "en": "Insert Cursor Below",
-        "zh_CN": "插入Cursor Below"
+        "zh_CN": "在下方插入光标"
       },
       "description": {
         "en": "Insert Cursor Below",
-        "zh_CN": "插入Cursor Below"
+        "zh_CN": "在下方插入光标"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2332,11 +2450,11 @@
       },
       "title": {
         "en": "Insert Cursor Above",
-        "zh_CN": "插入Cursor Above"
+        "zh_CN": "在上方插入光标"
       },
       "description": {
         "en": "Insert Cursor Above",
-        "zh_CN": "插入Cursor Above"
+        "zh_CN": "在上方插入光标"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2367,11 +2485,11 @@
       },
       "title": {
         "en": "Toggle Line Comment",
-        "zh_CN": "切换Line 批注"
+        "zh_CN": "切换行注释"
       },
       "description": {
         "en": "Toggle Line Comment",
-        "zh_CN": "切换Line 批注"
+        "zh_CN": "切换行注释"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2382,7 +2500,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Toggle Line Comment"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2403,11 +2524,11 @@
       },
       "title": {
         "en": "Toggle Block Comment",
-        "zh_CN": "切换Block 批注"
+        "zh_CN": "切换块注释"
       },
       "description": {
         "en": "Toggle Block Comment",
-        "zh_CN": "切换Block 批注"
+        "zh_CN": "切换块注释"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2418,7 +2539,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Toggle Block Comment"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2438,11 +2562,11 @@
       },
       "title": {
         "en": "Indent Line",
-        "zh_CN": "Indent Line"
+        "zh_CN": "增加行缩进"
       },
       "description": {
         "en": "Indent Line",
-        "zh_CN": "Indent Line"
+        "zh_CN": "增加行缩进"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2473,11 +2597,11 @@
       },
       "title": {
         "en": "Outdent Line",
-        "zh_CN": "Outdent Line"
+        "zh_CN": "减少行缩进"
       },
       "description": {
         "en": "Outdent Line",
-        "zh_CN": "Outdent Line"
+        "zh_CN": "减少行缩进"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2523,7 +2647,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.find"
       },
       "visibility": [
         "full_guide"
@@ -2557,7 +2682,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.replace",
+        "presentation_legacy_titles": [
+          "Replace"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -2575,11 +2704,11 @@
       },
       "title": {
         "en": "Find Next",
-        "zh_CN": "查找下一个"
+        "zh_CN": "查找下一个匹配项"
       },
       "description": {
         "en": "Find Next",
-        "zh_CN": "查找下一个"
+        "zh_CN": "查找下一个匹配项"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2609,11 +2738,11 @@
       },
       "title": {
         "en": "Find Previous",
-        "zh_CN": "查找上一个"
+        "zh_CN": "查找上一个匹配项"
       },
       "description": {
         "en": "Find Previous",
-        "zh_CN": "查找上一个"
+        "zh_CN": "查找上一个匹配项"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2644,11 +2773,11 @@
       },
       "title": {
         "en": "Toggle Word Wrap",
-        "zh_CN": "切换Word Wrap"
+        "zh_CN": "切换自动换行"
       },
       "description": {
         "en": "Toggle Word Wrap",
-        "zh_CN": "切换Word Wrap"
+        "zh_CN": "切换自动换行"
       },
       "category": "basic_editing",
       "scope": "app",
@@ -2659,7 +2788,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Toggle Word Wrap"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2715,11 +2847,11 @@
       },
       "title": {
         "en": "Trigger Parameter Hints",
-        "zh_CN": "Trigger Parameter Hints"
+        "zh_CN": "显示参数提示"
       },
       "description": {
         "en": "Trigger Parameter Hints",
-        "zh_CN": "Trigger Parameter Hints"
+        "zh_CN": "显示参数提示"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2751,11 +2883,11 @@
       },
       "title": {
         "en": "Format Document",
-        "zh_CN": "格式 文档"
+        "zh_CN": "格式化文档"
       },
       "description": {
         "en": "Format Document",
-        "zh_CN": "格式 文档"
+        "zh_CN": "格式化文档"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2766,7 +2898,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Format Document"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2786,11 +2921,11 @@
       },
       "title": {
         "en": "Format Selection",
-        "zh_CN": "格式 选择"
+        "zh_CN": "格式化选区"
       },
       "description": {
         "en": "Format Selection",
-        "zh_CN": "格式 选择"
+        "zh_CN": "格式化选区"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2819,11 +2954,11 @@
       },
       "title": {
         "en": "Go to Definition",
-        "zh_CN": "Go to Definition"
+        "zh_CN": "转到定义"
       },
       "description": {
         "en": "Go to Definition",
-        "zh_CN": "Go to Definition"
+        "zh_CN": "转到定义"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2853,11 +2988,11 @@
       },
       "title": {
         "en": "Show Hover",
-        "zh_CN": "显示Hover"
+        "zh_CN": "显示悬停信息"
       },
       "description": {
         "en": "Show Hover",
-        "zh_CN": "显示Hover"
+        "zh_CN": "显示悬停信息"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2887,11 +3022,11 @@
       },
       "title": {
         "en": "Peek Definition",
-        "zh_CN": "Peek Definition"
+        "zh_CN": "查看定义预览"
       },
       "description": {
         "en": "Peek Definition",
-        "zh_CN": "Peek Definition"
+        "zh_CN": "查看定义预览"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2902,7 +3037,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Peek Definition"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2922,11 +3060,11 @@
       },
       "title": {
         "en": "Quick Fix",
-        "zh_CN": "Quick Fix"
+        "zh_CN": "快速修复"
       },
       "description": {
         "en": "Quick Fix",
-        "zh_CN": "Quick Fix"
+        "zh_CN": "快速修复"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2957,11 +3095,11 @@
       },
       "title": {
         "en": "Go to References",
-        "zh_CN": "Go to References"
+        "zh_CN": "转到引用"
       },
       "description": {
         "en": "Go to References",
-        "zh_CN": "Go to References"
+        "zh_CN": "转到引用"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -2972,7 +3110,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Go to References"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -2991,11 +3132,11 @@
       },
       "title": {
         "en": "Rename Symbol",
-        "zh_CN": "Rename Symbol"
+        "zh_CN": "重命名符号"
       },
       "description": {
         "en": "Rename Symbol",
-        "zh_CN": "Rename Symbol"
+        "zh_CN": "重命名符号"
       },
       "category": "rich-languages-editing",
       "scope": "app",
@@ -3025,11 +3166,11 @@
       },
       "title": {
         "en": "Show All Symbols",
-        "zh_CN": "显示全部 Symbols"
+        "zh_CN": "显示全部符号"
       },
       "description": {
         "en": "Show All Symbols",
-        "zh_CN": "显示全部 Symbols"
+        "zh_CN": "显示全部符号"
       },
       "category": "navigation",
       "scope": "app",
@@ -3040,7 +3181,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.show-all-symbols"
       },
       "visibility": [
         "full_guide"
@@ -3059,11 +3201,11 @@
       },
       "title": {
         "en": "Go to Line",
-        "zh_CN": "Go to Line"
+        "zh_CN": "转到行"
       },
       "description": {
         "en": "Go to Line",
-        "zh_CN": "Go to Line"
+        "zh_CN": "转到行"
       },
       "category": "navigation",
       "scope": "app",
@@ -3074,7 +3216,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.goto-line",
+        "presentation_legacy_titles": [
+          "Go to Line"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -3094,11 +3240,11 @@
       },
       "title": {
         "en": "Go to Symbol",
-        "zh_CN": "Go to Symbol"
+        "zh_CN": "转到符号"
       },
       "description": {
         "en": "Go to Symbol",
-        "zh_CN": "Go to Symbol"
+        "zh_CN": "转到符号"
       },
       "category": "navigation",
       "scope": "app",
@@ -3109,7 +3255,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.goto-symbol",
+        "presentation_legacy_titles": [
+          "Go to Symbol"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -3129,11 +3279,11 @@
       },
       "title": {
         "en": "Show Problems",
-        "zh_CN": "显示Problems"
+        "zh_CN": "显示问题"
       },
       "description": {
         "en": "Show Problems",
-        "zh_CN": "显示Problems"
+        "zh_CN": "显示问题"
       },
       "category": "navigation",
       "scope": "app",
@@ -3144,7 +3294,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Problems"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -3163,11 +3316,11 @@
       },
       "title": {
         "en": "Go to Next Error or Warning",
-        "zh_CN": "Go to 下一个 Error or Warning"
+        "zh_CN": "转到下一个错误或警告"
       },
       "description": {
         "en": "Go to Next Error or Warning",
-        "zh_CN": "Go to 下一个 Error or Warning"
+        "zh_CN": "转到下一个错误或警告"
       },
       "category": "navigation",
       "scope": "app",
@@ -3197,11 +3350,11 @@
       },
       "title": {
         "en": "Go to Previous Error or Warning",
-        "zh_CN": "Go to 上一个 Error or Warning"
+        "zh_CN": "转到上一个错误或警告"
       },
       "description": {
         "en": "Go to Previous Error or Warning",
-        "zh_CN": "Go to 上一个 Error or Warning"
+        "zh_CN": "转到上一个错误或警告"
       },
       "category": "navigation",
       "scope": "app",
@@ -3232,11 +3385,11 @@
       },
       "title": {
         "en": "Go Back",
-        "zh_CN": "Go 后退"
+        "zh_CN": "后退"
       },
       "description": {
         "en": "Go Back",
-        "zh_CN": "Go 后退"
+        "zh_CN": "后退"
       },
       "category": "navigation",
       "scope": "app",
@@ -3247,7 +3400,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.navigate-back"
       },
       "visibility": [
         "full_guide"
@@ -3266,11 +3420,11 @@
       },
       "title": {
         "en": "Go Forward",
-        "zh_CN": "Go 前进"
+        "zh_CN": "前进"
       },
       "description": {
         "en": "Go Forward",
-        "zh_CN": "Go 前进"
+        "zh_CN": "前进"
       },
       "category": "navigation",
       "scope": "app",
@@ -3281,7 +3435,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.navigate-forward"
       },
       "visibility": [
         "full_guide"
@@ -3335,11 +3490,11 @@
       },
       "title": {
         "en": "Split Editor",
-        "zh_CN": "Split 编辑器"
+        "zh_CN": "拆分编辑器"
       },
       "description": {
         "en": "Split Editor",
-        "zh_CN": "Split 编辑器"
+        "zh_CN": "拆分编辑器"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3350,7 +3505,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.split-editor"
       },
       "visibility": [
         "full_guide"
@@ -3369,11 +3525,11 @@
       },
       "title": {
         "en": "Focus into First Editor Group",
-        "zh_CN": "焦点 into 第一个 编辑器 Group"
+        "zh_CN": "聚焦第一编辑器组"
       },
       "description": {
         "en": "Focus into First Editor Group",
-        "zh_CN": "焦点 into 第一个 编辑器 Group"
+        "zh_CN": "聚焦第一编辑器组"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3384,7 +3540,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.focus-first-editor-group"
       },
       "visibility": [
         "full_guide"
@@ -3403,11 +3560,11 @@
       },
       "title": {
         "en": "Focus into Second Editor Group",
-        "zh_CN": "焦点 into Second 编辑器 Group"
+        "zh_CN": "聚焦第二编辑器组"
       },
       "description": {
         "en": "Focus into Second Editor Group",
-        "zh_CN": "焦点 into Second 编辑器 Group"
+        "zh_CN": "聚焦第二编辑器组"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3418,7 +3575,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.focus-second-editor-group"
       },
       "visibility": [
         "full_guide"
@@ -3437,11 +3595,11 @@
       },
       "title": {
         "en": "Focus into Third Editor Group",
-        "zh_CN": "焦点 into Third 编辑器 Group"
+        "zh_CN": "聚焦第三编辑器组"
       },
       "description": {
         "en": "Focus into Third Editor Group",
-        "zh_CN": "焦点 into Third 编辑器 Group"
+        "zh_CN": "聚焦第三编辑器组"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3473,11 +3631,11 @@
       },
       "title": {
         "en": "Move Editor Left",
-        "zh_CN": "移动编辑器 左"
+        "zh_CN": "向左移动编辑器"
       },
       "description": {
         "en": "Move Editor Left",
-        "zh_CN": "移动编辑器 左"
+        "zh_CN": "向左移动编辑器"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3509,11 +3667,11 @@
       },
       "title": {
         "en": "Move Editor Right",
-        "zh_CN": "移动编辑器 右"
+        "zh_CN": "向右移动编辑器"
       },
       "description": {
         "en": "Move Editor Right",
-        "zh_CN": "移动编辑器 右"
+        "zh_CN": "向右移动编辑器"
       },
       "category": "editor-and-window-management",
       "scope": "app",
@@ -3559,7 +3717,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.new-file"
       },
       "visibility": [
         "full_guide"
@@ -3593,7 +3752,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.open-file"
       },
       "visibility": [
         "full_guide"
@@ -3627,7 +3787,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.save"
       },
       "visibility": [
         "full_guide"
@@ -3662,7 +3823,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.save-as"
       },
       "visibility": [
         "full_guide"
@@ -3681,11 +3843,11 @@
       },
       "title": {
         "en": "Close",
-        "zh_CN": "Close"
+        "zh_CN": "关闭"
       },
       "description": {
         "en": "Close",
-        "zh_CN": "Close"
+        "zh_CN": "关闭"
       },
       "category": "file_management",
       "scope": "app",
@@ -3716,11 +3878,11 @@
       },
       "title": {
         "en": "Close All",
-        "zh_CN": "关闭全部"
+        "zh_CN": "全部关闭"
       },
       "description": {
         "en": "Close All",
-        "zh_CN": "关闭全部"
+        "zh_CN": "全部关闭"
       },
       "category": "file_management",
       "scope": "app",
@@ -3751,11 +3913,11 @@
       },
       "title": {
         "en": "Reopen Closed Editor",
-        "zh_CN": "Reopen Closed 编辑器"
+        "zh_CN": "重新打开已关闭编辑器"
       },
       "description": {
         "en": "Reopen Closed Editor",
-        "zh_CN": "Reopen Closed 编辑器"
+        "zh_CN": "重新打开已关闭编辑器"
       },
       "category": "file_management",
       "scope": "app",
@@ -3766,7 +3928,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.reopen-closed-editor"
       },
       "visibility": [
         "full_guide"
@@ -3785,11 +3948,11 @@
       },
       "title": {
         "en": "Toggle Sidebar Visibility",
-        "zh_CN": "切换Sidebar Visibility"
+        "zh_CN": "显示或隐藏侧边栏"
       },
       "description": {
         "en": "Toggle Sidebar Visibility",
-        "zh_CN": "切换Sidebar Visibility"
+        "zh_CN": "显示或隐藏侧边栏"
       },
       "category": "display",
       "scope": "app",
@@ -3800,7 +3963,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.toggle-sidebar"
       },
       "visibility": [
         "full_guide"
@@ -3820,11 +3984,11 @@
       },
       "title": {
         "en": "Show Explorer / Toggle Focus",
-        "zh_CN": "显示Explorer / 切换焦点"
+        "zh_CN": "显示资源管理器或切换焦点"
       },
       "description": {
         "en": "Show Explorer / Toggle Focus",
-        "zh_CN": "显示Explorer / 切换焦点"
+        "zh_CN": "显示资源管理器或切换焦点"
       },
       "category": "display",
       "scope": "app",
@@ -3835,7 +3999,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.show-explorer"
       },
       "visibility": [
         "full_guide"
@@ -3870,7 +4035,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.find-in-files"
       },
       "visibility": [
         "full_guide"
@@ -3890,11 +4056,11 @@
       },
       "title": {
         "en": "Show Source Control",
-        "zh_CN": "显示Source Control"
+        "zh_CN": "显示源代码管理"
       },
       "description": {
         "en": "Show Source Control",
-        "zh_CN": "显示Source Control"
+        "zh_CN": "显示源代码管理"
       },
       "category": "display",
       "scope": "app",
@@ -3905,7 +4071,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.show-source-control",
+        "presentation_legacy_titles": [
+          "Source Control"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -3925,11 +4095,11 @@
       },
       "title": {
         "en": "Show Run",
-        "zh_CN": "显示Run"
+        "zh_CN": "显示运行视图"
       },
       "description": {
         "en": "Show Run",
-        "zh_CN": "显示Run"
+        "zh_CN": "显示运行视图"
       },
       "category": "display",
       "scope": "app",
@@ -3940,7 +4110,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.show-debug"
       },
       "visibility": [
         "full_guide"
@@ -3960,11 +4131,11 @@
       },
       "title": {
         "en": "Show Extensions",
-        "zh_CN": "显示Extensions"
+        "zh_CN": "显示扩展"
       },
       "description": {
         "en": "Show Extensions",
-        "zh_CN": "显示Extensions"
+        "zh_CN": "显示扩展"
       },
       "category": "display",
       "scope": "app",
@@ -3975,7 +4146,11 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.show-extensions",
+        "presentation_legacy_titles": [
+          "Extensions"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -3995,11 +4170,11 @@
       },
       "title": {
         "en": "Show Output",
-        "zh_CN": "显示Output"
+        "zh_CN": "显示输出"
       },
       "description": {
         "en": "Show Output",
-        "zh_CN": "显示Output"
+        "zh_CN": "显示输出"
       },
       "category": "display",
       "scope": "app",
@@ -4031,11 +4206,11 @@
       },
       "title": {
         "en": "Toggle Markdown Preview",
-        "zh_CN": "切换Markdown Preview"
+        "zh_CN": "切换 Markdown 预览"
       },
       "description": {
         "en": "Toggle Markdown Preview",
-        "zh_CN": "切换Markdown Preview"
+        "zh_CN": "切换 Markdown 预览"
       },
       "category": "display",
       "scope": "app",
@@ -4066,11 +4241,11 @@
       },
       "title": {
         "en": "Toggle Integrated Terminal",
-        "zh_CN": "切换Integrated 终端"
+        "zh_CN": "切换集成终端"
       },
       "description": {
         "en": "Toggle Integrated Terminal",
-        "zh_CN": "切换Integrated 终端"
+        "zh_CN": "切换集成终端"
       },
       "category": "display",
       "scope": "app",
@@ -4081,7 +4256,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.toggle-terminal"
       },
       "visibility": [
         "full_guide"
@@ -4101,11 +4277,11 @@
       },
       "title": {
         "en": "Replace in Files",
-        "zh_CN": "替换 in Files"
+        "zh_CN": "在文件中替换"
       },
       "description": {
         "en": "Replace in Files",
-        "zh_CN": "替换 in Files"
+        "zh_CN": "在文件中替换"
       },
       "category": "search",
       "scope": "app",
@@ -4116,7 +4292,8 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.VisualStudioCode.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.VisualStudioCode",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_semantic_id": "vscode.replace-in-files"
       },
       "visibility": [
         "full_guide"
@@ -4136,11 +4313,11 @@
       },
       "title": {
         "en": "Toggle Search Details",
-        "zh_CN": "切换搜索 Details"
+        "zh_CN": "显示或隐藏搜索选项"
       },
       "description": {
         "en": "Toggle Search Details",
-        "zh_CN": "切换搜索 Details"
+        "zh_CN": "显示或隐藏搜索选项"
       },
       "category": "search",
       "scope": "app",
@@ -4170,11 +4347,11 @@
       },
       "title": {
         "en": "Focus Next Search Result",
-        "zh_CN": "焦点 下一个 搜索 结果"
+        "zh_CN": "聚焦下一个搜索结果"
       },
       "description": {
         "en": "Focus Next Search Result",
-        "zh_CN": "焦点 下一个 搜索 结果"
+        "zh_CN": "聚焦下一个搜索结果"
       },
       "category": "search",
       "scope": "app",
@@ -4204,11 +4381,11 @@
       },
       "title": {
         "en": "Focus Previous Search Result",
-        "zh_CN": "焦点 上一个 搜索 结果"
+        "zh_CN": "聚焦上一个搜索结果"
       },
       "description": {
         "en": "Focus Previous Search Result",
-        "zh_CN": "焦点 上一个 搜索 结果"
+        "zh_CN": "聚焦上一个搜索结果"
       },
       "category": "search",
       "scope": "app",
@@ -4276,11 +4453,11 @@
       },
       "title": {
         "en": "Open chat in agent mode",
-        "zh_CN": "打开chat in agent mode"
+        "zh_CN": "以智能体模式打开聊天"
       },
       "description": {
         "en": "Open chat in agent mode",
-        "zh_CN": "打开chat in agent mode"
+        "zh_CN": "以智能体模式打开聊天"
       },
       "category": "chat-and-ai",
       "scope": "app",
@@ -4311,11 +4488,11 @@
       },
       "title": {
         "en": "Open editor inline chat",
-        "zh_CN": "打开编辑器 inline chat"
+        "zh_CN": "打开编辑器内联聊天"
       },
       "description": {
         "en": "Open editor inline chat",
-        "zh_CN": "打开编辑器 inline chat"
+        "zh_CN": "打开编辑器内联聊天"
       },
       "category": "chat-and-ai",
       "scope": "app",
@@ -4348,11 +4525,11 @@
       },
       "title": {
         "en": "Open quick chat",
-        "zh_CN": "打开quick chat"
+        "zh_CN": "打开快速聊天"
       },
       "description": {
         "en": "Open quick chat",
-        "zh_CN": "打开quick chat"
+        "zh_CN": "打开快速聊天"
       },
       "category": "chat-and-ai",
       "scope": "app",
@@ -4383,11 +4560,11 @@
       },
       "title": {
         "en": "New chat session",
-        "zh_CN": "新建chat session"
+        "zh_CN": "新建聊天会话"
       },
       "description": {
         "en": "New chat session",
-        "zh_CN": "新建chat session"
+        "zh_CN": "新建聊天会话"
       },
       "category": "chat-and-ai",
       "scope": "app",
@@ -4416,11 +4593,11 @@
       },
       "title": {
         "en": "Accept inline suggestion",
-        "zh_CN": "Accept inline suggestion"
+        "zh_CN": "接受内联建议"
       },
       "description": {
         "en": "Accept inline suggestion",
-        "zh_CN": "Accept inline suggestion"
+        "zh_CN": "接受内联建议"
       },
       "category": "chat-and-ai",
       "scope": "app",
@@ -4482,11 +4659,11 @@
       },
       "title": {
         "en": "Start / Continue",
-        "zh_CN": "Start / Continue"
+        "zh_CN": "开始或继续调试"
       },
       "description": {
         "en": "Start / Continue",
-        "zh_CN": "Start / Continue"
+        "zh_CN": "开始或继续调试"
       },
       "category": "debug",
       "scope": "app",
@@ -4516,11 +4693,11 @@
       },
       "title": {
         "en": "Start without debugging",
-        "zh_CN": "Start without 调试"
+        "zh_CN": "运行但不调试"
       },
       "description": {
         "en": "Start without debugging",
-        "zh_CN": "Start without 调试"
+        "zh_CN": "运行但不调试"
       },
       "category": "debug",
       "scope": "app",
@@ -4550,11 +4727,11 @@
       },
       "title": {
         "en": "Pause",
-        "zh_CN": "Pause"
+        "zh_CN": "暂停"
       },
       "description": {
         "en": "Pause",
-        "zh_CN": "Pause"
+        "zh_CN": "暂停"
       },
       "category": "debug",
       "scope": "app",
@@ -4583,11 +4760,11 @@
       },
       "title": {
         "en": "Step Into",
-        "zh_CN": "Step Into"
+        "zh_CN": "单步进入"
       },
       "description": {
         "en": "Step Into",
-        "zh_CN": "Step Into"
+        "zh_CN": "单步进入"
       },
       "category": "debug",
       "scope": "app",

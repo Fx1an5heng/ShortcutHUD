@@ -264,7 +264,7 @@ class GuideInteractionTests(unittest.TestCase):
         try:
             self.qt.processEvents()
             self.assertIn("搜索", view.search_box.placeholderText())
-            self.assertEqual(view.columns_box.itemText(0), "自动列数")
+            self.assertFalse(hasattr(view, "columns_box"))
         finally:
             self.qt.removeTranslator(translator)
             self.qt.processEvents()
@@ -314,18 +314,29 @@ class GuideInteractionTests(unittest.TestCase):
         catalog = ShortcutCatalog.load_packs(ROOT / "config/shortcut_packs")
         rows = resolve_catalog_view(catalog, "CODE.EXE", language="zh_CN")
         view.present(GuideSnapshot(snapshot().descriptor, 0, "wide", (0, 0, 1920, 1040)), rows)
-        for index, columns in enumerate((3, 4, 5), 1):
-            view.columns_box.setCurrentIndex(index)
+        for columns in (3, 4, 5):
+            view.set_debug_column_count(columns)
             QTest.qWait(70)
             self.assertEqual(len(view.rendered_columns), columns)
-            self.assertEqual(sum(len(s.rows) for c in view.rendered_columns for s in c), 133)
+            self.assertEqual(sum(len(s.rows) for c in view.rendered_columns for s in c), 95)
             self.assertEqual(view.scroll.horizontalScrollBar().maximum(), 0)
         view.resize(1120, 780)
+        view.set_debug_column_count(None)
         QTest.qWait(100)
         self.assertEqual(len(view.rendered_columns), 3)
         self.assertGreater(view.scroll.verticalScrollBar().maximum(), 0)
         self.assertEqual(view.scroll.horizontalScrollBar().maximum(), 0)
-        self.assertEqual(len(view.findChildren(QFrame, "guideRow")), 133)
+        self.assertEqual(len(view.findChildren(QFrame, "guideRow")), 95)
+
+    def test_count_and_search_use_deduplicated_rows(self):
+        guide, view, _, _, _, _ = self.make()
+        catalog = ShortcutCatalog.load_packs(ROOT / "config/shortcut_packs")
+        rows = resolve_catalog_view(catalog, "CODE.EXE", language="zh_CN")
+        view.present(GuideSnapshot(snapshot().descriptor, 0, "wide", (0, 0, 1920, 1040)), rows)
+        self.assertIn("95", view.count_label.text())
+        view.search_box.setText("Ctrl+K Ctrl+S")
+        view._render_sections()
+        self.assertEqual(sum(len(section.rows) for section in view.sections), 1)
 
 
 class GuideMonitorTests(unittest.TestCase):

@@ -32,7 +32,7 @@
   "categories": {
     "general": {
       "en": "General",
-      "zh_CN": "General"
+      "zh_CN": "常规"
     },
     "navigation": {
       "en": "Navigation",
@@ -109,7 +109,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Address Bar"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -144,7 +147,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Address Bar"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -178,7 +184,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Address Bar"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -212,7 +221,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Search"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -246,7 +258,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Search"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -280,7 +295,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Search"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -414,7 +432,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Back"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -448,7 +469,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Back"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -482,7 +506,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Forward"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -502,11 +529,11 @@
       },
       "title": {
         "en": "Move up a level in the folder path",
-        "zh_CN": "移动上 a level in the 文件夹 path"
+        "zh_CN": "转到上一级文件夹"
       },
       "description": {
         "en": "Move up a level in the folder path",
-        "zh_CN": "移动上 a level in the 文件夹 path"
+        "zh_CN": "转到上一级文件夹"
       },
       "category": "navigation",
       "scope": "app",
@@ -517,7 +544,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Up One Level"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -552,7 +582,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Window"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -587,7 +620,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -607,11 +643,11 @@
       },
       "title": {
         "en": "Close the current active tab",
-        "zh_CN": "关闭the 当前 active 选项卡"
+        "zh_CN": "关闭当前选项卡"
       },
       "description": {
         "en": "Close the current active tab",
-        "zh_CN": "关闭the 当前 active 选项卡"
+        "zh_CN": "关闭当前选项卡"
       },
       "category": "window-management",
       "scope": "app",
@@ -622,7 +658,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Close Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -642,11 +681,11 @@
       },
       "title": {
         "en": "Move to the next tab",
-        "zh_CN": "移动to the 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "description": {
         "en": "Move to the next tab",
-        "zh_CN": "移动to the 下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "category": "window-management",
       "scope": "app",
@@ -657,7 +696,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Next Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -678,11 +720,11 @@
       },
       "title": {
         "en": "Move to the previous tab",
-        "zh_CN": "移动to the 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "description": {
         "en": "Move to the previous tab",
-        "zh_CN": "移动to the 上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "category": "window-management",
       "scope": "app",
@@ -693,7 +735,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Previous Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -713,11 +758,11 @@
       },
       "title": {
         "en": "Show/Hide the preview pane",
-        "zh_CN": "Show/隐藏the preview pane"
+        "zh_CN": "显示或隐藏预览窗格"
       },
       "description": {
         "en": "Show/Hide the preview pane",
-        "zh_CN": "Show/隐藏the preview pane"
+        "zh_CN": "显示或隐藏预览窗格"
       },
       "category": "window-management",
       "scope": "app",
@@ -728,7 +773,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Preview Pane"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -749,11 +797,11 @@
       },
       "title": {
         "en": "Show/Hide the details pane",
-        "zh_CN": "Show/隐藏the details pane"
+        "zh_CN": "显示或隐藏详细信息窗格"
       },
       "description": {
         "en": "Show/Hide the details pane",
-        "zh_CN": "Show/隐藏the details pane"
+        "zh_CN": "显示或隐藏详细信息窗格"
       },
       "category": "window-management",
       "scope": "app",
@@ -764,7 +812,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Details Pane"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -784,11 +835,11 @@
       },
       "title": {
         "en": "Resize all columns to fit text",
-        "zh_CN": "Resize 全部 columns to fit 文本"
+        "zh_CN": "调整所有列宽以适合文本"
       },
       "description": {
         "en": "Resize all columns to fit text",
-        "zh_CN": "Resize 全部 columns to fit 文本"
+        "zh_CN": "调整所有列宽以适合文本"
       },
       "category": "window-management",
       "scope": "app",
@@ -820,11 +871,11 @@
       },
       "title": {
         "en": "Expand all folders",
-        "zh_CN": "Expand 全部 folders"
+        "zh_CN": "展开所有文件夹"
       },
       "description": {
         "en": "In the navigation pane",
-        "zh_CN": "Expand 全部 folders"
+        "zh_CN": "展开导航窗格中的所有文件夹"
       },
       "category": "window-management",
       "scope": "app",
@@ -835,7 +886,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Expand Navigation Tree"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -870,7 +924,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Properties"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -889,11 +946,11 @@
       },
       "title": {
         "en": "Delete the selected item",
-        "zh_CN": "删除the 所选 item"
+        "zh_CN": "删除所选项目"
       },
       "description": {
         "en": "Delete the selected item",
-        "zh_CN": "删除the 所选 item"
+        "zh_CN": "删除所选项目"
       },
       "category": "file-management",
       "scope": "app",
@@ -904,7 +961,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Move to Recycle Bin"
+        ]
       },
       "visibility": [
         "full_guide"
@@ -923,11 +983,11 @@
       },
       "title": {
         "en": "Delete the selected item",
-        "zh_CN": "删除the 所选 item"
+        "zh_CN": "删除所选项目"
       },
       "description": {
         "en": "Delete the selected item",
-        "zh_CN": "删除the 所选 item"
+        "zh_CN": "删除所选项目"
       },
       "category": "file-management",
       "scope": "app",
@@ -938,7 +998,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Move to Recycle Bin"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -958,11 +1021,11 @@
       },
       "title": {
         "en": "Delete the selected item permanently",
-        "zh_CN": "删除the 所选 item permanently"
+        "zh_CN": "永久删除所选项目"
       },
       "description": {
         "en": "This removes the item without sending it to the Recycle Bin",
-        "zh_CN": "删除the 所选 item permanently"
+        "zh_CN": "永久删除所选项目，不移入回收站"
       },
       "category": "file-management",
       "scope": "app",
@@ -1008,7 +1071,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/+WindowsNT.WindowsExplorer.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "+WindowsNT.WindowsExplorer",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Folder"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1027,11 +1093,11 @@
       },
       "title": {
         "en": "Rename the selected item",
-        "zh_CN": "Rename the 所选 item"
+        "zh_CN": "重命名所选项目"
       },
       "description": {
         "en": "Rename the selected item",
-        "zh_CN": "Rename the 所选 item"
+        "zh_CN": "重命名所选项目"
       },
       "category": "file-management",
       "scope": "app",

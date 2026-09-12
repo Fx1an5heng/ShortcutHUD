@@ -1,5 +1,6 @@
 """All-trigger, localized read-only Catalog queries and balanced layout."""
 from pathlib import Path
+from dataclasses import replace
 from tempfile import TemporaryDirectory
 import unittest
 
@@ -9,6 +10,7 @@ from scripts.full_guide_model import balance_categories, column_count_for_width,
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.shortcut_catalog import CatalogEntry, CatalogTrigger, ShortcutCatalog
 from scripts.shortcut_catalog_resolver import CatalogShortcutResolver, resolve_catalog_view
+from scripts.catalog_presentation_dedup import presentation_groups
 from scripts.shortcut_library_dialog import ShortcutLibraryModel
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,16 +34,22 @@ class GuideDataTests(unittest.TestCase):
         self.assertIn("Ctrl+K Ctrl+S", [row.trigger for row in rows])
         self.assertIn("Shift × 2", [row.trigger for row in rows])
 
-    def test_shipping_vscode_all_133_rows_including_catalog_only(self):
+    def test_shipping_vscode_raw_133_records_resolve_to_95_commands(self):
         entries = [e for e in self.catalog.entries if "CODE.EXE" in e.application_ids]
         rows = resolve_catalog_view(self.catalog, "CODE.EXE")
-        self.assertEqual(len(rows), 133)
-        self.assertTrue({e.id for e in entries if not e.trigger.is_quick_hud_eligible()} <= {r.entry.id for r in rows})
+        self.assertEqual(len(entries), 133)
+        self.assertEqual(len(rows), 95)
+        self.assertEqual([row.trigger for row in rows].count("Ctrl+K Ctrl+S"), 1)
+        self.assertEqual([row.trigger for row in rows].count("F11"), 2)
+        self.assertIn("F5", [row.trigger for row in rows])
 
     def test_all_shipping_catalog_only_entries_survive(self):
         for app in self.catalog.application_titles:
             expected = {e.id for e in self.catalog.entries if app in e.application_ids and not e.trigger.is_quick_hud_eligible()}
-            self.assertTrue(expected <= {r.entry.id for r in resolve_catalog_view(self.catalog, app)}, app)
+            groups = presentation_groups([e for e in self.catalog.entries if app in e.application_ids], app)
+            visible = {r.entry.id for r in resolve_catalog_view(self.catalog, app)}
+            represented = {member.id for preferred, members in groups if preferred.id in visible for member in members}
+            self.assertTrue(expected <= represented, app)
 
     def test_localization_matches_center_and_hud(self):
         with TemporaryDirectory() as temporary:
@@ -98,7 +106,7 @@ class GuideDataTests(unittest.TestCase):
 
     def test_legacy_duplicate_prefers_pack_but_non_duplicate_survives(self):
         catalog = ShortcutCatalog.from_legacy_shortcuts({"SAMPLE.EXE": {"Ctrl": {"S": "Old", "X": "Extra"}}})
-        catalog.entries += (entry(),)
+        catalog.entries += (replace(entry(), provenance={"kind": "pack", "presentation_legacy_titles": ["Old"]}),)
         rows = resolve_catalog_view(catalog, "SAMPLE.EXE")
         self.assertEqual([r.entry.id for r in rows if r.trigger == "Ctrl+S"], ["save"])
         self.assertIn("Ctrl+X", [r.trigger for r in rows])
@@ -112,7 +120,7 @@ class GuideDataTests(unittest.TestCase):
                 before = store.path.read_bytes()
                 rows = resolve_catalog_view(self.catalog, "CODE.EXE")
                 group_entries(rows, "terminal")
-                self.assertEqual(len(rows), 133)
+                self.assertEqual(len(rows), 95)
                 self.assertEqual(store.path.read_bytes(), before)
 
     def test_large_dataset_balancer_deterministic(self):

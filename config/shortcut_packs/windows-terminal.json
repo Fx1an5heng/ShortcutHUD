@@ -187,7 +187,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Settings"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -295,7 +298,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Find"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -331,7 +337,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Command Palette"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -351,11 +360,11 @@
       },
       "title": {
         "en": "Quake mode (drop-down window)",
-        "zh_CN": "Quake mode (drop-下 窗口)"
+        "zh_CN": "切换下拉式终端窗口"
       },
       "description": {
         "en": "Quake mode (drop-down window)",
-        "zh_CN": "Quake mode (drop-下 窗口)"
+        "zh_CN": "切换下拉式终端窗口"
       },
       "category": "application",
       "scope": "app",
@@ -458,11 +467,11 @@
       },
       "title": {
         "en": "Open new tab",
-        "zh_CN": "打开新建选项卡"
+        "zh_CN": "打开新选项卡"
       },
       "description": {
         "en": "Open new tab",
-        "zh_CN": "打开新建选项卡"
+        "zh_CN": "打开新选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -473,7 +482,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -494,11 +506,11 @@
       },
       "title": {
         "en": "Open new window",
-        "zh_CN": "打开新建窗口"
+        "zh_CN": "打开新窗口"
       },
       "description": {
         "en": "Open new window",
-        "zh_CN": "打开新建窗口"
+        "zh_CN": "打开新窗口"
       },
       "category": "tab-management",
       "scope": "app",
@@ -509,7 +521,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "New Window"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -545,7 +560,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Duplicate Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -565,11 +583,11 @@
       },
       "title": {
         "en": "Next tab",
-        "zh_CN": "下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "description": {
         "en": "Next tab",
-        "zh_CN": "下一个 选项卡"
+        "zh_CN": "切换到下一个选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -580,7 +598,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Next Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -601,11 +622,11 @@
       },
       "title": {
         "en": "Previous tab",
-        "zh_CN": "上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "description": {
         "en": "Previous tab",
-        "zh_CN": "上一个 选项卡"
+        "zh_CN": "切换到上一个选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -637,11 +658,11 @@
       },
       "title": {
         "en": "Open new tab with profile 1",
-        "zh_CN": "打开新建选项卡 with profile 1"
+        "zh_CN": "使用配置文件 1 新建选项卡"
       },
       "description": {
         "en": "Open new tab with profile 1",
-        "zh_CN": "打开新建选项卡 with profile 1"
+        "zh_CN": "使用配置文件 1 新建选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -673,11 +694,11 @@
       },
       "title": {
         "en": "Open new tab with profile 2",
-        "zh_CN": "打开新建选项卡 with profile 2"
+        "zh_CN": "使用配置文件 2 新建选项卡"
       },
       "description": {
         "en": "Open new tab with profile 2",
-        "zh_CN": "打开新建选项卡 with profile 2"
+        "zh_CN": "使用配置文件 2 新建选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -709,11 +730,11 @@
       },
       "title": {
         "en": "Open new tab with profile 3",
-        "zh_CN": "打开新建选项卡 with profile 3"
+        "zh_CN": "使用配置文件 3 新建选项卡"
       },
       "description": {
         "en": "Open new tab with profile 3",
-        "zh_CN": "打开新建选项卡 with profile 3"
+        "zh_CN": "使用配置文件 3 新建选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -745,11 +766,11 @@
       },
       "title": {
         "en": "Open new tab with profile 4",
-        "zh_CN": "打开新建选项卡 with profile 4"
+        "zh_CN": "使用配置文件 4 新建选项卡"
       },
       "description": {
         "en": "Open new tab with profile 4",
-        "zh_CN": "打开新建选项卡 with profile 4"
+        "zh_CN": "使用配置文件 4 新建选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -781,11 +802,11 @@
       },
       "title": {
         "en": "Open new tab with profile 5",
-        "zh_CN": "打开新建选项卡 with profile 5"
+        "zh_CN": "使用配置文件 5 新建选项卡"
       },
       "description": {
         "en": "Open new tab with profile 5",
-        "zh_CN": "打开新建选项卡 with profile 5"
+        "zh_CN": "使用配置文件 5 新建选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -817,11 +838,11 @@
       },
       "title": {
         "en": "Switch to tab 1",
-        "zh_CN": "Switch to 选项卡 1"
+        "zh_CN": "切换到选项卡 1"
       },
       "description": {
         "en": "Switch to tab 1",
-        "zh_CN": "Switch to 选项卡 1"
+        "zh_CN": "切换到选项卡 1"
       },
       "category": "tab-management",
       "scope": "app",
@@ -853,11 +874,11 @@
       },
       "title": {
         "en": "Switch to tab 2",
-        "zh_CN": "Switch to 选项卡 2"
+        "zh_CN": "切换到选项卡 2"
       },
       "description": {
         "en": "Switch to tab 2",
-        "zh_CN": "Switch to 选项卡 2"
+        "zh_CN": "切换到选项卡 2"
       },
       "category": "tab-management",
       "scope": "app",
@@ -889,11 +910,11 @@
       },
       "title": {
         "en": "Switch to tab 3",
-        "zh_CN": "Switch to 选项卡 3"
+        "zh_CN": "切换到选项卡 3"
       },
       "description": {
         "en": "Switch to tab 3",
-        "zh_CN": "Switch to 选项卡 3"
+        "zh_CN": "切换到选项卡 3"
       },
       "category": "tab-management",
       "scope": "app",
@@ -925,11 +946,11 @@
       },
       "title": {
         "en": "Switch to last tab",
-        "zh_CN": "Switch to 最后一个 选项卡"
+        "zh_CN": "切换到最后一个选项卡"
       },
       "description": {
         "en": "Switch to last tab",
-        "zh_CN": "Switch to 最后一个 选项卡"
+        "zh_CN": "切换到最后一个选项卡"
       },
       "category": "tab-management",
       "scope": "app",
@@ -976,7 +997,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Close Pane/Tab"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1012,7 +1036,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Split Down"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1048,7 +1075,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Split Right"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1084,7 +1114,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Resize Pane Down"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1120,7 +1153,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Resize Pane Up"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1156,7 +1192,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Resize Pane Left"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1192,7 +1231,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Resize Pane Right"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1212,11 +1254,11 @@
       },
       "title": {
         "en": "Move focus down",
-        "zh_CN": "移动焦点 下"
+        "zh_CN": "将焦点移到下方窗格"
       },
       "description": {
         "en": "Move focus down",
-        "zh_CN": "移动焦点 下"
+        "zh_CN": "将焦点移到下方窗格"
       },
       "category": "pane-management",
       "scope": "app",
@@ -1227,7 +1269,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Focus Pane Down"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1247,11 +1292,11 @@
       },
       "title": {
         "en": "Move focus up",
-        "zh_CN": "移动焦点 上"
+        "zh_CN": "将焦点移到上方窗格"
       },
       "description": {
         "en": "Move focus up",
-        "zh_CN": "移动焦点 上"
+        "zh_CN": "将焦点移到上方窗格"
       },
       "category": "pane-management",
       "scope": "app",
@@ -1262,7 +1307,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Focus Pane Up"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1282,11 +1330,11 @@
       },
       "title": {
         "en": "Move focus left",
-        "zh_CN": "移动焦点 左"
+        "zh_CN": "将焦点移到左侧窗格"
       },
       "description": {
         "en": "Move focus left",
-        "zh_CN": "移动焦点 左"
+        "zh_CN": "将焦点移到左侧窗格"
       },
       "category": "pane-management",
       "scope": "app",
@@ -1297,7 +1345,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Focus Pane Left"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1317,11 +1368,11 @@
       },
       "title": {
         "en": "Move focus right",
-        "zh_CN": "移动焦点 右"
+        "zh_CN": "将焦点移到右侧窗格"
       },
       "description": {
         "en": "Move focus right",
-        "zh_CN": "移动焦点 右"
+        "zh_CN": "将焦点移到右侧窗格"
       },
       "category": "pane-management",
       "scope": "app",
@@ -1332,7 +1383,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Focus Pane Right"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1353,11 +1407,11 @@
       },
       "title": {
         "en": "Move focus to previous pane",
-        "zh_CN": "移动焦点 to 上一个 pane"
+        "zh_CN": "将焦点移到上一个窗格"
       },
       "description": {
         "en": "Move focus to previous pane",
-        "zh_CN": "移动焦点 to 上一个 pane"
+        "zh_CN": "将焦点移到上一个窗格"
       },
       "category": "pane-management",
       "scope": "app",
@@ -1422,11 +1476,11 @@
       },
       "title": {
         "en": "Paste from clipboard",
-        "zh_CN": "粘贴from clipboard"
+        "zh_CN": "粘贴剪贴板内容"
       },
       "description": {
         "en": "Paste from clipboard",
-        "zh_CN": "粘贴from clipboard"
+        "zh_CN": "粘贴剪贴板内容"
       },
       "category": "clipboard-and-selection",
       "scope": "app",
@@ -1493,11 +1547,11 @@
       },
       "title": {
         "en": "Toggle mark mode (keyboard selection)",
-        "zh_CN": "切换mark mode (keyboard 选择)"
+        "zh_CN": "切换标记模式（键盘选择）"
       },
       "description": {
         "en": "Toggle mark mode (keyboard selection)",
-        "zh_CN": "切换mark mode (keyboard 选择)"
+        "zh_CN": "切换标记模式（键盘选择）"
       },
       "category": "clipboard-and-selection",
       "scope": "app",
@@ -1565,11 +1619,11 @@
       },
       "title": {
         "en": "Scroll up one line",
-        "zh_CN": "Scroll 上 one line"
+        "zh_CN": "向上滚动一行"
       },
       "description": {
         "en": "Scroll up one line",
-        "zh_CN": "Scroll 上 one line"
+        "zh_CN": "向上滚动一行"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1601,11 +1655,11 @@
       },
       "title": {
         "en": "Scroll down one page",
-        "zh_CN": "Scroll 下 one 页面"
+        "zh_CN": "向下滚动一页"
       },
       "description": {
         "en": "Scroll down one page",
-        "zh_CN": "Scroll 下 one 页面"
+        "zh_CN": "向下滚动一页"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1637,11 +1691,11 @@
       },
       "title": {
         "en": "Scroll up one page",
-        "zh_CN": "Scroll 上 one 页面"
+        "zh_CN": "向上滚动一页"
       },
       "description": {
         "en": "Scroll up one page",
-        "zh_CN": "Scroll 上 one 页面"
+        "zh_CN": "向上滚动一页"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1673,11 +1727,11 @@
       },
       "title": {
         "en": "Scroll to top",
-        "zh_CN": "Scroll to top"
+        "zh_CN": "滚动到顶部"
       },
       "description": {
         "en": "Scroll to top",
-        "zh_CN": "Scroll to top"
+        "zh_CN": "滚动到顶部"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1709,11 +1763,11 @@
       },
       "title": {
         "en": "Scroll to bottom",
-        "zh_CN": "Scroll to bottom"
+        "zh_CN": "滚动到底部"
       },
       "description": {
         "en": "Scroll to bottom",
-        "zh_CN": "Scroll to bottom"
+        "zh_CN": "滚动到底部"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1745,11 +1799,11 @@
       },
       "title": {
         "en": "Clear buffer",
-        "zh_CN": "Clear buffer"
+        "zh_CN": "清空缓冲区"
       },
       "description": {
         "en": "Clear buffer",
-        "zh_CN": "Clear buffer"
+        "zh_CN": "清空缓冲区"
       },
       "category": "scrollback",
       "scope": "app",
@@ -1795,7 +1849,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Increase Font Size"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1830,7 +1887,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Decrease Font Size"
+        ]
       },
       "visibility": [
         "quick_hud",
@@ -1850,11 +1910,11 @@
       },
       "title": {
         "en": "Reset font size",
-        "zh_CN": "重置 字体大小"
+        "zh_CN": "重置字体大小"
       },
       "description": {
         "en": "Reset font size",
-        "zh_CN": "重置 字体大小"
+        "zh_CN": "重置字体大小"
       },
       "category": "font-size",
       "scope": "app",
@@ -1865,7 +1925,10 @@
         "url": "https://github.com/microsoft/PowerToys/blob/47f0e4db5af8c399a1a1456005b2e42e0d04293e/src/modules/ShortcutGuide/ShortcutGuide.Ui/Assets/ShortcutGuide/Manifests/Microsoft.WindowsTerminal.en-US.yml",
         "source_type": "PowerToys bundled manifest",
         "upstream_package": "Microsoft.WindowsTerminal",
-        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e"
+        "upstream_revision": "47f0e4db5af8c399a1a1456005b2e42e0d04293e",
+        "presentation_legacy_titles": [
+          "Reset Font Size"
+        ]
       },
       "visibility": [
         "quick_hud",
