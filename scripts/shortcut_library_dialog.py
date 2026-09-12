@@ -10,6 +10,7 @@ from PySide6.QtWidgets import QCheckBox, QComboBox, QDialog, QDialogButtonBox, Q
 
 from .application_descriptor import ApplicationDescriptor, ApplicationDescriptorFactory
 from .catalog_application_registry import CatalogApplication, CatalogApplicationRegistry
+from .catalog_presentation import category_label, localized_description as _localized_description, description_values as _description_values, trigger_text as _trigger_text
 from .quick_hud_selection_store import QuickHudSelectionStore
 from .shortcut_catalog import CatalogEntry, CatalogTrigger, ShortcutCatalog, select_catalog_text
 from .shortcut_resolver import normalize_application_identity
@@ -88,11 +89,7 @@ class ShortcutLibraryModel:
         return rows
 
     def category_label(self, category: str) -> str:
-        is_chinese = isinstance(self.language, str) and self.language.casefold().startswith("zh")
-        if category == "legacy": return "其他" if is_chinese else "Other"
-        if category == "user": return "我的快捷键" if is_chinese else "My Shortcuts"
-        labels = self.catalog.category_titles.get(category)
-        return select_catalog_text(labels, self.language) if labels else category
+        return category_label(self.catalog, category, self.language)
 
     def set_checked(self, app_id: str, entry_id: str, checked: bool) -> None:
         identity = _require_identity(app_id); entries = [entry for entry, _ in self._entries_for_application(identity) if entry.trigger.is_quick_hud_eligible()]
@@ -292,19 +289,6 @@ def _require_identity(app_id: str) -> str:
     identity = normalize_application_identity(app_id)
     if identity is None: raise ValueError("invalid application identity")
     return identity
-
-
-def _localized_description(value: object, language: str | None) -> str:
-    if isinstance(value, Mapping): return select_catalog_text({key: item for key, item in value.items() if isinstance(key, str) and isinstance(item, str)}, language)
-    return value if isinstance(value, str) else ""
-
-
-def _description_values(value: object) -> tuple[str, ...]:
-    return tuple(item for item in value.values() if isinstance(item, str)) if isinstance(value, Mapping) else (value,) if isinstance(value, str) else ()
-
-
-def _trigger_text(entry: CatalogEntry) -> str:
-    return "+".join(entry.trigger.keys) if entry.trigger.kind == "combo" else " ".join(entry.trigger.keys)
 
 
 def _user_catalog_entries(profiles: Mapping[str, object], app_id: str) -> list[tuple[CatalogEntry, str]]:

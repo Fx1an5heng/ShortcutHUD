@@ -89,6 +89,8 @@ class ShortcutHudController(QObject):
         self._identity_delay_elapsed = False
         self._suppression_rearm_required = False
 
+        self._guide_active = False
+
         self._win_modifier_held = False
         self._win_activation_attempted = False
         self._win_discovery_active = False
@@ -214,6 +216,13 @@ class ShortcutHudController(QObject):
             return
         self.refresh_current_state()
 
+    def set_guide_active(self, active: bool) -> None:
+        """Suspend passive presentation until a fresh post-Guide key hold."""
+        self._guide_active = active
+        self._suppression_rearm_required = self._current_modifier is not None
+        self._reset_win_discovery_state()
+        self._cancel_and_hide()
+
     def _show_pending_hud(self) -> None:
         if not self._quick_hud_is_allowed():
             self._cancel_and_hide()
@@ -319,7 +328,7 @@ class ShortcutHudController(QObject):
         )
 
     def _policy_allows_quick_hud(self) -> bool:
-        return self._suppression_policy.allows(PresentationIntent.PASSIVE)
+        return not self._guide_active and self._suppression_policy.allows(PresentationIntent.PASSIVE)
 
     def _is_identity_pending(self) -> bool:
         return bool(getattr(self._foreground_monitor, "identity_pending", False))

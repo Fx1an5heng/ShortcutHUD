@@ -15,7 +15,7 @@ from typing import List, Dict, Any, Optional
 
 from PySide6.QtWidgets import QApplication, QSystemTrayIcon, QMenu
 from PySide6.QtGui import QIcon, QAction
-from PySide6.QtCore import QObject, QTranslator, QLocale, QLibraryInfo, Signal, Slot, Qt
+from PySide6.QtCore import QObject, QTranslator, QLocale, QLibraryInfo, Signal, Slot, Qt, QTimer
 
 # Define the application's root directory for resource access.
 # Frozen (PyInstaller onedir) builds read bundled resources next to the
@@ -51,6 +51,10 @@ from scripts.user_shortcut_store import UserShortcutStore, get_profile_display_n
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.win_discovery_proxy import WinDiscoveryProxy
 from scripts.settings_dialog import SettingsDialog, AboutDialog
+from scripts.full_guide_context import WindowsGuideContext
+from scripts.full_guide_controller import FullGuideController
+from scripts.full_guide_hotkey import FullGuideHotkey, DEFAULT_GUIDE_HOTKEY, GUIDE_HOTKEY_SETTING
+from scripts.full_guide_window import FullGuideWindow
 
 
 class _WinReleaseBridge(QObject):
@@ -173,11 +177,34 @@ class ShortcutOverlayApplication(QApplication):
             selection_store=self.quick_hud_selection_store,
         )
 
+        self.full_guide_window = FullGuideWindow()
+        self.full_guide_context = WindowsGuideContext(
+            self.monitor, self.application_identity, self.current_application_candidate,
+            self.config_mgr.get_shortcut_catalog, self.user_shortcut_store.snapshot,
+            lambda: self.config_mgr.get_setting("language", "en_US"),
+        )
+        self.full_guide_controller = FullGuideController(
+            self.full_guide_window, self.hud_controller, self.suppression_policy,
+            self.full_guide_context.capture, self.config_mgr.get_shortcut_catalog,
+            self.user_shortcut_store.snapshot,
+            lambda: self.config_mgr.get_setting("language", "en_US"), parent=self,
+        )
+        self.full_guide_hotkey = FullGuideHotkey(self, parent=self)
+        self.full_guide_hotkey.activated.connect(self.toggle_full_guide)
+        self.full_guide_window.center_requested.connect(
+            lambda: QTimer.singleShot(0, self.open_shortcut_center_dialog)
+        )
+        self.game_guard_runtime.suppression_changed.connect(self.full_guide_controller.on_suppression_changed)
+        self.aboutToQuit.connect(self.full_guide_hotkey.close)
+        self.aboutToQuit.connect(self.full_guide_controller.close)
+
         # Initialize and configure the system tray icon.
         self.tray_icon: Optional[QSystemTrayIcon] = None
         self.game_mode_action: Optional[QAction] = None
         self._initialize_tray_icon_object() # Create the QSystemTrayIcon object
         self._update_tray_icon_ui()         # Populate its UI elements.
+        if not self.full_guide_hotkey.configure(self.config_mgr.get_setting(GUIDE_HOTKEY_SETTING, DEFAULT_GUIDE_HOTKEY)):
+            QTimer.singleShot(0, self._notify_guide_hotkey_conflict)
 
         self.aboutToQuit.connect(self.overlay_window.save_geometry_on_quit) # Save overlay geometry on quit.
         
@@ -351,6 +378,13 @@ class ShortcutOverlayApplication(QApplication):
 
         new_menu.addSeparator()
 
+        guide_action = QAction(self.tr("Open Full Guide"), new_menu)
+        guide_action.triggered.connect(self.toggle_full_guide)
+        new_menu.addAction(guide_action)
+        guide_settings_action = QAction(self.tr("Full Guide shortcut..."), new_menu)
+        guide_settings_action.triggered.connect(self.open_full_guide_settings)
+        new_menu.addAction(guide_settings_action)
+
         show_hide_action: QAction = QAction(self.tr("Show/Hide Overlay"), new_menu)
         show_hide_action.triggered.connect(self.toggle_overlay_window)
         new_menu.addAction(show_hide_action)
@@ -422,8 +456,31 @@ class ShortcutOverlayApplication(QApplication):
         dialog.custom_apps_requested.connect(
             lambda: self.open_shortcut_center_from_settings(dialog)
         )
+        dialog.full_guide_settings_requested.connect(lambda: self.open_full_guide_settings(parent=dialog))
         dialog.setWindowModality(Qt.ApplicationModal) # Block interaction with parent.
         dialog.exec() # Show modally.
+
+    def _notify_guide_hotkey_conflict(self) -> None:
+        self.tray_icon.showMessage(self.tr("Full Guide shortcut unavailable"), self.tr("Choose another shortcut in Settings > Full Guide shortcut."), QSystemTrayIcon.MessageIcon.Warning)
+
+    def toggle_full_guide(self) -> None:
+        # A settings/recorder dialog owns input until dismissed. A top-level
+        # Guide behind an application-modal dialog could not accept Esc.
+        if self.full_guide_controller.active or self.activeModalWidget() is None:
+            self.full_guide_controller.toggle()
+
+    def open_full_guide_settings(self, _checked=False, parent=None) -> None:
+        from scripts.full_guide_settings import FullGuideSettingsDialog
+        service = self.full_guide_hotkey
+        current = service.spec.text if service.spec else self.config_mgr.get_setting(GUIDE_HOTKEY_SETTING, DEFAULT_GUIDE_HOTKEY)
+        dialog = FullGuideSettingsDialog(current, self.apply_full_guide_hotkey, service.last_error, parent or self.overlay_window)
+        dialog.exec()
+
+    def apply_full_guide_hotkey(self, value: str) -> tuple[bool, str]:
+        if not self.full_guide_hotkey.configure(value):
+            return False, self.full_guide_hotkey.last_error
+        self.config_mgr.update_settings({GUIDE_HOTKEY_SETTING: self.full_guide_hotkey.spec.text})
+        return True, ""
 
     def open_user_shortcut_manager_dialog(self, parent=None) -> None:
         """Open the detached USER profile editor from application settings."""
@@ -553,6 +610,8 @@ class ShortcutOverlayApplication(QApplication):
         """
         print("Quitting Shortcut Overlay application...")
         self.hud_controller.stop()
+        self.full_guide_controller.close()
+        self.full_guide_hotkey.close()
         self.application_identity.stop_requests()
         self.application_identity.stop_event_hook()
         if not self.application_identity.stop_worker(timeout=1.0):

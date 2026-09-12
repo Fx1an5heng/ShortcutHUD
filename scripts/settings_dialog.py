@@ -62,6 +62,7 @@ class SettingsDialog(QDialog):
     settings_changed = Signal(dict)
     # Request the one Shortcut Center without coupling Settings to storage.
     custom_apps_requested = Signal()
+    full_guide_settings_requested = Signal()
 
     # Default theme ID for the main overlay, used if no theme is configured.
     DEFAULT_THEME_ID: str = "Default Dark"
@@ -341,6 +342,9 @@ class SettingsDialog(QDialog):
         self.custom_apps_button.clicked.connect(self.custom_apps_requested.emit)
         layout.addWidget(self._custom_apps_description)
         layout.addWidget(self.custom_apps_button)
+        self.guide_shortcut_button = QPushButton(self.tr("Full Guide shortcut..."), self._custom_apps_group_box)
+        self.guide_shortcut_button.clicked.connect(self.full_guide_settings_requested.emit)
+        layout.addWidget(self.guide_shortcut_button)
         self._main_layout.addWidget(self._custom_apps_group_box)
 
     def _setup_game_guard_group(self) -> None:
@@ -595,6 +599,8 @@ class SettingsDialog(QDialog):
             )
         if self.custom_apps_button:
             self.custom_apps_button.setText(self.tr("Manage Shortcuts..."))
+        if self.guide_shortcut_button:
+            self.guide_shortcut_button.setText(self.tr("Full Guide shortcut..."))
         if self.fullscreen_suppression_checkbox:
             self.fullscreen_suppression_checkbox.setText(
                 self.tr("Enable automatic fullscreen Quick HUD suppression (optional)")

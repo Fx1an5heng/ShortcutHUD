@@ -30,6 +30,7 @@ class _FakeSettingsDialog:
         self.current_app_provider = current_app_provider
         self.settings_changed = _FakeSignal()
         self.custom_apps_requested = _FakeSignal()
+        self.full_guide_settings_requested = _FakeSignal()
         self.modality = None
         _FakeSettingsDialog.last_instance = self
 
@@ -182,6 +183,8 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
             toggle_overlay_window=no_op,
             open_settings_dialog=no_op,
             open_about_dialog=no_op,
+            toggle_full_guide=no_op,
+            open_full_guide_settings=no_op,
             quit_application=no_op,
         )
 
@@ -213,6 +216,8 @@ class ShortcutManagerEntryWiringTests(unittest.TestCase):
             toggle_overlay_window=lambda: None,
             open_settings_dialog=lambda: None,
             open_about_dialog=lambda: None,
+            toggle_full_guide=lambda: None,
+            open_full_guide_settings=lambda: None,
             quit_application=lambda: None,
         )
 

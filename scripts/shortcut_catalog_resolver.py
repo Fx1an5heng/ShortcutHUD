@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+from .catalog_presentation import ResolvedCatalogEntry, resolve_presentation
 from .modifier_state import normalize_modifier_combination
 from .shortcut_catalog import CatalogEntry, CatalogScope, CatalogTrigger, ShortcutCatalog, select_catalog_text
 from .shortcut_key import normalize_builtin_shortcut_identity
@@ -22,6 +23,10 @@ class CatalogShortcutResolver:
 
     def __init__(self, catalog: ShortcutCatalog) -> None:
         self._catalog = catalog
+
+    def resolve_view(self, app_id: str | None, profiles: Mapping[str, object] | None = None, language: str | None = None, *, include_default: bool = False) -> tuple[ResolvedCatalogEntry, ...]:
+        """All-trigger read-only view, independent of Quick HUD selection."""
+        return resolve_catalog_view(self._catalog, app_id, profiles, language, include_default=include_default)
 
     def resolve(
         self,
@@ -110,6 +115,62 @@ class CatalogShortcutResolver:
             [entry for entry in self._catalog.entries if entry.scope == scope and entry.matches_runtime_modifier(modifier) and "quick_hud" in entry.visibility],
             key=lambda entry: (entry.rank, entry.order),
         )
+
+
+def _trigger_identity(entry: CatalogEntry) -> tuple[str, ...]:
+    """Deduplicate complete triggers, never just the last key or description."""
+    if entry.trigger.kind == "combo":
+        modifier = entry.legacy_runtime_modifier or entry.trigger.runtime_modifier()
+        try:
+            modifier, key = normalize_builtin_shortcut_identity(modifier, entry.hud_key())
+            return ("combo", modifier, key.casefold())
+        except ValueError:
+            pass
+    return (entry.trigger.kind, *(key.casefold() for key in entry.trigger.keys))
+
+
+def resolve_catalog_view(catalog: ShortcutCatalog, app_id: str | None, profiles: Mapping[str, object] | None = None, language: str | None = None, *, include_default: bool = False) -> tuple[ResolvedCatalogEntry, ...]:
+    """USER_APP > APP > optional DEFAULT > GLOBAL, independent of HUD choices.
+
+    An unknown Guide deliberately excludes generic DEFAULT advice. Legacy
+    records remain readable, including compatibility-only IDs, but an official
+    Pack row wins an identical trigger within the builtin layer.
+    """
+    identity = normalize_application_identity(app_id)
+    profile = _find_profile(profiles, identity)
+    builtin = [entry for entry in catalog.entries if entry.scope == "APP" and identity in entry.application_ids]
+    builtin.sort(key=lambda entry: (entry.provenance.get("kind") == "legacy", entry.rank, entry.order, entry.id))
+    pack_triggers = {_trigger_identity(entry) for entry in builtin if entry.provenance.get("kind") != "legacy"}
+    builtin = [entry for entry in builtin if entry.provenance.get("kind") != "legacy" or _trigger_identity(entry) not in pack_triggers]
+    if profile is not None:
+        builtin = [entry for entry in builtin if not entry.trigger.runtime_modifier() or _hide_builtin([entry], profile, entry.legacy_runtime_modifier or entry.trigger.runtime_modifier())]
+    users: list[CatalogEntry] = []
+    shortcuts = profile.get("shortcuts", {}) if profile else {}
+    if isinstance(shortcuts, Mapping):
+        modifiers = dict.fromkeys(normalize_modifier_combination(key) for key in shortcuts)
+        for modifier in modifiers:
+            if modifier:
+                users.extend(_user_entries(profile, identity, modifier))
+    layers = [(users, "USER_APP"), (builtin, "APP")]
+    if include_default and not builtin:
+        layers.append(([entry for entry in catalog.entries if entry.scope == "DEFAULT"], "DEFAULT"))
+    layers.append(([entry for entry in catalog.entries if entry.scope == "GLOBAL"], "GLOBAL"))
+    seen: set[tuple[str, ...]] = set()
+    rows: list[ResolvedCatalogEntry] = []
+    for entries, source in layers:
+        layer_keys: set[tuple[str, ...]] = set()
+        layer_ids: set[str] = set()
+        for entry in entries:
+            key = _trigger_identity(entry)
+            # Context-dependent commands within the same Pack may share a
+            # trigger (F11 full screen / debugger step into). Only lower
+            # priority sources lose conflicts; never erase same-layer data.
+            if key not in seen and entry.id not in layer_ids:
+                layer_keys.add(key)
+                layer_ids.add(entry.id)
+                rows.append(resolve_presentation(catalog, entry, source, language))
+        seen.update(layer_keys)
+    return tuple(rows)
 
 
 def _find_profile(profiles: Mapping[str, object] | None, app_id: str | None) -> Mapping[str, object] | None:

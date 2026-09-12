@@ -50,6 +50,7 @@
 </context>
 <context>
     <name>SettingsDialog</name>
+    <message><source>Full Guide shortcut...</source><translation>指南唤起快捷键…</translation></message>
     <message>
         <location filename="../scripts/settings_dialog.py" line="109"/>
         <location filename="../scripts/settings_dialog.py" line="573"/>
@@ -914,6 +915,10 @@ Multi-step/chord shortcuts will be supported in a future version.</source>
 </context>
 <context>
     <name>ShortcutOverlayApplication</name>
+    <message><source>Open Full Guide</source><translation>打开快捷键指南</translation></message>
+    <message><source>Full Guide shortcut...</source><translation>指南唤起快捷键…</translation></message>
+    <message><source>Full Guide shortcut unavailable</source><translation>指南唤起快捷键不可用</translation></message>
+    <message><source>Choose another shortcut in Settings &gt; Full Guide shortcut.</source><translation>请在“设置 → 指南唤起快捷键”中选择其他组合。</translation></message>
     <message>
         <location filename="../main.py" line="343"/>
         <source>Game Mode</source>
@@ -1198,5 +1203,31 @@ Custom shortcuts and the display name will not be changed.</source>
 
 自定义快捷键和显示名称不会被修改。</translation>
     </message>
+</context>
+<context>
+    <name>FullGuideWindow</name>
+    <message><source>Full Guide</source><translation>快捷键指南</translation></message>
+    <message><source>Search shortcuts…</source><translation>搜索快捷键…</translation></message>
+    <message><source>Columns</source><translation>列数</translation></message>
+    <message><source>Auto columns</source><translation>自动列数</translation></message>
+    <message><source>%1 columns</source><translation>%1 列</translation></message>
+    <message><source>Close</source><translation>关闭</translation></message>
+    <message><source>Open Shortcut Center</source><translation>打开快捷键中心</translation></message>
+    <message><source>Ctrl+F  Search     Esc  Clear search / Close     ★  Recommended</source><translation>Ctrl+F  搜索     Esc  清空搜索 / 关闭     ★  推荐</translation></message>
+    <message><source>%1 of %2 collected shortcuts</source><translation>找到 %1 项 · 已收录 %2 个快捷键</translation></message>
+    <message><source>%2 collected shortcuts</source><translation>已收录 %2 个快捷键</translation></message>
+    <message><source>No matching shortcuts</source><translation>没有匹配的快捷键</translation></message>
+    <message><source>No shortcuts collected for this application yet</source><translation>暂未收录该应用的快捷键</translation></message>
+    <message><source>Mine</source><translation>我的</translation></message>
+    <message><source>My Shortcut</source><translation>我的快捷键</translation></message>
+    <message><source>Recommended</source><translation>推荐</translation></message>
+</context>
+<context>
+    <name>FullGuideSettingsDialog</name>
+    <message><source>Full Guide shortcut</source><translation>指南唤起快捷键</translation></message>
+    <message><source>Press once to open the current app's Guide; press again to close.</source><translation>按一次打开当前应用的快捷键指南，再按一次关闭。</translation></message>
+    <message><source>Use Ctrl, Alt or Shift with a letter, number, F-key (except F12), or navigation key. Windows-reserved shortcuts are unavailable.</source><translation>使用 Ctrl、Alt 或 Shift 加字母、数字、功能键（F12 除外）或导航键。Windows 保留组合不可用。</translation></message>
+    <message><source>Shortcut unavailable. Choose another combination.</source><translation>快捷键不可用或已被占用，请选择其他组合。</translation></message>
+    <message><source>Use default: %1</source><translation>使用默认值：%1</translation></message>
 </context>
 </TS>
