@@ -1,6 +1,6 @@
-# Full Guide v1
+# Full Guide v1 / Polish v1.1
 
-状态：Implemented，等待 Windows 用户 smoke。范围是当前应用的只读查询，不扩展 Pack 或改写个人选择。
+状态：v1.1 implemented，等待 Windows 用户最终 smoke。范围是当前应用的只读查询和展示质量收口，不扩展 Pack、改写个人选择或改变 Quick HUD 行为。
 
 ## 三个界面的职责
 
@@ -38,19 +38,23 @@ WPS 等异步身份若仍 pending，沿用已有 fail-closed 的未知逻辑身�
 
 层级为 USER_APP > APP > 可选 DEFAULT > GLOBAL。Guide 对未知应用不启用 DEFAULT，以便没有 user/global 时显示真实空状态。GLOBAL 以单独分类自然合并，不能覆盖 app-local 同键命令。用户条目显示“我的”。
 
-combo、single、sequence、double_tap 都保留；旧兼容条目与正式 Pack 同 trigger 时优先 Pack。正式 Pack 内不同 stable ID 即使同键也保留：F11 可以分别代表全屏和调试单步；没有上下文条件数据时不得凭描述猜测合并。本阶段因此如实保留历史 pilot/import 重叠条目，也不重写 IDs。推荐元数据仅参与原分类内排序和星标。
+combo、single、sequence、double_tap 都保留。raw Catalog 继续保存 provenance、stable ID 和 alias；Guide 消费的是只读 presentation groups，不删除或改写源记录。等价判定的硬边界是 application scope、完整 normalized trigger 和显式 context，证据只接受 stable ID/alias 交集、审校过的 `presentation_semantic_id` / legacy title，或相同英文 title + description。不得以 trigger、中文译文、模糊词义或数组位置猜测。
 
-Pack-only VS Code 查询有 133 条；实际合并 legacy 非重复项和 GLOBAL 后可超过 133。覆盖数指当前 resolved view 中的已收录条目，不冒充软件完整快捷键数。
+resolved presentation 的优先级保持 USER_APP > APP > 可选 DEFAULT > GLOBAL；APP 内同一等价组再按 native > imported upstream > legacy 选代表行。高层只覆盖低层的 trigger 冲突，同层中确有不同语义的记录继续并存，例如 F11 的全屏/调试单步和 Ctrl+N 的新文件/新聊天。搜索在 dedup 后的行上执行，但把同组旧文案作为搜索同义词保留。该策略不参与 Quick HUD selection migration，也不改变任何 stable ID。
+
+VS Code raw Pack 仍为 133 条；Pack-only resolved Guide 是 95 条。合并 legacy 与 global 的完整产品视图由 146 条降至 108 条：38 个原始 repeated-trigger buckets 中，37 个有确定语义证据的等价组移除 38 条展示投影，最终仅两个确有不同上下文的同键组保留。覆盖数始终指当前 dedup 后 resolved view，不冒充软件完整快捷键数。
+
+shipping zh_CN 必须是 Pack 内已经审校完成的最终文本。导入器只接受 exact phrase mapping，缺译文直接让开发期导入失败，不再拼接子串。独立 audit 只发 warning、不影响运行时加载，并允许 VS Code、Git、JSON、Markdown、PowerShell 等合理产品或技术名。Catalog/Center/Quick HUD/Guide 仍通过同一个 locale fallback 链路消费这些文本。
 
 ## 布局、搜索与成本
 
 轻量 Qt Widgets 无边框置顶普通窗口，占当前工作区大部分，保留 8–28 logical px 边距；不是 exclusive fullscreen。深色统一样式，不增加主题框架。
 
-分类按预计高度贪心分给当前最短列，平局选左列，结果确定。按约 350 logical px 每列自动选择，通常为 3/4/5 列，窄屏可退至 1/2；用户列数建议仍受实际宽度限制。只有一个内容纵向滚动区，无横向滚动、分页、分类内滚动条。
+分类按预计高度贪心分给当前最短列，平局选左列，结果确定。按约 350 logical px 每列自动选择，通常为 3/4/5 列，窄屏可退至 1/2；主界面不再暴露手动列数选择器，仅保留测试/开发 hook。只有一个内容纵向滚动区，无横向滚动、分页、分类内滚动条。
 
 每次 session 从内存构造搜索文本，包含完整 trigger、中英文标题/描述、aliases 和分类文本。查询按空白分词、忽略大小写、所有词均匹配；输入和 resize 使用 35 ms 单次合并重排，关闭即停止。没有 idle polling，没有网络、webview 或激活时重读 Pack。
 
-估高不是精确 masonry；字体、长描述和实际换行会造成列高差异。300 条压力验证支持当前简单方案，不提前引入虚拟列表或第三方布局框架。
+计数与搜索都基于同一批 dedup 后行；搜索状态显示“找到 X / 已收录 N”，不会从 raw sources 再生成重复结果。估高不是精确 masonry；字体、长描述和实际换行会造成列高差异。300 条压力验证和 v1.1 实际渲染支持当前简单方案，不提前引入分类内部双列、虚拟列表或第三方布局框架。
 
 ## Suppression
 
@@ -60,4 +64,4 @@ Pack-only VS Code 查询有 133 条；实际合并 legacy 非重复项和 GLOBAL
 
 Guide 没有 selection store 引用或保存入口。真实选择恢复流程不重跑，测试仅注入临时存储；现有 configured / empty / missing / stale / aliases / ordered upgrade 回归全部保留。
 
-自动测试验证数据和 Qt 行为，独立 Windows probe 验证 RegisterHotKey 冲突与线程消息。真实物理按键触发、跨应用焦点、混合 DPI 副屏和 fullscreen 的最终体验仍需用户 smoke。字体和 Pack 现存中英混合文本质量不是此次窗口测试能证明正确的内容。
+自动测试验证数据、dedup、本地化审计和 Qt 行为，独立 Windows probe 验证 RegisterHotKey 冲突与线程消息。真实物理按键触发、跨应用焦点、混合 DPI 副屏和 fullscreen 的最终体验仍需用户 smoke。v1.1 已逐条审校 8 个 shipping Pack 的 574 条中文并把开发审计 warning 清零；最终措辞观感仍接受人工验收。
