@@ -46,6 +46,24 @@ VS Code 完整产品视图的 before 是 146：38 个 trigger bucket 含重复�
 
 顶栏移除了用户可见的“5 列”选择器，仍按宽度自动选择 3/4/5 列，内部 hook 仅用于测试。推荐星号降低对比度，顶部间距略放宽。去重后 VS Code 最大分类从 35 行降到 23 行；实际 5 列、3 列和搜索截图没有横向滚动，因此分类内部双列本轮 defer，避免为已缓解的问题增加第二套布局规则。
 
+## Interaction v1.2：modifier 是累积筛选，不是物理状态镜像
+
+最初规格把 modifier drill-down 写成带 history 的层级导航，Esc 逐层 pop。用户最终确认产品语义应更直接：`[] → Ctrl → Ctrl+Shift` 只是累积筛选，任意 filter 或 query 存在时，一次 Esc 同时清空全部；干净 Guide 的下一次 Esc 才关闭。实现因此没有 history stack，也没有把物理 held state 复用为筛选状态。用户点按并释放 modifier 后筛选继续保留，重复点按 no-op，chip 始终按 Ctrl、Alt、Shift、Win 展示。
+
+筛选只看第一 stroke。这样 Ctrl+K Ctrl+S 能出现在 Ctrl 结果，Ctrl+Shift 会排除纯 Ctrl，而 F5 在任何 modifier filter 下都不出现。搜索保持在 presentation dedup 之后，顺序是 resolved/dedup → modifier subset → text terms → grouped layout；中文与英文查询都和 modifier 组合，没有再造一套搜索或 shortcut 解析器。零结果是可见状态，不偷偷撤销用户刚点的 modifier；Esc 仍能一次回完整 Guide。
+
+输入所有权是本轮最危险的部分。Ctrl、Alt、Shift 由 focused Guide 的 Qt event filter 观察；只有同一 session 看见 down 和 up、且中间没有普通键时才算 tap。这个 terminal-key cancel 同时解决 Ctrl+F、AltGr 和激活热键残留：Ctrl+Shift+F10 打开窗口时，Guide 只会见到旧 chord 的 release，因此不会生成筛选；之后重新点 Ctrl 才生效。
+
+Win 不能只靠 Qt，因为裸 Win release 会打开 Start，Win+E/Win+R 也可能先被系统接走。新增的窄代理只在 Guide active + focused + foreground HWND 相符时拥有物理 Win session，并 suppress 成对 Win 事件和该 session 的 chord 键；其它时间、其它窗口及 injected event 全部透传。退出/失焦同步 deactivate 并清 session。没有把 KeyboardHandler 改成全局 suppress，也没有改 WinDiscoveryProxy 或 Input State Reconciler。自动测试能证明所有 ownership 分支和清理，真实 Start / Explorer / Run 恢复仍必须由 Windows 人工 smoke 证明。
+
+## Interaction v1.2：全屏密度与单条 Pin
+
+Guide 从 availableGeometry 内缩窗口改为覆盖目标 QScreen 的完整 logical geometry，但仍是普通 frameless top-level window，不切 display mode。布局估算先保留正常字体，再把全局列数增加到最多 6，之后才压紧 card padding 和 vertical spacing；仍超出时使用唯一的纵向 scroll。当前 1920×1080、108 条 VS Code resolved view 选择 6 列并无滚动，300 条合成数据明确回退。分类内双列继续 defer，因为它会引入另一套换列、搜索重排和错位风险。
+
+Quick Pin 刻意没有做“保存当前页面 selection”。每次点击只有一个 stable ID 的意图：已有 explicit selection 就只 append target 或删除 target/declared aliases；其它 ID、stale/unknown、其它应用和顺序都保留。missing preference 第一次操作才物化 effective recommended 加/减目标；explicit empty 不会被当成 never configured。SelectionStore 继续负责原子落盘，失败时 Pin service 恢复内存 snapshot。UI 只给 Quick HUD eligible 的 APP combo 显示可点星标，F5、sequence、global 和 USER_APP 不伪装为可 Pin。
+
+本轮所有 Pin 自动测试都使用 TemporaryDirectory 注入，预览只读取开始前的本地备份。真实 quick_hud_selection、user_shortcuts、settings 和 shortcuts 文件不参与 fixture，也没有执行恢复、recommended 重算或批量选择写入。
+
 ## 验证结果与局限
 
 - 完整 unittest：465 项通过；相对 403 基线新增 62 项。
@@ -60,6 +78,15 @@ VS Code 完整产品视图的 before 是 146：38 个 trigger bucket 含重复�
 本机隔离 offscreen 的 v1.1 一次样本：108 条 VS Code 完整视图解析约 4.63 ms、首次 render/processEvents 约 78.81 ms、搜索约 5.30 ms；300 条合成视图约 100.83 ms、搜索约 6.99 ms。不是统计分位数，不含系统快捷键到首帧的端到端延迟；输入另有 35 ms 单次合并重排。dedup 是激活时的内存分桶，没有新增 idle polling、网络或 Pack 重读。
 
 还需要用户验证实际焦点、物理热键、第二显示器/混合 DPI、普通 fullscreen SOFT_BLOCK 和 Manual Game Mode HARD_BLOCK。没有宣称已完成人工验收，也没有自动重启用户正在运行的旧实例。
+
+### v1.2 自动门禁与样本成本
+
+- Full Guide v1.2 针对性测试：67 项通过；完整 unittest：490 项通过。
+- Pack validator：通过；本地化审计：574 条、0 warning；`git diff --check`：通过。
+- 用户数据：quick_hud_selection、user_shortcuts、settings、shortcuts 的结束 SHA-256 与开始备份逐字节一致；settings 的 mtime 在测试期间发生刷新，无法从文件本身确认写入者，但 bytes/hash 未变化。
+- 本机 offscreen 单次样本：108 条 VS Code resolved view 解析约 10 ms，首次 1920×1080 六列 render/processEvents 约 454 ms，文本搜索约 8.19 ms；300 条合成视图 render 约 174.54 ms、搜索约 13.51 ms。首次全屏渲染创建的 row/widget 更多，较 v1.1 慢；关闭后不保留 polling，Win 代理线程阻塞在消息队列，inactive 时不做周期工作。
+
+这些是开发机单次样本，不是统计分位数，也不代表热键到首帧的端到端延迟。真实物理 Win suppression、关闭后 Start/Explorer/Run 恢复、混合 DPI 副屏及首次全屏观感仍留给用户 smoke。
 
 ## Smoke 清单
 

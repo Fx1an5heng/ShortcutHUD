@@ -1,13 +1,13 @@
-# Full Guide v1 / Polish v1.1
+# Full Guide v1 / Polish v1.1 / Interaction v1.2
 
-状态：v1.1 implemented，等待 Windows 用户最终 smoke。范围是当前应用的只读查询和展示质量收口，不扩展 Pack、改写个人选择或改变 Quick HUD 行为。
+状态：v1.2 implemented，等待 Windows 用户最终 smoke。范围是当前应用查询、Guide 内累积 modifier 筛选和单条 Quick HUD Pin，不扩展 Pack，也不把个人选择写进产品默认值。
 
 ## 三个界面的职责
 
 | 界面 | 入口与输入所有权 | 内容 / 写入 |
 | --- | --- | --- |
 | Quick HUD | 按住 modifier；无焦点、不消费输入 | 个人选择；8 条 cap；本阶段不变 |
-| Full Guide | 独立全局命令；本窗口拥有搜索和 Esc | 当前应用已收录内容；无选择、编辑、应用切换控件 |
+| Full Guide | 独立全局命令；仅 active + focused 时拥有交互输入 | 当前应用已收录内容；可对 Quick HUD eligible 的 APP 条目逐条 Pin，不承担批量管理 |
 | Shortcut Center | 主动打开管理界面 | 跨应用浏览、USER 编辑、Quick HUD 选择 |
 
 ## 唤起与生命周期
@@ -20,15 +20,25 @@ RegisterHotKey 能检测全局注册冲突，不能发现前台软件内部所�
 
 v1 接受 Ctrl/Alt/Shift 加字母、数字、功能键或导航键；拒绝裸 modifier、序列、F12、Win 组合和已知系统导航组合。右 Alt 按下时不执行唤起，保持 AltGr fail-closed。没有改动 KeyboardHandler、`suppress=False` 或 WinDiscoveryProxy。
 
-生命周期：捕获前台 → 解析内存 Catalog → 标记 Guide active、取消 Quick HUD pending、隐藏 Quick HUD → 显示窗口。再次 hotkey / 空查询 Esc / 关闭按钮 / WindowDeactivate 均关闭。非空查询的第一次 Esc 清空，Ctrl+F 聚焦并选中查询。已有应用模态设置/录制器拥有输入时不另开 Guide，避免出现无法接受 Esc 的被阻挡窗口。
+生命周期：捕获前台 → 解析内存 Catalog → 标记 Guide active、取消 Quick HUD pending、隐藏 Quick HUD → 显示窗口。再次 hotkey / 干净状态 Esc / 关闭按钮 / WindowDeactivate 均关闭。只要存在 modifier filter 或文本查询，Esc 就一次清空两者并恢复完整 Guide；不会逐层 pop。已有应用模态设置/录制器拥有输入时不另开 Guide，避免出现无法接受 Esc 的被阻挡窗口。
 
 Guide 期间仍接受 modifier 状态传播和 Input State Reconciler 恢复。关闭后若 modifier 仍按住，等待一次完整释放再重新调度 Quick HUD；不伪造 key-up、不修改输入 set、不调整 150/300 ms 延迟。
+
+## v1.2 modifier 筛选与输入所有权
+
+modifier filter 是 Guide 自己的导航状态，不镜像 KeyboardHandler 的物理按键集合。用户完整点按一个 modifier 并松开后才加入筛选；重复 modifier 是 no-op，显示顺序固定为 Ctrl、Alt、Shift、Win。因此 `[] → Ctrl → Ctrl+Shift` 是累积筛选，不要求持续按住，也没有 history stack。任意筛选或查询存在时，Esc 统一清空全部状态；再次 Esc 才关闭 Guide。
+
+筛选依据仅为 trigger 第一 stroke 的 modifier set。Ctrl 同时匹配 Ctrl+P、Ctrl+Shift+P 和 Ctrl+K Ctrl+S；Ctrl+Shift 会排除 Ctrl+P；F5 等 single 在任意 modifier filter 下排除。数据流水线固定为 resolved/dedup → modifier subset filter → text terms → category/layout，中文和英文搜索都只作用于已筛选结果。
+
+Ctrl、Alt、Shift 通过 Guide 自身 Qt key event 获取。Win 需要避免打开 Start 或执行 Win+E/Win+R，使用单独的低级键盘代理；该代理常驻消息线程但默认完全被动，只有 Guide active、窗口 focused 且仍为 foreground HWND 时才拥有并 suppress 物理 Win session。它成对接收左右 Win down/up；Win 持有期间的终止键也由同一 session 接管，因此系统组合不会泄漏。注入事件、非前台窗口、Guide 未激活时全部 fail open。关闭或失焦会同步清空代理 session，Windows 原生 Win 行为立即恢复。
+
+这一实现没有改变 KeyboardHandler 的 `suppress=False`、Input State Reconciler、WinDiscoveryProxy 或现有 modifier delay。Guide input proxy 在 WinDiscoveryProxy 之后安装，使 active Guide 可以最先决定是否拥有 Win；非 Guide 生命周期仍沿用原发现链路。modifier tap 只有在同一 Guide session 内观察到 down 和 up、且中间没有终止键时才成立，所以打开 Guide 的 Ctrl+Shift+F10 只剩 release 时不会生成 Ctrl+Shift filter；AltGr 形态同样被终止键取消，保持 fail-closed。
 
 ## 前台和显示器快照
 
 显式入口先同步刷新已有 ForegroundMonitor，不能依赖一秒前缓存。用已更新的 ApplicationIdentityRuntime、ApplicationDescriptorFactory、CatalogApplicationRegistry 构造友好应用名与产品身份，记录 HWND 和显示器。Guide 展示后即使自己成为前台，本次 snapshot 不再更换。
 
-从本程序托盘/设置上下文唤起时，使用已有 tracker 的最后外部上下文，显示器回退到鼠标。无 HWND / 桌面同样使用鼠标显示器。正常外部应用用 MonitorFromWindow 的设备名匹配 Qt QScreen，并采用 Qt 的 logical availableGeometry，避免把物理像素坐标直接当混合 DPI 的逻辑坐标。
+从本程序托盘/设置上下文唤起时，使用已有 tracker 的最后外部上下文，显示器回退到鼠标。无 HWND / 桌面同样使用鼠标显示器。正常外部应用用 MonitorFromWindow 的设备名匹配 Qt QScreen，并采用 Qt 的 logical geometry，避免把物理像素坐标直接当混合 DPI 的逻辑坐标。窗口覆盖目标 monitor 的完整逻辑区域，包括任务栏所在边缘，但不切换显示模式，也不是 exclusive fullscreen。
 
 WPS 等异步身份若仍 pending，沿用已有 fail-closed 的未知逻辑身份；本次不等待或猜测文档类型，也不展示之前应用的数据。下一次唤起重新采样。窗口销毁、访问受限、显示器拔出时使用可用屏幕回退。
 
@@ -48,9 +58,9 @@ shipping zh_CN 必须是 Pack 内已经审校完成的最终文本。导入器�
 
 ## 布局、搜索与成本
 
-轻量 Qt Widgets 无边框置顶普通窗口，占当前工作区大部分，保留 8–28 logical px 边距；不是 exclusive fullscreen。深色统一样式，不增加主题框架。
+轻量 Qt Widgets 无边框置顶普通窗口，精确覆盖当前 monitor 的 logical geometry；不是 exclusive fullscreen。深色统一样式，不增加主题框架。
 
-分类按预计高度贪心分给当前最短列，平局选左列，结果确定。按约 350 logical px 每列自动选择，通常为 3/4/5 列，窄屏可退至 1/2；主界面不再暴露手动列数选择器，仅保留测试/开发 hook。只有一个内容纵向滚动区，无横向滚动、分页、分类内滚动条。
+分类按预计高度贪心分给当前最短列，平局选左列，结果确定。一屏优先计算先保留正常字体和正常 card spacing，再增加到最多 6 列，再使用较紧凑的 padding/vertical spacing；估高仍放不下才允许纵向滚动。1920×1080 的当前 VS Code 108-row resolved view 选择 6 列并在一屏容纳；300 条压力数据确定性回退到纵向滚动。主界面不暴露手动列数选择器，只保留测试 hook；始终无横向滚动、分页或分类内滚动条。分类内部双列继续 defer，避免与全局 column balancing 形成第二套复杂布局。
 
 每次 session 从内存构造搜索文本，包含完整 trigger、中英文标题/描述、aliases 和分类文本。查询按空白分词、忽略大小写、所有词均匹配；输入和 resize 使用 35 ms 单次合并重排，关闭即停止。没有 idle polling，没有网络、webview 或激活时重读 Pack。
 
@@ -60,8 +70,14 @@ shipping zh_CN 必须是 Pack 内已经审校完成的最终文本。导入器�
 
 复用已有 PresentationIntent：HARD_BLOCK 禁止显式 Guide，进入 HARD_BLOCK 也关闭已开会话；SOFT_BLOCK 只阻止 passive Quick HUD，不阻止显式 Guide。没有新增应用特判或自动游戏检测。
 
-## 安全和验收边界
+## Quick HUD Pin 数据边界
 
-Guide 没有 selection store 引用或保存入口。真实选择恢复流程不重跑，测试仅注入临时存储；现有 configured / empty / missing / stale / aliases / ordered upgrade 回归全部保留。
+Pin 只对 APP scope、`quick_hud` visible 且 trigger eligible 的 Catalog 条目开放；single、sequence 等 Catalog-only 条目不显示可点击星标。UI 只发出目标 stable ID 和期望状态，实际变更复用 QuickHudSelectionStore 的原子保存。
+
+已有 explicit selection 时，Pin 只在末尾追加目标 current stable ID；Unpin 只删除目标 ID 及其声明过的 aliases。其它应用、原顺序、unknown/stale IDs 均保持。explicit empty 仍代表用户明确清空，第一次 Pin 只加入目标项。应用从未配置时，第一次 Pin 才把当前 effective recommended 顺序物化后追加目标；Unpin recommended 则物化 recommended-minus-target。保存失败时内存状态回滚，不让 Controller 与磁盘形成假成功。
+
+29 项事故恢复数据不进入 Pack、recommended 或产品特判。自动测试只注入 TemporaryDirectory 下的 store；真实选择恢复流程不重跑，现有 configured / empty / missing / stale / aliases / ordered upgrade 回归全部保留。
+
+## 安全和验收边界
 
 自动测试验证数据、dedup、本地化审计和 Qt 行为，独立 Windows probe 验证 RegisterHotKey 冲突与线程消息。真实物理按键触发、跨应用焦点、混合 DPI 副屏和 fullscreen 的最终体验仍需用户 smoke。v1.1 已逐条审校 8 个 shipping Pack 的 574 条中文并把开发审计 warning 清零；最终措辞观感仍接受人工验收。
