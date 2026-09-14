@@ -6,7 +6,7 @@ import unittest
 
 from PySide6.QtWidgets import QApplication
 
-from scripts.full_guide_model import balance_categories, choose_layout_density, column_count_for_width, group_entries
+from scripts.full_guide_model import balance_categories, column_count_for_width, group_entries, plan_guide_layout
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.shortcut_catalog import CatalogEntry, CatalogTrigger, ShortcutCatalog
 from scripts.shortcut_catalog_resolver import CatalogShortcutResolver, resolve_catalog_view
@@ -129,20 +129,32 @@ class GuideDataTests(unittest.TestCase):
         columns = balance_categories(sections, 5)
         self.assertEqual(columns, balance_categories(sections, 5))
         self.assertEqual(sum(len(s.rows) for c in columns for s in c), 300)
-        heights = [sum(s.estimated_height for s in c) for c in columns]
-        self.assertLessEqual(max(heights) - min(heights), max(s.estimated_height for s in sections))
+        self.assertEqual([section.category for column in columns for section in column], [section.category for section in sections])
         self.assertEqual([column_count_for_width(w) for w in (1080, 1440, 1800)], [3, 4, 5])
+        self.assertEqual(column_count_for_width(800), 2)
+        self.assertEqual(column_count_for_width(10000), 5)
 
-    def test_one_screen_density_is_deterministic_and_large_data_scrolls(self):
+    def test_readable_layout_plan_is_deterministic_and_large_data_scrolls(self):
         vscode = group_entries(resolve_catalog_view(self.catalog, "CODE.EXE", language="zh_CN"))
-        first = choose_layout_density(vscode, 1856, 1080)
-        self.assertEqual(first, choose_layout_density(vscode, 1856, 1080))
-        self.assertIn(first.columns, (5, 6))
+        first = plan_guide_layout(vscode, 1856, 1080)
+        self.assertEqual(first, plan_guide_layout(vscode, 1856, 1080))
+        self.assertEqual(first.columns, 5)
         self.assertTrue(first.expected_to_fit)
+        self.assertEqual([section.category for column in first.assignments for section in column], [section.category for section in vscode])
         large = tuple(replace(section, rows=section.rows * 4) for section in vscode)
-        fallback = choose_layout_density(large, 1856, 1080)
-        self.assertEqual(fallback.columns, 6)
+        fallback = plan_guide_layout(large, 1856, 1080)
+        self.assertEqual(fallback.columns, 5)
         self.assertFalse(fallback.expected_to_fit)
+
+    def test_filtered_sections_keep_source_category_order(self):
+        rows = resolve_catalog_view(self.catalog, "CODE.EXE", language="zh_CN")
+        source = group_entries(rows)
+        filtered = group_entries(rows, modifiers=("Ctrl",))
+        source_order = [section.category for section in source]
+        filtered_order = [section.category for section in filtered]
+        self.assertEqual(filtered_order, [category for category in source_order if category in filtered_order])
+        plan = plan_guide_layout(filtered, 1472, 900)
+        self.assertEqual([section.category for column in plan.assignments for section in column], filtered_order)
 
 
 if __name__ == "__main__":

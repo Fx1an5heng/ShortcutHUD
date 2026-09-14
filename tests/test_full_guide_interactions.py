@@ -372,7 +372,7 @@ class GuideInteractionTests(unittest.TestCase):
         self.assertFalse(quick._show_timer.isActive())
         self.assertTrue(quick._suppression_rearm_required)
 
-    def test_real_layout_rebalances_three_four_five_without_horizontal_scroll(self):
+    def test_real_layout_uses_readable_three_four_five_columns_without_horizontal_scroll(self):
         guide, view, _, _, _, _ = self.make()
         catalog = ShortcutCatalog.load_packs(ROOT / "config/shortcut_packs")
         rows = resolve_catalog_view(catalog, "CODE.EXE", language="zh_CN")
@@ -382,6 +382,10 @@ class GuideInteractionTests(unittest.TestCase):
             QTest.qWait(70)
             self.assertEqual(len(view.rendered_columns), columns)
             self.assertEqual(sum(len(s.rows) for c in view.rendered_columns for s in c), 95)
+            self.assertEqual(
+                [section.category for column in view.rendered_columns for section in column],
+                [section.category for section in view.sections],
+            )
             self.assertEqual(view.scroll.horizontalScrollBar().maximum(), 0)
         view.resize(1120, 780)
         view.set_debug_column_count(None)
@@ -401,7 +405,21 @@ class GuideInteractionTests(unittest.TestCase):
         view._render_sections()
         self.assertEqual(sum(len(section.rows) for section in view.sections), 1)
 
-    def test_quick_pin_button_updates_only_injected_temp_store(self):
+    def test_single_line_elide_preserves_full_description_tooltip(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        description = view.findChild(QLabel, "guideDescription")
+        self.assertIsNotNone(description)
+        self.assertFalse(description.wordWrap())
+        full_text = description.full_text
+        self.assertEqual(description.toolTip(), full_text)
+        description.setFixedWidth(12)
+        description._update_elide()
+        expected = description.fontMetrics().elidedText(full_text, Qt.TextElideMode.ElideRight, description.contentsRect().width())
+        self.assertEqual(description.text(), expected)
+        self.assertNotEqual(description.text(), full_text)
+
+    def test_quick_pin_is_reserved_but_unpinned_star_only_appears_on_hover_or_focus(self):
         with TemporaryDirectory() as temporary:
             store = QuickHudSelectionStore(Path(temporary) / "selection.json")
             store.set_selected_ids("SAMPLE.EXE", [])
@@ -410,11 +428,25 @@ class GuideInteractionTests(unittest.TestCase):
             guide.toggle()
             button = view.findChild(QLabel, "guidePin")
             self.assertIsNotNone(button)
+            description = view.findChild(QLabel, "guideDescription")
+            before = description.geometry().getRect()
+            self.assertEqual(button.text(), "")
+            self.assertEqual(button.width(), 22)
+            row = button.parentWidget()
+            QApplication.sendEvent(row, QEvent(QEvent.Type.Enter))
+            self.assertEqual(button.text(), "☆")
+            self.assertEqual(description.geometry().getRect(), before)
+            QApplication.sendEvent(row, QEvent(QEvent.Type.Leave))
+            self.assertEqual(button.text(), "")
+            button.setFocus(Qt.FocusReason.TabFocusReason)
+            self.qt.processEvents()
             self.assertEqual(button.text(), "☆")
             QTest.mouseClick(button, Qt.MouseButton.LeftButton)
             self.qt.processEvents()
             self.assertEqual(len(store.selected_ids_in_order_for("SAMPLE.EXE")), 1)
             self.assertTrue(str(store.path).startswith(temporary))
+            pinned = next(label for label in view.findChildren(QLabel, "guidePin") if label.isVisible())
+            self.assertEqual(pinned.text(), "★")
 
 
 class GuideMonitorTests(unittest.TestCase):

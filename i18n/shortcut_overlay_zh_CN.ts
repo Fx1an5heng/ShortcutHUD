@@ -1211,7 +1211,7 @@ Custom shortcuts and the display name will not be changed.</source>
     <message><source>Columns</source><translation>列数</translation></message>
     <message><source>Close</source><translation>关闭</translation></message>
     <message><source>Open Shortcut Center</source><translation>打开快捷键中心</translation></message>
-    <message><source>Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD</source><translation>轻按 Ctrl / Alt / Shift / Win 进行筛选     Esc  清空筛选 / 关闭     ☆  Quick HUD</translation></message>
+    <message><source>Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin</source><translation>轻按 Ctrl / Alt / Shift / Win 进行筛选     Esc  清空筛选 / 关闭     ★  已加入 Quick HUD</translation></message>
     <message><source>%1 of %2 collected shortcuts</source><translation>找到 %1 项 · 已收录 %2 个快捷键</translation></message>
     <message><source>%2 collected shortcuts</source><translation>已收录 %2 个快捷键</translation></message>
     <message><source>No matching shortcuts</source><translation>没有匹配的快捷键</translation></message>

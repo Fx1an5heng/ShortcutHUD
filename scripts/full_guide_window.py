@@ -1,5 +1,5 @@
 """Large, focus-owning, read-only shortcut reference built with Qt Widgets."""
-from PySide6.QtCore import QEvent, Qt, QTimer, Signal
+from PySide6.QtCore import QEvent, QSize, Qt, QTimer, Signal
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QFrame, QHBoxLayout, QLabel, QLineEdit, QPushButton,
@@ -7,11 +7,63 @@ from PySide6.QtWidgets import (
 )
 
 from .full_guide_context import guide_geometry
-from .full_guide_model import balance_categories, choose_layout_density, group_entries
+from .full_guide_model import balance_categories, group_entries, plan_guide_layout
+
+
+class _ElidedLabel(QLabel):
+    """Single-line label whose tooltip retains the complete presentation text."""
+
+    def __init__(self, text: str, parent=None) -> None:
+        super().__init__(parent)
+        self._full_text = text
+        self.setTextFormat(Qt.TextFormat.PlainText)
+        self.setWordWrap(False)
+        self.setToolTip(text)
+        self._update_elide()
+
+    @property
+    def full_text(self) -> str:
+        return self._full_text
+
+    def sizeHint(self) -> QSize:
+        hint = super().sizeHint()
+        return QSize(min(hint.width(), 240), hint.height())
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self._update_elide()
+
+    def _update_elide(self) -> None:
+        width = max(1, self.contentsRect().width())
+        super().setText(self.fontMetrics().elidedText(self._full_text, Qt.TextElideMode.ElideRight, width))
 
 
 class _PinLabel(QLabel):
     clicked = Signal()
+
+    def __init__(self, pinned: bool, parent=None) -> None:
+        super().__init__(parent)
+        self._pinned = pinned
+        self._row_hovered = False
+        self.setFixedWidth(22)
+        self.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.setFocusPolicy(Qt.FocusPolicy.TabFocus)
+        self._update_display()
+
+    def set_row_hovered(self, hovered: bool) -> None:
+        self._row_hovered = hovered
+        self._update_display()
+
+    def focusInEvent(self, event) -> None:
+        super().focusInEvent(event)
+        self._update_display()
+
+    def focusOutEvent(self, event) -> None:
+        super().focusOutEvent(event)
+        self._update_display()
+
+    def _update_display(self) -> None:
+        self.setText("★" if self._pinned else "☆" if self._row_hovered or self.hasFocus() else "")
 
     def mouseReleaseEvent(self, event) -> None:
         if event.button() == Qt.MouseButton.LeftButton:
@@ -19,6 +71,22 @@ class _PinLabel(QLabel):
             event.accept()
             return
         super().mouseReleaseEvent(event)
+
+
+class _GuideRow(QFrame):
+    def __init__(self, parent=None) -> None:
+        super().__init__(parent)
+        self.pin_label = None
+
+    def enterEvent(self, event) -> None:
+        if self.pin_label is not None:
+            self.pin_label.set_row_hovered(True)
+        super().enterEvent(event)
+
+    def leaveEvent(self, event) -> None:
+        if self.pin_label is not None:
+            self.pin_label.set_row_hovered(False)
+        super().leaveEvent(event)
 
 
 class FullGuideWindow(QWidget):
@@ -49,11 +117,12 @@ class FullGuideWindow(QWidget):
         self._layout_timer.setInterval(35)
         self._layout_timer.timeout.connect(self._render_sections)
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(28, 22, 28, 16)
-        layout.setSpacing(16)
+        layout.setContentsMargins(24, 16, 24, 10)
+        layout.setSpacing(10)
         top = QHBoxLayout()
-        top.setSpacing(16)
+        top.setSpacing(14)
         identity = QVBoxLayout()
+        identity.setSpacing(2)
         self.app_label = QLabel(self)
         self.app_label.setObjectName("guideApplication")
         self.app_label.setTextFormat(Qt.TextFormat.PlainText)
@@ -62,9 +131,13 @@ class FullGuideWindow(QWidget):
         self.modifier_label = QLabel(self)
         self.modifier_label.setObjectName("guideModifiers")
         self.modifier_label.hide()
+        identity_meta = QHBoxLayout()
+        identity_meta.setSpacing(10)
         identity.addWidget(self.app_label)
-        identity.addWidget(self.count_label)
-        identity.addWidget(self.modifier_label)
+        identity_meta.addWidget(self.count_label)
+        identity_meta.addWidget(self.modifier_label)
+        identity_meta.addStretch(1)
+        identity.addLayout(identity_meta)
         top.addLayout(identity, 2)
         self.search_box = QLineEdit(self)
         self.search_box.setObjectName("guideSearch")
@@ -104,7 +177,7 @@ class FullGuideWindow(QWidget):
         empty_layout.addWidget(self.center_button, 0, Qt.AlignmentFlag.AlignHCenter)
         empty_layout.addStretch()
         layout.addWidget(self.empty_panel, 1)
-        self.footer = QLabel(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD"), self)
+        self.footer = QLabel(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin"), self)
         self.footer.setObjectName("guideFooter")
         layout.addWidget(self.footer)
         self.search_box.textChanged.connect(self._search_changed)
@@ -117,21 +190,24 @@ class FullGuideWindow(QWidget):
             QWidget#guideContent { background: #20232e; }
             QLabel { color: #dce2ed; background: transparent; font-size: 13px; }
             QLabel#guideApplication { color: #f4f7fc; font-size: 26px; font-weight: 600; }
-            QLabel#guideCount, QLabel#guideFooter { color: #939fb4; font-size: 12px; }
+            QLabel#guideCount, QLabel#guideFooter { color: #808ba0; font-size: 11px; }
             QLabel#guideModifiers { color: #a9c9f3; font-size: 12px; font-weight: 600; }
             QLineEdit#guideSearch { color: #edf2fa; background: #2b3040; border: 1px solid #4b5670;
-                border-radius: 8px; padding: 11px 14px; font-size: 14px; }
+                border-radius: 8px; padding: 9px 13px; font-size: 14px; }
             QLineEdit#guideSearch:focus { border-color: #91b6ec; }
             QPushButton { color: #dce2ed; background: #303747; border: 1px solid #485269;
                 border-radius: 6px; padding: 8px 12px; }
             QPushButton:hover { background: #46536b; }
             QPushButton#guideClose { font-size: 24px; padding: 2px 12px; border: none; background: transparent; }
-            QLabel#guidePin { color: #a99468; border: none; background: transparent; padding: 1px 3px; font-size: 15px; }
-            QFrame#guideSection { background: #272c39; border: 1px solid #353e50; border-radius: 8px; }
-            QLabel#guideCategory { color: #9fc4f4; font-size: 15px; font-weight: 600; padding-bottom: 7px; }
+            QLabel#guidePin { color: #938463; border: none; background: transparent; font-size: 14px; }
+            QLabel#guidePin:focus { color: #c3aa72; background: #303747; border-radius: 3px; }
+            QFrame#guideSection { background: transparent; border: none; border-radius: 0px; }
+            QLabel#guideCategory { color: #9fc4f4; font-size: 14px; font-weight: 600;
+                border-bottom: 1px solid #343b49; padding: 0px 2px 5px 2px; }
             QFrame#guideRow { background: transparent; border: none; }
-            QFrame#guideRow:hover { background: #343d4e; border-radius: 4px; }
+            QFrame#guideRow:hover { background: #2a303d; border-radius: 3px; }
             QLabel#guideTrigger { color: #b8cff3; font-size: 12px; font-weight: 600; }
+            QLabel#guideDescription { color: #d3d9e3; font-size: 12px; }
             QLabel#guideBadge { color: #a99468; font-size: 11px; }
             QScrollArea { background: transparent; border: none; }
             QScrollBar:vertical { background: #20232e; width: 8px; }
@@ -163,7 +239,7 @@ class FullGuideWindow(QWidget):
             self.close_button.setAccessibleName(self.tr("Close"))
             self.close_button.setToolTip(self.tr("Close"))
             self.center_button.setText(self.tr("Open Shortcut Center"))
-            self.footer.setText(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD"))
+            self.footer.setText(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin"))
             self._render_sections()
         super().changeEvent(event)
 
@@ -212,21 +288,21 @@ class FullGuideWindow(QWidget):
             if item.widget():
                 item.widget().hide()
                 item.widget().deleteLater()
-        width = max(1, self.width() - 64)
+        width = max(1, self.width() - 52)
         self._last_width = width
-        self._density = choose_layout_density(self.sections, width, self.height())
+        self._density = plan_guide_layout(self.sections, width, self.height())
         automatic = self._density.columns
         requested = self._debug_column_count or automatic
         # A suggested column count never forces horizontal scrolling.
         columns = min(requested, automatic)
-        self.rendered_columns = balance_categories(self.sections, columns)
+        self.rendered_columns = self._density.assignments if columns == automatic else balance_categories(self.sections, columns)
         for sections in self.rendered_columns:
             column = QWidget(self.content)
             column.setMinimumWidth(0)
             column.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
             stack = QVBoxLayout(column)
             stack.setContentsMargins(0, 0, 0, 0)
-            stack.setSpacing(11 if self._density.compact else 16)
+            stack.setSpacing(18)
             for section in sections:
                 stack.addWidget(self._section_widget(section, column))
             stack.addStretch(1)
@@ -241,41 +317,40 @@ class FullGuideWindow(QWidget):
         panel = QFrame(parent)
         panel.setObjectName("guideSection")
         stack = QVBoxLayout(panel)
-        compact = bool(self._density and self._density.compact)
-        margins = (11, 9, 11, 8) if compact else (14, 14, 14, 12)
-        stack.setContentsMargins(*margins)
-        stack.setSpacing(1 if compact else 3)
+        stack.setContentsMargins(2, 0, 2, 0)
+        stack.setSpacing(2)
         heading = QLabel(f"{section.title}   {len(section.rows)}", panel)
         heading.setTextFormat(Qt.TextFormat.PlainText)
         heading.setObjectName("guideCategory")
         stack.addWidget(heading)
         for row in section.rows:
-            widget = QFrame(panel)
+            widget = _GuideRow(panel)
             widget.setObjectName("guideRow")
             widget.setToolTip(f"{row.trigger}\n{row.description}")
+            widget.setFixedHeight(30)
             line = QHBoxLayout(widget)
-            line.setContentsMargins(3, 4 if compact else 7, 3, 4 if compact else 7)
-            line.setSpacing(8 if compact else 10)
-            key = QLabel(row.trigger, widget)
-            key.setTextFormat(Qt.TextFormat.PlainText)
+            line.setContentsMargins(3, 3, 3, 3)
+            line.setSpacing(9)
+            key = _ElidedLabel(row.trigger, widget)
             key.setObjectName("guideTrigger")
-            key.setWordWrap(True)
             key.setFixedWidth(116)
-            line.addWidget(key, 0, Qt.AlignmentFlag.AlignTop)
-            text = QLabel(row.description or row.title, widget)
-            text.setTextFormat(Qt.TextFormat.PlainText)
-            text.setWordWrap(True)
+            line.addWidget(key)
+            text = _ElidedLabel(row.description or row.title, widget)
+            text.setObjectName("guideDescription")
             text.setMinimumWidth(0)
+            text.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
             line.addWidget(text, 1)
             if row.entry.id in self._pin_states:
                 pinned = self._pin_states[row.entry.id]
-                badge = _PinLabel("★" if pinned else "☆", widget)
+                badge = _PinLabel(pinned, widget)
                 badge.setObjectName("guidePin")
                 badge.setAccessibleName(self.tr("Remove from Quick HUD") if pinned else self.tr("Add to Quick HUD"))
                 badge.setToolTip(badge.accessibleName())
                 badge.setCursor(Qt.CursorShape.PointingHandCursor)
+                badge.installEventFilter(self)
                 badge.clicked.connect(lambda entry_id=row.entry.id, desired=not pinned: self.pin_toggled.emit(entry_id, desired))
-                line.addWidget(badge, 0, Qt.AlignmentFlag.AlignTop)
+                widget.pin_label = badge
+                line.addWidget(badge)
             elif row.source == "USER_APP":
                 badge = QLabel(self.tr("Mine"), widget)
                 badge.setObjectName("guideBadge")
@@ -286,7 +361,7 @@ class FullGuideWindow(QWidget):
 
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
-        if self._session_open and abs(self.width() - 64 - self._last_width) > 8:
+        if self._session_open and abs(self.width() - 52 - self._last_width) > 8:
             self._layout_timer.start()
 
     def event(self, event) -> bool:
