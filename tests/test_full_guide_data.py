@@ -6,7 +6,7 @@ import unittest
 
 from PySide6.QtWidgets import QApplication
 
-from scripts.full_guide_model import balance_categories, column_count_for_width, group_entries
+from scripts.full_guide_model import balance_categories, choose_layout_density, column_count_for_width, group_entries
 from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.shortcut_catalog import CatalogEntry, CatalogTrigger, ShortcutCatalog
 from scripts.shortcut_catalog_resolver import CatalogShortcutResolver, resolve_catalog_view
@@ -132,6 +132,17 @@ class GuideDataTests(unittest.TestCase):
         heights = [sum(s.estimated_height for s in c) for c in columns]
         self.assertLessEqual(max(heights) - min(heights), max(s.estimated_height for s in sections))
         self.assertEqual([column_count_for_width(w) for w in (1080, 1440, 1800)], [3, 4, 5])
+
+    def test_one_screen_density_is_deterministic_and_large_data_scrolls(self):
+        vscode = group_entries(resolve_catalog_view(self.catalog, "CODE.EXE", language="zh_CN"))
+        first = choose_layout_density(vscode, 1856, 1080)
+        self.assertEqual(first, choose_layout_density(vscode, 1856, 1080))
+        self.assertIn(first.columns, (5, 6))
+        self.assertTrue(first.expected_to_fit)
+        large = tuple(replace(section, rows=section.rows * 4) for section in vscode)
+        fallback = choose_layout_density(large, 1856, 1080)
+        self.assertEqual(fallback.columns, 6)
+        self.assertFalse(fallback.expected_to_fit)
 
 
 if __name__ == "__main__":

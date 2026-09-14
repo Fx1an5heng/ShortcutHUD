@@ -2,13 +2,14 @@
 import ctypes
 from ctypes import wintypes
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from types import SimpleNamespace
 import unittest
 from unittest.mock import Mock, patch
 
 from PySide6.QtCore import QEvent, Qt, QTranslator
 from PySide6.QtTest import QTest
-from PySide6.QtWidgets import QApplication, QFrame
+from PySide6.QtWidgets import QApplication, QFrame, QLabel
 
 from scripts.application_descriptor import ApplicationDescriptorFactory
 from scripts.full_guide_context import GuideSnapshot, WindowsGuideContext, choose_monitor, guide_geometry
@@ -16,6 +17,7 @@ from scripts.full_guide_controller import FullGuideController
 from scripts.full_guide_hotkey import FullGuideHotkey, DEFAULT_GUIDE_HOTKEY, WM_HOTKEY, parse_hotkey
 from scripts.full_guide_settings import FullGuideSettingsDialog
 from scripts.full_guide_window import FullGuideWindow
+from scripts.quick_hud_selection_store import QuickHudSelectionStore
 from scripts.shortcut_catalog_resolver import resolve_catalog_view
 from scripts.shortcut_catalog import ShortcutCatalog
 from scripts.shortcut_hud_controller import ShortcutHudController
@@ -130,7 +132,7 @@ class GuideInteractionTests(unittest.TestCase):
     def setUpClass(cls):
         cls.qt = QApplication.instance() or QApplication([])
 
-    def make(self):
+    def make(self, selection_store=None):
         catalog = ShortcutCatalog.from_legacy_shortcuts({"SAMPLE.EXE": {"Ctrl": {"S": "Save"}}})
         policy = SuppressionPolicy()
         hud = Mock()
@@ -139,8 +141,10 @@ class GuideInteractionTests(unittest.TestCase):
         quick = ShortcutHudController(config, SimpleNamespace(current_app_name="SAMPLE.EXE"), hud, Mock(), suppression_policy=policy)
         view = FullGuideWindow()
         provider = Mock(return_value=snapshot())
-        guide = FullGuideController(view, quick, policy, provider, lambda: catalog, lambda: {}, lambda: "en")
+        guide = FullGuideController(view, quick, policy, provider, lambda: catalog, lambda: {}, lambda: "en", selection_store=selection_store)
+        self.addCleanup(self.qt.processEvents)
         self.addCleanup(quick.stop)
+        self.addCleanup(view.deleteLater)
         self.addCleanup(view.close)
         return guide, view, quick, policy, provider, hud
 
@@ -221,6 +225,65 @@ class GuideInteractionTests(unittest.TestCase):
         view.escape()
         self.assertFalse(guide.active)
 
+    def test_modifier_drill_down_is_cumulative_and_escape_clears_all(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        guide.on_key_event("Ctrl", "down")
+        guide.on_key_event("Ctrl", "up")
+        self.assertEqual(guide.modifier_filter.selected, ("Ctrl",))
+        guide.on_key_event("Shift", "down")
+        guide.on_key_event("Shift", "up")
+        self.assertEqual(guide.modifier_filter.selected, ("Ctrl", "Shift"))
+        view.escape()
+        self.assertEqual(guide.modifier_filter.selected, ())
+        self.assertTrue(guide.active)
+
+    def test_escape_from_ctrl_clears_to_complete_guide(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        guide.on_key_event("Ctrl", "down")
+        guide.on_key_event("Ctrl", "up")
+        view.escape()
+        self.assertEqual(guide.modifier_filter.selected, ())
+        self.assertTrue(guide.active)
+
+    def test_zero_result_filter_is_visible_state_and_escape_restores_all(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        for modifier in ("Ctrl", "Shift"):
+            guide.on_key_event(modifier, "down")
+            guide.on_key_event(modifier, "up")
+        self.assertEqual(guide.modifier_filter.selected, ("Ctrl", "Shift"))
+        self.assertFalse(view.sections)
+        self.assertTrue(view.empty_panel.isVisible())
+        view.escape()
+        self.assertEqual(guide.modifier_filter.selected, ())
+        self.assertTrue(view.sections)
+
+    def test_escape_clears_modifier_and_query_together_then_clean_escape_closes(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        for modifier in ("Ctrl", "Shift"):
+            guide.on_key_event(modifier, "down")
+            guide.on_key_event(modifier, "up")
+        view.search_box.setText("terminal")
+        view.escape()
+        self.assertEqual(guide.modifier_filter.selected, ())
+        self.assertEqual(view.search_box.text(), "")
+        self.assertTrue(guide.active)
+        view.escape()
+        self.assertFalse(guide.active)
+
+    def test_activation_hotkey_release_is_not_a_filter_and_fresh_ctrl_is(self):
+        guide, view, _, _, _, _ = self.make()
+        guide.toggle()
+        guide.on_key_event("Ctrl", "up")
+        guide.on_key_event("Shift", "up")
+        self.assertEqual(guide.modifier_filter.selected, ())
+        guide.on_key_event("Ctrl", "down")
+        guide.on_key_event("Ctrl", "up")
+        self.assertEqual(guide.modifier_filter.selected, ("Ctrl",))
+
     def test_deactivate_closes_without_reopening(self):
         guide, view, _, _, provider, _ = self.make()
         guide.toggle()
@@ -239,7 +302,7 @@ class GuideInteractionTests(unittest.TestCase):
             self.assertIn("搜索", view.search_box.placeholderText())
             self.assertIn("已收录", view.count_label.text())
             self.assertGreater(view.width(), 1200)
-            self.assertGreater(view.x(), 1200)
+            self.assertEqual(view.x(), 1200)
             self.assertEqual(view.scroll.horizontalScrollBarPolicy(), Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         finally:
             self.qt.removeTranslator(translator)
@@ -338,6 +401,21 @@ class GuideInteractionTests(unittest.TestCase):
         view._render_sections()
         self.assertEqual(sum(len(section.rows) for section in view.sections), 1)
 
+    def test_quick_pin_button_updates_only_injected_temp_store(self):
+        with TemporaryDirectory() as temporary:
+            store = QuickHudSelectionStore(Path(temporary) / "selection.json")
+            store.set_selected_ids("SAMPLE.EXE", [])
+            store.save()
+            guide, view, _, _, _, _ = self.make(store)
+            guide.toggle()
+            button = view.findChild(QLabel, "guidePin")
+            self.assertIsNotNone(button)
+            self.assertEqual(button.text(), "☆")
+            QTest.mouseClick(button, Qt.MouseButton.LeftButton)
+            self.qt.processEvents()
+            self.assertEqual(len(store.selected_ids_in_order_for("SAMPLE.EXE")), 1)
+            self.assertTrue(str(store.path).startswith(temporary))
+
 
 class GuideMonitorTests(unittest.TestCase):
     def test_second_monitor_device_wins_cursor_primary(self):
@@ -351,9 +429,7 @@ class GuideMonitorTests(unittest.TestCase):
 
     def test_geometry_uses_available_logical_coordinates(self):
         rect = guide_geometry((-1440, 0, 1440, 860))
-        self.assertGreater(rect.x(), -1440)
-        self.assertLessEqual(rect.right(), 0)
-        self.assertLess(rect.height(), 860)
+        self.assertEqual(rect.getRect(), (-1440, 0, 1440, 860))
 
     def test_capture_refreshes_foreground_before_building_descriptor(self):
         qt = QApplication.instance() or QApplication([])

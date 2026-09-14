@@ -7,12 +7,28 @@ from PySide6.QtWidgets import (
 )
 
 from .full_guide_context import guide_geometry
-from .full_guide_model import balance_categories, column_count_for_width, group_entries
+from .full_guide_model import balance_categories, choose_layout_density, group_entries
+
+
+class _PinLabel(QLabel):
+    clicked = Signal()
+
+    def mouseReleaseEvent(self, event) -> None:
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.clicked.emit()
+            event.accept()
+            return
+        super().mouseReleaseEvent(event)
 
 
 class FullGuideWindow(QWidget):
     closed = Signal()
     center_requested = Signal()
+    escape_requested = Signal()
+    modifier_key_event = Signal(str, str)
+    non_modifier_key_pressed = Signal()
+    focus_changed = Signal(bool, int)
+    pin_toggled = Signal(str, bool)
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent, Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
@@ -23,6 +39,9 @@ class FullGuideWindow(QWidget):
         self.rows = ()
         self.sections = ()
         self.rendered_columns = ()
+        self._modifier_filters = ()
+        self._pin_states = {}
+        self._density = None
         self._debug_column_count = None
         self._last_width = 0
         self._layout_timer = QTimer(self)
@@ -40,19 +59,25 @@ class FullGuideWindow(QWidget):
         self.app_label.setTextFormat(Qt.TextFormat.PlainText)
         self.count_label = QLabel(self)
         self.count_label.setObjectName("guideCount")
+        self.modifier_label = QLabel(self)
+        self.modifier_label.setObjectName("guideModifiers")
+        self.modifier_label.hide()
         identity.addWidget(self.app_label)
         identity.addWidget(self.count_label)
+        identity.addWidget(self.modifier_label)
         top.addLayout(identity, 2)
         self.search_box = QLineEdit(self)
         self.search_box.setObjectName("guideSearch")
         self.search_box.setPlaceholderText(self.tr("Search shortcuts…"))
         self.search_box.setClearButtonEnabled(True)
         self.search_box.setMinimumWidth(170)
+        self.search_box.installEventFilter(self)
         top.addWidget(self.search_box, 2)
         self.close_button = QPushButton("×", self)
         self.close_button.setObjectName("guideClose")
         self.close_button.setAccessibleName(self.tr("Close"))
         self.close_button.setToolTip(self.tr("Close"))
+        self.close_button.installEventFilter(self)
         self.close_button.clicked.connect(self.close)
         top.addWidget(self.close_button)
         layout.addLayout(top)
@@ -72,13 +97,14 @@ class FullGuideWindow(QWidget):
         self.empty_label = QLabel(self)
         self.empty_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.center_button = QPushButton(self.tr("Open Shortcut Center"), self)
+        self.center_button.installEventFilter(self)
         self.center_button.clicked.connect(self._open_center)
         empty_layout.addStretch()
         empty_layout.addWidget(self.empty_label)
         empty_layout.addWidget(self.center_button, 0, Qt.AlignmentFlag.AlignHCenter)
         empty_layout.addStretch()
         layout.addWidget(self.empty_panel, 1)
-        self.footer = QLabel(self.tr("Ctrl+F  Search     Esc  Clear search / Close     ★  Recommended"), self)
+        self.footer = QLabel(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD"), self)
         self.footer.setObjectName("guideFooter")
         layout.addWidget(self.footer)
         self.search_box.textChanged.connect(self._search_changed)
@@ -87,11 +113,12 @@ class FullGuideWindow(QWidget):
         self._escape = QShortcut(QKeySequence("Esc"), self)
         self._escape.activated.connect(self.escape)
         self.setStyleSheet("""
-            QWidget#FullGuideWindow { background: #20232e; border: 1px solid #495264; }
+            QWidget#FullGuideWindow { background: #20232e; border: none; }
             QWidget#guideContent { background: #20232e; }
             QLabel { color: #dce2ed; background: transparent; font-size: 13px; }
             QLabel#guideApplication { color: #f4f7fc; font-size: 26px; font-weight: 600; }
             QLabel#guideCount, QLabel#guideFooter { color: #939fb4; font-size: 12px; }
+            QLabel#guideModifiers { color: #a9c9f3; font-size: 12px; font-weight: 600; }
             QLineEdit#guideSearch { color: #edf2fa; background: #2b3040; border: 1px solid #4b5670;
                 border-radius: 8px; padding: 11px 14px; font-size: 14px; }
             QLineEdit#guideSearch:focus { border-color: #91b6ec; }
@@ -99,6 +126,7 @@ class FullGuideWindow(QWidget):
                 border-radius: 6px; padding: 8px 12px; }
             QPushButton:hover { background: #46536b; }
             QPushButton#guideClose { font-size: 24px; padding: 2px 12px; border: none; background: transparent; }
+            QLabel#guidePin { color: #a99468; border: none; background: transparent; padding: 1px 3px; font-size: 15px; }
             QFrame#guideSection { background: #272c39; border: 1px solid #353e50; border-radius: 8px; }
             QLabel#guideCategory { color: #9fc4f4; font-size: 15px; font-weight: 600; padding-bottom: 7px; }
             QFrame#guideRow { background: transparent; border: none; }
@@ -111,8 +139,10 @@ class FullGuideWindow(QWidget):
             QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0px; }
         """)
 
-    def present(self, snapshot, rows, language=None) -> None:
+    def present(self, snapshot, rows, language=None, pin_states=None) -> None:
         self.snapshot, self.rows = snapshot, tuple(rows)
+        self._modifier_filters = ()
+        self._pin_states = dict(pin_states or {})
         self.app_label.setText(snapshot.descriptor.display_name)
         self.search_box.blockSignals(True)
         self.search_box.clear()
@@ -133,19 +163,31 @@ class FullGuideWindow(QWidget):
             self.close_button.setAccessibleName(self.tr("Close"))
             self.close_button.setToolTip(self.tr("Close"))
             self.center_button.setText(self.tr("Open Shortcut Center"))
-            self.footer.setText(self.tr("Ctrl+F  Search     Esc  Clear search / Close     ★  Recommended"))
+            self.footer.setText(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD"))
             self._render_sections()
         super().changeEvent(event)
 
     def _focus_search(self) -> None:
+        self.non_modifier_key_pressed.emit()
         self.search_box.setFocus(Qt.FocusReason.ShortcutFocusReason)
         self.search_box.selectAll()
 
     def escape(self) -> None:
-        if self.search_box.text():
-            self.search_box.clear()
-        else:
-            self.close()
+        self.escape_requested.emit()
+
+    def clear_search(self) -> None:
+        self.search_box.clear()
+
+    def set_modifier_filters(self, modifiers) -> None:
+        self._modifier_filters = tuple(modifiers)
+        self.modifier_label.setText("  ".join(f"[{modifier}]" for modifier in self._modifier_filters))
+        self.modifier_label.setVisible(bool(self._modifier_filters))
+        self.scroll.verticalScrollBar().setValue(0)
+        self._render_sections()
+
+    def set_pin_states(self, states) -> None:
+        self._pin_states = dict(states)
+        self._render_sections()
 
     def _open_center(self) -> None:
         self.close()
@@ -157,9 +199,10 @@ class FullGuideWindow(QWidget):
 
     def _render_sections(self) -> None:
         self._layout_timer.stop()
-        self.sections = group_entries(self.rows, self.search_box.text())
+        self.sections = group_entries(self.rows, self.search_box.text(), self._modifier_filters)
         count = sum(len(section.rows) for section in self.sections)
-        self.count_label.setText((self.tr("%1 of %2 collected shortcuts") if self.search_box.text() else self.tr("%2 collected shortcuts")).replace("%1", str(count)).replace("%2", str(len(self.rows))))
+        constrained = bool(self.search_box.text() or self._modifier_filters)
+        self.count_label.setText((self.tr("%1 of %2 collected shortcuts") if constrained else self.tr("%2 collected shortcuts")).replace("%1", str(count)).replace("%2", str(len(self.rows))))
         self.empty_panel.setVisible(not self.sections)
         self.scroll.setVisible(bool(self.sections))
         self.empty_label.setText(self.tr("No matching shortcuts") if self.rows else self.tr("No shortcuts collected for this application yet"))
@@ -171,7 +214,8 @@ class FullGuideWindow(QWidget):
                 item.widget().deleteLater()
         width = max(1, self.width() - 64)
         self._last_width = width
-        automatic = column_count_for_width(width)
+        self._density = choose_layout_density(self.sections, width, self.height())
+        automatic = self._density.columns
         requested = self._debug_column_count or automatic
         # A suggested column count never forces horizontal scrolling.
         columns = min(requested, automatic)
@@ -182,7 +226,7 @@ class FullGuideWindow(QWidget):
             column.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Preferred)
             stack = QVBoxLayout(column)
             stack.setContentsMargins(0, 0, 0, 0)
-            stack.setSpacing(16)
+            stack.setSpacing(11 if self._density.compact else 16)
             for section in sections:
                 stack.addWidget(self._section_widget(section, column))
             stack.addStretch(1)
@@ -197,8 +241,10 @@ class FullGuideWindow(QWidget):
         panel = QFrame(parent)
         panel.setObjectName("guideSection")
         stack = QVBoxLayout(panel)
-        stack.setContentsMargins(14, 14, 14, 12)
-        stack.setSpacing(3)
+        compact = bool(self._density and self._density.compact)
+        margins = (11, 9, 11, 8) if compact else (14, 14, 14, 12)
+        stack.setContentsMargins(*margins)
+        stack.setSpacing(1 if compact else 3)
         heading = QLabel(f"{section.title}   {len(section.rows)}", panel)
         heading.setTextFormat(Qt.TextFormat.PlainText)
         heading.setObjectName("guideCategory")
@@ -208,8 +254,8 @@ class FullGuideWindow(QWidget):
             widget.setObjectName("guideRow")
             widget.setToolTip(f"{row.trigger}\n{row.description}")
             line = QHBoxLayout(widget)
-            line.setContentsMargins(3, 7, 3, 7)
-            line.setSpacing(10)
+            line.setContentsMargins(3, 4 if compact else 7, 3, 4 if compact else 7)
+            line.setSpacing(8 if compact else 10)
             key = QLabel(row.trigger, widget)
             key.setTextFormat(Qt.TextFormat.PlainText)
             key.setObjectName("guideTrigger")
@@ -221,10 +267,19 @@ class FullGuideWindow(QWidget):
             text.setWordWrap(True)
             text.setMinimumWidth(0)
             line.addWidget(text, 1)
-            if row.source == "USER_APP" or row.entry.recommended:
-                badge = QLabel(self.tr("Mine") if row.source == "USER_APP" else "★", widget)
+            if row.entry.id in self._pin_states:
+                pinned = self._pin_states[row.entry.id]
+                badge = _PinLabel("★" if pinned else "☆", widget)
+                badge.setObjectName("guidePin")
+                badge.setAccessibleName(self.tr("Remove from Quick HUD") if pinned else self.tr("Add to Quick HUD"))
+                badge.setToolTip(badge.accessibleName())
+                badge.setCursor(Qt.CursorShape.PointingHandCursor)
+                badge.clicked.connect(lambda entry_id=row.entry.id, desired=not pinned: self.pin_toggled.emit(entry_id, desired))
+                line.addWidget(badge, 0, Qt.AlignmentFlag.AlignTop)
+            elif row.source == "USER_APP":
+                badge = QLabel(self.tr("Mine"), widget)
                 badge.setObjectName("guideBadge")
-                badge.setToolTip(self.tr("My Shortcut") if row.source == "USER_APP" else self.tr("Recommended"))
+                badge.setToolTip(self.tr("My Shortcut"))
                 line.addWidget(badge, 0, Qt.AlignmentFlag.AlignTop)
             stack.addWidget(widget)
         return panel
@@ -235,14 +290,36 @@ class FullGuideWindow(QWidget):
             self._layout_timer.start()
 
     def event(self, event) -> bool:
+        if event.type() == QEvent.Type.WindowActivate and getattr(self, "_session_open", False):
+            self.focus_changed.emit(True, int(self.winId()))
         if event.type() == QEvent.Type.WindowDeactivate and getattr(self, "_session_open", False):
+            self.focus_changed.emit(False, int(self.winId()))
             self.close()
         return super().event(event)
+
+    def eventFilter(self, watched, event) -> bool:
+        if self._session_open and self.isActiveWindow() and event.type() in (QEvent.Type.KeyPress, QEvent.Type.KeyRelease):
+            key_names = {
+                Qt.Key.Key_Control: "Ctrl", Qt.Key.Key_Alt: "Alt",
+                Qt.Key.Key_Shift: "Shift",
+            }
+            key_name = key_names.get(event.key())
+            event_type = "down" if event.type() == QEvent.Type.KeyPress else "up"
+            if key_name:
+                if not event.isAutoRepeat():
+                    self.modifier_key_event.emit(key_name, event_type)
+                return False
+            if event_type == "down" and not event.isAutoRepeat():
+                self.non_modifier_key_pressed.emit()
+        return super().eventFilter(watched, event)
 
     def closeEvent(self, event) -> None:
         self._layout_timer.stop()
         if self._session_open:
             self._session_open = False
+            self.focus_changed.emit(False, int(self.winId()))
             self.snapshot = None
+            self._modifier_filters = ()
+            self._pin_states = {}
             self.closed.emit()
         super().closeEvent(event)

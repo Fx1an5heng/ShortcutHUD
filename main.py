@@ -54,6 +54,7 @@ from scripts.settings_dialog import SettingsDialog, AboutDialog
 from scripts.full_guide_context import WindowsGuideContext
 from scripts.full_guide_controller import FullGuideController
 from scripts.full_guide_hotkey import FullGuideHotkey, DEFAULT_GUIDE_HOTKEY, GUIDE_HOTKEY_SETTING
+from scripts.full_guide_input import GuideWinInputService
 from scripts.full_guide_window import FullGuideWindow
 
 
@@ -178,6 +179,7 @@ class ShortcutOverlayApplication(QApplication):
         )
 
         self.full_guide_window = FullGuideWindow()
+        self.full_guide_input = GuideWinInputService(parent=self)
         self.full_guide_context = WindowsGuideContext(
             self.monitor, self.application_identity, self.current_application_candidate,
             self.config_mgr.get_shortcut_catalog, self.user_shortcut_store.snapshot,
@@ -187,7 +189,10 @@ class ShortcutOverlayApplication(QApplication):
             self.full_guide_window, self.hud_controller, self.suppression_policy,
             self.full_guide_context.capture, self.config_mgr.get_shortcut_catalog,
             self.user_shortcut_store.snapshot,
-            lambda: self.config_mgr.get_setting("language", "en_US"), parent=self,
+            lambda: self.config_mgr.get_setting("language", "en_US"),
+            selection_store=self.quick_hud_selection_store,
+            input_service=self.full_guide_input,
+            parent=self,
         )
         self.full_guide_hotkey = FullGuideHotkey(self, parent=self)
         self.full_guide_hotkey.activated.connect(self.toggle_full_guide)
@@ -196,6 +201,7 @@ class ShortcutOverlayApplication(QApplication):
         )
         self.game_guard_runtime.suppression_changed.connect(self.full_guide_controller.on_suppression_changed)
         self.aboutToQuit.connect(self.full_guide_hotkey.close)
+        self.aboutToQuit.connect(self.full_guide_input.stop)
         self.aboutToQuit.connect(self.full_guide_controller.close)
 
         # Initialize and configure the system tray icon.
@@ -217,6 +223,11 @@ class ShortcutOverlayApplication(QApplication):
             error = self.win_discovery_proxy.last_error
             print(
                 f"Warning: Win discovery proxy unavailable; using native Win behavior. {error!r}"
+            )
+        if not self.full_guide_input.start():
+            print(
+                "Warning: Full Guide Win filtering unavailable; "
+                f"Win keeps native behavior. {self.full_guide_input.last_error!r}"
             )
         if not self.application_identity.start():
             error = self.application_identity.event_hook_error
@@ -612,6 +623,7 @@ class ShortcutOverlayApplication(QApplication):
         self.hud_controller.stop()
         self.full_guide_controller.close()
         self.full_guide_hotkey.close()
+        self.full_guide_input.stop()
         self.application_identity.stop_requests()
         self.application_identity.stop_event_hook()
         if not self.application_identity.stop_worker(timeout=1.0):

@@ -1211,14 +1211,15 @@ Custom shortcuts and the display name will not be changed.</source>
     <message><source>Columns</source><translation>列数</translation></message>
     <message><source>Close</source><translation>关闭</translation></message>
     <message><source>Open Shortcut Center</source><translation>打开快捷键中心</translation></message>
-    <message><source>Ctrl+F  Search     Esc  Clear search / Close     ★  Recommended</source><translation>Ctrl+F  搜索     Esc  清空搜索 / 关闭     ★  推荐</translation></message>
+    <message><source>Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ☆  Quick HUD</source><translation>轻按 Ctrl / Alt / Shift / Win 进行筛选     Esc  清空筛选 / 关闭     ☆  Quick HUD</translation></message>
     <message><source>%1 of %2 collected shortcuts</source><translation>找到 %1 项 · 已收录 %2 个快捷键</translation></message>
     <message><source>%2 collected shortcuts</source><translation>已收录 %2 个快捷键</translation></message>
     <message><source>No matching shortcuts</source><translation>没有匹配的快捷键</translation></message>
     <message><source>No shortcuts collected for this application yet</source><translation>暂未收录该应用的快捷键</translation></message>
     <message><source>Mine</source><translation>我的</translation></message>
     <message><source>My Shortcut</source><translation>我的快捷键</translation></message>
-    <message><source>Recommended</source><translation>推荐</translation></message>
+    <message><source>Add to Quick HUD</source><translation>加入 Quick HUD</translation></message>
+    <message><source>Remove from Quick HUD</source><translation>从 Quick HUD 移除</translation></message>
 </context>
 <context>
     <name>FullGuideSettingsDialog</name>

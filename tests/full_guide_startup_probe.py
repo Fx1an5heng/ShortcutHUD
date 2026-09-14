@@ -38,6 +38,7 @@ def run_probe():
              patch.object(main, "FullGuideHotkey", side_effect=lambda app, parent: FullGuideHotkey(app, parent, backend=backend)), \
              patch.object(main.KeyboardHandler, "start_listening"), \
              patch.object(main.WinDiscoveryProxy, "start", return_value=True), \
+             patch.object(main.GuideWinInputService, "start", return_value=True), \
              patch.object(main.ApplicationIdentityRuntime, "start", return_value=True), \
              patch.object(main.ForegroundMonitor, "check_foreground_app"):
             app = main.ShortcutOverlayApplication([])

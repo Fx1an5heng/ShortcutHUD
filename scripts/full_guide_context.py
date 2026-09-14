@@ -28,9 +28,9 @@ def choose_monitor(screens, device: str | None, cursor: tuple[int, int]):
 
 
 def guide_geometry(available: tuple[int, int, int, int]) -> QRect:
+    """Cover one monitor without entering exclusive display mode."""
     x, y, width, height = available
-    margin = max(8, min(28, min(width, height) // 25))
-    return QRect(x + margin, y + margin, max(1, width - 2 * margin), max(1, height - 2 * margin))
+    return QRect(x, y, max(1, width), max(1, height))
 
 
 class WindowsGuideContext:
@@ -68,7 +68,7 @@ class WindowsGuideContext:
                 device = win32api.GetMonitorInfo(win32api.MonitorFromWindow(hwnd, 2))["Device"]
             except Exception:
                 pass
-        screens = [(screen.name(), screen.availableGeometry().getRect()) for screen in QGuiApplication.screens()]
+        screens = [(screen.name(), screen.geometry().getRect()) for screen in QGuiApplication.screens()]
         cursor = QCursor.pos()
         name, geometry = choose_monitor(screens, device, (cursor.x(), cursor.y()))
         return GuideSnapshot(descriptor, hwnd if not own else 0, name, tuple(geometry))
