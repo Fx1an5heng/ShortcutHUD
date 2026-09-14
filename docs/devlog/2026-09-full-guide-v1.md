@@ -88,6 +88,20 @@ Quick Pin 刻意没有做“保存当前页面 selection”。每次点击只有
 
 这些是开发机单次样本，不是统计分位数，也不代表热键到首帧的端到端延迟。真实物理 Win suppression、关闭后 Start/Explorer/Run 恢复、混合 DPI 副屏及首次全屏观感仍留给用户 smoke。
 
+## Final Visual Polish：可读性高于一屏指标
+
+v1.2 的功能门禁通过后，用户真实截图暴露出布局目标设错：为了让 108 条在 1920×1080 无滚动，planner 会冲到第 6 列并压紧 padding；Qt 又让 description 自动换行。配合 shortest-column masonry、每类大 card 和每行 `☆`，结果虽然数学上 fit，却更像 dashboard 墙，分类阅读顺序与文字基线都不稳定。
+
+最终规则改成 readability > visual cleanliness > scanning > density > one-screen。列数只由可用内容宽度和约 320 logical px 最小可读宽度决定，最大 5；不再根据“还能塞下一列”升级到 6，也不再提供 compact 密度。条目固定单行，trigger 固定区域、description flexible、Pin 固定 22 px；超长文本 elide，tooltip 保存全文。category card 被移除，只剩标题、数量、淡 separator 和 section 留白，row 仅在 hover 时给极淡背景。
+
+原 shortest-column 算法会让 A/B/C 按当前最短列跳跃分布。新的 pure planner 先用固定单行行高估算总高度和每列目标，再按原始 category 顺序切分连续 section；flatten 后的 category 序列必须与输入完全相同。filter/search 每次都先重建 sections 再重跑 planner，不保留完整 Guide 的空洞位置。不拆 category、不做 category 内双列，长分类或完整 VS Code 需要少量整体纵向滚动是接受的。
+
+星号审计确认 v1.2 后 Full Guide 已没有单独的 recommended 星；右侧星号只代表 Quick HUD Pin。已 Pin `★` 始终低对比度显示，未 Pin 的控件仍保留宽度和可访问名称，但空闲文本为空，只在 entry hover 或 keyboard focus 时显示 `☆`。Pin service、SelectionStore 和 add/remove one-ID 语义完全未改。
+
+隔离 Qt 预览使用 TemporaryDirectory 中的 selection store，不读取真实 selection，输出到 gitignored 的 `recovery/full-guide-preview.local`。完整 108 条为 5 列，允许 184 px 整体纵向滚动且 horizontal max 为 0；Ctrl filter 重新顺序分栏；1120×780 窄视口为 3 列。单次样本：完整 render/processEvents 约 312.57 ms、搜索约 22.10 ms；300 条合成数据 render 约 133.09 ms、搜索约 8.85 ms。
+
+Final Visual Polish 自动门禁：Full Guide 针对性 69 项通过；完整 unittest 492 项通过。Pack validator、本地化审计和最终用户数据 hash 在提交前再次执行。真实字体/DPI 下的 elide、hover 可发现性、滚动体感和副屏外观仍需人工视觉 smoke。
+
 ## Smoke 清单
 
 1. 退出旧实例并启动本分支。在 VS Code 打开 Guide：确认 Ctrl+C/X/V/Z/Y 与 Ctrl+K Ctrl+S 各只出现一次；F11 的两种语义和 sequence 仍存在。

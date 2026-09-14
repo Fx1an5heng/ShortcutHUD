@@ -1,6 +1,6 @@
 # Full Guide v1 / Polish v1.1 / Interaction v1.2
 
-状态：v1.2 implemented，等待 Windows 用户最终 smoke。范围是当前应用查询、Guide 内累积 modifier 筛选和单条 Quick HUD Pin，不扩展 Pack，也不把个人选择写进产品默认值。
+状态：v1.2 + Final Visual Polish implemented，等待 Windows 用户视觉 smoke。范围是当前应用查询、Guide 内累积 modifier 筛选和单条 Quick HUD Pin，不扩展 Pack，也不把个人选择写进产品默认值。
 
 ## 三个界面的职责
 
@@ -60,11 +60,15 @@ shipping zh_CN 必须是 Pack 内已经审校完成的最终文本。导入器�
 
 轻量 Qt Widgets 无边框置顶普通窗口，精确覆盖当前 monitor 的 logical geometry；不是 exclusive fullscreen。深色统一样式，不增加主题框架。
 
-分类按预计高度贪心分给当前最短列，平局选左列，结果确定。一屏优先计算先保留正常字体和正常 card spacing，再增加到最多 6 列，再使用较紧凑的 padding/vertical spacing；估高仍放不下才允许纵向滚动。1920×1080 的当前 VS Code 108-row resolved view 选择 6 列并在一屏容纳；300 条压力数据确定性回退到纵向滚动。主界面不暴露手动列数选择器，只保留测试 hook；始终无横向滚动、分页或分类内滚动条。分类内部双列继续 defer，避免与全局 column balancing 形成第二套复杂布局。
+最终视觉优先级固定为 readability > visual cleanliness > scanning > density > one-screen。一屏只是 soft goal，不再通过缩字、压行或第 6 列强行实现。可用内容宽度按约 320 logical px 的最小可读列宽和 18 px column gap 计算，最多 5 列；1920 通常 5 列、1536/1600 通常 4 列、1280 通常 3 列，极窄窗口才安全降到 1/2 列。
+
+分类估高只包含固定单行 entry、轻量 heading 和 section gap，不再因 description 长度假设多行。sequential balanced planner 先求平均目标高度，再按原始 category 顺序把连续 section 切给各列；不能回到 shortest-column masonry，也不能拆 category。搜索或 modifier 改变结果时重新计算完整 plan。自然放不下就使用唯一的整体纵向 scroll；始终无横向、分类内部 scroll 或分类内部双列。
+
+presentation 采用 fullscreen cheat sheet，而不是 dashboard card：category 只有标题、数量、淡 separator 和留白，section 无圆角外框/实心 card 背景。每个 entry 是固定高度的单行 trigger/description/pin 三段布局；trigger 起点和 description 起点稳定，溢出使用 right elide，完整文本保留在 tooltip，hover 只显示轻微背景。
 
 每次 session 从内存构造搜索文本，包含完整 trigger、中英文标题/描述、aliases 和分类文本。查询按空白分词、忽略大小写、所有词均匹配；输入和 resize 使用 35 ms 单次合并重排，关闭即停止。没有 idle polling，没有网络、webview 或激活时重读 Pack。
 
-计数与搜索都基于同一批 dedup 后行；搜索状态显示“找到 X / 已收录 N”，不会从 raw sources 再生成重复结果。估高不是精确 masonry；字体、长描述和实际换行会造成列高差异。300 条压力验证和 v1.1 实际渲染支持当前简单方案，不提前引入分类内部双列、虚拟列表或第三方布局框架。
+计数与搜索都基于同一批 dedup 后行；搜索状态显示“找到 X / 已收录 N”，不会从 raw sources 再生成重复结果。估高是确定性的单行近似，不追求像素级等高；超长 trigger、字体和 DPI 可能改变实际 elide，但不会改变 section 顺序。300 条压力验证支持整体滚动方案，不提前引入虚拟列表或第三方布局框架。
 
 ## Suppression
 
@@ -73,6 +77,8 @@ shipping zh_CN 必须是 Pack 内已经审校完成的最终文本。导入器�
 ## Quick HUD Pin 数据边界
 
 Pin 只对 APP scope、`quick_hud` visible 且 trigger eligible 的 Catalog 条目开放；single、sequence 等 Catalog-only 条目不显示可点击星标。UI 只发出目标 stable ID 和期望状态，实际变更复用 QuickHudSelectionStore 的原子保存。
+
+Full Guide 的交互星号只有 Quick HUD Pin 一种语义；recommended metadata 仅保留排序含义，不再绘制第二颗星。已 Pin 的 `★` 以低对比度始终显示；未 Pin 的固定区域保持 22 logical px 占位，默认文本为空，仅在该 entry hover 或 Pin 控件获得 keyboard focus 时显示 `☆`，因此 description 不会左右跳动。
 
 已有 explicit selection 时，Pin 只在末尾追加目标 current stable ID；Unpin 只删除目标 ID 及其声明过的 aliases。其它应用、原顺序、unknown/stale IDs 均保持。explicit empty 仍代表用户明确清空，第一次 Pin 只加入目标项。应用从未配置时，第一次 Pin 才把当前 effective recommended 顺序物化后追加目标；Unpin recommended 则物化 recommended-minus-target。保存失败时内存状态回滚，不让 Controller 与磁盘形成假成功。
 
