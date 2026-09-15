@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
 
 from .full_guide_context import guide_geometry
 from .full_guide_model import balance_categories, group_entries, plan_guide_layout
+from .keypath_view import KeyPathPanel
 
 
 class _ElidedLabel(QLabel):
@@ -73,6 +74,17 @@ class _PinLabel(QLabel):
         super().mouseReleaseEvent(event)
 
 
+class _ModeLinkLabel(QLabel):
+    clicked = Signal()
+
+    def mouseReleaseEvent(self, event) -> None:
+        if event.button() == Qt.MouseButton.LeftButton:
+            self.clicked.emit()
+            event.accept()
+            return
+        super().mouseReleaseEvent(event)
+
+
 class _GuideRow(QFrame):
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
@@ -97,12 +109,20 @@ class FullGuideWindow(QWidget):
     non_modifier_key_pressed = Signal()
     focus_changed = Signal(bool, int)
     pin_toggled = Signal(str, bool)
+    keypath_enter_requested = Signal()
+    keypath_hint_pressed = Signal(str)
+    keypath_back_requested = Signal()
+    keypath_category_selected = Signal(str)
+    keypath_action_selected = Signal(str)
 
     def __init__(self, parent=None) -> None:
         super().__init__(parent, Qt.WindowType.Window | Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         self.setObjectName("FullGuideWindow")
         self.setWindowTitle(self.tr("Full Guide"))
+        self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
         self._session_open = False
+        self._keypath_active = False
+        self._normal_scroll_value = 0
         self.snapshot = None
         self.rows = ()
         self.sections = ()
@@ -131,11 +151,21 @@ class FullGuideWindow(QWidget):
         self.modifier_label = QLabel(self)
         self.modifier_label.setObjectName("guideModifiers")
         self.modifier_label.hide()
+        self.keypath_entry = _ModeLinkLabel(self.tr("Path navigation"), self)
+        self.keypath_entry.setObjectName("guideKeyPathEntry")
+        self.keypath_entry.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.keypath_entry.setToolTip(self.tr("Press Tab to navigate by path"))
+        self.keypath_entry.clicked.connect(self.keypath_enter_requested)
+        self.keypath_status = QLabel(self)
+        self.keypath_status.setObjectName("guideKeyPathStatus")
+        self.keypath_status.hide()
         identity_meta = QHBoxLayout()
         identity_meta.setSpacing(10)
         identity.addWidget(self.app_label)
         identity_meta.addWidget(self.count_label)
         identity_meta.addWidget(self.modifier_label)
+        identity_meta.addWidget(self.keypath_entry)
+        identity_meta.addWidget(self.keypath_status)
         identity_meta.addStretch(1)
         identity.addLayout(identity_meta)
         top.addLayout(identity, 2)
@@ -177,7 +207,12 @@ class FullGuideWindow(QWidget):
         empty_layout.addWidget(self.center_button, 0, Qt.AlignmentFlag.AlignHCenter)
         empty_layout.addStretch()
         layout.addWidget(self.empty_panel, 1)
-        self.footer = QLabel(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin"), self)
+        self.keypath_panel = KeyPathPanel(self)
+        self.keypath_panel.hide()
+        self.keypath_panel.category_selected.connect(self.keypath_category_selected)
+        self.keypath_panel.action_selected.connect(self.keypath_action_selected)
+        layout.addWidget(self.keypath_panel, 1)
+        self.footer = QLabel(self.tr("Tab  Path navigation     Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin"), self)
         self.footer.setObjectName("guideFooter")
         layout.addWidget(self.footer)
         self.search_box.textChanged.connect(self._search_changed)
@@ -192,6 +227,9 @@ class FullGuideWindow(QWidget):
             QLabel#guideApplication { color: #f4f7fc; font-size: 26px; font-weight: 600; }
             QLabel#guideCount, QLabel#guideFooter { color: #808ba0; font-size: 11px; }
             QLabel#guideModifiers { color: #a9c9f3; font-size: 12px; font-weight: 600; }
+            QLabel#guideKeyPathEntry { color: #8298b5; font-size: 11px; text-decoration: underline; }
+            QLabel#guideKeyPathEntry:hover { color: #b8d8ff; }
+            QLabel#guideKeyPathStatus { color: #a9c9f3; font-size: 12px; font-weight: 600; }
             QLineEdit#guideSearch { color: #edf2fa; background: #2b3040; border: 1px solid #4b5670;
                 border-radius: 8px; padding: 9px 13px; font-size: 14px; }
             QLineEdit#guideSearch:focus { border-color: #91b6ec; }
@@ -217,12 +255,19 @@ class FullGuideWindow(QWidget):
 
     def present(self, snapshot, rows, language=None, pin_states=None) -> None:
         self.snapshot, self.rows = snapshot, tuple(rows)
+        self._keypath_active = False
+        self._normal_scroll_value = 0
         self._modifier_filters = ()
         self._pin_states = dict(pin_states or {})
         self.app_label.setText(snapshot.descriptor.display_name)
         self.search_box.blockSignals(True)
         self.search_box.clear()
         self.search_box.blockSignals(False)
+        self.search_box.setEnabled(True)
+        self._find.setEnabled(True)
+        self.keypath_entry.show()
+        self.keypath_status.hide()
+        self.keypath_panel.hide()
         self.setGeometry(guide_geometry(snapshot.available_geometry))
         self._session_open = True
         self._render_sections()
@@ -239,7 +284,11 @@ class FullGuideWindow(QWidget):
             self.close_button.setAccessibleName(self.tr("Close"))
             self.close_button.setToolTip(self.tr("Close"))
             self.center_button.setText(self.tr("Open Shortcut Center"))
-            self.footer.setText(self.tr("Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin"))
+            self.keypath_entry.setText(self.tr("Path navigation"))
+            self.keypath_entry.setToolTip(self.tr("Press Tab to navigate by path"))
+            self.footer.setText(self._keypath_footer() if self._keypath_active else self._normal_footer())
+            if self._keypath_active and self.keypath_panel.session is not None:
+                self._render_keypath(self.keypath_panel.session)
             self._render_sections()
         super().changeEvent(event)
 
@@ -253,6 +302,60 @@ class FullGuideWindow(QWidget):
 
     def clear_search(self) -> None:
         self.search_box.clear()
+
+    def keypath_sections(self):
+        """Return sections matching the latest query even if layout debounce is pending."""
+
+        if self._layout_timer.isActive():
+            self._render_sections()
+        return self.sections
+
+    def enter_keypath(self, session) -> None:
+        if self._keypath_active:
+            return
+        self._normal_scroll_value = self.scroll.verticalScrollBar().value()
+        self._keypath_active = True
+        self.scroll.hide()
+        self.empty_panel.hide()
+        self.search_box.setEnabled(False)
+        self._find.setEnabled(False)
+        self.keypath_entry.hide()
+        self.keypath_status.show()
+        self.keypath_panel.show()
+        self._render_keypath(session)
+        self.footer.setText(self._keypath_footer())
+        self.setFocus(Qt.FocusReason.OtherFocusReason)
+
+    def update_keypath(self, session) -> None:
+        if self._keypath_active:
+            self._render_keypath(session)
+
+    def exit_keypath(self) -> None:
+        if not self._keypath_active:
+            return
+        self._keypath_active = False
+        self.keypath_panel.hide()
+        self.keypath_status.hide()
+        self.keypath_entry.show()
+        self.search_box.setEnabled(True)
+        self._find.setEnabled(True)
+        self.scroll.setVisible(bool(self.sections))
+        self.empty_panel.setVisible(not self.sections)
+        self.footer.setText(self._normal_footer())
+        scroll_value = self._normal_scroll_value
+        QTimer.singleShot(0, lambda: self.scroll.verticalScrollBar().setValue(scroll_value))
+        self.search_box.setFocus(Qt.FocusReason.OtherFocusReason)
+
+    def _render_keypath(self, session) -> None:
+        self.keypath_panel.render_session(session)
+        path = " → ".join((*session.path_hints, session.input_buffer) if session.input_buffer else session.path_hints)
+        self.keypath_status.setText(self.tr("Path navigation") + (f"   {path}" if path else ""))
+
+    def _normal_footer(self) -> str:
+        return self.tr("Tab  Path navigation     Tap Ctrl / Alt / Shift / Win to filter     Esc  Clear filters / Close     ★  Quick HUD pin")
+
+    def _keypath_footer(self) -> str:
+        return self.tr("Backspace  Back     Esc  Exit path navigation")
 
     def set_modifier_filters(self, modifiers) -> None:
         self._modifier_filters = tuple(modifiers)
@@ -279,8 +382,8 @@ class FullGuideWindow(QWidget):
         count = sum(len(section.rows) for section in self.sections)
         constrained = bool(self.search_box.text() or self._modifier_filters)
         self.count_label.setText((self.tr("%1 of %2 collected shortcuts") if constrained else self.tr("%2 collected shortcuts")).replace("%1", str(count)).replace("%2", str(len(self.rows))))
-        self.empty_panel.setVisible(not self.sections)
-        self.scroll.setVisible(bool(self.sections))
+        self.empty_panel.setVisible(not self.sections and not self._keypath_active)
+        self.scroll.setVisible(bool(self.sections) and not self._keypath_active)
         self.empty_label.setText(self.tr("No matching shortcuts") if self.rows else self.tr("No shortcuts collected for this application yet"))
         self.center_button.setVisible(not self.rows)
         while self.columns_layout.count():
@@ -373,7 +476,14 @@ class FullGuideWindow(QWidget):
         return super().event(event)
 
     def eventFilter(self, watched, event) -> bool:
+        if self._session_open and self._keypath_active and event.type() in (QEvent.Type.KeyPress, QEvent.Type.KeyRelease):
+            if event.key() == Qt.Key.Key_Escape:
+                return super().eventFilter(watched, event)
+            return self._handle_keypath_key_event(event)
         if self._session_open and self.isActiveWindow() and event.type() in (QEvent.Type.KeyPress, QEvent.Type.KeyRelease):
+            if event.type() == QEvent.Type.KeyPress and event.key() == Qt.Key.Key_Tab and event.modifiers() == Qt.KeyboardModifier.NoModifier:
+                self.keypath_enter_requested.emit()
+                return True
             key_names = {
                 Qt.Key.Key_Control: "Ctrl", Qt.Key.Key_Alt: "Alt",
                 Qt.Key.Key_Shift: "Shift",
@@ -388,12 +498,39 @@ class FullGuideWindow(QWidget):
                 self.non_modifier_key_pressed.emit()
         return super().eventFilter(watched, event)
 
+    def keyPressEvent(self, event) -> None:
+        if self._session_open and self._keypath_active and event.key() != Qt.Key.Key_Escape:
+            self._handle_keypath_key_event(event)
+            return
+        super().keyPressEvent(event)
+
+    def keyReleaseEvent(self, event) -> None:
+        if self._session_open and self._keypath_active:
+            event.accept()
+            return
+        super().keyReleaseEvent(event)
+
+    def _handle_keypath_key_event(self, event) -> bool:
+        if event.type() == QEvent.Type.KeyRelease or event.isAutoRepeat():
+            event.accept()
+            return True
+        if event.key() == Qt.Key.Key_Backspace:
+            self.keypath_back_requested.emit()
+        elif Qt.Key.Key_A <= event.key() <= Qt.Key.Key_Z:
+            self.keypath_hint_pressed.emit(chr(ord("A") + event.key() - Qt.Key.Key_A))
+        elif Qt.Key.Key_0 <= event.key() <= Qt.Key.Key_9:
+            self.keypath_hint_pressed.emit(chr(ord("0") + event.key() - Qt.Key.Key_0))
+        event.accept()
+        return True
+
     def closeEvent(self, event) -> None:
         self._layout_timer.stop()
         if self._session_open:
             self._session_open = False
             self.focus_changed.emit(False, int(self.winId()))
             self.snapshot = None
+            self._keypath_active = False
+            self._normal_scroll_value = 0
             self._modifier_filters = ()
             self._pin_states = {}
             self.closed.emit()
